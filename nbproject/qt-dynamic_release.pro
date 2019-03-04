@@ -12,7 +12,13 @@ QTPLUGIN += bearer
 
 win32 {
 
+    OPENAL_LIB_DIR = $$(OPENAL_BIN)
+    OPENAL_INCLUDE_DIR = $$(OPENAL_INCLUDE)
 
+    LIBS += -L$$OPENAL_LIB_DIR -lOpenAL32
+    INCLUDEPATH += $$OPENAL_INCLUDE_DIR
+
+    LIBS += -lopengl32 -lglu32
 }
 
 unix {
