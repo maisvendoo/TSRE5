@@ -39,7 +39,7 @@
 #define M_PI 3.14159265358979323846
 #endif
 
-TrackItemObj* WorldObj::pointer3d = NULL;
+TrackItemObj* WorldObj::pointer3d = nullptr;
 
 int WorldObj::isTrackObj(QString sh) {
     if (sh == "signal") {
@@ -140,7 +140,7 @@ WorldObj* WorldObj::createObj(int sh) {
     }*/ else {
         qDebug() << " Unsupported WorldObj !!! " << sh;
         //(*nowy) = new WorldObj();
-        return NULL;
+        return nullptr;
         //
     }
     (nowy)->type = TS::IdName[sh];
@@ -224,7 +224,7 @@ WorldObj* WorldObj::createObj(QString sh) {
     } else {
         qDebug() << " Unsupported WorldObj !!! " + sh;
         //(*nowy) = new WorldObj();
-        return NULL;
+        return nullptr;
         //
     }
     (nowy)->type = sh;
@@ -295,7 +295,7 @@ WorldObj::WorldObj(const WorldObj& o) {
     templateName = o.templateName;
     sectionIdx = o.sectionIdx;
     trLoaded = o.trLoaded;
-    if(o.matrix3x3 != NULL){
+    if(o.matrix3x3 != nullptr){
         matrix3x3 = new float[9];
         memcpy(matrix3x3, o.matrix3x3, sizeof(float)*9);
     }
@@ -569,7 +569,7 @@ void WorldObj::translate(float px, float py, float pz){
 void WorldObj::rotate(float x, float y, float z){
     this->tRotation[0] += x;
     this->tRotation[1] += y;
-    if(matrix3x3 != NULL) matrix3x3 = NULL;
+    if(matrix3x3 != nullptr) matrix3x3 = nullptr;
 
     if(x!=0) Quat::rotateX(this->qDirection, this->qDirection, x);
     if(y!=0) Quat::rotateY(this->qDirection, this->qDirection, y);
@@ -774,7 +774,7 @@ void WorldObj::setAnimated(bool val){
     else
         staticFlags = staticFlags & (~0x80000);
     
-    if(shapePointer != NULL && shapeState > 0)
+    if(shapePointer != nullptr && shapeState > 0)
         shapePointer->setAnimated(shapeState, isAnimated());
     
     this->modified = true;
@@ -825,7 +825,7 @@ void WorldObj::adjustRotationToTerrain(){
     Game::terrainLib->getRotation((float*)&rot, x, y, position[0], position[2]);
     this->tRotation[0] += rot[0];
     this->tRotation[1] += rot[1];
-    if(matrix3x3 != NULL) matrix3x3 = NULL;
+    if(matrix3x3 != nullptr) matrix3x3 = nullptr;
     float *q = Quat::create();
     
     float vect[3];

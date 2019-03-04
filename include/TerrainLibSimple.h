@@ -67,7 +67,7 @@ public:
     void renderShadowMap(GLUU *gluu, float* playerT, float* playerW, float* target, float fov);
     
 private:
-    QuadTree* quadTree = NULL;
+    QuadTree* quadTree = nullptr;
     std::unordered_map<int, Terrain*> terrain;
 };
 

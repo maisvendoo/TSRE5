@@ -30,7 +30,7 @@ int ConLib::addCon(QString path, QString name) {
     pathid.replace("//", "/");
     //qDebug() << pathid;
     for ( auto it = con.begin(); it != con.end(); ++it ){
-        if(it->second == NULL) continue;
+        if(it->second == nullptr) continue;
         if (((Consist*) it->second)->pathid.length() == pathid.length())
             if (((Consist*) it->second)->pathid == pathid) {
                 ((Consist*) it->second)->ref++;
@@ -47,7 +47,7 @@ int ConLib::addCon(QString path, QString name) {
 
 int ConLib::refreshEngDataAll(){
     for ( auto it = con.begin(); it != con.end(); ++it ){
-        if(it->second == NULL) continue;
+        if(it->second == nullptr) continue;
         (it->second)->refreshEngData();
     }
 }

@@ -58,10 +58,10 @@ ActivityObject::ActivityObject(const ActivityObject& orig){
 }
 
 void ActivityObject::setPosition(int x, int z, float* p){
-    if(Game::trackDB == NULL)
+    if(Game::trackDB == nullptr)
         return;
     
-    if(con != NULL){
+    if(con != nullptr){
         float tp[3];
         float tpos[3];
         float posT[2];
@@ -71,7 +71,7 @@ void ActivityObject::setPosition(int x, int z, float* p){
         posT[0] = x;
         posT[1] = z;
 
-        int ok = Game::trackDB->findNearestPositionOnTDB(posT, tp, NULL, tpos);
+        int ok = Game::trackDB->findNearestPositionOnTDB(posT, tp, nullptr, tpos);
         if(ok >= 0){
             tile[0] = posT[0];
             tile[1] = -posT[1];
@@ -82,13 +82,13 @@ void ActivityObject::setPosition(int x, int z, float* p){
         }
     }
     
-    if(speedZoneData != NULL){
+    if(speedZoneData != nullptr){
         float playerT[2];
         playerT[0] = x;
         playerT[1] = z;
         float tpos[3];
 
-        if(Game::trackDB->findNearestPositionOnTDB(playerT, p, NULL, tpos) < 0)
+        if(Game::trackDB->findNearestPositionOnTDB(playerT, p, nullptr, tpos) < 0)
             return;
         
         if(tpos[0] != speedZoneData->trid[0])
@@ -106,15 +106,15 @@ void ActivityObject::setPosition(int x, int z, float* p){
             speedZoneData->end[3] = -p[2];
         }
         
-        speedZoneData->drawPositionB = NULL;
-        speedZoneData->drawPositionE = NULL;
-        speedZoneData->lineShape = NULL;
+        speedZoneData->drawPositionB = nullptr;
+        speedZoneData->drawPositionE = nullptr;
+        speedZoneData->lineShape = nullptr;
         modified = true;
     }
 }
 
 void ActivityObject::reverseWagonListUnit(){
-    if(con == NULL)
+    if(con == nullptr)
         return;
     
     con->flipSelected();
@@ -123,7 +123,7 @@ void ActivityObject::reverseWagonListUnit(){
 }
 
 void ActivityObject::toggleDirection(){
-    if(con == NULL)
+    if(con == nullptr)
         return;
     
     direction = abs(direction - 1);
@@ -143,7 +143,7 @@ void ActivityObject::setSpeedZoneData(float* drawposition){
     objectTypeId = ActivityObject::RESTRICTEDSPEEDZONE;
     speedZoneData = new ActivityObject::SpeedZone();
     
-    if(drawposition != NULL){
+    if(drawposition != nullptr){
         speedZoneData->start[0] = drawposition[5];
         speedZoneData->start[1] = drawposition[6];
         speedZoneData->end[0] = drawposition[5];
@@ -157,14 +157,14 @@ void ActivityObject::setSpeedZoneData(float* drawposition){
 
 QString ActivityObject::getSpeedZoneName(){
     QString n = "";
-    if(objectTypeId == ActivityObject::RESTRICTEDSPEEDZONE && speedZoneData != NULL){
+    if(objectTypeId == ActivityObject::RESTRICTEDSPEEDZONE && speedZoneData != nullptr){
         n += QString::number(speedZoneData->start[0])+" "+QString::number(speedZoneData->start[1])+" "+QString::number(speedZoneData->start[2])+" "+QString::number(speedZoneData->start[3]);
     }
     return n;
 }
 
 int ActivityObject::getFailedSignalId(){
-    if(failedSignalData == NULL)
+    if(failedSignalData == nullptr)
         return -1;
     return failedSignalData->failedSignal;
 }
@@ -174,7 +174,7 @@ void ActivityObject::setParentActivity(Activity* a){
 }
 
 QString ActivityObject::getParentName(){
-    if(parentActivity == NULL)
+    if(parentActivity == nullptr)
         return "";
     return parentActivity->header->name;
 }
@@ -182,10 +182,10 @@ QString ActivityObject::getParentName(){
 bool ActivityObject::select(int value){
     selected = true;
     selectionValue = value;
-    if(con != NULL){
+    if(con != nullptr){
         con->select(value);
     }
-    if(speedZoneData != NULL)
+    if(speedZoneData != nullptr)
         speedZoneData->selectionValue = value;
     return true;
 }
@@ -195,10 +195,10 @@ int ActivityObject::getId(){
 }
 
 int ActivityObject::getSelectedElementId(){
-    if(con != NULL){
+    if(con != nullptr){
         return con->selectedIdx;
     }
-    if(speedZoneData != NULL){
+    if(speedZoneData != nullptr){
         return speedZoneData->selectionValue;
     }
     return 0;
@@ -206,15 +206,15 @@ int ActivityObject::getSelectedElementId(){
 
 bool ActivityObject::getElementPosition(int id, float *posTW){
     if(objectTypeId == WAGONLIST){
-        if(con != NULL)
+        if(con != nullptr)
             return con->getWagonWorldPosition(id, posTW);
     }
     if(objectTypeId == FAILEDSIGNAL){
-        if(failedSignalData != NULL)
+        if(failedSignalData != nullptr)
             return failedSignalData->getWorldPosition(posTW);
     }
     if(objectTypeId == RESTRICTEDSPEEDZONE){
-        if(speedZoneData != NULL)
+        if(speedZoneData != nullptr)
             return speedZoneData->getWorldPosition(posTW);
     }
     return false;
@@ -223,14 +223,14 @@ bool ActivityObject::getElementPosition(int id, float *posTW){
 bool ActivityObject::unselect(){
     selected = false;
     selectionValue = -1;
-    if(con != NULL){
+    if(con != nullptr){
         con->unselect();
     }
     return false;
 }
 
 void ActivityObject::remove(){
-    if(parentActivity == NULL)
+    if(parentActivity == nullptr)
         return;
     if(objectTypeId == FAILEDSIGNAL){
         parentActivity->deleteObjectFailedSignal(id);
@@ -244,7 +244,7 @@ void ActivityObject::remove(){
 }
 
 bool ActivityObject::isUnSaved(){
-    if(con != NULL)
+    if(con != nullptr)
         if(con->isUnSaved())
             return true;
     return modified;
@@ -252,7 +252,7 @@ bool ActivityObject::isUnSaved(){
 
 void ActivityObject::setModified(bool val){
     modified = val;
-    if(con != NULL)
+    if(con != nullptr)
         con->setModified(val);
 }
 
@@ -264,7 +264,7 @@ void ActivityObject::render(GLUU* gluu, float* playerT, int renderMode, int inde
     }
     
     if(objectTypeId == ActivityObject::WAGONLIST ){
-        if(con != NULL){
+        if(con != nullptr){
             if (!con->isOnTrack)
                 con->initOnTrack(tile, direction);
             con->renderOnTrack(gluu, playerT, selectionColor);
@@ -272,12 +272,12 @@ void ActivityObject::render(GLUU* gluu, float* playerT, int renderMode, int inde
     }
     
     if(objectTypeId == ActivityObject::RESTRICTEDSPEEDZONE ){
-        if(speedZoneData != NULL)
+        if(speedZoneData != nullptr)
             speedZoneData->render(gluu, playerT, selectionColor, selected);
     }
     
     if(objectTypeId == ActivityObject::FAILEDSIGNAL ){
-        if(failedSignalData != NULL)
+        if(failedSignalData != nullptr)
             failedSignalData->render(gluu, playerT, selectionColor, selected);
     }
 }
@@ -286,14 +286,14 @@ void ActivityObject::SpeedZone::render(GLUU* gluu, float* playerT, int selection
     if(init < 0)
         return;
     float posT[2], pos[3];
-    if (drawPositionB == NULL) {
+    if (drawPositionB == nullptr) {
         TDB* tdb = Game::trackDB;
         Vec2::set(posT, start[0], -start[1]);
         float h = Game::terrainLib->getHeight(start[0], -start[1], start[2], start[3]);
         Vec3::set(pos, start[2], h, -start[3]);
         qDebug() << posT[0]<< posT[1];
         qDebug() << pos[0]<< pos[1]<< pos[2];
-        int ok = Game::trackDB->findNearestPositionOnTDB(posT, pos, NULL, trid);
+        int ok = Game::trackDB->findNearestPositionOnTDB(posT, pos, nullptr, trid);
         if(ok < 0) {
             qDebug() << "SpeedZone fail";
             init = -1;
@@ -314,7 +314,7 @@ void ActivityObject::SpeedZone::render(GLUU* gluu, float* playerT, int selection
         drawPositionB[0] += 2048 * (drawPositionB[5] - start[0]);
         drawPositionB[2] -= 2048 * (-drawPositionB[6] - -start[1]);
     }
-    if (drawPositionE == NULL) {
+    if (drawPositionE == nullptr) {
         TDB* tdb = Game::trackDB;
         Vec2::set(posT, end[0], -end[1]);
         float h = Game::terrainLib->getHeight(end[0], -end[1], end[2], end[3]);
@@ -323,7 +323,7 @@ void ActivityObject::SpeedZone::render(GLUU* gluu, float* playerT, int selection
         qDebug() << posT[0]<< posT[1];
         qDebug() << pos[0]<< pos[1]<< pos[2];
 
-        int ok = Game::trackDB->findNearestPositionOnTDB(posT, pos, NULL, trid+3);
+        int ok = Game::trackDB->findNearestPositionOnTDB(posT, pos, nullptr, trid+3);
         if(ok < 0) {
             qDebug() << "SpeedZone fail";
             init = -1;
@@ -345,10 +345,10 @@ void ActivityObject::SpeedZone::render(GLUU* gluu, float* playerT, int selection
         drawPositionE[2] -= 2048 * (-drawPositionE[6] - -start[1]);
     }
     
-    if(pointer3d == NULL) pointer3d = new TrackItemObj();
-    if(pointer3dSelected == NULL) pointer3dSelected = new TrackItemObj();
+    if(pointer3d == nullptr) pointer3d = new TrackItemObj();
+    if(pointer3dSelected == nullptr) pointer3dSelected = new TrackItemObj();
     
-    if(lineShape == NULL){
+    if(lineShape == nullptr){
         makelineShape();
         lineShape->setMaterial(1.0, 0.0, 0.4);
         pointer3d->setMaterial(1.0, 0.0, 0.4);
@@ -469,7 +469,7 @@ void ActivityObject::SpeedZone::makelineShape(){
 }
 
 bool ActivityObject::SpeedZone::getWorldPosition(float *posTW){
-    if(drawPositionB == NULL)
+    if(drawPositionB == nullptr)
         return false;
     posTW[0] = drawPositionB[5];
     posTW[1] = drawPositionB[6];
@@ -480,7 +480,7 @@ bool ActivityObject::SpeedZone::getWorldPosition(float *posTW){
 }
 
 bool ActivityObject::FailedSignalData::getWorldPosition(float *posTW){
-    if(drawPosition == NULL)
+    if(drawPosition == nullptr)
         return false;
     posTW[0] = drawPosition[5];
     posTW[1] = drawPosition[6];
@@ -495,7 +495,7 @@ void ActivityObject::FailedSignalData::render(GLUU* gluu, float* playerT, int se
         return;
     if(init == 0){
         TDB* tdb = Game::trackDB;
-        if(drawPosition == NULL){
+        if(drawPosition == nullptr){
             qDebug() << "ss";
             int id = tdb->findTrItemNodeId(failedSignal);
             if (id < 0) {
@@ -510,11 +510,11 @@ void ActivityObject::FailedSignalData::render(GLUU* gluu, float* playerT, int se
                 init = -1;
                 return;
             }
-            if(pointer3d == NULL){
+            if(pointer3d == nullptr){
                 pointer3d = new TrackItemObj(1);
                 pointer3d->setMaterial(0.8,0.2,0.8);
             }
-            if(pointer3dSelected == NULL){
+            if(pointer3dSelected == nullptr){
                 pointer3dSelected = new TrackItemObj(1);
                 pointer3dSelected->setMaterial(0.9,0.5,0.9);
             }
@@ -537,11 +537,11 @@ void ActivityObject::FailedSignalData::render(GLUU* gluu, float* playerT, int se
 }
 
 void ActivityObject::pushContextMenuActions(QMenu *menu){
-    if(contextMenuActions["ToggleDirection"] == NULL){
+    if(contextMenuActions["ToggleDirection"] == nullptr){
         contextMenuActions["ToggleDirection"] = new QAction(tr("&Toggle Direction")); 
         QObject::connect(contextMenuActions["ToggleDirection"], SIGNAL(triggered()), this, SLOT(menuToggleDirection()));
     }
-    if(contextMenuActions["Reverse"] == NULL){
+    if(contextMenuActions["Reverse"] == nullptr){
         contextMenuActions["Reverse"] = new QAction(tr("&Reverse Selected")); 
         QObject::connect(contextMenuActions["Reverse"], SIGNAL(triggered()), this, SLOT(menuToggleReverse()));
     }
@@ -599,7 +599,7 @@ void ActivityObject::load(FileBuffer* data) {
             continue;
         }
         if (sh == ("startposition")) {
-            if(speedZoneData != NULL){
+            if(speedZoneData != nullptr){
                 speedZoneData->start[0] = ParserX::GetNumber(data);
                 speedZoneData->start[1] = ParserX::GetNumber(data);
                 speedZoneData->start[2] = ParserX::GetNumber(data);
@@ -609,7 +609,7 @@ void ActivityObject::load(FileBuffer* data) {
             continue;
         }
         if (sh == ("endposition")) {
-            if(speedZoneData != NULL){
+            if(speedZoneData != nullptr){
                 speedZoneData->end[0] = ParserX::GetNumber(data);
                 speedZoneData->end[1] = ParserX::GetNumber(data);
                 speedZoneData->end[2] = ParserX::GetNumber(data);
@@ -625,21 +625,21 @@ void ActivityObject::load(FileBuffer* data) {
 }
 
 void ActivityObject::save(QTextStream* out) {
-    if(objectTypeId == RESTRICTEDSPEEDZONE && speedZoneData != NULL){
+    if(objectTypeId == RESTRICTEDSPEEDZONE && speedZoneData != nullptr){
         *out << "			ActivityRestrictedSpeedZone (\n";
         *out << "				StartPosition ( "<<speedZoneData->start[0]<<" "<<speedZoneData->start[1]<<" "<<speedZoneData->start[2]<<" "<<speedZoneData->start[3]<<" )\n";
         *out << "				EndPosition ( "<<speedZoneData->end[0]<<" "<<speedZoneData->end[1]<<" "<<speedZoneData->end[2]<<" "<<speedZoneData->end[3]<<" )\n";
         *out << "			)\n";
         return;
     }
-    if(objectTypeId == FAILEDSIGNAL && failedSignalData != NULL){
+    if(objectTypeId == FAILEDSIGNAL && failedSignalData != nullptr){
         *out << "			ActivityFailedSignal ( " << failedSignalData->failedSignal << " )\n";
         return;
     }
     
     *out << "			ActivityObject (\n";
     *out << "				ObjectType ( "<<ParserX::AddComIfReq(objectType)<<" )\n";
-    if(con != NULL){
+    if(con != nullptr){
         *out << "				Train_Config (\n";
         con->save("				", out);
         *out << "				)\n";

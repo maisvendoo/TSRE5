@@ -54,7 +54,7 @@ public:
     float derailScale;
     int imageLoadId;
     int imageDetailsId;
-    double *tsreProjection = NULL;
+    double *tsreProjection = nullptr;
     bool isModified();
     void setModified(bool val);
     Trk();

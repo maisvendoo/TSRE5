@@ -40,7 +40,7 @@ void GroupObj::fromNewObjects(GroupObj* objList, Route* route, int x, int z, flo
     this->unselect();
     objects.clear();
     float *q;
-    WorldObj * wobj = NULL;
+    WorldObj * wobj = nullptr;
     
     pivot.set = objList->pivot.set;
     Vec3::copy(pivot.position, (float*)objList->pivot.position);
@@ -69,13 +69,13 @@ void GroupObj::fromNewObjects(GroupObj* objList, Route* route, int x, int z, flo
         Quat::copy(oldQrot, objList->objects[pid]->qDirection);
         tpx = objList->objects[pid]->x;
         tpz = objList->objects[pid]->y;
-        if(objList->objects[pid] != NULL){
+        if(objList->objects[pid] != nullptr){
             //Vec3::sub(tpos, tp, objList->objects[pid]->position);
             //Vec3::sub(tpos, p, tpos);
             q = Quat::create();
             Quat::copy(q, objList->objects[pid]->qDirection);
             wobj = route->placeObject(x, z, p, q, 0, objList->objects[pid]->getRefInfo());
-            if(wobj != NULL){
+            if(wobj != nullptr){
                 this->addObject(wobj);
                 Vec3::add(tp, tp, Vec3::sub(tpos, p, wobj->position));
                 tp[0] += (x-wobj->x)*2048;
@@ -91,7 +91,7 @@ void GroupObj::fromNewObjects(GroupObj* objList, Route* route, int x, int z, flo
     
     for(int i = 0; i < objList->objects.size(); i++){
         if(i == pid) continue;
-        if(objList->objects[i] != NULL){
+        if(objList->objects[i] != nullptr){
             Vec3::sub(tpos, tp, objList->objects[i]->position);
             Vec3::transformQuat(tpos, tpos, tQrot);
             Vec3::sub(tpos, p, tpos);
@@ -101,7 +101,7 @@ void GroupObj::fromNewObjects(GroupObj* objList, Route* route, int x, int z, flo
             Quat::copy(q, objList->objects[i]->qDirection);
             Quat::multiply(q, q, tQrot);
             wobj = route->placeObject(x, z, tpos, q, 0, objList->objects[i]->getRefInfo());
-            if(wobj != NULL)
+            if(wobj != nullptr)
                 this->addObject(wobj);
         }
     }
@@ -109,7 +109,7 @@ void GroupObj::fromNewObjects(GroupObj* objList, Route* route, int x, int z, flo
 }
 
 void GroupObj::addObject(WorldObj* obj){
-    if(obj == NULL) 
+    if(obj == nullptr) 
         return;
     if(obj->typeObj != WorldObj::worldobj)
         return;

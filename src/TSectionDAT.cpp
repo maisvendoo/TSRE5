@@ -214,7 +214,7 @@ bool TSectionDAT::saveRoute() {
     out << "SIMISA@@@@@@@@@@JINX0T0t______\n\n";
     out << "TrackSections ( " << this->routeMaxIdx - tsectionMaxIdx << "\n";
     for (int i = tsectionMaxIdx; i< this->routeMaxIdx; i++) {
-        if (this->sekcja[i] != NULL) {
+        if (this->sekcja[i] != nullptr) {
             out << "	TrackSection ( \n";
             if (sekcja[i]->type == 0)
                 out << "		SectionCurve ( " << sekcja[i]->type << " ) " << i << " " << sekcja[i]->size << " " << sekcja[i]->val1 << " \n";
@@ -227,7 +227,7 @@ bool TSectionDAT::saveRoute() {
     //return true;
     out << "SectionIdx ( " << this->routeShapes - tsectionShapes << "\n";
     for (int i = tsectionShapes; i<this->routeShapes; i++) {
-        if (this->shape[i] != NULL) {
+        if (this->shape[i] != nullptr) {
             out << "	TrackPath ( " << i << " " << shape[i]->path[0].n;
             for (int j = 0; j < shape[i]->path[0].n; j++)
                 out << " " << shape[i]->path[0].sect[j];
@@ -320,12 +320,12 @@ bool TSectionDAT::loadRoute() {
 }
 
 bool TSectionDAT::isRoadShape(int id) {
-    if (shape[id] == NULL) return false;
+    if (shape[id] == nullptr) return false;
     return shape[id]->roadshape;
 }
 
 void TSectionDAT::getShapeData(int id) {
-    if (shape[id] == NULL) return;
+    if (shape[id] == nullptr) return;
 
 
 

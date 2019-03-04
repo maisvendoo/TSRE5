@@ -25,7 +25,7 @@ public:
         float r;
     };
     
-    Section* sections = NULL;
+    Section* sections = nullptr;
     QVector<OglObj*> shape;
     DynTrackObj();
     DynTrackObj(const DynTrackObj& o);
@@ -48,7 +48,7 @@ private:
     int tex2;
     bool init;
     float elevation;
-    float* jNodePosn = NULL;
+    float* jNodePosn = nullptr;
     int sidxSelected = 0;
     bool getSimpleBorder(float* border);
     bool getBoxPoints(QVector<float> &points);

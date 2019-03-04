@@ -24,7 +24,7 @@ void Ruch::set(int nid, int m, int tdirection, QMap<int, int>* jDirections) {
     kierunek = tdirection;
     direction = -(kierunek - 0.5)*2;
     junctionDirections = jDirections;
-    if(junctionDirections == NULL)
+    if(junctionDirections == nullptr)
         junctionDirections = new QMap<int, int>();
 
     TDB *tdb = Game::trackDB;
@@ -113,7 +113,7 @@ void Ruch::checkNode(int mSign) {
     }
 
     TRnode *n = tdb->trackNodes[nodeId];
-    if (n == NULL)
+    if (n == nullptr)
         return;
     if (n->typ == 2) {
         int u = 0;// n->TrP1-1;
@@ -153,7 +153,7 @@ void Ruch::checkNode(int mSign) {
 
 float * Ruch::getCurrentPosition(float *sElev) {
     Game::trackDB->getDrawPositionOnTrNode(drawPosition, nodeIdx, nodeDist, sElev);
-    if(kierunek == 0 && sElev != NULL)
+    if(kierunek == 0 && sElev != nullptr)
         *sElev = -*sElev;
     return drawPosition;
 }
@@ -181,7 +181,7 @@ void Ruch::checkPassingItems(){
     TRnode *n = tdb->trackNodes[nodeIdx];
     for(int i = 0; i < n->iTri; i++){
         int itemId = n->trItemRef[i];
-        if(tdb->trackItems[itemId] == NULL)
+        if(tdb->trackItems[itemId] == nullptr)
             return;
         float dist = tdb->trackItems[itemId]->getTrackPosition();
         if((dist > lastNodeDist && dist < nodeDist) || (dist < lastNodeDist && dist > nodeDist)){

@@ -23,9 +23,9 @@ public:
     int args[3];
     float UiD[12];
     int iTrv = 0;
-    TRSect *trVectorSection = NULL;
+    TRSect *trVectorSection = nullptr;
     int iTri = 0;
-    int *trItemRef = NULL;
+    int *trItemRef = nullptr;
     int TrP1;
     int TrP2;
     int TrPinS[3];

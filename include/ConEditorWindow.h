@@ -152,8 +152,8 @@ private:
     QComboBox engSetsList;
     QVector<int> engSets;
     
-    Consist *currentCon = NULL;
-    Eng *currentEng = NULL;
+    Consist *currentCon = nullptr;
+    Eng *currentEng = nullptr;
     Camera *conCamera;
     Camera *engCamera;
     EngLib* englib;

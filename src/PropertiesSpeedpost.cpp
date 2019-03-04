@@ -141,7 +141,7 @@ PropertiesSpeedpost::~PropertiesSpeedpost() {
 }
 
 void PropertiesSpeedpost::speedEnabled(QString val){
-    if(sobj == NULL) return;
+    if(sobj == nullptr) return;
     bool ok = false;
     int speedval = this->speed.text().toInt(&ok);
     if(!ok)
@@ -154,7 +154,7 @@ void PropertiesSpeedpost::speedEnabled(QString val){
 }
 
 void PropertiesSpeedpost::numberEnabled(QString val){
-    if(sobj == NULL) return;
+    if(sobj == nullptr) return;
     bool ok = false;
     float numberval = this->number.text().toFloat(&ok);
     if(!ok)
@@ -167,7 +167,7 @@ void PropertiesSpeedpost::numberEnabled(QString val){
 }
 
 void PropertiesSpeedpost::numberDotEnabled(int val){
-    if(sobj == NULL) return;
+    if(sobj == nullptr) return;
     qDebug()<<"aaa";
     Undo::StateBegin();
     Undo::PushGameObjData(worldObj);
@@ -180,7 +180,7 @@ void PropertiesSpeedpost::numberDotEnabled(int val){
 }
 
 void PropertiesSpeedpost::chCustomNumberEnabled(int val){
-    if(sobj == NULL) return;
+    if(sobj == nullptr) return;
     qDebug()<<"aaa";
     Undo::StateBegin();
     Undo::PushGameObjData(worldObj);
@@ -200,7 +200,7 @@ void PropertiesSpeedpost::chCustomNumberEnabled(int val){
 }
 
 void PropertiesSpeedpost::chCustomSpeedEnabled(int val){
-    if(sobj == NULL) return;
+    if(sobj == nullptr) return;
     qDebug()<<"aaa";
     Undo::StateBegin();
     Undo::PushGameObjData(worldObj);
@@ -220,7 +220,7 @@ void PropertiesSpeedpost::chCustomSpeedEnabled(int val){
 }
 
 void PropertiesSpeedpost::kmmListSelected(int val){
-    if(sobj == NULL) return;
+    if(sobj == nullptr) return;
     Undo::StateBegin();
     Undo::PushGameObjData(worldObj);
     Undo::PushTrackDB(Game::trackDB);
@@ -229,7 +229,7 @@ void PropertiesSpeedpost::kmmListSelected(int val){
 }
 
 void PropertiesSpeedpost::ptbListSelected(int val){
-    if(sobj == NULL) return;
+    if(sobj == nullptr) return;
     Undo::StateBegin();
     Undo::PushGameObjData(worldObj);
     sobj->setTrainType(ptb.currentIndex());
@@ -237,7 +237,7 @@ void PropertiesSpeedpost::ptbListSelected(int val){
 }
 
 void PropertiesSpeedpost::flipSignal(){
-    if(sobj == NULL)
+    if(sobj == nullptr)
         return;
     Undo::StateBegin();
     Undo::PushGameObjData(worldObj);
@@ -247,8 +247,8 @@ void PropertiesSpeedpost::flipSignal(){
 }
 
 void PropertiesSpeedpost::showObj(GameObj* obj){
-    if(obj == NULL){
-        infoLabel->setText("NULL");
+    if(obj == nullptr){
+        infoLabel->setText("nullptr");
         return;
     }
     worldObj = (WorldObj*)obj;
@@ -330,7 +330,7 @@ void PropertiesSpeedpost::showObj(GameObj* obj){
 }
 
 void PropertiesSpeedpost::updateObj(GameObj* obj){
-    if(obj == NULL){
+    if(obj == nullptr){
         return;
     }
     sobj = (SpeedpostObj*)obj;
@@ -353,7 +353,7 @@ void PropertiesSpeedpost::updateObj(GameObj* obj){
 }
 
 bool PropertiesSpeedpost::support(GameObj* obj){
-    if(obj == NULL)
+    if(obj == nullptr)
         return false;
     if(obj->typeObj != GameObj::worldobj)
         return false;
@@ -363,7 +363,7 @@ bool PropertiesSpeedpost::support(GameObj* obj){
 }
 
 void PropertiesSpeedpost::eMaxPlacingDistanceEnabled(QString val){
-    if(sobj == NULL){
+    if(sobj == nullptr){
         return;
     }
     bool ok = false;
@@ -375,7 +375,7 @@ void PropertiesSpeedpost::eMaxPlacingDistanceEnabled(QString val){
 }
 
 void PropertiesSpeedpost::bDeleteSelectedEnabled(){
-    if(sobj == NULL)
+    if(sobj == nullptr)
         return;
     Undo::StateBegin();
     Undo::PushGameObjData(worldObj);
@@ -385,7 +385,7 @@ void PropertiesSpeedpost::bDeleteSelectedEnabled(){
 }
 
 void PropertiesSpeedpost::bExpandEnabled(){
-    if(sobj == NULL)
+    if(sobj == nullptr)
         return;
     Undo::StateBegin();
     Undo::PushGameObjData(worldObj);
@@ -395,7 +395,7 @@ void PropertiesSpeedpost::bExpandEnabled(){
 }
 
 void PropertiesSpeedpost::hacksButtonEnabled(){
-    if(sobj == NULL){
+    if(sobj == nullptr){
         return;
     }
     
@@ -420,7 +420,7 @@ void PropertiesSpeedpost::hacksButtonEnabled(){
 }
 
 void PropertiesSpeedpost::haxFixTrackItemsEnabled(){
-    if(sobj == NULL){
+    if(sobj == nullptr){
         return;
     }
 

@@ -121,8 +121,8 @@ PropertiesPickup::~PropertiesPickup() {
 }
 
 void PropertiesPickup::showObj(GameObj* obj) {
-    if (obj == NULL) {
-        infoLabel->setText("NULL");
+    if (obj == nullptr) {
+        infoLabel->setText("nullptr");
         return;
     }
     worldObj = (WorldObj*)obj;
@@ -152,7 +152,7 @@ void PropertiesPickup::showObj(GameObj* obj) {
 }
 
 void PropertiesPickup::cPickupTypeEdited(int val) {
-    if (pobj == NULL) {
+    if (pobj == nullptr) {
         return;
     }
     Undo::SinglePushWorldObjData(worldObj);
@@ -160,7 +160,7 @@ void PropertiesPickup::cPickupTypeEdited(int val) {
 }
 
 void PropertiesPickup::cAnimTypeEdited(int val) {
-    if (pobj == NULL) {
+    if (pobj == nullptr) {
         return;
     }
     Undo::SinglePushWorldObjData(worldObj);
@@ -168,7 +168,7 @@ void PropertiesPickup::cAnimTypeEdited(int val) {
 }
 
 void PropertiesPickup::eCapacityEnabled(QString val){
-    if (pobj == NULL) {
+    if (pobj == nullptr) {
         return;
     }
     bool ok = false;
@@ -180,7 +180,7 @@ void PropertiesPickup::eCapacityEnabled(QString val){
 }
 
 void PropertiesPickup::eContentEnabled(QString val){
-    if (pobj == NULL) {
+    if (pobj == nullptr) {
         return;
     }
     bool ok = false;
@@ -195,7 +195,7 @@ void PropertiesPickup::eContentEnabled(QString val){
 }
 
 void PropertiesPickup::eFillEnabled(QString val){
-    if (pobj == NULL) {
+    if (pobj == nullptr) {
         return;
     }
     bool ok = false;
@@ -207,7 +207,7 @@ void PropertiesPickup::eFillEnabled(QString val){
 }
 
 void PropertiesPickup::eSpeedMinEnabled(QString val){
-    if (pobj == NULL) {
+    if (pobj == nullptr) {
         return;
     }
     bool ok = false;
@@ -219,7 +219,7 @@ void PropertiesPickup::eSpeedMinEnabled(QString val){
 }
 
 void PropertiesPickup::eSpeedMaxEnabled(QString val){
-    if (pobj == NULL) {
+    if (pobj == nullptr) {
         return;
     }
     bool ok = false;
@@ -231,7 +231,7 @@ void PropertiesPickup::eSpeedMaxEnabled(QString val){
 }
 
 void PropertiesPickup::eAnimLengthEnabled(QString val){
-    if (pobj == NULL) {
+    if (pobj == nullptr) {
         return;
     }
     bool ok = false;
@@ -243,7 +243,7 @@ void PropertiesPickup::eAnimLengthEnabled(QString val){
 }
 
 void PropertiesPickup::chInfiniteEnabled(int val){
-    if (pobj == NULL) {
+    if (pobj == nullptr) {
         return;
     }
     Undo::SinglePushWorldObjData(worldObj);
@@ -255,7 +255,7 @@ void PropertiesPickup::chInfiniteEnabled(int val){
 }
 
 void PropertiesPickup::chBrokenEnabled(int val){
-    if (pobj == NULL) {
+    if (pobj == nullptr) {
         return;
     }
     Undo::SinglePushWorldObjData(worldObj);
@@ -267,7 +267,7 @@ void PropertiesPickup::chBrokenEnabled(int val){
 }
 
 bool PropertiesPickup::support(GameObj* obj) {
-    if (obj == NULL)
+    if (obj == nullptr)
         return false;
     if(obj->typeObj != GameObj::worldobj)
         return false;

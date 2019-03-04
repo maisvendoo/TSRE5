@@ -33,13 +33,13 @@
 
 DynTrackObj::DynTrackObj() {
     sectionIdx = -1;
-    sections = NULL;
+    sections = nullptr;
     collideFlags = 39;    
     staticFlags = 0x100000;
 }
 
 DynTrackObj::DynTrackObj(const DynTrackObj& o) : WorldObj(o) {
-    if(o.sections != NULL){
+    if(o.sections != nullptr){
         sections = new Section[5];
         for (int i = 0; i < 5; i++) {
             sections[i].type = o.sections[i].type;
@@ -52,7 +52,7 @@ DynTrackObj::DynTrackObj(const DynTrackObj& o) : WorldObj(o) {
     tex2 = o.tex2;
     init = false;// o.init;
     elevation = o.elevation;
-    if(o.jNodePosn!=NULL){
+    if(o.jNodePosn!=nullptr){
         jNodePosn = new float[5];
         memcpy(jNodePosn, o.jNodePosn, sizeof(float)*5);
     }
@@ -107,7 +107,7 @@ void DynTrackObj::load(int x, int y) {
     this->skipLevel = 3;
     this->modified = false;
     
-    if(sections == NULL){
+    if(sections == nullptr){
         sections = new Section[5];
         sections[0].type = 0;
         sections[0].sectIdx = 0;
@@ -201,7 +201,7 @@ void DynTrackObj::set(int sh, FileBuffer* data) {
         return;
     }
     if (sh == TS::TrackSections) {
-        if(sections == NULL) sections = new Section[5];
+        if(sections == nullptr) sections = new Section[5];
         data->off++;
         
         for (int iii = 0; iii < 5; iii++) {
@@ -229,7 +229,7 @@ void DynTrackObj::set(QString sh, FileBuffer* data) {
         return;
     }
     if (sh == ("tracksections")) {
-        if(sections == NULL) sections = new Section[5];
+        if(sections == nullptr) sections = new Section[5];
         for (int iii = 0; iii < 5; iii++) {
             sections[iii].type = ParserX::GetNumber(data);
             sections[iii].sectIdx = ParserX::GetUInt(data);
@@ -287,7 +287,7 @@ void DynTrackObj::render(GLUU* gluu, float lod, float posx, float posz, float* p
     gluu->currentShader->setUniformValue(gluu->currentShader->mvMatrixUniform, *reinterpret_cast<float(*)[4][4]> (gluu->mvMatrix));
     
     if(Game::showWorldObjPivotPoints){
-        if(pointer3d == NULL){
+        if(pointer3d == nullptr){
             pointer3d = new TrackItemObj(1);
             pointer3d->setMaterial(0.9,0.9,0.7);
         }
@@ -336,7 +336,7 @@ void DynTrackObj::render(GLUU* gluu, float lod, float posx, float posz, float* p
 
 bool DynTrackObj::getSimpleBorder(float* border){
     if(shape.size() > 0){
-        if(shape[0] != NULL)
+        if(shape[0] != nullptr)
             return shape[0]->getSimpleBorder(border);
     }
     return false;
@@ -394,7 +394,7 @@ for(int i = 0; i < 5; i++){
 *(out) << "		)\n";
 *(out) << "		SectionIdx ( "<<this->sectionIdx<<" )\n";
 *(out) << "		Elevation ( "<<this->elevation<<" )\n";
-if(this->jNodePosn!=NULL)
+if(this->jNodePosn!=nullptr)
 *(out) << "		JNodePosn ( "<<this->jNodePosn[0]<<" "<<this->jNodePosn[1]<<" "<<this->jNodePosn[2]<<" "<<this->jNodePosn[3]<<" "<<this->jNodePosn[4]<<" )\n";
 *(out) << "		CollideFlags ( "<<this->collideFlags<<" )\n";
 *(out) << "		StaticFlags ( "<<ParserX::MakeFlagsString(this->staticFlags)<<" )\n";

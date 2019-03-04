@@ -29,7 +29,7 @@ ActivityTrafficProperties::ActivityTrafficProperties(QWidget* parent) : QWidget(
     vlist->setContentsMargins(3,0,3,0);
     
     int row = 0;
-    QLabel *label = NULL;
+    QLabel *label = nullptr;
     
     label = new QLabel("Name:");
     label->setMinimumWidth(100);
@@ -108,7 +108,7 @@ void ActivityTrafficProperties::showTraffic(Traffic* t){
     QList<QTreeWidgetItem *> items;
     QStringList list;
     for(int i = 0; i < traffic->service.size(); i++ ){
-        if(traffic->service[i] == NULL)
+        if(traffic->service[i] == nullptr)
             continue;
         //new QListWidgetItem ( route->service[i]->displayName, &serviceList, i );
         list.clear();
@@ -122,16 +122,16 @@ void ActivityTrafficProperties::showTraffic(Traffic* t){
 }
 
 void ActivityTrafficProperties::lServciesSelected(QTreeWidgetItem* item, int column){
-    if(traffic == NULL)
+    if(traffic == nullptr)
         return;
     ActivityTimetable* s = traffic->service[item->type()];
-    if(s == NULL)
+    if(s == nullptr)
         return;
     
     cServiceList.clear();
     cServiceList.addItem("UNDEFINED", "");
     for(int i = 0; i < ActLib::jestservice; i++){
-        if(ActLib::Services[i] == NULL)
+        if(ActLib::Services[i] == nullptr)
             continue;
         cServiceList.addItem(ActLib::Services[i]->displayName, ActLib::Services[i]->nameId );
     }
@@ -146,11 +146,11 @@ void ActivityTrafficProperties::lServciesSelected(QTreeWidgetItem* item, int col
 }
 
 void ActivityTrafficProperties::bCloneOutcomeSelected(){
-    if(traffic == NULL)
+    if(traffic == nullptr)
         return;
     
     ActivityTimetable* s = traffic->service[lServcies.currentItem()->type()];
-    if(s == NULL)
+    if(s == nullptr)
         return;
     
     QDialog dialog;
@@ -183,7 +183,7 @@ void ActivityTrafficProperties::bCloneOutcomeSelected(){
 }
 
 void ActivityTrafficProperties::bAddServiceSelected(){
-    if(traffic == NULL)
+    if(traffic == nullptr)
         return;
     traffic->service.push_back(new ActivityTimetable());
     //QModelIndex row = lServcies.currentIndex();
@@ -205,7 +205,7 @@ void ActivityTrafficProperties::serviceActoionListSelected(QString val){
         index = cServiceList.currentData().toString();
     
     ActivityTimetable* s = traffic->service[lServcies.currentItem()->type()];
-    if(s == NULL)
+    if(s == nullptr)
         return;
     
     if(index == "")
@@ -217,10 +217,10 @@ void ActivityTrafficProperties::serviceActoionListSelected(QString val){
 }
 
 void ActivityTrafficProperties::eTimeSelected(QTime val){
-    if(traffic == NULL)
+    if(traffic == nullptr)
         return;
     ActivityTimetable* s = traffic->service[lServcies.currentItem()->type()];
-    if(s == NULL)
+    if(s == nullptr)
         return;
     s->setTime(val.msecsSinceStartOfDay()/1000);
     lServcies.currentItem()->setText(1, val.toString("HH:mm:ss"));

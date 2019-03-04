@@ -58,9 +58,9 @@ private:
     };
     
     QVector<Point> points;
-    OglObj* point3d = NULL;
-    OglObj* line3d = NULL;
-    OglObj* point3dSelected = NULL;
+    OglObj* point3d = nullptr;
+    OglObj* line3d = nullptr;
+    OglObj* point3dSelected = nullptr;
     int selectionValue = 0;
     float length = 0;
     float geoLength = 0;

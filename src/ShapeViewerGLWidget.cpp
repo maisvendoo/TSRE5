@@ -87,7 +87,7 @@ void ShapeViewerGLWidget::setCamera(Camera* cam){
 
 void ShapeViewerGLWidget::initializeGL() {
     Game::currentShapeLib = currentShapeLib;
-    /*if(currentEngLib == NULL){
+    /*if(currentEngLib == nullptr){
          currentEngLib = new EngLib();
          Game::currentEngLib = currentEngLib;
     }*/
@@ -129,7 +129,7 @@ void ShapeViewerGLWidget::initializeGL() {
     //qDebug() << "route = new Route();";
     
     float * aaa = new float[2]{0,0};
-    if(camera == NULL){
+    if(camera == nullptr){
         camera = new CameraFree(aaa);
         float spos[3];
         spos[0] = 0; spos[1] = 0; spos[2] = 0;
@@ -146,7 +146,7 @@ void ShapeViewerGLWidget::setBackgroundGlColor(float r, float g, float b){
     backgroundGlColor[0] = r;
     backgroundGlColor[1] = g;
     backgroundGlColor[2] = b;
-    if(renderItem == 3 && con != NULL){
+    if(renderItem == 3 && con != nullptr){
         con->setTextColor(backgroundGlColor);
     }
 }
@@ -183,18 +183,18 @@ void ShapeViewerGLWidget::paintGL() {
     }
     gluu->currentShader->setUniformValue(gluu->currentShader->mvMatrixUniform, *reinterpret_cast<float(*)[4][4]> (gluu->mvMatrix));
     
-    if(renderItem == 2 && eng != NULL){
+    if(renderItem == 2 && eng != nullptr){
         eng->render((int)selection*65536);
     }
-    if(renderItem == 3 && con != NULL){
+    if(renderItem == 3 && con != nullptr){
         con->render((int)selection*65536, true);
     }
-    if(renderItem == 2 && con != NULL){
+    if(renderItem == 2 && con != nullptr){
         Mat4::rotate(gluu->mvMatrix, gluu->mvMatrix, M_PI, 0,1,0);
         Mat4::translate(gluu->mvMatrix, gluu->mvMatrix, 0, 0, -con->conLength/2);
         con->render((int)selection*65536);
     }
-    if(renderItem == 4 && sFile != NULL){
+    if(renderItem == 4 && sFile != nullptr){
         GLUU *gluu = GLUU::get();
         gluu->enableTextures();
         sFile->render();
@@ -235,7 +235,7 @@ void ShapeViewerGLWidget::paintGL() {
         //int colorHash = (int)(winZ[0]*255)*256*256 + (int)(winZ[1]*255)*256 + (int)(winZ[2]*255);
         //qDebug() << colorHash;
         int isSelection = (int)(winZ[0]*255);
-        if(isSelection == 1 && renderItem == 3 && con != NULL){
+        if(isSelection == 1 && renderItem == 3 && con != nullptr){
             con->select((int)(winZ[1]*255)*256 + (int)(winZ[2]*255));
             emit selected((int)(winZ[1]*255)*256 + (int)(winZ[2]*255));
         }
@@ -246,10 +246,10 @@ void ShapeViewerGLWidget::paintGL() {
     
     if(getImage){
         qDebug() << "get image";
-        if(screenShot != NULL)
+        if(screenShot != nullptr)
             delete screenShot;
         qDebug() << "new image";
-        screenShot = NULL;
+        screenShot = nullptr;
         getImage = false;
         int* viewport = new int[4];
         glGetIntegerv(GL_VIEWPORT, viewport);
@@ -275,22 +275,22 @@ void ShapeViewerGLWidget::keyPressEvent(QKeyEvent * event) {
     camera->keyDown(event);
     Game::currentShapeLib = currentShapeLib;
     //Game::currentEngLib = currentEngLib;
-    if(renderItem == 3 && con != NULL){
+    if(renderItem == 3 && con != nullptr){
         switch (event->key()) {
             case Qt::Key_Delete:
-                if(con != NULL)
+                if(con != nullptr)
                     con->deteleSelected();
                 break;
             case Qt::Key_F:
-                if(con != NULL)
+                if(con != nullptr)
                     con->flipSelected();
                 break;
             case Qt::Key_Right:
-                if(con != NULL)
+                if(con != nullptr)
                     con->moveRightSelected();
                 break;
             case Qt::Key_Left:
-                if(con != NULL)
+                if(con != nullptr)
                 con->moveLeftSelected();
                 break;
         }
@@ -352,7 +352,7 @@ void ShapeViewerGLWidget::mouseMoveEvent(QMouseEvent *event) {
 }
 
 void ShapeViewerGLWidget::showContextMenu(const QPoint & point) {
-    if(defaultMenuActions["flipSelected"] == NULL){
+    if(defaultMenuActions["flipSelected"] == nullptr){
         defaultMenuActions["flipSelected"] = new QAction(tr("&Flip"), this); 
         QObject::connect(defaultMenuActions["flipSelected"], SIGNAL(triggered()), this, SLOT(flipConSelected()));
         defaultMenuActions["leftSelected"] = new QAction(tr("&Move Left"), this); 
@@ -367,7 +367,7 @@ void ShapeViewerGLWidget::showContextMenu(const QPoint & point) {
         QObject::connect(defaultMenuActions["pasteUnit"], SIGNAL(triggered()), this, SLOT(pasteUnitConSelected()));
     }
     
-    if(renderItem == 3 && con != NULL){
+    if(renderItem == 3 && con != nullptr){
         QMenu menu;
 
         QString menuStyle = QString(
@@ -394,7 +394,7 @@ void ShapeViewerGLWidget::resetRot(){
 
 void ShapeViewerGLWidget::showEng(Eng *e){
     eng = e;
-    con = NULL;
+    con = nullptr;
     renderItem = 2;
 }
 
@@ -402,7 +402,7 @@ void ShapeViewerGLWidget::showEng(QString path, QString name){
     int idx = Game::currentEngLib->addEng(path, name);
     qDebug() << "eng id "<< idx;
     eng = Game::currentEngLib->eng[idx];
-    con = NULL;
+    con = nullptr;
     renderItem = 2;
 }
 
@@ -410,39 +410,39 @@ void ShapeViewerGLWidget::showEngSet(int id){
     qDebug() << "eng set id "<< id;
     con = ConLib::con[id];
     con->setTextColor(backgroundGlColor);
-    eng = NULL;
+    eng = nullptr;
     renderItem = 2;
 }
 
 void ShapeViewerGLWidget::flipConSelected(){
-    if(con != NULL)
+    if(con != nullptr)
         con->flipSelected();
 }
 
 void ShapeViewerGLWidget::leftConSelected(){
-    if(con != NULL)
+    if(con != nullptr)
         con->moveLeftSelected();
 }
 
 void ShapeViewerGLWidget::rightConSelected(){
-    if(con != NULL)
+    if(con != nullptr)
         con->moveRightSelected();
 }
 
 void ShapeViewerGLWidget::deleteConSelected(){
-    if(con != NULL)
+    if(con != nullptr)
         con->deteleSelected();
 }
 
 void ShapeViewerGLWidget::copyUnitConSelected(){
-    if(con == NULL)
+    if(con == nullptr)
         return;
     QClipboard *clipboard = QApplication::clipboard();
     clipboard->setText(QString("ENGID ")+QString::number(con->getSelectedEngId()));
 }
 
 void ShapeViewerGLWidget::pasteUnitConSelected(){
-    if(con == NULL)
+    if(con == nullptr)
         return;
     QClipboard *clipboard = QApplication::clipboard();
     QStringList args = clipboard->text().split(" ");
@@ -456,16 +456,16 @@ void ShapeViewerGLWidget::pasteUnitConSelected(){
 
 void ShapeViewerGLWidget::showCon(int id){
     if(id < 0){
-        con = NULL;
-        eng = NULL;
-        sFile = NULL;
+        con = nullptr;
+        eng = nullptr;
+        sFile = nullptr;
         renderItem = 3;
         return;
     }
     qDebug() << "con id "<< id;
     con = ConLib::con[id];
     con->setTextColor(backgroundGlColor);
-    eng = NULL;
+    eng = nullptr;
     renderItem = 3;
 }
 
@@ -483,14 +483,14 @@ void ShapeViewerGLWidget::showShape(QString path, QString texPath){
     else
         shapeId = currentShapeLib->addShape(path);
     if(shapeId < 0)
-        sFile = NULL;
+        sFile = nullptr;
     else {
         sFile = currentShapeLib->shape[shapeId];
         cameraInit = true;
     }
     renderItem = 4;
-    con = NULL;
-    eng = NULL;
+    con = nullptr;
+    eng = nullptr;
 }
 
 void ShapeViewerGLWidget::setMode(QString n){

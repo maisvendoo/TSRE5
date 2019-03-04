@@ -30,7 +30,7 @@ OglObj::~OglObj() {
 
 void OglObj::setMaterial(float r, float g, float b) {
     materialType = COLOR;
-    if(color == NULL) {
+    if(color == nullptr) {
         color = new Vector4f(r, g, b, 1.0);
     } else {
         color->x = r;

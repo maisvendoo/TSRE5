@@ -102,7 +102,7 @@ void StaticObj::updateSim(float deltaTime){
     if (shape < 0) return;
     if (jestPQ < 2) return;
     
-    if(shapePointer != NULL)
+    if(shapePointer != nullptr)
         shapePointer->updateSim(deltaTime, shapeState);
 }
 
@@ -151,7 +151,7 @@ void StaticObj::render(GLUU* gluu, float lod, float posx, float posz, float* pos
     gluu->currentShader->setUniformValue(gluu->currentShader->mvMatrixUniform, *reinterpret_cast<float(*)[4][4]> (gluu->mvMatrix));
     
     if(Game::showWorldObjPivotPoints){
-        if(pointer3d == NULL){
+        if(pointer3d == nullptr){
             pointer3d = new TrackItemObj(1);
             pointer3d->setMaterial(0.9,0.9,0.7);
         }
@@ -164,7 +164,7 @@ void StaticObj::render(GLUU* gluu, float lod, float posx, float posz, float* pos
         gluu->enableTextures();
     }
     
-    if(shapePointer != NULL)
+    if(shapePointer != nullptr)
         shapePointer->render(shapeState);
     //Game::currentShapeLib->shape[shape]->render(isAnimated());
     
@@ -195,7 +195,7 @@ bool StaticObj::hasLinePoints(){
 
 void StaticObj::getLinePoints(float *&punkty){
     float *beg = punkty;
-    if(shapePointer != NULL)
+    if(shapePointer != nullptr)
         shapePointer->getFloorBorderLinePoints(punkty);
     int len = punkty - beg;
     for(int i = 0; i < len; i+=3){
@@ -212,12 +212,12 @@ void StaticObj::loadSnapablePoints() {
         return;
     snapable = this->shapePointer->isSnapable();
     if(snapable)
-        if(shapePointer != NULL)
+        if(shapePointer != nullptr)
             this->shapePointer->addSnapablePoints(this->snapablePoints);
 }
 
 void StaticObj::renderSnapableEndpoints(GLUU* gluu) {
-    if (snapableEndPoint == NULL) {
+    if (snapableEndPoint == nullptr) {
         snapableEndPoint = new OglObj();
         float *punkty = new float[3 * 2];
         int ptr = 0;
@@ -346,7 +346,7 @@ void StaticObj::removeCollisions(){
 }
 
 void StaticObj::reload(){
-    if(shapePointer != NULL)
+    if(shapePointer != nullptr)
         shapePointer->reload();
 }
 
@@ -387,7 +387,7 @@ bool StaticObj::isSimilar(WorldObj* obj){
 }
 
 void StaticObj::pushContextMenuActions(QMenu *menu){
-    /*if(contextMenuActions["Rot"] == NULL){
+    /*if(contextMenuActions["Rot"] == nullptr){
         contextMenuActions["Rot"] = new QAction(tr("&Rot")); 
         QObject::connect(contextMenuActions["Rot"], SIGNAL(triggered()), this, SLOT(menuRot()));
     }

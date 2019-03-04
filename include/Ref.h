@@ -33,7 +33,7 @@ public:
     Ref(QString path);
     virtual ~Ref();
     bool loaded;
-    RefItem *selected = NULL;
+    RefItem *selected = nullptr;
     
 private:
     

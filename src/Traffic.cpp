@@ -93,7 +93,7 @@ ActivityTimetable* Traffic::getTimetableByServiceName(QString nameTime){
         if(service[i]->nameTime == nameTime)
             return service[i];
     }
-    return NULL;
+    return nullptr;
 }
 
 bool Traffic::isModified(){

@@ -42,9 +42,9 @@ public:
         return w/10;
     }
     void setCamera(Camera* cam);
-    ShapeLib *currentShapeLib = NULL;
-    //EngLib *currentEngLib = NULL;
-    QImage *screenShot = NULL;
+    ShapeLib *currentShapeLib = nullptr;
+    //EngLib *currentEngLib = nullptr;
+    QImage *screenShot = nullptr;
     void setMode(QString n);
     void resetRot();
     void getImg();
@@ -96,10 +96,10 @@ private:
     bool mousePressed = false;
     bool mouseRPressed = false;
     bool mouseLPressed = false;
-    SFile* sFile = NULL;
-    Eng* eng = NULL;
-    Consist* con = NULL;
-    Camera* camera = NULL;
+    SFile* sFile = nullptr;
+    Eng* eng = nullptr;
+    Consist* con = nullptr;
+    Camera* camera = nullptr;
     int renderItem = 0;
     QString mode = "";
     float rotY = M_PI;

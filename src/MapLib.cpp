@@ -25,7 +25,7 @@ void MapLib::run(){
     int hash = hashName.toInt();
     qDebug() << hash;
     QImage *img;
-    if(MapWindow::mapTileImages[hash] == NULL){
+    if(MapWindow::mapTileImages[hash] == nullptr){
         img = new QImage(16, 16, QImage::Format_RGB888);    
         img->fill(QColor(255,0,0));
     }else{

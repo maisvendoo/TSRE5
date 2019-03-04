@@ -67,7 +67,7 @@ signals:
     void sendMsg(QString name, QString val);
     
 private:
-    Route* route = NULL;
+    Route* route = nullptr;
     QListWidget refList;
     QListWidget lastItems;
     QComboBox refClass;

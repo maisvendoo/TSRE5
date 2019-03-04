@@ -28,7 +28,7 @@ class GLUU;
 class ActivityServiceDefinition {
 public:
     QString name;
-    Service* servicePointer = NULL;
+    Service* servicePointer = nullptr;
     int time = -1;
     int uid = -1;
     bool player = false;
@@ -37,7 +37,7 @@ public:
     QVector<int> skipCount;
     QVector<float> distanceDownPath;
     QVector<int> platformStartId;
-    ActivityTimetable *trafficDefinition = NULL;
+    ActivityTimetable *trafficDefinition = nullptr;
     void load(FileBuffer* data);
     void save(QTextStream* out);
     void reloadTimetable();
@@ -84,7 +84,7 @@ public:
         int fuelWater = -1;
         int fuelCoal = -1;
         int fuelDiesel = -1;
-        int* voltage = NULL;
+        int* voltage = nullptr;
         void load(FileBuffer* data);
         void save(QTextStream* out);
         ActivityHeader();
@@ -98,9 +98,9 @@ public:
     int loaded = -1;
     int ref = 0;
 
-    ActivityServiceDefinition *playerServiceDefinition = NULL;
-    ActivityHeader *header = NULL;
-    TrafficDefinition *traffic = NULL;
+    ActivityServiceDefinition *playerServiceDefinition = nullptr;
+    ActivityHeader *header = nullptr;
+    TrafficDefinition *traffic = nullptr;
     int nextServiceUID = -1;
     int nextActivityObjectUID = -1;
     int nextEventUID = 0;
@@ -120,7 +120,7 @@ public:
     void render(GLUU* gluu, float * playerT, float playerRot, int renderMode);
 
     QString editorConListSelected;
-    ActivityEvent *currentEventSelected = NULL;
+    ActivityEvent *currentEventSelected = nullptr;
     void init(QString route, QString name);
     //void setRouteContent(QVector<Path*>* p, QVector<Service*>* s, QVector<Traffic*>* t);
     //Traffic *getTrafficByName(QString name);

@@ -35,7 +35,7 @@ signals:
     
 private:
     QListWidget list;
-    Activity *activity = NULL;
+    Activity *activity = nullptr;
     QVector<ActivityServiceDefinition*> services;
 };
 

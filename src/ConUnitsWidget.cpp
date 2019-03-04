@@ -57,14 +57,14 @@ ConUnitsWidget::~ConUnitsWidget() {
 
 void ConUnitsWidget::setCon(Consist* c){
     con = c;
-    if(con == NULL) return;
+    if(con == nullptr) return;
     items.clear();
     count.setText(QString::number(con->engItems.size()));
     Eng * e;
     QString prefix;
     for (int i = 0; i < con->engItems.size(); i++){
         e = Game::currentEngLib->eng[con->engItems[i].eng];
-        if(e == NULL) continue;
+        if(e == nullptr) continue;
         prefix = "";
         if(e->loaded !=1) {
             prefix += "[BROKEN]";

@@ -59,7 +59,7 @@ bool TerrainLibSimple::isLoaded(int x, int z) {
 
     tTile = terrain[((x)*10000 + z)];
 
-    if (tTile == NULL)
+    if (tTile == nullptr)
         return false;
 
     if (tTile->loaded) {
@@ -70,11 +70,11 @@ bool TerrainLibSimple::isLoaded(int x, int z) {
 
 bool TerrainLibSimple::load(int x, int z) {
     Terrain* tTile = terrain[x*10000 + z];
-    if (tTile == NULL) {
+    if (tTile == nullptr) {
         terrain[x*10000 + z] = new Terrain(x, z);
     }
     tTile = terrain[x*10000 + z];
-    if (tTile == NULL)
+    if (tTile == nullptr)
         return false;
     if (tTile->loaded) {
         return true;
@@ -87,7 +87,7 @@ void TerrainLibSimple::getUnsavedInfo(QVector<QString> &items){
     for (auto it = terrain.begin(); it != terrain.end(); ++it) {
         //console.log(obj.type);
         Terrain* tTile = (Terrain*) it->second;
-        if (tTile == NULL) continue;
+        if (tTile == nullptr) continue;
         if (tTile->loaded && tTile->isModified()) {
             items.push_back("[T] "+QString::number(tTile->mojex)+" "+QString::number(-tTile->mojez));
         }
@@ -100,7 +100,7 @@ void TerrainLibSimple::save(){
     for (auto it = terrain.begin(); it != terrain.end(); ++it) {
         //console.log(obj.type);
         Terrain* tTile = (Terrain*) it->second;
-        if (tTile == NULL) continue;
+        if (tTile == nullptr) continue;
         if (tTile->loaded && tTile->isModified()) {
             tTile->save();
             tTile->setModified(false);
@@ -110,11 +110,11 @@ void TerrainLibSimple::save(){
 
 bool TerrainLibSimple::reload(int x, int z) {
     Terrain* tTile;// = terrain[x*10000 + z];
-    //if (tTile == NULL) {
+    //if (tTile == nullptr) {
     terrain[x*10000 + z] = new Terrain(x, z);
     //}
     tTile = terrain[x*10000 + z];
-    if (tTile == NULL)
+    if (tTile == nullptr)
         return false;
     if (tTile->loaded) {
         return true;
@@ -130,7 +130,7 @@ void TerrainLibSimple::refresh(int x, int z) {
     Terrain *terr;
     terr = terrain[(x * 10000 + z)];
 
-    if (terr == NULL) return;
+    if (terr == nullptr) return;
     if (terr->loaded == false) return;
     terr->refresh();
 }
@@ -140,7 +140,7 @@ void TerrainLibSimple::setHeight(int x, int z, float posx, float posz, float h) 
     Terrain *terr;
     terr = terrain[(x * 10000 + z)];
 
-    if (terr == NULL) return;
+    if (terr == nullptr) return;
     if (terr->loaded == false) return;
     
     //float value = terr->terrainData[(int) (posz + 1024) / 8][(int) (posx + 1024) / 8];
@@ -158,8 +158,8 @@ Terrain* TerrainLibSimple::setHeight256(int x, int z, int posx, int posz, float 
     Terrain *terr;
     terr = terrain[(x * 10000 + z)];
 
-    if (terr == NULL) return NULL;
-    if (terr->loaded == false) return NULL;
+    if (terr == nullptr) return nullptr;
+    if (terr->loaded == false) return nullptr;
     
     //float value = terr->terrainData[(int) (posz + 1024) / 8][(int) (posx + 1024) / 8];
     if(diffC == 0 && diffE == 0){
@@ -183,7 +183,7 @@ float TerrainLibSimple::getHeight(int x, int z, float posx, float posz, bool add
 
     Terrain *terr;
     terr = terrain[(x * 10000 + z)];
-    if (terr == NULL) return -1;
+    if (terr == nullptr) return -1;
     if (terr->loaded == false) return -1;
 
     return terr->getHeight(x, z, posx, posz, addR);
@@ -191,7 +191,7 @@ float TerrainLibSimple::getHeight(int x, int z, float posx, float posz, bool add
 
 void TerrainLibSimple::fillHeightMap(int x, int z, float* data){
     Terrain *terr = terrain[(x * 10000 + z)];
-    if (terr == NULL) return;
+    if (terr == nullptr) return;
     if (terr->loaded == false) return;
     terr->fillHeightMap(data);
 }
@@ -202,7 +202,7 @@ void TerrainLibSimple::getRotation(float* rot, int x, int z, float posx, float p
     rot[1] = 0;
     Terrain *terr;
     terr = terrain[(x * 10000 + z)];
-    if (terr == NULL) return;
+    if (terr == nullptr) return;
     if (terr->loaded == false) return;
     
     float tx = terr->terrainData[(int) (posz + 1024) / 8 + 1][(int) (posx + 1024) / 8]
@@ -216,7 +216,7 @@ void TerrainLibSimple::getRotation(float* rot, int x, int z, float posx, float p
 }
 
 void TerrainLibSimple::setHeightFromGeoGui(int x, int z, float* p){
-    if(heightWindow == NULL)
+    if(heightWindow == nullptr)
         heightWindow = new HeightWindow();
     
     float posx = p[0];
@@ -226,7 +226,7 @@ void TerrainLibSimple::setHeightFromGeoGui(int x, int z, float* p){
     
     Terrain *terr;
     terr = terrain[(x * 10000 + z)];
-    if (terr == NULL) return;
+    if (terr == nullptr) return;
     if (terr->loaded == false) return;
 
     heightWindow->tileX = x;
@@ -245,18 +245,18 @@ void TerrainLibSimple::setHeightFromGeoGui(int x, int z, float* p){
         terr->setModified(true);
         terr->refresh();
         terr = terrain[(x * 10000 + z + 1)];
-        if (terr != NULL) terr->refresh();
+        if (terr != nullptr) terr->refresh();
         terr = terrain[(x * 10000 + z - 1)];
-        if (terr != NULL) terr->refresh();
+        if (terr != nullptr) terr->refresh();
         terr = terrain[((x+1) * 10000 + z)];
-        if (terr != NULL) terr->refresh();
+        if (terr != nullptr) terr->refresh();
         terr = terrain[((x-1) * 10000 + z)];
-        if (terr != NULL) terr->refresh();
+        if (terr != nullptr) terr->refresh();
     }
 }
 
 void TerrainLibSimple::setHeightFromGeo(int x, int z, float* p){
-    if(heightWindow == NULL)
+    if(heightWindow == nullptr)
         heightWindow = new HeightWindow();
     
     float posx = p[0];
@@ -266,7 +266,7 @@ void TerrainLibSimple::setHeightFromGeo(int x, int z, float* p){
     
     Terrain *terr;
     terr = terrain[(x * 10000 + z)];
-    if (terr == NULL) return;
+    if (terr == nullptr) return;
     if (terr->loaded == false) return;
 
     heightWindow->tileX = x;
@@ -285,13 +285,13 @@ void TerrainLibSimple::setHeightFromGeo(int x, int z, float* p){
         terr->setModified(true);
         //terr->refresh();
         terr = terrain[(x * 10000 + z + 1)];
-        if (terr != NULL) terr->refresh();
+        if (terr != nullptr) terr->refresh();
         terr = terrain[(x * 10000 + z - 1)];
-        if (terr != NULL) terr->refresh();
+        if (terr != nullptr) terr->refresh();
         terr = terrain[((x+1) * 10000 + z)];
-        if (terr != NULL) terr->refresh();
+        if (terr != nullptr) terr->refresh();
         terr = terrain[((x-1) * 10000 + z)];
-        if (terr != NULL) terr->refresh();
+        if (terr != nullptr) terr->refresh();
     }
 }
 
@@ -307,7 +307,7 @@ void TerrainLibSimple::setTextureToTrackObj(Brush* brush, float* punkty, int len
         
         Terrain *terr;
         terr = terrain[(ttx * 10000 + ttz)];
-        if (terr == NULL) continue;
+        if (terr == nullptr) continue;
         if (terr->loaded == false) continue;
         terr->paintTexture(brush, ttx, ttz, posx, posz);
     }
@@ -372,7 +372,7 @@ void TerrainLibSimple::setTerrainToTrackObj(Brush* brush, float* punkty, int len
     
     //set to undo
     int ttx, ttz;
-    Terrain *terr = NULL;
+    Terrain *terr = nullptr;
     for(int ii = -brush->eRadius; ii < brush->eRadius; ii++)
         for(int jj = -brush->eRadius; jj < brush->eRadius; jj++){
             if(sqrt(ii*ii + jj*jj) > brush->eRadius) continue;
@@ -386,7 +386,7 @@ void TerrainLibSimple::setTerrainToTrackObj(Brush* brush, float* punkty, int len
                 Game::check_coords(ttx, ttz, xx, zz);
                 if (terr != terrain[(ttx * 10000 + ttz)]){
                     terr = terrain[(ttx * 10000 + ttz)];
-                    if (terr == NULL) continue;
+                    if (terr == nullptr) continue;
                     if (terr->loaded == false) continue;
                     Undo::PushTerrainHeightMap(terr->mojex, terr->mojez, terr->terrainData, terr->getSampleCount());
                 }
@@ -444,7 +444,7 @@ void TerrainLibSimple::setTerrainToTrackObj(Brush* brush, float* punkty, int len
     
     //Terrain *terr;
     foreach (Terrain *value, uterr){
-        if(value == NULL)
+        if(value == nullptr)
             continue;
         value->setModified(true);
         value->refresh();
@@ -459,7 +459,7 @@ void TerrainLibSimple::setTerrainTexture(Brush* brush, int x, int z, float* p){
     
     Terrain *terr;
     terr = terrain[(x * 10000 + z)];
-    if (terr == NULL) return;
+    if (terr == nullptr) return;
     if (terr->loaded == false) return;
     terr->setTexture(brush, x, z, posx, posz);
 }
@@ -472,7 +472,7 @@ void TerrainLibSimple::toggleWaterDraw(int x, int z, float* p, float direction){
     
     Terrain *terr;
     terr = terrain[(x * 10000 + z)];
-    if (terr == NULL) return;
+    if (terr == nullptr) return;
     if (terr->loaded == false) return;
     terr->toggleWaterDraw(x, z, posx, posz, direction);
 }
@@ -485,7 +485,7 @@ void TerrainLibSimple::makeTextureFromMap(int x, int z, float* p){
     
     Terrain *terr;
     terr = terrain[(x * 10000 + z)];
-    if (terr == NULL) return;
+    if (terr == nullptr) return;
     if (terr->loaded == false) return;
     terr->makeTextureFromMap();
 }
@@ -498,7 +498,7 @@ void TerrainLibSimple::removeTileTextureFromMap(int x, int z, float* p){
     
     Terrain *terr;
     terr = terrain[(x * 10000 + z)];
-    if (terr == NULL) return;
+    if (terr == nullptr) return;
     if (terr->loaded == false) return;
     terr->removeTextureFromMap();
 }
@@ -511,7 +511,7 @@ void TerrainLibSimple::setTileBlob(int x, int z, float* p){
     
     Terrain *terr;
     terr = terrain[(x * 10000 + z)];
-    if (terr == NULL) return;
+    if (terr == nullptr) return;
     if (terr->loaded == false) return;
     terr->setTileBlob();
 }
@@ -524,7 +524,7 @@ void TerrainLibSimple::setWaterLevelGui(int x, int z, float* p){
     
     Terrain *terr;
     terr = terrain[(x * 10000 + z)];
-    if (terr == NULL) return;
+    if (terr == nullptr) return;
     if (terr->loaded == false) return;
     terr->setWaterLevelGui();
 }
@@ -537,7 +537,7 @@ void TerrainLibSimple::toggleDraw(int x, int z, float* p){
     
     Terrain *terr;
     terr = terrain[(x * 10000 + z)];
-    if (terr == NULL) return;
+    if (terr == nullptr) return;
     if (terr->loaded == false) return;
     terr->toggleDraw(x, z, posx, posz);
 }
@@ -550,7 +550,7 @@ int TerrainLibSimple::getTexture(int x, int z, float* p){
     
     Terrain *terr;
     terr = terrain[(x * 10000 + z)];
-    if (terr == NULL) return -1;
+    if (terr == nullptr) return -1;
     if (terr->loaded == false) return -1;
     return terr->getTexture(x, z, posx, posz);
 }
@@ -563,7 +563,7 @@ void TerrainLibSimple::paintTexture(Brush* brush, int x, int z, float* p){
     
     Terrain *terr;
     terr = terrain[(x * 10000 + z)];
-    if (terr == NULL) return;
+    if (terr == nullptr) return;
     if (terr->loaded == false) return;
     terr->paintTexture(brush, x, z, posx, posz);
 }
@@ -576,7 +576,7 @@ void TerrainLibSimple::lockTexture(Brush* brush, int x, int z, float* p){
     
     Terrain *terr;
     terr = terrain[(x * 10000 + z)];
-    if (terr == NULL) return;
+    if (terr == nullptr) return;
     if (terr->loaded == false) return;
     terr->lockTexture(brush, x, z, posx, posz);
 }
@@ -589,7 +589,7 @@ void TerrainLibSimple::toggleGaps(int x, int z, float* p, float direction){
     
     Terrain *terr;
     terr = terrain[(x * 10000 + z)];
-    if (terr == NULL) return;
+    if (terr == nullptr) return;
     if (terr->loaded == false) return;
     terr->toggleGaps(x, z, posx, posz, direction);
 }
@@ -601,7 +601,7 @@ void TerrainLibSimple::setFixedTileHeight(Brush* brush, int x, int z, float* p){
     Terrain *terr;
     terr = terrain[(x * 10000 + z)];
 
-    if (terr == NULL) return;
+    if (terr == nullptr) return;
     if (terr->loaded == false) return;
     Undo::PushTerrainHeightMap(terr->mojex, terr->mojez, terr->terrainData, terr->getSampleCount());
     for (int i = 0; i < 256; i++)
@@ -624,7 +624,7 @@ QSet<Terrain*> TerrainLibSimple::paintHeightMap(Brush* brush, int x, int z, floa
     
     Terrain *terr;
     terr = terrain[(x * 10000 + z)];
-    if (terr == NULL) return uterr;
+    if (terr == nullptr) return uterr;
     if (terr->loaded == false) return uterr;
     //terr->paintTexture(x, z, posx, posz);
     
@@ -651,7 +651,7 @@ QSet<Terrain*> TerrainLibSimple::paintHeightMap(Brush* brush, int x, int z, floa
             Game::check_coords(tx, tz, tpx, tpz);
             if(terr != terrain[(tx * 10000 + tz)]){
                 terr = terrain[(tx * 10000 + tz)];
-                if (terr == NULL) continue;
+                if (terr == nullptr) continue;
                 if (!terr->loaded) continue;
                 Undo::PushTerrainHeightMap(terr->mojex, terr->mojez, terr->terrainData, terr->getSampleCount());
             }
@@ -676,7 +676,7 @@ QSet<Terrain*> TerrainLibSimple::paintHeightMap(Brush* brush, int x, int z, floa
                 tz = z;
                 Game::check_coords(tx, tz, tpx, tpz);
                 terr = terrain[(tx * 10000 + tz)];
-                if (terr == NULL) continue;
+                if (terr == nullptr) continue;
                 if (!terr->loaded) continue;
                 tpx = (tpx + 1024)/8;
                 tpz = (tpz + 1024)/8;
@@ -701,7 +701,7 @@ QSet<Terrain*> TerrainLibSimple::paintHeightMap(Brush* brush, int x, int z, floa
             tpz = pz+j*8;
             Game::check_coords(tx, tz, tpx, tpz);
             terr = terrain[(tx * 10000 + tz)];
-            if (terr == NULL) continue;
+            if (terr == nullptr) continue;
             if (!terr->loaded) continue;
             uterr.insert(terr);
             
@@ -750,46 +750,46 @@ void TerrainLibSimple::fillWaterLevels(float *w, int mojex, int mojez){
     Terrain *tTile;
     
     tTile = terrain[((mojex - 1)*10000 + mojez - 1)];
-    if (tTile != NULL)
+    if (tTile != nullptr)
         if(tTile->loaded){
             w[0] = tTile->getWaterLevelSE();
         }
     tTile = terrain[((mojex)*10000 + mojez - 1)];
-    if (tTile != NULL)
+    if (tTile != nullptr)
         if(tTile->loaded){
             w[1] = tTile->getWaterLevelSW();
             w[2] = tTile->getWaterLevelSE();
         }
     tTile = terrain[((mojex + 1)*10000 + mojez - 1)];
-    if (tTile != NULL)
+    if (tTile != nullptr)
         if(tTile->loaded){
             w[3] = tTile->getWaterLevelSW();
         }
     tTile = terrain[((mojex - 1)*10000 + mojez)];
-    if (tTile != NULL) 
+    if (tTile != nullptr) 
         if(tTile->loaded){
             w[4] = tTile->getWaterLevelNE();
             w[6] = tTile->getWaterLevelSE();
         }
     tTile = terrain[((mojex + 1)*10000 + mojez)];
-    if (tTile != NULL)
+    if (tTile != nullptr)
         if(tTile->loaded){
             w[5] = tTile->getWaterLevelNW();
             w[7] = tTile->getWaterLevelSW();
         }
     tTile = terrain[((mojex - 1)*10000 + mojez + 1)];
-    if (tTile != NULL)
+    if (tTile != nullptr)
         if(tTile->loaded){
             w[8] = tTile->getWaterLevelNE();
         }
     tTile = terrain[((mojex)*10000 + mojez + 1)];
-    if (tTile != NULL) 
+    if (tTile != nullptr) 
         if(tTile->loaded){
             w[9] = tTile->getWaterLevelNW();
             w[10] = tTile->getWaterLevelNE();
         }
     tTile = terrain[((mojex + 1)*10000 + mojez + 1)];
-    if (tTile != NULL)
+    if (tTile != nullptr)
         if(tTile->loaded){
             w[11] = tTile->getWaterLevelNW();
         }
@@ -799,53 +799,53 @@ void TerrainLibSimple::setWaterLevels(float *w, int mojex, int mojez){
     Terrain *tTile;
     
     tTile = terrain[((mojex - 1)*10000 + mojez - 1)];
-    if (tTile != NULL)
+    if (tTile != nullptr)
         if(tTile->loaded){
             tTile->setWaterLevelSE(w[0]);
             tTile->refreshWaterShapes();
         }
     tTile = terrain[((mojex)*10000 + mojez - 1)];
-    if (tTile != NULL)
+    if (tTile != nullptr)
         if(tTile->loaded){
             tTile->setWaterLevelSW(w[1]);
             tTile->setWaterLevelSE(w[2]);
             tTile->refreshWaterShapes();
         }
     tTile = terrain[((mojex + 1)*10000 + mojez - 1)];
-    if (tTile != NULL)
+    if (tTile != nullptr)
         if(tTile->loaded){
             tTile->setWaterLevelSW(w[3]);
             tTile->refreshWaterShapes();
         }
     tTile = terrain[((mojex - 1)*10000 + mojez)];
-    if (tTile != NULL) 
+    if (tTile != nullptr) 
         if(tTile->loaded){
             tTile->setWaterLevelNE(w[4]);
             tTile->setWaterLevelSE(w[6]);
             tTile->refreshWaterShapes();
         }
     tTile = terrain[((mojex + 1)*10000 + mojez)];
-    if (tTile != NULL)
+    if (tTile != nullptr)
         if(tTile->loaded){
             tTile->setWaterLevelNW(w[5]);
             tTile->setWaterLevelSW(w[7]);
             tTile->refreshWaterShapes();
         }
     tTile = terrain[((mojex - 1)*10000 + mojez + 1)];
-    if (tTile != NULL)
+    if (tTile != nullptr)
         if(tTile->loaded){
             tTile->setWaterLevelNE(w[8]);
             tTile->refreshWaterShapes();
         }
     tTile = terrain[((mojex)*10000 + mojez + 1)];
-    if (tTile != NULL) 
+    if (tTile != nullptr) 
         if(tTile->loaded){
             tTile->setWaterLevelNW(w[9]);
             tTile->setWaterLevelNE(w[10]);
             tTile->refreshWaterShapes();
         }
     tTile = terrain[((mojex + 1)*10000 + mojez + 1)];
-    if (tTile != NULL)
+    if (tTile != nullptr)
         if(tTile->loaded){
             tTile->setWaterLevelNW(w[11]);
             tTile->refreshWaterShapes();
@@ -857,7 +857,7 @@ void TerrainLibSimple::fillRaw(Terrain *cTerr, int mojex, int mojez) {
 
     tTile = terrain[((mojex + 1)*10000 + mojez)];
 
-    if (tTile == NULL) {
+    if (tTile == nullptr) {
         terrain[(mojex + 1)*10000 + mojez] = new Terrain(mojex + 1, mojez);
     }
     tTile = terrain[(mojex + 1)*10000 + mojez];
@@ -872,7 +872,7 @@ void TerrainLibSimple::fillRaw(Terrain *cTerr, int mojex, int mojez) {
     
     tTile = terrain[((mojex)*10000 + mojez + 1)];
 
-    if (tTile == NULL) {
+    if (tTile == nullptr) {
         terrain[(mojex)*10000 + mojez + 1] = new Terrain(mojex, mojez + 1);
     }
     tTile = terrain[(mojex)*10000 + mojez + 1];
@@ -887,7 +887,7 @@ void TerrainLibSimple::fillRaw(Terrain *cTerr, int mojex, int mojez) {
 
     tTile = terrain[((mojex + 1)*10000 + (mojez + 1))];
 
-    if (tTile == NULL) {
+    if (tTile == nullptr) {
         terrain[(mojex + 1)*10000 + mojez + 1] = new Terrain(mojex + 1, mojez + 1);
     }
     tTile = terrain[(mojex + 1)*10000 + mojez + 1];
@@ -911,7 +911,7 @@ void TerrainLibSimple::render(GLUU *gluu, float * playerT, float* playerW, float
     /*for (auto it = terrain.begin(); it != terrain.end(); ++it) {
         //console.log(obj.type);
         Terrain* obj = (Terrain*) it->second;
-        if(obj == NULL) continue;
+        if(obj == nullptr) continue;
         obj->inUse = false;
     }*/
     
@@ -924,7 +924,7 @@ void TerrainLibSimple::render(GLUU *gluu, float * playerT, float* playerW, float
         for (int j = maxtile; j >= mintile; j--) {
             tTile = terrain[(((int)playerT[0] + i)*10000 + (int)playerT[1] + j)];
             
-            if (tTile == NULL) {
+            if (tTile == nullptr) {
                 terrain[((int)playerT[0] + i)*10000 + (int)playerT[1] + j] = new Terrain((int)playerT[0] + i, (int)playerT[1] + j);
             }
 
@@ -958,7 +958,7 @@ void TerrainLibSimple::render(GLUU *gluu, float * playerT, float* playerW, float
     for (int i = mintile; i <= maxtile; i++) {
         for (int j = maxtile; j >= mintile; j--) {
             tTile = terrain[(((int)playerT[0] + i)*10000 + (int)playerT[1] + j)];
-            if (tTile != NULL)
+            if (tTile != nullptr)
                 tTile->inUse = true;
         }
     }
@@ -966,11 +966,11 @@ void TerrainLibSimple::render(GLUU *gluu, float * playerT, float* playerW, float
     for (auto it = terrain.begin(); it != terrain.end(); ++it) {
         //console.log(obj.type);
         Terrain* obj = (Terrain*) it->second;
-        if(obj == NULL) continue;
+        if(obj == nullptr) continue;
         if(!obj->inUse && obj->loaded && !obj->isModified() && !obj->isSelected()){
            //console.log("a"+this.tile[key]);
            delete obj;
-           terrain[(int)it->first] = NULL;
+           terrain[(int)it->first] = nullptr;
        } else {
            obj->inUse = false;
        }
@@ -994,7 +994,7 @@ void TerrainLibSimple::renderWater(GLUU *gluu, float* playerT, float* playerW, f
     for (int i = mintile; i <= maxtile; i++) {
         for (int j = maxtile; j >= mintile; j--) {
             tTile = terrain[(((int)playerT[0] + i)*10000 + (int)playerT[1] + j)];
-            if (tTile == NULL) 
+            if (tTile == nullptr) 
                 continue;
             if (tTile->loaded == false) 
                 continue;
@@ -1029,7 +1029,7 @@ void TerrainLibSimple::renderShadowMap(GLUU *gluu, float * playerT, float* playe
         for (int j = maxtile; j >= mintile; j--) {
             tTile = terrain[(((int)playerT[0] + i)*10000 + (int)playerT[1] + j)];
             
-            if (tTile == NULL) {
+            if (tTile == nullptr) {
                 terrain[((int)playerT[0] + i)*10000 + (int)playerT[1] + j] = new Terrain((int)playerT[0] + i, (int)playerT[1] + j);
             }
 
@@ -1058,7 +1058,7 @@ void TerrainLibSimple::renderEmpty(GLUU *gluu, float * playerT, float* playerW, 
     for (int i = mintile; i <= maxtile; i++)
         for (int j = maxtile; j >= mintile; j--) {
             tTile = terrain[(((int)playerT[0] + i)*10000 + (int)playerT[1] + j)];
-            if (tTile == NULL) {
+            if (tTile == nullptr) {
                 terrain[((int)playerT[0] + i)*10000 + (int)playerT[1] + j] = new Terrain((int)playerT[0] + i, (int)playerT[1] + j);
             }
      }

@@ -25,7 +25,7 @@
 #include "Activity.h"
 #include "PlatformObj.h"
 
-OglObj *ActivityEvent::simpleMarkerObj = NULL;
+OglObj *ActivityEvent::simpleMarkerObj = nullptr;
 
 QMap<ActivityEvent::EventType, QString> ActivityEvent::EventTypeDescription = {
     { ActivityEvent::EventTypeNone ,"None." },
@@ -178,7 +178,7 @@ void ActivityEvent::removeOutcome(int id){
     if(outcomes[id]->category == Outcome::CategorySoundFile)
         ortsActSoundFileDeprecated.clear();
     if(outcomes[id]->category == Outcome::CategoryWeatherChange)
-        ortsWeatherChangeDeprecated = NULL;
+        ortsWeatherChangeDeprecated = nullptr;
     
     outcomes.remove(id);
 }
@@ -303,8 +303,8 @@ QString ActivityEvent::getWagonListDescription(int i){
     QString desc;
     if(wagonList[i].sidingItem > 1000000){
         desc += wagonList[i].description;
-    } else if(Game::trackDB != NULL){
-        if(Game::trackDB->trackItems[wagonList[i].sidingItem] != NULL)
+    } else if(Game::trackDB != nullptr){
+        if(Game::trackDB->trackItems[wagonList[i].sidingItem] != nullptr)
             desc += "Siding: " + Game::trackDB->trackItems[wagonList[i].sidingItem]->platformName;
     }
         
@@ -332,7 +332,7 @@ void ActivityEvent::render(GLUU* gluu, float * playerT, float playerRot, int ren
             return;
         gluu->setMatrixUniforms();
 
-        if (simpleMarkerObj == NULL) {
+        if (simpleMarkerObj == nullptr) {
             simpleMarkerObj = new OglObj();
             float *punkty = new float[3 * 2];
             int ptr = 0;
@@ -351,7 +351,7 @@ void ActivityEvent::render(GLUU* gluu, float * playerT, float playerRot, int ren
             delete[] punkty;
         }
         
-        if (txtMarkerObj == NULL) {
+        if (txtMarkerObj == nullptr) {
             txtMarkerObj = new TextObj(name, 16, 2.0);
             txtMarkerObj->setColor(0,0,0);
         }
@@ -593,7 +593,7 @@ void ActivityEvent::save(QTextStream* out) {
     
     if(name.length() > 0)
         *out << "				Name ( "<<ParserX::AddComIfReq(name)<<" )\n";
-    if(location != NULL)
+    if(location != nullptr)
         *out << "				Location ( "<<location[0]<<" "<<location[1]<<" "<<location[2]<<" "<<location[3]<<" "<<location[4]<<" )\n";
     if(time != -99999)
         *out << "				Time ( "<<time<<" )\n";
@@ -627,7 +627,7 @@ void ActivityEvent::save(QTextStream* out) {
     if (ortsActSoundFileDeprecated.size() > 0){
         *out << "				ORTSActSoundFile ( "<< ParserX::AddComIfReq(ortsActSoundFileDeprecated[0]) <<" "<< ParserX::AddComIfReq(ortsActSoundFileDeprecated[1]) <<" )\n";
     }
-    if (ortsWeatherChangeDeprecated != NULL){
+    if (ortsWeatherChangeDeprecated != nullptr){
         QString off = "				";
         ortsWeatherChangeDeprecated->save(out, off);
     }
@@ -800,7 +800,7 @@ void ActivityEvent::setWagonListItemDescription(int id, QString val){
 }
 
 void ActivityEvent::addSelectedWagonToList(){
-    if(parentActivity == NULL)
+    if(parentActivity == nullptr)
         return;
     
     unsigned int uid = parentActivity->getSelectedCarId();
@@ -821,7 +821,7 @@ bool ActivityEvent::getWagonListItemPosition(int id, float *posTW){
         return false;
     if(id < 0)
         return false;
-    if(parentActivity == NULL)
+    if(parentActivity == nullptr)
         return false;
     
     int oid = wagonList[id].uid / 65536;
@@ -833,15 +833,15 @@ bool ActivityEvent::getWagonListItemPosition(int id, float *posTW){
 QString ActivityEvent::getSidingDescription(){
     if(sidingItem < 0)
         return "";
-    if(Game::trackDB == NULL)
+    if(Game::trackDB == nullptr)
         return "";
-    if(Game::trackDB->trackItems[sidingItem] == NULL)
+    if(Game::trackDB->trackItems[sidingItem] == nullptr)
         return "";
     return Game::trackDB->trackItems[sidingItem]->platformName;
 }
 
 bool ActivityEvent::setSidingFromSelected(){
-    if(Game::currentSelectedGameObj == NULL)
+    if(Game::currentSelectedGameObj == nullptr)
         return false;
     if(Game::currentSelectedGameObj->typeObj != GameObj::worldobj)
         return false;

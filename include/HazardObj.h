@@ -37,9 +37,9 @@ public:
 
 private:
     int trItemIdCount = 0;
-    int *trItemId = NULL;
-    TrackItemObj* pointer3d = NULL;
-    float* drawPosition = NULL;
+    int *trItemId = nullptr;
+    TrackItemObj* pointer3d = nullptr;
+    float* drawPosition = nullptr;
     void renderTritems(GLUU* gluu, int selectionColor);
     bool getSimpleBorder(float* border);
     bool getBoxPoints(QVector<float> &points);

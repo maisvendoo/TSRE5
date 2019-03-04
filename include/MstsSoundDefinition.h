@@ -96,8 +96,8 @@ class SoundDefinitionGroup {
             int priority = 0;
             float volume = 1.0;
             QVector<Trigger*> trigger;
-            Curve* volumeCurve = NULL;
-            Curve* freqCurve = NULL;
+            Curve* volumeCurve = nullptr;
+            Curve* freqCurve = nullptr;
             
             Stream();
             Stream(Stream *o);
@@ -145,7 +145,7 @@ public:
     QString name;
     
     QVector<SoundDefinitionGroup*> group;
-    SoundDefinitionGroup* currentGroup = NULL;
+    SoundDefinitionGroup* currentGroup = nullptr;
     
     MstsSoundDefinition();
     MstsSoundDefinition(QString p, QString n);

@@ -66,14 +66,14 @@ private:
     int signalUnits = 0;
     SignalUnit signalUnit[32];
     //int *trItemId;
-    TrackItemObj* spointer3d = NULL;
-    TrackItemObj* spointer3dSelected = NULL;
-    float** drawPositions = NULL;
+    TrackItemObj* spointer3d = nullptr;
+    TrackItemObj* spointer3dSelected = nullptr;
+    float** drawPositions = nullptr;
     int selectionValue = 0;
     void renderTritems(GLUU* gluu, int selectionColor);
     bool getSimpleBorder(float* border);
     bool getBoxPoints(QVector<float> &points);
-    SignalShape* signalShape = NULL;
+    SignalShape* signalShape = nullptr;
 };
 
 #endif	/* SIGNALOBJ_H */

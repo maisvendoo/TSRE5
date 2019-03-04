@@ -19,15 +19,15 @@ class TFile {
 public:
     struct Mat {
         QString* tex[2];
-        QString* name = NULL;
+        QString* name = nullptr;
         int atex[2][2];
         int itex[2][4];
         int count153 = 0;
         int count155 = 0;
         
         Mat(){
-            tex[0] = NULL;
-            tex[1] = NULL;
+            tex[0] = nullptr;
+            tex[1] = nullptr;
         }
     };
     bool loaded = false;
@@ -42,22 +42,22 @@ public:
     float WSE = 0;
     float WNE = 0;
     float WNW = 0;
-    float* errthresholdScale = NULL;
-    float* alwaysselectMaxdist = NULL;
-    int* nsamples = NULL;
-    float* sampleRotation = NULL;
-    float* sampleSize = NULL;
+    float* errthresholdScale = nullptr;
+    float* alwaysselectMaxdist = nullptr;
+    int* nsamples = nullptr;
+    float* sampleRotation = nullptr;
+    float* sampleSize = nullptr;
     float floor;
     float scale;
     
     bool waterLevel = false;
     int materialsCount = 0;
     
-    QString* sampleFbuffer = NULL;
-    QString* sampleYbuffer = NULL;
-    QString* sampleEbuffer = NULL;
-    QString* sampleNbuffer = NULL;
-    char* sampleASbuffer = NULL;
+    QString* sampleFbuffer = nullptr;
+    QString* sampleYbuffer = nullptr;
+    QString* sampleEbuffer = nullptr;
+    QString* sampleNbuffer = nullptr;
+    char* sampleASbuffer = nullptr;
     
     int patchsetDistance;
     int patchsetNpatches;

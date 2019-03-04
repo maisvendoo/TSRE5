@@ -46,7 +46,7 @@ CameraRot::~CameraRot() {
 }
 
 PreciseTileCoordinate* CameraRot::getCurrentPos(){
-    if(this->currentPos == NULL)
+    if(this->currentPos == nullptr)
         this->currentPos = new PreciseTileCoordinate();
     return this->currentPos;
 }

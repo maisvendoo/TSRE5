@@ -27,7 +27,7 @@ public slots:
     void sourcesListSelected(QString val);
     
 private:
-    SoundSourceObj *sobj = NULL;
+    SoundSourceObj *sobj = nullptr;
     QComboBox sources;
     QLineEdit sName;
 };

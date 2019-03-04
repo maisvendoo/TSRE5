@@ -70,7 +70,7 @@ private:
     int tex;
     bool init;
     OglObj shape;
-    QString * texturePath = NULL;
+    QString * texturePath = nullptr;
 };
 
 #endif	/* FORESTOBJ_H */

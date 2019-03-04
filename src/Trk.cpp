@@ -368,7 +368,7 @@ void Trk::save() {
     out << "	TimetableTollerance ( " << this->timetableTollerance << " )" << "\n";
     if(this->forestClearDistance >= 0)
     out << "	ORTSUserPreferenceForestClearDistance ( " << this->forestClearDistance << " )" << "\n";
-    if(this->tsreProjection != NULL)
+    if(this->tsreProjection != nullptr)
     out << "	TsreGeoProjection ( " << this->tsreProjection[0] << " " << this->tsreProjection[1] << " " << this->tsreProjection[2] << " " << this->tsreProjection[3] << " " << " )" << "\n";
     if(this->distantTerrainYOffset > 0)
     out << "	TsreDistantTerrainYoffset ( " << this->distantTerrainYOffset << " )" << "\n";

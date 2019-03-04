@@ -401,7 +401,7 @@ ActivityEventProperties::ActivityEventProperties(QWidget* parent) : QWidget(pare
     timeWidget.hide();
     
     foreach(QWidget *w, outcomeProperties){
-        if(w == NULL)
+        if(w == nullptr)
             continue;
         w->hide();
     }
@@ -411,12 +411,12 @@ ActivityEventProperties::~ActivityEventProperties() {
 }
 
 void ActivityEventProperties::showEvent(ActivityEvent *e){
-    if(e == NULL){
-        event = NULL;
+    if(e == nullptr){
+        event = nullptr;
         return;
     }
     
-    if(event != NULL)
+    if(event != nullptr)
         event->unselect();
     
     event = e;
@@ -477,7 +477,7 @@ void ActivityEventProperties::showEvent(ActivityEvent *e){
     }
     if(event->category == ActivityEvent::CategoryLocation){
         locationWidget.show();
-        if(event->location != NULL){
+        if(event->location != nullptr){
             eLocationRadius.setValue(event->location[4]);
             cLocationStop.blockSignals(true);
             if(event->triggerOnStop != 1){
@@ -532,7 +532,7 @@ void ActivityEventProperties::showEvent(ActivityEvent *e){
 }
 
 void ActivityEventProperties::bActionSidingSelected(){
-    if(event == NULL)
+    if(event == nullptr)
         return;
     bool ok = event->setSidingFromSelected();
     if(!ok){
@@ -548,7 +548,7 @@ void ActivityEventProperties::bActionSidingSelected(){
 }
 
 void ActivityEventProperties::bAddOutcomeSelected(){
-    if(event == NULL)
+    if(event == nullptr)
         return;
     int id = event->newOutcome();
     this->showEvent(event);   
@@ -556,7 +556,7 @@ void ActivityEventProperties::bAddOutcomeSelected(){
 }
 
 void ActivityEventProperties::bRemoveOutcomeSelected(){
-    if(event == NULL)
+    if(event == nullptr)
         return;
     int id = outcomeList.currentRow();
     if(id < 0)
@@ -570,21 +570,21 @@ void ActivityEventProperties::bRemoveOutcomeSelected(){
 }
 
 void ActivityEventProperties::outcomeListSelected(QListWidgetItem* item){
-    if(event == NULL)
+    if(event == nullptr)
         return;
     outcome = event->outcomes[item->type()];
-    if(outcome == NULL)
+    if(outcome == nullptr)
         return;
     
     foreach(QWidget *w, outcomeProperties){
-        if(w == NULL)
+        if(w == nullptr)
             continue;
         w->hide();
     }
         
     cOutcome.setCurrentIndex(cOutcome.findData((int)outcome->type));
     
-    if(outcomeProperties[(int)outcome->category] == NULL)
+    if(outcomeProperties[(int)outcome->category] == nullptr)
         return;
     outcomeProperties[(int)outcome->category]->show();
     
@@ -619,7 +619,7 @@ void ActivityEventProperties::outcomeListSelected(QListWidgetItem* item){
 }
 
 void ActivityEventProperties::cActionTypeSelected(QString item){
-    if(event == NULL)
+    if(event == nullptr)
         return;
 
     event->setActionToNewType((ActivityEvent::EventType)cActionType.currentData().toInt());
@@ -629,13 +629,13 @@ void ActivityEventProperties::cActionTypeSelected(QString item){
 }
 
 void ActivityEventProperties::cStationStopActionSelected(QString item){
-    if(event == NULL)
+    if(event == nullptr)
         return;
     event->setStationStop(cStationStopAction.currentData().toInt());
 }
 
 void ActivityEventProperties::outcomeActoionListSelected(QString item){
-    if(outcome == NULL)
+    if(outcome == nullptr)
         return;
 
     outcome->setToNewType((ActivityEvent::Outcome::OutcomeType)cOutcome.currentData().toInt());
@@ -646,25 +646,25 @@ void ActivityEventProperties::outcomeActoionListSelected(QString item){
 }
 
 void ActivityEventProperties::cOutcomeEventSelected(QString val){
-    if(outcome == NULL)
+    if(outcome == nullptr)
         return;
     outcome->setEventLinkId(cOutcomeEvent.currentData().toInt());
 }
 
 void ActivityEventProperties::eSoundFileNameEdited(QString val){
-    if(outcome == NULL)
+    if(outcome == nullptr)
         return;
     outcome->setSoundFileName(val);
 }
 
 void ActivityEventProperties::cSoundTypeSelected(QString val){
-    if(outcome == NULL)
+    if(outcome == nullptr)
         return;
     outcome->setSoundType(val);
 }
 
 void ActivityEventProperties::cWeatherChangeSelected(QString val){
-    if(outcome == NULL)
+    if(outcome == nullptr)
         return;
     outcome->setWeatherName(val);
 }
@@ -700,19 +700,19 @@ void ActivityEventProperties::selctOutcomeOnList(int id){
 }
 
 void ActivityEventProperties::eOutcomeMessageSelected(){
-    if(outcome == NULL)
+    if(outcome == nullptr)
         return;
     outcome->setMessage(eOutcomeMessage.toPlainText());
 }
 
 void ActivityEventProperties::eActivationLevelSelected(){
-    if(event == NULL)
+    if(event == nullptr)
         return;
     event->setActivationLevel(eActivationLevel.value());
 }
 
 void ActivityEventProperties::eNameSelected(){
-    if(event == NULL)
+    if(event == nullptr)
         return;
     if(eName.text() == event->name)
         return;
@@ -721,38 +721,38 @@ void ActivityEventProperties::eNameSelected(){
 }
 
 void ActivityEventProperties::eTriggeredTextSelected(QString val){
-    if(event == NULL)
+    if(event == nullptr)
         return;
     event->setTriggeredText(val);
 }
 
 void ActivityEventProperties::eUntriggeredTextSelected(QString val){
-    if(event == NULL)
+    if(event == nullptr)
         return;
     event->setUntriggeredText(val);
 }
 
 void ActivityEventProperties::eActionSpeedSelected(){
-    if(event == NULL)
+    if(event == nullptr)
         return;
     
     event->setSpeed(eActionSpeed.value());
 }
 
 void ActivityEventProperties::eNotesSelected(QString val){
-    if(event == NULL)
+    if(event == nullptr)
         return;
     event->setNotes(val);
 }
 
 void ActivityEventProperties::eLocationRadiusSelected(){
-    if(event == NULL)
+    if(event == nullptr)
         return;
     event->setLocationRadius(eLocationRadius.value());
 }
 
 void ActivityEventProperties::cLocationStopSelected(int val){
-    if(event == NULL)
+    if(event == nullptr)
         return;
     if(val == Qt::Checked)
         event->setLocationStop(true);
@@ -761,7 +761,7 @@ void ActivityEventProperties::cLocationStopSelected(int val){
 }
 
 void ActivityEventProperties::cReversableSelected(int val){
-    if(event == NULL)
+    if(event == nullptr)
         return;
     if(val == Qt::Checked)
         event->setReversable(true);
@@ -770,13 +770,13 @@ void ActivityEventProperties::cReversableSelected(int val){
 }
 
 void ActivityEventProperties::eAutoContinueSelected(){
-    if(event == NULL)
+    if(event == nullptr)
         return;
     event->setAutoContinue(eAutoContinue.value());
 }
 
 void ActivityEventProperties::cAutoContinueLabelSelected(int val){
-    if(event == NULL)
+    if(event == nullptr)
         return;
     if(val == Qt::Checked){
         event->setAutoContinue(0);
@@ -789,15 +789,15 @@ void ActivityEventProperties::cAutoContinueLabelSelected(int val){
 }
 
 void ActivityEventProperties::eTimeSelected(QTime val){
-    if(event == NULL)
+    if(event == nullptr)
         return;
     event->setTime(val.msecsSinceStartOfDay()/1000);
 }
 
 void ActivityEventProperties::bJumpToEventLocationSelected(){
-    if(event == NULL)
+    if(event == nullptr)
         return;
-    if(coordinate == NULL)
+    if(coordinate == nullptr)
         coordinate = new PreciseTileCoordinate();
     
     coordinate->TileX = event->location[0];
@@ -808,7 +808,7 @@ void ActivityEventProperties::bJumpToEventLocationSelected(){
 }
 
 void ActivityEventProperties::bPickEventLocationSelected(bool val){
-    if(event == NULL)
+    if(event == nullptr)
         return;
     if(val)
         emit enableTool("pickNewEventLocationTool");
@@ -817,7 +817,7 @@ void ActivityEventProperties::bPickEventLocationSelected(bool val){
 }
 
 void ActivityEventProperties::bPickNewEventWagonToolSelected(){
-    if(event == NULL)
+    if(event == nullptr)
         return;
     event->addSelectedWagonToList();
     
@@ -831,17 +831,17 @@ void ActivityEventProperties::msg(QString text, QString val){
         QMapIterator<QString, QPushButton*> i(buttonTools);
         while (i.hasNext()) {
             i.next();
-            if(i.value() == NULL)
+            if(i.value() == nullptr)
                 continue;
             i.value()->blockSignals(true);
             i.value()->setChecked(false);
         }
-        if(buttonTools[val] != NULL)
+        if(buttonTools[val] != nullptr)
             buttonTools[val]->setChecked(true);
         i.toFront();
         while (i.hasNext()) {
             i.next();
-            if(i.value() == NULL)
+            if(i.value() == nullptr)
                 continue;
             i.value()->blockSignals(false);
         }
@@ -849,14 +849,14 @@ void ActivityEventProperties::msg(QString text, QString val){
 }
 
 void ActivityEventProperties::bJumpToCarSelected(){
-    if(event == NULL)
+    if(event == nullptr)
         return;
     float position[5];
     bool ok = event->getWagonListItemPosition(wagonList.currentItem()->type(), position);
     if(!ok)
         return;
     
-    if(coordinate == NULL)
+    if(coordinate == nullptr)
         coordinate = new PreciseTileCoordinate();
     
     coordinate->TileX = position[0];
@@ -867,7 +867,7 @@ void ActivityEventProperties::bJumpToCarSelected(){
 }
 
 void ActivityEventProperties::bRemoveCarSelected(){
-    if(event == NULL)
+    if(event == nullptr)
         return;
     event->removeWagonListItem(wagonList.currentItem()->type());
     
@@ -877,7 +877,7 @@ void ActivityEventProperties::bRemoveCarSelected(){
 }
 
 void ActivityEventProperties::bDescCarSelected(){
-    if(event == NULL)
+    if(event == nullptr)
         return;
     EditFileNameDialog dialog;
     dialog.setWindowTitle("Wagon Item Description.");

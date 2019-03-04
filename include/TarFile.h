@@ -43,7 +43,7 @@ public:
     virtual ~TarFile();
 private:
     QString filePath;
-    FileBuffer* data = NULL;
+    FileBuffer* data = nullptr;
 };
 
 #endif	/* TARFILE_H */

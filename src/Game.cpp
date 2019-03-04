@@ -30,11 +30,11 @@
 #include <QColor>
 #include "TarFile.h"
 
-GeoWorldCoordinateConverter *Game::GeoCoordConverter = NULL;
-TDB *Game::trackDB = NULL;
-TDB *Game::roadDB = NULL;    
-SoundList *Game::soundList = NULL;    
-TerrainLib *Game::terrainLib = NULL;   
+GeoWorldCoordinateConverter *Game::GeoCoordConverter = nullptr;
+TDB *Game::trackDB = nullptr;
+TDB *Game::roadDB = nullptr;    
+SoundList *Game::soundList = nullptr;    
+TerrainLib *Game::terrainLib = nullptr;   
 
 QString Game::AppName = "TSRE5";
 QString Game::AppVersion = "v0.6974";
@@ -115,14 +115,14 @@ float Game::hudScale = 1.0;
 
 QString Game::geoPath = "hgst";
 
-//RouteEditorWindow* Game::window = NULL;
-//LodWindow* Game::loadWindow = NULL;
-ShapeLib *Game::currentShapeLib = NULL;
-EngLib *Game::currentEngLib = NULL;
-Route *Game::currentRoute = NULL;
-GameObj *Game::currentSelectedGameObj = NULL;
-QColor *Game::colorConView = NULL;
-QColor *Game::colorShapeView = NULL;
+//RouteEditorWindow* Game::window = nullptr;
+//LodWindow* Game::loadWindow = nullptr;
+ShapeLib *Game::currentShapeLib = nullptr;
+EngLib *Game::currentEngLib = nullptr;
+Route *Game::currentRoute = nullptr;
+GameObj *Game::currentSelectedGameObj = nullptr;
+QColor *Game::colorConView = nullptr;
+QColor *Game::colorShapeView = nullptr;
 
 QString Game::StyleMainLabel = "#770000";
 QString Game::StyleGreenButton = "#55FF55";

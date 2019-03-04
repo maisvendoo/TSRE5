@@ -59,8 +59,8 @@ PropertiesSiding::~PropertiesSiding() {
 }
 
 void PropertiesSiding::showObj(GameObj* obj){
-    if(obj == NULL){
-        infoLabel->setText("NULL");
+    if(obj == nullptr){
+        infoLabel->setText("nullptr");
         return;
     }
     worldObj = (WorldObj*)obj;
@@ -75,7 +75,7 @@ void PropertiesSiding::showObj(GameObj* obj){
 }
 
 void PropertiesSiding:: disablePlatformEnabled(int state){
-    if(pobj == NULL) return;
+    if(pobj == nullptr) return;
     Undo::StateBegin();
     Undo::PushGameObjData(worldObj);
     Undo::PushTrackDB(Game::trackDB);
@@ -87,7 +87,7 @@ void PropertiesSiding:: disablePlatformEnabled(int state){
 }
 
 void PropertiesSiding::namePlatformEnabled(QString val){
-    if(pobj == NULL) return;
+    if(pobj == nullptr) return;
     Undo::StateBegin();
     Undo::PushGameObjData(worldObj);
     Undo::PushTrackDB(Game::trackDB);
@@ -96,7 +96,7 @@ void PropertiesSiding::namePlatformEnabled(QString val){
 }
 
 bool PropertiesSiding::support(GameObj* obj){
-    if(obj == NULL)
+    if(obj == nullptr)
         return false;
     if(obj->typeObj != GameObj::worldobj)
         return false;

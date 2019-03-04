@@ -44,7 +44,7 @@ void Coords::render(GLUU* gluu, float * playerT, float* playerW, float playerRot
 
     gluu->setMatrixUniforms();
 
-    if (simpleMarkerObjP == NULL) {
+    if (simpleMarkerObjP == nullptr) {
         simpleMarkerObjP = new OglObj();
         simpleMarkerObjL = new OglObj();
         float *punkty = new float[3 * 2];
@@ -72,7 +72,7 @@ void Coords::render(GLUU* gluu, float * playerT, float* playerW, float playerRot
                 continue;
             }
             gluu->mvPushMatrix();
-            //if(pos == NULL) return;
+            //if(pos == nullptr) return;
             float h = Game::terrainLib->getHeight(markerList[i].tileX[j], -markerList[i].tileZ[j], markerList[i].x[j], markerList[i].z[j]);
             Mat4::translate(gluu->mvMatrix, gluu->mvMatrix, markerList[i].x[j] + 2048 * (markerList[i].tileX[j] - playerT[0]), h, markerList[i].z[j] + 2048 * (-markerList[i].tileZ[j] - playerT[1]));
             //Mat4::translate(gluu->mvMatrix, gluu->mvMatrix, this->trItemRData[0] + 2048*(this->trItemRData[3] - playerT[0] ), this->trItemRData[1]+2, -this->trItemRData[2] + 2048*(-this->trItemRData[4] - playerT[1]));
@@ -85,7 +85,7 @@ void Coords::render(GLUU* gluu, float * playerT, float* playerW, float playerRot
             Mat4::translate(gluu->mvMatrix, gluu->mvMatrix, 0, 30, 0);
             gluu->currentShader->setUniformValue(gluu->currentShader->mvMatrixUniform, *reinterpret_cast<float(*)[4][4]> (gluu->mvMatrix));
             txt = nameGl[markerList[i].name.toStdString()];
-            if(txt == NULL){
+            if(txt == nullptr){
                 txt = new TextObj(markerList[i].name, 16, 1.0);
                 txt->setColor(0,0,0);
                 nameGl[markerList[i].name.toStdString()] = txt;
@@ -96,7 +96,7 @@ void Coords::render(GLUU* gluu, float * playerT, float* playerW, float playerRot
         
         /*if (markerList[i].tileX.size() == 1) continue;
         
-        if (markerList[i].oglObj == NULL){
+        if (markerList[i].oglObj == nullptr){
             markerList[i].oglObj = new OglObj();
             float *punkty = new float[markerList[i].pointsX.size()*3*2];
             int ptr = 0;
@@ -129,7 +129,7 @@ void Coords::getTileList(QMap<int, QPair<int, int>*> &tileList, int radius, int 
     QMap<int, QPair<int, int>*> tileList2;
     for (int i = 0; i < markerList.size(); i++ ) {
         for(int j = 0; j < markerList[i].tileX.size(); j++ ){
-            if(tileList2[markerList[i].tileX[j]*10000 + markerList[i].tileZ[j]] == NULL)
+            if(tileList2[markerList[i].tileX[j]*10000 + markerList[i].tileZ[j]] == nullptr)
                 tileList2[markerList[i].tileX[j]*10000 + markerList[i].tileZ[j]] = new QPair<int, int>(markerList[i].tileX[j], markerList[i].tileZ[j]);
             }
         }
@@ -140,13 +140,13 @@ void Coords::getTileList(QMap<int, QPair<int, int>*> &tileList, int radius, int 
     qDebug() << "radius" << radius;
     while (i.hasNext()) {
         i.next();
-        if(i.value() == NULL)
+        if(i.value() == nullptr)
             continue;
         x = i.value()->first;
         z = i.value()->second;
         for(int i = -radius; i <= radius; i+=step)
             for(int j = -radius; j <= radius; j+=step){
-                if(tileList[(x+i)*10000+(z+j)] == NULL){
+                if(tileList[(x+i)*10000+(z+j)] == nullptr){
                     tileList[(x+i)*10000+(z+j)] = new QPair<int, int>(x+i, z+j);
                     //qDebug() << i.value()->first << i.value()->second;
                 }

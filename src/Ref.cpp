@@ -81,7 +81,7 @@ Ref::Ref(QString path) {
         ParserX::SkipToken(data);
     }
 
-    selected = NULL;
+    selected = nullptr;
 }
 
 Ref::Ref() {

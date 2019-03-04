@@ -43,9 +43,9 @@ private:
     QLineEdit *nowaTrasa;
     QWidget* nowa;
     bool newRoute = false;
-    IghCoordinate* igh = NULL;
-    LatitudeLongitudeCoordinate* latlon = NULL;
-    PreciseTileCoordinate* aCoords = NULL;
+    IghCoordinate* igh = nullptr;
+    LatitudeLongitudeCoordinate* latlon = nullptr;
+    PreciseTileCoordinate* aCoords = nullptr;
     void downloadTemplateRoute(QString path);
     void listRoots();
 };

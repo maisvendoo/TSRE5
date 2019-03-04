@@ -30,7 +30,7 @@ public:
     void findToken(int id);
     int getToken();
     void setTokenOffset(int val);
-    bool insertFile(QString incPath, QString alternativePath = "", QString* loaded = NULL);
+    bool insertFile(QString incPath, QString alternativePath = "", QString* loaded = nullptr);
     bool isBOM();
     void skipBOM();
     void toUtf16();
@@ -38,7 +38,7 @@ public:
     int off = 0;
     int length = 0;
     int tokenOffset = 0;
-    unsigned char * data = NULL;
+    unsigned char * data = nullptr;
 private:
     
 };

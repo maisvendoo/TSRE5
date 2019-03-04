@@ -44,11 +44,11 @@ public:
     //QVector<Traffic*> traffic;
     QVector<Path*> path;
     bool loaded = false;
-    TSectionDAT *tsection = NULL; 
-    SoundList *soundList = NULL;
-    Ref *ref = NULL;
-    Environment *env = NULL;
-    Skydome *skydome = NULL;
+    TSectionDAT *tsection = nullptr; 
+    SoundList *soundList = nullptr;
+    Ref *ref = nullptr;
+    Environment *env = nullptr;
+    Skydome *skydome = nullptr;
     bool placementStickToTarget = false;
     float placementAutoLength = 50;
     bool placementAutoTwoPointRot = true;
@@ -81,7 +81,7 @@ public:
     void findSimilar(WorldObj* obj, GroupObj* group, float *playerT, int tileRadius = 0);
     void nextDefaultEnd();
     void flipObject(WorldObj *obj);
-    void setTerrainTextureToObj(int x, int y, float *pos, Brush* brush, WorldObj* obj = NULL);
+    void setTerrainTextureToObj(int x, int y, float *pos, Brush* brush, WorldObj* obj = nullptr);
     void setTerrainTextureToTrack(int x, int y, float *pos, Brush* brush, int mode = 0);
     void setTerrainToTrackObj(WorldObj* obj, Brush* brush);
     int getTileObjCount(int x, int z);
@@ -98,7 +98,7 @@ public:
     float* getPointerPosition(float *out, int &x, int &z, float *pos);
     void setMkrFile(QString name);
     void getUnsavedInfo(QVector<QString> &items);
-    void showTrkEditr(Trk * val = NULL);
+    void showTrkEditr(Trk * val = nullptr);
     void paintHeightMap(Brush* brush, int x, int z, float* p);
     WorldObj* makeFlexTrack(int x, int z, float* pos);
     WorldObj* placeObject(int x, int z, float* p);
@@ -139,10 +139,10 @@ private:
     TDB *trackDB;
     TDB *roadDB; 
     QMap<QString, Coords*> mkrList;
-    Coords * mkr = NULL;
-    Trk * trk = NULL;
+    Coords * mkr = nullptr;
+    Trk * trk = nullptr;
     QVector<WorldObj*> autoPlacementLastPlaced;
-    Activity* currentActivity = NULL;
+    Activity* currentActivity = nullptr;
 };
 
 #endif	/* ROUTE_H */

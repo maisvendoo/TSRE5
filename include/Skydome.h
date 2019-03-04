@@ -26,7 +26,7 @@ public:
 
 private:
     bool loaded = false;
-    SFile* shapePointer = NULL;
+    SFile* shapePointer = nullptr;
 };
 
 #endif	/* SKYDOME_H */

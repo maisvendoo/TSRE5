@@ -23,8 +23,8 @@
 #include "ShapeTemplates.h"
 
 QHash<QString, QVector<OglObj*>> ProceduralShape::Shapes;
-ShapeTemplates *ProceduralShape::ShapeTemplateFile = NULL;
-GlobalDefinitions *ProceduralShape::GlobalDefinitionFile = NULL;
+ShapeTemplates *ProceduralShape::ShapeTemplateFile = nullptr;
+GlobalDefinitions *ProceduralShape::GlobalDefinitionFile = nullptr;
 
 bool ProceduralShape::Loaded = false;
 QMap<QString, ObjFile*> ProceduralShape::Files;
@@ -42,7 +42,7 @@ ObjFile* ProceduralShape::GetObjFile(QString name) {
     if(file.exists())
         path = pathRoute;
 
-    if (Files[path] == NULL)
+    if (Files[path] == nullptr)
         Files[path] = new ObjFile(path);
     return Files[path];
 }
@@ -107,7 +107,7 @@ void ProceduralShape::GenShape(QString templateName, QVector<OglObj*>& shape, Tr
     if (!Loaded)
         Load();
 
-    if (tsh == NULL)
+    if (tsh == nullptr)
         return;
 
     /*if(tsh->numpaths == 2 && tsh->xoverpts > 0){
@@ -119,7 +119,7 @@ void ProceduralShape::GenShape(QString templateName, QVector<OglObj*>& shape, Tr
     if(templateName == "" || templateName == "DEFAULT")
         templateName = "DefaultTrack";
     
-    if(ShapeTemplateFile->templates[templateName] == NULL)
+    if(ShapeTemplateFile->templates[templateName] == nullptr)
         return;
     
     ShapeTemplate *sTemplate = ShapeTemplateFile->templates[templateName];
@@ -130,7 +130,7 @@ void ProceduralShape::GenShape(QString templateName, QVector<OglObj*>& shape, Tr
 
         QVector<TSection> sections;
         for (int i = 0; i < section->n; i++) {
-            if (Game::currentRoute->tsection->sekcja[(int) section->sect[i]] != NULL)
+            if (Game::currentRoute->tsection->sekcja[(int) section->sect[i]] != nullptr)
                 sections.push_back(*Game::currentRoute->tsection->sekcja[(int) section->sect[i]]);
         }
         line[j].init(sections);
@@ -139,7 +139,7 @@ void ProceduralShape::GenShape(QString templateName, QVector<OglObj*>& shape, Tr
     QHashIterator<QString, ShapeTemplateElement*> i(sTemplate->elements);
     while (i.hasNext()) {
         i.next();
-        if(i.value() == NULL)
+        if(i.value() == nullptr)
             continue;
         if(i.value()->type == ShapeTemplateElement::TIE){
             if(tsh->numpaths == 2 && tsh->xoverpts > 0){
@@ -204,7 +204,7 @@ void ProceduralShape::GenShape(QString templateName, QVector<OglObj*>& shape, Co
     if(templateName == "" || templateName == "DEFAULT")
         templateName = "DefaultTrack";
     
-    if(ShapeTemplateFile->templates[templateName] == NULL)
+    if(ShapeTemplateFile->templates[templateName] == nullptr)
         return;
     
     ShapeTemplate *sTemplate = ShapeTemplateFile->templates[templateName];
@@ -571,12 +571,12 @@ void ProceduralShape::GenAdvancedTie(ShapeTemplateElement *stemplate, QVector<Og
         QVector<TSection> sections1;
         QVector<TSection> sections2;
         for (int i = 0; i < section->n; i++) {
-            if (Game::currentRoute->tsection->sekcja[(int) section->sect[i]] != NULL)
+            if (Game::currentRoute->tsection->sekcja[(int) section->sect[i]] != nullptr)
                 sections1.push_back(*Game::currentRoute->tsection->sekcja[(int) section->sect[i]]);
         }
         section = &tsh->path[1];
         for (int i = 0; i < section->n; i++) {
-            if (Game::currentRoute->tsection->sekcja[(int) section->sect[i]] != NULL)
+            if (Game::currentRoute->tsection->sekcja[(int) section->sect[i]] != nullptr)
                 sections2.push_back(*Game::currentRoute->tsection->sekcja[(int) section->sect[i]]);
         }
         //float* p = new float[4000000];
@@ -712,7 +712,7 @@ void ProceduralShape::GenAdvancedTie(ShapeTemplateElement *stemplate, QVector<Og
 
         QVector<TSection> sections;
         for(int i = 0; i < section->n; i++){
-            if(Game::currentRoute->tsection->sekcja[(int)section->sect[i]] != NULL)
+            if(Game::currentRoute->tsection->sekcja[(int)section->sect[i]] != nullptr)
             sections.push_back(*Game::currentRoute->tsection->sekcja[(int)section->sect[i]]);
         }
 

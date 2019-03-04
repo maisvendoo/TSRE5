@@ -140,7 +140,7 @@ bool Flex::NewFlex(int x, int z, float* p, float* q, float * dyntrackSections){
     Vec3::set((float*)dp1, p1.x, 0, p1.y);
     Vec3::set((float*)dp2, p1.x+v1.x*1000, 0, p1.y+v1.y*1000);
     
-    int distance = Intersections::pointSegmentDistance((float*)dp1,(float*)dp2, p, NULL);
+    int distance = Intersections::pointSegmentDistance((float*)dp1,(float*)dp2, p, nullptr);
     if(distance < 0.001){
         qDebug() <<"prosta";
         for(int i = 0; i < 10; i++){

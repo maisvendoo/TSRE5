@@ -17,7 +17,7 @@ Skydome::Skydome() {
     QString resPath = Game::root + "/routes/" + Game::route + "/shapes";  
     int shape = Game::currentShapeLib->addShape(resPath +"/skydome.s");
     this->shapePointer = Game::currentShapeLib->shape[shape];
-    if(this->shapePointer == NULL)
+    if(this->shapePointer == nullptr)
         return;
     loaded = true;
 }
@@ -36,7 +36,7 @@ void Skydome::render(GLUU* gluu, int renderMode) {
     
     gluu->enableTextures();
     gluu->mvPushMatrix();
-    if(shapePointer != NULL)
+    if(shapePointer != nullptr)
         shapePointer->render();
     gluu->mvPopMatrix();
 };

@@ -146,7 +146,7 @@ void RulerObj::setPosition(int x, int z, float* p){
             points.push_back(point);
     }
     modified = true;
-    if(line3d != NULL)
+    if(line3d != nullptr)
         line3d->deleteVBO();
 }
 
@@ -233,7 +233,7 @@ void RulerObj::render(GLUU* gluu, float lod, float posx, float posz, float* pos,
     if (jestPQ < 2) return;
     
     if(Game::showWorldObjPivotPoints){
-        if(pointer3d == NULL){
+        if(pointer3d == nullptr){
             pointer3d = new TrackItemObj(1);
             pointer3d->setMaterial(0.9,0.9,0.7);
         }
@@ -279,7 +279,7 @@ void RulerObj::render(GLUU* gluu, float lod, float posx, float posz, float* pos,
     if(!Game::viewInteractives) 
         return;
     
-    if(point3d == NULL){
+    if(point3d == nullptr){
         point3d = new OglObj();
         point3d->setMaterial(1,1,1);
         point3d->setLineWidth(8);
@@ -306,7 +306,7 @@ void RulerObj::render(GLUU* gluu, float lod, float posx, float posz, float* pos,
         point3dSelected->init(punkty, ptr, point3dSelected->V, GL_LINES);
         delete[] punkty;
     }
-    if(line3d == NULL){
+    if(line3d == nullptr){
         line3d = new OglObj();
         line3d->setLineWidth(2);
         line3d->setMaterial(1,1,1);

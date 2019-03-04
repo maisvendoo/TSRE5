@@ -96,9 +96,9 @@ public slots:
     void isData(QNetworkReply* r);
     
 private:
-    IghCoordinate* igh = NULL;
-    LatitudeLongitudeCoordinate* latlon = NULL;
-    PreciseTileCoordinate* aCoords = NULL;
+    IghCoordinate* igh = nullptr;
+    LatitudeLongitudeCoordinate* latlon = nullptr;
+    PreciseTileCoordinate* aCoords = nullptr;
     QColor* color;
     QColor* roadBorder;
     QPen* p;
@@ -114,7 +114,7 @@ private:
     int rX(float tlon);
     int rY(float tlat);
     void r(int &x, int &y, float lat, float lon);
-    void loadData(QByteArray* data = NULL);
+    void loadData(QByteArray* data = nullptr);
     void setColor(int r, int g, int b);
     void setColor(QColor* color);
     void setPenSettings(QPen* pen);

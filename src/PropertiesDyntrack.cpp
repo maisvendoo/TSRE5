@@ -198,17 +198,17 @@ void PropertiesDyntrack::msg(QString name, QString val){
         QMapIterator<QString, QPushButton*> i(buttonTools);
         while (i.hasNext()) {
             i.next();
-            if(i.value() == NULL)
+            if(i.value() == nullptr)
                 continue;
             i.value()->blockSignals(true);
             i.value()->setChecked(false);
         }
-        if(buttonTools[val] != NULL)
+        if(buttonTools[val] != nullptr)
             buttonTools[val]->setChecked(true);
         i.toFront();
         while (i.hasNext()) {
             i.next();
-            if(i.value() == NULL)
+            if(i.value() == nullptr)
                 continue;
             i.value()->blockSignals(false);
         }
@@ -216,8 +216,8 @@ void PropertiesDyntrack::msg(QString name, QString val){
 }
 
 void PropertiesDyntrack::showObj(GameObj* obj){
-    if(obj == NULL){
-        infoLabel->setText("NULL");
+    if(obj == nullptr){
+        infoLabel->setText("nullptr");
         return;
     }
     dobj = (DynTrackObj*)obj;
@@ -274,7 +274,7 @@ void PropertiesDyntrack::showObj(GameObj* obj){
 
 
 void PropertiesDyntrack::updateObj(GameObj* obj){
-    if(obj == NULL){
+    if(obj == nullptr){
         return;
     }
     dobj = (DynTrackObj*)obj;
@@ -300,8 +300,8 @@ void PropertiesDyntrack::updateObj(GameObj* obj){
 
 void PropertiesDyntrack::chSectEnabled(int idx){
     qDebug() << "chSectEnabled";
-    if(dobj == NULL){
-        infoLabel->setText("NULL");
+    if(dobj == nullptr){
+        infoLabel->setText("nullptr");
         return;
     }
     
@@ -333,8 +333,8 @@ void PropertiesDyntrack::chSectEnabled(int idx){
 
 void PropertiesDyntrack::sSectEnabled(int idx){
     qDebug() << "sSectEnabled";
-    if(dobj == NULL){
-        infoLabel->setText("NULL");
+    if(dobj == nullptr){
+        infoLabel->setText("nullptr");
         return;
     }
     if(idx%2 == 1 && fabs(this->sSectA[idx].value()) < 0.0001 )
@@ -349,7 +349,7 @@ void PropertiesDyntrack::sSectEnabled(int idx){
 }
 
 bool PropertiesDyntrack::support(GameObj* obj){
-    if(obj == NULL)
+    if(obj == nullptr)
         return false;
     if(obj->typeObj != GameObj::worldobj)
         return false;
@@ -365,7 +365,7 @@ void PropertiesDyntrack::flexEnabled(){
 
 void PropertiesDyntrack::flexData(int x, int z, float* p){
     emit enableTool("");
-    if(dobj == NULL) return;
+    if(dobj == nullptr) return;
     
     qDebug() << "flex1";
     
@@ -449,7 +449,7 @@ float PropertiesDyntrack::getStepValue(float step){
 }
 
 void PropertiesDyntrack::elevPromEnabled(QString val){
-    if(dobj == NULL){
+    if(dobj == nullptr){
         return;
     }
     bool ok = false;
@@ -479,7 +479,7 @@ void PropertiesDyntrack::elevPromEnabled(QString val){
 }
 
 void PropertiesDyntrack::elevStepEnabled(QString val){
-    if(dobj == NULL)
+    if(dobj == nullptr)
         return;
 
     bool ok = false;
@@ -494,7 +494,7 @@ void PropertiesDyntrack::elevStepEnabled(QString val){
 }
 
 void PropertiesDyntrack::elev1inXmEnabled(QString val){
-    if(dobj == NULL){
+    if(dobj == nullptr){
         return;
     }
     bool ok = false;
@@ -524,7 +524,7 @@ void PropertiesDyntrack::elev1inXmEnabled(QString val){
 }
 
 void PropertiesDyntrack::elevProgEnabled(QString val){
-    if(dobj == NULL){
+    if(dobj == nullptr){
          return;
     }
     bool ok = false;
@@ -554,7 +554,7 @@ void PropertiesDyntrack::elevProgEnabled(QString val){
 }
  
 void PropertiesDyntrack::elevPropEnabled(QString val){
-    if(dobj == NULL){
+    if(dobj == nullptr){
         return;
     }
     bool ok = false;

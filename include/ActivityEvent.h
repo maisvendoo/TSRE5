@@ -128,7 +128,7 @@ public:
     QString name;
     int time = -99999;
     int stationStop = -99999;
-    float* location = NULL;
+    float* location = nullptr;
     int sidingItem = -99999;
     float speed = -99999;
     int triggerOnStop = -99999;
@@ -139,9 +139,9 @@ public:
     QString textToDisplayDescriptionOfTask;
     QVector<Outcome*> outcomes;
     // deprecated - use only for OpenRails 1.2;
-    OrtsWeatherChange* ortsWeatherChangeDeprecated = NULL;
+    OrtsWeatherChange* ortsWeatherChangeDeprecated = nullptr;
     QVector<QString> ortsActSoundFileDeprecated;
-    //Outcome* outcome = NULL;
+    //Outcome* outcome = nullptr;
     
     ActivityEvent();
     ActivityEvent(int uid, EventCategory c);
@@ -186,9 +186,9 @@ public:
     void render(GLUU* gluu, float * playerT, float playerRot, int renderMode);
     
 protected:
-    Activity *parentActivity = NULL;
+    Activity *parentActivity = nullptr;
     static OglObj *simpleMarkerObj;
-    TextObj* txtMarkerObj = NULL;
+    TextObj* txtMarkerObj = nullptr;
     bool modified = false;
     bool isWagonList = false;
     bool selected = false;

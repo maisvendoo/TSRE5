@@ -19,8 +19,8 @@ FileBuffer* ReadFile::read(QFile* file) {
     file->read((char*)in, size);
     //QByteArray fileData = file->readAll();
     //unsigned char* in = (unsigned char*)fileData.data();
-    //unsigned char* out = NULL;
-    unsigned char* data = NULL;
+    //unsigned char* out = nullptr;
+    unsigned char* data = nullptr;
     //int maxSize = 25000000;
     int nLength = 0;
     unsigned short bom = *((unsigned short int*) & in[0]);

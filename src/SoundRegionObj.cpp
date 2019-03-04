@@ -80,7 +80,7 @@ void SoundRegionObj::deleteTrItems(){
 }
 
 void SoundRegionObj::initTrItems(float* tpos){
-    if(tpos == NULL)
+    if(tpos == nullptr)
         return;
     int trNodeId = tpos[0];
     float metry = tpos[1];
@@ -101,7 +101,7 @@ void SoundRegionObj::flip(bool flipShape){
 
     TDB* tdb = Game::trackDB;
     for(int j = 0; j < this->trItemId.size()/2; j++){
-        if(tdb->trackItems[this->trItemId[j*2+1]] == NULL)
+        if(tdb->trackItems[this->trItemId[j*2+1]] == nullptr)
             continue;
         tdb->trackItems[this->trItemId[j*2+1]]->flipSoundRegion();
     }
@@ -139,7 +139,7 @@ void SoundRegionObj::expandTrItems(){
     int len = 12;
     qDebug() << "and find intersections ";
     QVector<TDB::IntersectionPoint> ipoints;
-    tdb->getSegmentIntersectionPositionOnTDB(ipoints, NULL, playerT, buffer, len, (float*)&pos);
+    tdb->getSegmentIntersectionPositionOnTDB(ipoints, nullptr, playerT, buffer, len, (float*)&pos);
     qDebug() << "intersection count: "<<ipoints.size();
     
     int tid = tdb->findTrItemNodeId(this->trItemId[1]);
@@ -201,7 +201,7 @@ void SoundRegionObj::set(QString sh, long long int val){
         this->soundregionTrackType = val;
         TDB* tdb = Game::trackDB;
         for(int j = 0; j < this->trItemId.size()/2; j++){
-            if(tdb->trackItems[this->trItemId[j*2+1]] == NULL)
+            if(tdb->trackItems[this->trItemId[j*2+1]] == nullptr)
                 continue;
             tdb->trackItems[this->trItemId[j*2+1]]->trItemSRData[1] = val;
         }
@@ -274,11 +274,11 @@ void SoundRegionObj::renderTritems(GLUU* gluu, int selectionColor){
     TDB* tdb = Game::trackDB;
     
     if(drawPositions.size() == 0){
-        if(pointer3d == NULL){
+        if(pointer3d == nullptr){
             pointer3d = new TrackItemObj(2);
             pointer3d->setMaterial(1.0,1.0,0.0);
         }
-        if(pointer3dSelected == NULL){
+        if(pointer3dSelected == nullptr){
             pointer3dSelected = new TrackItemObj(2);
             pointer3dSelected->setMaterial(1.0,1.0,0.5);
         }
@@ -312,7 +312,7 @@ void SoundRegionObj::renderTritems(GLUU* gluu, int selectionColor){
             drawPosition[0] += 2048 * (drawPosition[5] - this->x);
             drawPosition[2] -= 2048 * (-drawPosition[6] - this->y);
             float *srd = tdb->trackItems[this->trItemId[i*2+1]]->trItemSRData;
-            if(srd != NULL)
+            if(srd != nullptr)
                 drawPosition[7] = srd[2];
             drawPositions.push_back(drawPosition);
             

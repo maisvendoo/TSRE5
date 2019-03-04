@@ -48,7 +48,7 @@ ForestObj::ForestObj(const ForestObj& o) : WorldObj(o) {
     population = o.population;
     tex = o.tex;
     init = false;
-    if(o.texturePath != NULL){
+    if(o.texturePath != nullptr){
         texturePath = new QString();
         *texturePath = *o.texturePath;
     }
@@ -249,7 +249,7 @@ void ForestObj::translate(float px, float py, float pz){
 }
 
 void ForestObj::rotate(float x, float y, float z){
-    if(matrix3x3 != NULL) matrix3x3 = NULL;
+    if(matrix3x3 != nullptr) matrix3x3 = nullptr;
     if(x!=0) Quat::rotateX(this->qDirection, this->qDirection, x);
     if(y!=0) Quat::rotateY(this->qDirection, this->qDirection, y);
     if(z!=0) Quat::rotateZ(this->qDirection, this->qDirection, z);
@@ -400,9 +400,9 @@ void ForestObj::drawShape(){
                 bBox[3] += position[2];            
                 qDebug() << bBox[0] << bBox[1] << bBox[2] << bBox[3];
             
-                if(Game::trackDB != NULL)
+                if(Game::trackDB != nullptr)
                     Game::trackDB->fillNearestSquaredDistanceToTDBXZ(posT, fpoints, bBox);
-                if(Game::roadDB != NULL)
+                if(Game::roadDB != nullptr)
                     Game::roadDB->fillNearestSquaredDistanceToTDBXZ(posT, fpoints, bBox);
             }
             for(int uu = 0; uu < population; uu++){

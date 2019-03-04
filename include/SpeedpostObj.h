@@ -62,16 +62,16 @@ private:
     int speedPostId = -1;
     int speedPostType = -1;
     QString speedDigitTex;
-    float* speedSignShape = NULL;
+    float* speedSignShape = nullptr;
     float speedTextSize[3];
-    //int *trItemId = NULL;
+    //int *trItemId = nullptr;
     QVector<int> trItemId;
     //int trItemIdCount = 0;
-    TrackItemObj* pointer3d = NULL; 
-    TrackItemObj* pointer3dSelected = NULL; 
+    TrackItemObj* pointer3d = nullptr; 
+    TrackItemObj* pointer3dSelected = nullptr; 
     QVector<float*> drawPositions;
-    float* drawPosition = NULL;
-    OglObj* drawLine = NULL;
+    float* drawPosition = nullptr;
+    OglObj* drawLine = nullptr;
     
     void renderTritems(GLUU* gluu, int selectionColor);
     int selectionValue = 0;

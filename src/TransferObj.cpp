@@ -36,7 +36,7 @@ TransferObj::TransferObj(const TransferObj& o) : WorldObj(o) {
 
     tex = o.tex;
     init = false;
-    if(o.texturePath != NULL){
+    if(o.texturePath != nullptr){
         texturePath = new QString();
         *texturePath = *o.texturePath;
     }
@@ -173,7 +173,7 @@ void TransferObj::translate(float px, float py, float pz){
 }
 
 void TransferObj::rotate(float x, float y, float z){
-    if(matrix3x3 != NULL) matrix3x3 = NULL;
+    if(matrix3x3 != nullptr) matrix3x3 = nullptr;
     if(x!=0) Quat::rotateX(this->qDirection, this->qDirection, x);
     if(y!=0) Quat::rotateY(this->qDirection, this->qDirection, y);
     if(z!=0) Quat::rotateZ(this->qDirection, this->qDirection, z);

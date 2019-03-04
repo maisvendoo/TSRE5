@@ -49,10 +49,10 @@ TRnode::TRnode(const TRnode& o) {
 }
 
 TRnode::~TRnode() {
-    if(trVectorSection != NULL)
+    if(trVectorSection != nullptr)
         delete[] trVectorSection;
         
-    if(trItemRef != NULL)
+    if(trItemRef != nullptr)
         delete[] trItemRef;
 }
 

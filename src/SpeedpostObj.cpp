@@ -46,7 +46,7 @@ SpeedpostObj::SpeedpostObj(const SpeedpostObj& o) : WorldObj(o) {
     speedPostId = o.speedPostId;
     speedPostType = o.speedPostType;
     speedDigitTex = o.speedDigitTex;
-    if(o.speedSignShape != NULL){
+    if(o.speedSignShape != nullptr){
         speedSignShape = new float[(int)o.speedSignShape[0]*4+1];
         for(int i = 0; i < this->speedSignShape[0]*4+1; i++)
             speedSignShape[i] = o.speedSignShape[i];
@@ -75,8 +75,8 @@ void SpeedpostObj::load(int x, int y) {
     this->size = -1;
     this->skipLevel = 1;
     this->modified = false;
-    this->drawPosition = NULL;
-    this->pointer3d = NULL;
+    this->drawPosition = nullptr;
+    this->pointer3d = nullptr;
     setMartix();
 }
 
@@ -98,7 +98,7 @@ QString SpeedpostObj::getSpeedpostType(){
         return "";
     }
     TRitem* item = Game::trackDB->trackItems[this->trItemId[1]];
-    if(item == NULL) return "";
+    if(item == nullptr) return "";
     TRitem::SType val = item->getSpeedpostType();
     if((val) == TRitem::MILEPOST)
         return QString("milepost");
@@ -117,7 +117,7 @@ float SpeedpostObj::getSpeed(){
         return 0;
     }
     TRitem* item = Game::trackDB->trackItems[this->trItemId[1]];
-    if(item == NULL) return 0;
+    if(item == nullptr) return 0;
     return item->getSpeedpostSpeed();
 }
 
@@ -127,7 +127,7 @@ float SpeedpostObj::getNumber(){
         return 0;
     }
     TRitem* item = Game::trackDB->trackItems[this->trItemId[1]];
-    if(item == NULL) return 0;
+    if(item == nullptr) return 0;
     return item->getSpeedpostNumber();
 }
 
@@ -138,7 +138,7 @@ void SpeedpostObj::setSpeed(float val){
     }
     TDB* tdb = Game::trackDB;
     for(int j = 0; j < this->trItemId.size()/2; j++){
-        if(tdb->trackItems[this->trItemId[j*2+1]] == NULL)
+        if(tdb->trackItems[this->trItemId[j*2+1]] == nullptr)
             continue;
         tdb->trackItems[this->trItemId[j*2+1]]->setSpeedpostSpeed(val);
     }
@@ -152,7 +152,7 @@ void SpeedpostObj::setNumber(float val){
     }
     TDB* tdb = Game::trackDB;
     for(int j = 0; j < this->trItemId.size()/2; j++){
-        if(tdb->trackItems[this->trItemId[j*2+1]] == NULL)
+        if(tdb->trackItems[this->trItemId[j*2+1]] == nullptr)
             continue;
         tdb->trackItems[this->trItemId[j*2+1]]->setSpeedpostNumber(val);
     }
@@ -163,10 +163,10 @@ void SpeedpostObj::setSpeedUnitId(int val){
     TDB* tdb = Game::trackDB;
     if(this->trItemId.size() < 2)
         return;
-    if(tdb->trackItems[this->trItemId[1]] == NULL)
+    if(tdb->trackItems[this->trItemId[1]] == nullptr)
         return;
     for(int j = 0; j < this->trItemId.size()/2; j++){
-        if(tdb->trackItems[this->trItemId[j*2+1]] == NULL)
+        if(tdb->trackItems[this->trItemId[j*2+1]] == nullptr)
             continue;
         tdb->trackItems[this->trItemId[j*2+1]]->setSpeedPostSpeedUnitId(val);
     }
@@ -177,7 +177,7 @@ int SpeedpostObj::getSpeedUnitId(){
     TDB* tdb = Game::trackDB;
     if(this->trItemId.size() < 2)
         return 0;
-    if(tdb->trackItems[this->trItemId[1]] == NULL)
+    if(tdb->trackItems[this->trItemId[1]] == nullptr)
         return 0;
     return tdb->trackItems[this->trItemId[1]]->getSpeedPostSpeedUnitId();
 }
@@ -186,7 +186,7 @@ void SpeedpostObj::setSpeedInsteadNumber(bool val){
     TDB* tdb = Game::trackDB;
     if(this->trItemId.size() < 2)
         return;
-    if(tdb->trackItems[this->trItemId[1]] == NULL)
+    if(tdb->trackItems[this->trItemId[1]] == nullptr)
         return;
     tdb->trackItems[this->trItemId[1]]->setSpeedpostSpeedInsteadNumber(val);
     this->modified = true; 
@@ -196,7 +196,7 @@ void SpeedpostObj::setNumberInsteadSpeed(bool val){
     TDB* tdb = Game::trackDB;
     if(this->trItemId.size() < 2)
         return;
-    if(tdb->trackItems[this->trItemId[1]] == NULL)
+    if(tdb->trackItems[this->trItemId[1]] == nullptr)
         return;
     tdb->trackItems[this->trItemId[1]]->setSpeedpostNumberInsteadSpeed(val);
     this->modified = true; 
@@ -206,7 +206,7 @@ bool SpeedpostObj::getSpeedInsteadNumber(){
     TDB* tdb = Game::trackDB;
     if(this->trItemId.size() < 2)
         return 0;
-    if(tdb->trackItems[this->trItemId[1]] == NULL)
+    if(tdb->trackItems[this->trItemId[1]] == nullptr)
         return 0;
     return tdb->trackItems[this->trItemId[1]]->getSpeedpostSpeedInsteadNumber();
 }
@@ -215,7 +215,7 @@ bool SpeedpostObj::getNumberInsteadSpeed(){
     TDB* tdb = Game::trackDB;
     if(this->trItemId.size() < 2)
         return 0;
-    if(tdb->trackItems[this->trItemId[1]] == NULL)
+    if(tdb->trackItems[this->trItemId[1]] == nullptr)
         return 0;
     return tdb->trackItems[this->trItemId[1]]->getSpeedpostNumberInsteadSpeed();
 }
@@ -224,7 +224,7 @@ int SpeedpostObj::getTrainType(){
     TDB* tdb = Game::trackDB;
     if(this->trItemId.size() < 2)
         return 0;
-    if(tdb->trackItems[this->trItemId[1]] == NULL)
+    if(tdb->trackItems[this->trItemId[1]] == nullptr)
         return 0;
     return tdb->trackItems[this->trItemId[1]]->getSpeedPostTrainType();
 }
@@ -233,7 +233,7 @@ bool SpeedpostObj::isNumberDot(){
     TDB* tdb = Game::trackDB;
     if(this->trItemId.size() < 2)
         return 0;
-    if(tdb->trackItems[this->trItemId[1]] == NULL)
+    if(tdb->trackItems[this->trItemId[1]] == nullptr)
         return 0;
     return tdb->trackItems[this->trItemId[1]]->getSpeedPostNumberDot();
 }
@@ -242,10 +242,10 @@ void SpeedpostObj::setNumberDot(bool val){
     TDB* tdb = Game::trackDB;
     if(this->trItemId.size() < 2)
         return;
-    if(tdb->trackItems[this->trItemId[1]] == NULL)
+    if(tdb->trackItems[this->trItemId[1]] == nullptr)
         return;
     for(int j = 0; j < this->trItemId.size()/2; j++){
-        if(tdb->trackItems[this->trItemId[j*2+1]] == NULL)
+        if(tdb->trackItems[this->trItemId[j*2+1]] == nullptr)
             continue;
         tdb->trackItems[this->trItemId[j*2+1]]->setSpeedPostNumberDot(val);
     }
@@ -256,7 +256,7 @@ void SpeedpostObj::setTrainType(int val){
     TDB* tdb = Game::trackDB;
 
     for(int j = 0; j < this->trItemId.size()/2; j++){
-        if(tdb->trackItems[this->trItemId[j*2+1]] == NULL)
+        if(tdb->trackItems[this->trItemId[j*2+1]] == nullptr)
             continue;
         tdb->trackItems[this->trItemId[j*2+1]]->setSpeedPostTrainType(val);
     }
@@ -272,15 +272,15 @@ void SpeedpostObj::flip(bool flipShape){
 
     TDB* tdb = Game::trackDB;
     for(int j = 0; j < this->trItemId.size()/2; j++){
-        if(tdb->trackItems[this->trItemId[j*2+1]] == NULL)
+        if(tdb->trackItems[this->trItemId[j*2+1]] == nullptr)
             continue;
         tdb->trackItems[this->trItemId[j*2+1]]->flipSpeedpost();
     }
     this->modified = true; 
     drawPositions.clear();
     //delete[] drawPositions;
-    //drawPositions = NULL;
-    drawPosition = NULL;
+    //drawPositions = nullptr;
+    drawPosition = nullptr;
 }
 
 void SpeedpostObj::expandTrItems(){
@@ -310,7 +310,7 @@ void SpeedpostObj::expandTrItems(){
     int len = 12;
     qDebug() << "and find intersections ";
     QVector<TDB::IntersectionPoint> ipoints;
-    tdb->getSegmentIntersectionPositionOnTDB(ipoints, NULL, playerT, buffer, len, (float*)&pos);
+    tdb->getSegmentIntersectionPositionOnTDB(ipoints, nullptr, playerT, buffer, len, (float*)&pos);
     qDebug() << "intersection count: "<<ipoints.size();
     
     int tid = tdb->findTrItemNodeId(this->trItemId[1]);
@@ -340,7 +340,7 @@ int SpeedpostObj::fixTrackItems(){
     if(this->trItemId.size() < 2)
         return -1;
     TRitem* item = Game::trackDB->trackItems[this->trItemId[1]];
-    if(item == NULL) 
+    if(item == nullptr) 
         return -1;
     if(this->trItemId.size() < 4)
         return 0;
@@ -353,7 +353,7 @@ int SpeedpostObj::fixTrackItems(){
         if(this->trItemId[i*2] != 0)
             continue;
         item = Game::trackDB->trackItems[this->trItemId[i*2+1]];
-        if(item == NULL) {
+        if(item == nullptr) {
             errors++;
             continue;
         }
@@ -398,7 +398,7 @@ void SpeedpostObj::deleteSelectedTrItem(){
 }
 
 void SpeedpostObj::initTrItems(float* tpos){
-    if(tpos == NULL)
+    if(tpos == nullptr)
         return;
     int trNodeId = tpos[0];
     float metry = tpos[1];
@@ -612,7 +612,7 @@ void SpeedpostObj::render(GLUU* gluu, float lod, float posx, float posz, float* 
     gluu->currentShader->setUniformValue(gluu->currentShader->mvMatrixUniform, *reinterpret_cast<float(*)[4][4]> (gluu->mvMatrix));
     
     if(Game::showWorldObjPivotPoints){
-        if(pointer3d == NULL){
+        if(pointer3d == nullptr){
             pointer3d = new TrackItemObj(1);
             pointer3d->setMaterial(0.9,0.9,0.7);
         }
@@ -654,11 +654,11 @@ void SpeedpostObj::renderTritems(GLUU* gluu, int selectionColor){
         int minlidx = -1;
         float minlval = 9999;
         
-        if(pointer3d == NULL){
+        if(pointer3d == nullptr){
             pointer3d = new TrackItemObj(0);
             pointer3d->setMaterial(0.7,0.7,0.7);
         }
-        if(pointer3dSelected == NULL){
+        if(pointer3dSelected == nullptr){
             pointer3dSelected = new TrackItemObj(0);
             pointer3dSelected->setMaterial(0.9,0.9,0.9);
         }
@@ -715,7 +715,7 @@ void SpeedpostObj::renderTritems(GLUU* gluu, int selectionColor){
     }
     
     //int aaa = drawPosition[0];
-    //if(pos == NULL) return;
+    //if(pos == nullptr) return;
     gluu->currentShader->setUniformValue(gluu->currentShader->mvMatrixUniform, *reinterpret_cast<float(*)[4][4]> (gluu->mvMatrix));
     drawLine->render();
     int useSC;

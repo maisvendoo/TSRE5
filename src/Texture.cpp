@@ -250,7 +250,7 @@ void Texture::sendToUndo(int id){
 }
 
 void Texture::fillData(unsigned char* data){
-    if(imageData == NULL)
+    if(imageData == nullptr)
         return;
     memcpy(imageData, data, bytesPerPixel*width*height);
     update();
@@ -262,8 +262,8 @@ void Texture::paint(Brush* brush, float x, float z){
     
     Texture* tex = brush->tex;
     
-    if(tex != NULL){
-        if(!tex->loaded) tex = NULL;
+    if(tex != nullptr){
+        if(!tex->loaded) tex = nullptr;
         else if(!tex->editable)
             tex->setEditable();
     }
@@ -293,7 +293,7 @@ void Texture::paint(Brush* brush, float x, float z){
             txi*=1;
             tzj*=1;
             
-            if(tex != NULL && brush->useTexture){
+            if(tex != nullptr && brush->useTexture){
                 
                 if(tzj >= tex->width){
                     tzj = tzj%tex->width;
@@ -362,7 +362,7 @@ bool Texture::GLTextures(bool mipmaps) {
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
     delete[] imageData;
-    imageData = NULL;
+    imageData = nullptr;
     this->editable = false;
     glLoaded = true;
     return true;

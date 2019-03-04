@@ -36,7 +36,7 @@ PlayActivitySelectWindow::PlayActivitySelectWindow() : QDialog(){
 
 void PlayActivitySelectWindow::setRoute(Route* r){
     route = r;
-    if(r == NULL)
+    if(r == nullptr)
         return;
     
     actList.clear();
@@ -54,7 +54,7 @@ void PlayActivitySelectWindow::okButtonEnabled(){
 void PlayActivitySelectWindow::activitySelected(QString val){
     int id = actList.currentData().toInt();
     Activity *a = ActLib::Act[id];
-    if(a == NULL)
+    if(a == nullptr)
         return;
     QString txt = a->header->description;
     txt.replace("\\n","\n");

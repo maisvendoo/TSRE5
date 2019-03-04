@@ -67,10 +67,10 @@ public:
 private:
     QuadTree* quadTree;
     QuadTree* quadTreeLo;
-    QuadTree* currentQuadTree = NULL;
+    QuadTree* currentQuadTree = nullptr;
     QHash<unsigned int, TerrainInfo*> terrainQt;
     QHash<unsigned int, TerrainInfo*> terrainQtLo;
-    QHash<unsigned int, TerrainInfo*> *currentQt = NULL;
+    QHash<unsigned int, TerrainInfo*> *currentQt = nullptr;
     
     void spiralLoop(int n, int &x, int &y);
 };

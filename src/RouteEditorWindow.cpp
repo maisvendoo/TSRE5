@@ -128,7 +128,7 @@ RouteEditorWindow::RouteEditorWindow() {
     
     //for (std::vector<PropertiesAbstract*>::iterator it = objProperties.begin(); it != objProperties.end(); ++it) {
     foreach (PropertiesAbstract *it, objProperties){
-        if(it == NULL) continue;
+        if(it == nullptr) continue;
         it->hide();
         //console.log(obj.type);
         mainLayout3->addWidget(it);
@@ -418,7 +418,7 @@ RouteEditorWindow::RouteEditorWindow() {
     
     //for (std::vector<PropertiesAbstract*>::iterator it = objProperties.begin(); it != objProperties.end(); ++it) {
     foreach (PropertiesAbstract *it, objProperties){
-        if(it == NULL) continue;
+        if(it == nullptr) continue;
         QObject::connect(it, SIGNAL(enableTool(QString)),
             glWidget, SLOT(enableTool(QString)));   
         QObject::connect(glWidget, SIGNAL(sendMsg(QString, QString)), 
@@ -725,16 +725,16 @@ void RouteEditorWindow::showProperties(GameObj* obj){
     // hide all
     //for (std::vector<PropertiesAbstract*>::iterator it = objProperties.begin(); it != objProperties.end(); ++it) {
     foreach (PropertiesAbstract *it, objProperties){
-        if(it == NULL) continue;
+        if(it == nullptr) continue;
         it->hide();
     }
-    if(obj == NULL) return;
+    if(obj == nullptr) return;
     // show 
     //qDebug() << obj->typeObj;
 
     //for (std::vector<PropertiesAbstract*>::iterator it = objProperties.begin(); it != objProperties.end(); ++it) {
     foreach (PropertiesAbstract *it, objProperties){
-        if(it == NULL) continue;
+        if(it == nullptr) continue;
         if(!it->support(obj)) continue;
         it->show();
         it->showObj(obj);
@@ -743,12 +743,12 @@ void RouteEditorWindow::showProperties(GameObj* obj){
 }
 
 void RouteEditorWindow::updateProperties(GameObj* obj){
-    if(obj == NULL) return;
+    if(obj == nullptr) return;
     // show 
 
     //for (std::vector<PropertiesAbstract*>::iterator it = objProperties.begin(); it != objProperties.end(); ++it) {
     foreach (PropertiesAbstract *it, objProperties){
-        if(it == NULL) continue;
+        if(it == nullptr) continue;
         if(it->isVisible() && it->support(obj)){
             it->updateObj(obj);
             return;

@@ -96,7 +96,7 @@ ActivityEventWindow::ActivityEventWindow(QWidget* parent) : QWidget(parent) {
 }
 
 void ActivityEventWindow::eventNameChanged(int id){
-    if(activity == NULL)
+    if(activity == nullptr)
         return;
     int j = -1;
     /*for(int i = 0; i < activity->event.size(); i++ ){
@@ -106,11 +106,11 @@ void ActivityEventWindow::eventNameChanged(int id){
         }
     }
     if(j == -1){*/
-    if(activity->currentEventSelected == NULL){
+    if(activity->currentEventSelected == nullptr){
         showEvents(activity);
     }
 
-    QListWidget *list = NULL;
+    QListWidget *list = nullptr;
     if(activity->currentEventSelected->category == ActivityEvent::CategoryAction)
         list = &actionList;
     if(activity->currentEventSelected->category == ActivityEvent::CategoryLocation)
@@ -151,7 +151,7 @@ void ActivityEventWindow::showEvents(Activity* act){
 }
 
 void ActivityEventWindow::eventListSelected(QListWidgetItem * item){
-    if(activity == NULL)
+    if(activity == nullptr)
         return;
     eventProperties->showEvent(&activity->event[item->type()]);
     activity->currentEventSelected = &activity->event[item->type()];
@@ -160,7 +160,7 @@ void ActivityEventWindow::eventListSelected(QListWidgetItem * item){
 }
 
 void ActivityEventWindow::bNewEventSelected(){
-    if(activity == NULL)
+    if(activity == nullptr)
         return;
     ActivityEvent::EventCategory category = ActivityEvent::CategoryUndefined;
 
@@ -177,7 +177,7 @@ void ActivityEventWindow::bNewEventSelected(){
 }
 
 void ActivityEventWindow::bDeleteEventSelected(){
-    if(activity == NULL)
+    if(activity == nullptr)
         return;
     activity->deleteCurrentEvent();
     showEvents(activity);

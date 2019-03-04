@@ -21,7 +21,7 @@ ShapeViewWindow::ShapeViewWindow(QWidget* parent) : QWidget(parent) {
     this->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
     this->resize(384,256);
     glShapeWidget = new ShapeViewerGLWidget(parent);
-    if(Game::colorShapeView != NULL)
+    if(Game::colorShapeView != nullptr)
         glShapeWidget->setBackgroundGlColor(Game::colorShapeView->redF(), Game::colorShapeView->greenF(), Game::colorShapeView->blueF());
     camera = new CameraRot();
     camera->setPos(0,0,0);

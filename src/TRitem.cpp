@@ -23,11 +23,11 @@
 #include "TrackItemObj.h"
 #include "TRnode.h"
 
-TrackItemObj* TRitem::pointer3d = NULL;
+TrackItemObj* TRitem::pointer3d = nullptr;
 
 TRitem* TRitem::newPlatformItem(int trItemId, float metry) {
     TRitem* trit = new TRitem(trItemId);
-    if (!trit->init("platformitem")) return NULL;
+    if (!trit->init("platformitem")) return nullptr;
     trit->trItemSData1 = metry;
     trit->trItemSData2 = 2;
     trit->platformTrItemData = new unsigned int[2];
@@ -42,7 +42,7 @@ TRitem* TRitem::newPlatformItem(int trItemId, float metry) {
 
 TRitem* TRitem::newSidingItem(int trItemId, float metry) {
     TRitem* trit = new TRitem(trItemId);
-    if (!trit->init("sidingitem")) return NULL;
+    if (!trit->init("sidingitem")) return nullptr;
     trit->trItemSData1 = metry;
     trit->trItemSData2 = 2;
     trit->platformTrItemData = new unsigned int[2];
@@ -54,7 +54,7 @@ TRitem* TRitem::newSidingItem(int trItemId, float metry) {
 
 TRitem* TRitem::newCarspawnerItem(int trItemId, float metry) {
     TRitem* trit = new TRitem(trItemId);
-    if (!trit->init("carspawneritem")) return NULL;
+    if (!trit->init("carspawneritem")) return nullptr;
     trit->trItemSData1 = metry;
     trit->trItemSData2 = 1;
     trit->platformTrItemData = new unsigned int[2];
@@ -65,7 +65,7 @@ TRitem* TRitem::newCarspawnerItem(int trItemId, float metry) {
 
 TRitem* TRitem::newPickupItem(int trItemId, float metry) {
     TRitem* trit = new TRitem(trItemId);
-    if (!trit->init("pickupitem")) return NULL;
+    if (!trit->init("pickupitem")) return nullptr;
     trit->trItemSData1 = metry;
     trit->trItemSData2 = 6;
     trit->pickupTrItemData1 = 0;
@@ -75,7 +75,7 @@ TRitem* TRitem::newPickupItem(int trItemId, float metry) {
 
 TRitem* TRitem::newLevelCrItem(int trItemId, float metry) {
     TRitem* trit = new TRitem(trItemId);
-    if (!trit->init("levelcritem")) return NULL;
+    if (!trit->init("levelcritem")) return nullptr;
     trit->trItemSData1 = metry;
     trit->trItemSData2 = 6;
     return trit;
@@ -83,7 +83,7 @@ TRitem* TRitem::newLevelCrItem(int trItemId, float metry) {
 
 TRitem* TRitem::newSoundRegionItem(int trItemId, float metry) {
     TRitem* trit = new TRitem(trItemId);
-    if (!trit->init("soundregionitem")) return NULL;
+    if (!trit->init("soundregionitem")) return nullptr;
     trit->trItemSData1 = metry;
     trit->trItemSData2 = 6;
     trit->trItemSRData = new float[3];
@@ -92,7 +92,7 @@ TRitem* TRitem::newSoundRegionItem(int trItemId, float metry) {
 
 TRitem* TRitem::newHazardItem(int trItemId, float metry) {
     TRitem* trit = new TRitem(trItemId);
-    if (!trit->init("hazzarditem")) return NULL;
+    if (!trit->init("hazzarditem")) return nullptr;
     trit->trItemSData1 = metry;
     trit->trItemSData2 = 6;
     return trit;
@@ -100,7 +100,7 @@ TRitem* TRitem::newHazardItem(int trItemId, float metry) {
 
 TRitem* TRitem::newCrossOverItem(int trItemId, float metry, int trItemId2, int shapeIdx){
     TRitem* trit = new TRitem(trItemId);
-    if (!trit->init("crossoveritem")) return NULL;
+    if (!trit->init("crossoveritem")) return nullptr;
     trit->trItemSData1 = metry;
     trit->trItemSData2 = 2;
     trit->crossoverTrItemData = new int[2];
@@ -111,7 +111,7 @@ TRitem* TRitem::newCrossOverItem(int trItemId, float metry, int trItemId2, int s
 
 TRitem* TRitem::newSignalItem(int trItemId, float metry, int direction, unsigned int flags, QString type) {
     TRitem* trit = new TRitem(trItemId);
-    if (!trit->init("signalitem")) return NULL;
+    if (!trit->init("signalitem")) return nullptr;
     trit->trItemSData1 = metry;
     trit->trItemSData2 = 2;
     trit->platformTrItemData = new unsigned int[2];
@@ -125,7 +125,7 @@ TRitem* TRitem::newSignalItem(int trItemId, float metry, int direction, unsigned
 
 TRitem* TRitem::newSpeedPostItem(int trItemId, float metry, int speedPostType) {
     TRitem* trit = new TRitem(trItemId);
-    if (!trit->init("speedpostitem")) return NULL;
+    if (!trit->init("speedpostitem")) return nullptr;
     trit->trItemSData1 = metry;
     trit->trItemSData2 = 6;
     trit->platformTrItemData = new unsigned int[2];
@@ -231,23 +231,23 @@ TRitem::TRitem(const TRitem& o) {
     trItemSData2 = o.trItemSData2;
     
     trItemPData = o.trItemPData;
-    if(trItemPData != NULL){
+    if(trItemPData != nullptr){
         trItemPData = new float[4];
         memcpy(trItemPData, o.trItemPData, sizeof(float[4]));
     }
     trItemRData = o.trItemRData;
-    if(trItemRData != NULL){
+    if(trItemRData != nullptr){
         trItemRData = new float[5];
         memcpy(trItemRData, o.trItemRData, sizeof(float[5]));
     }
 
     crossoverTrItemData = o.crossoverTrItemData;
-    if(crossoverTrItemData != NULL){
+    if(crossoverTrItemData != nullptr){
         crossoverTrItemData = new int[2];
         memcpy(crossoverTrItemData, o.crossoverTrItemData, sizeof(int[2]));
     }
     platformTrItemData = o.platformTrItemData;
-    if(platformTrItemData != NULL){
+    if(platformTrItemData != nullptr){
         platformTrItemData = new unsigned int[2];
         memcpy(platformTrItemData, o.platformTrItemData, sizeof(unsigned int[2]));
     }
@@ -258,12 +258,12 @@ TRitem::TRitem(const TRitem& o) {
     platformNumPassengersWaiting = o.platformNumPassengersWaiting;
     
     trItemSRData = o.trItemSRData;
-    if(trItemSRData != NULL){
+    if(trItemSRData != nullptr){
         trItemSRData = new float[3];
         memcpy(trItemSRData, o.trItemSRData, sizeof(float[3]));
     }
     speedpostTrItemData = o.speedpostTrItemData;
-    if(speedpostTrItemData != NULL){
+    if(speedpostTrItemData != nullptr){
         speedpostTrItemData = new float[4];
         memcpy(speedpostTrItemData, o.speedpostTrItemData, sizeof(float[4]));
     }
@@ -275,12 +275,12 @@ TRitem::TRitem(const TRitem& o) {
     trSignalDirs = o.trSignalDirs;
         
     trSignalDir = o.trSignalDir;
-    if(trSignalDir != NULL){
+    if(trSignalDir != nullptr){
         trSignalDir = new int[trSignalDirs * 4];
         memcpy(trSignalDir, o.trSignalDir, sizeof(int[trSignalDirs * 4]));
     }
     trSignalRDir = o.trSignalRDir;
-    if(trSignalRDir != NULL){
+    if(trSignalRDir != nullptr){
         trSignalRDir = new float[trSignalDirs * 6];
         memcpy(trSignalRDir, o.trSignalRDir, sizeof(float[trSignalDirs * 6]));
     }
@@ -294,34 +294,34 @@ TRitem::TRitem(const TRitem& o) {
 }
 
 TRitem::~TRitem() {
-    if(trItemPData != NULL)
+    if(trItemPData != nullptr)
         delete[] trItemPData;
-    if(trItemRData != NULL)
+    if(trItemRData != nullptr)
         delete[] trItemRData;
-    if(crossoverTrItemData != NULL)
+    if(crossoverTrItemData != nullptr)
         delete[] crossoverTrItemData;
-    if(platformTrItemData != NULL)
+    if(platformTrItemData != nullptr)
         delete[] platformTrItemData;
-    if(trItemSRData != NULL)
+    if(trItemSRData != nullptr)
         delete[] trItemSRData;
-    if(speedpostTrItemData != NULL)
+    if(speedpostTrItemData != nullptr)
         delete[] speedpostTrItemData;
-    if(trSignalDir != NULL)
+    if(trSignalDir != nullptr)
         delete[] trSignalDir;
-    if(trSignalRDir != NULL)
+    if(trSignalRDir != nullptr)
         delete[] trSignalRDir;
 }
 
 bool TRitem::init(QString sh) {
     type = sh;
-    trItemPData = NULL;
-    trItemRData = NULL;
-    crossoverTrItemData = NULL;
-    platformTrItemData = NULL;
-    trItemSRData = NULL;
-    speedpostTrItemData = NULL;
-    trSignalDir = NULL;
-    //pickupTrItemData = NULL;
+    trItemPData = nullptr;
+    trItemRData = nullptr;
+    crossoverTrItemData = nullptr;
+    platformTrItemData = nullptr;
+    trItemSRData = nullptr;
+    speedpostTrItemData = nullptr;
+    trSignalDir = nullptr;
+    //pickupTrItemData = nullptr;
 
     if (sh == "crossoveritem") return true;
     if (sh == "signalitem") return true;
@@ -489,7 +489,7 @@ void TRitem::set(QString sh, FileBuffer* data) {
 }
 
 void TRitem::setTrItemRData(float* posT, float* pos) {
-    if (this->trItemRData == NULL)
+    if (this->trItemRData == nullptr)
         this->trItemRData = new float[5];
     this->trItemRData[0] = pos[0];
     this->trItemRData[1] = pos[1];
@@ -499,7 +499,7 @@ void TRitem::setTrItemRData(float* posT, float* pos) {
 }
 
 void TRitem::setTrItemPData(float* posT, float* pos) {
-    if (this->trItemPData == NULL)
+    if (this->trItemPData == nullptr)
         this->trItemPData = new float[4];
     this->trItemPData[0] = pos[0];
     this->trItemPData[1] = pos[2];
@@ -518,7 +518,7 @@ void TRitem::setSignalDirection(int dir) {
 /*void TRitem::linkSignal(int from, int to) {
     TDB* tdb = Game::trackDB;
     TRnode* n = tdb->trackNodes[from];
-    if(n == NULL) return;
+    if(n == nullptr) return;
     if(n->typ != 2) {
         qDebug() << "from is no junction";
         return;
@@ -528,8 +528,8 @@ void TRitem::setSignalDirection(int dir) {
     TRnode* n1 = tdb->trackNodes[n->TrPinS[1]];
     TRnode* n2 = tdb->trackNodes[n->TrPinS[2]];
     TRnode* nd;
-    if(n1 == NULL) return;
-    if(n2 == NULL) return;
+    if(n1 == nullptr) return;
+    if(n2 == nullptr) return;
     if(n1->TrPinS[0] == to || n1->TrPinS[1] == to){
         direction = 0;
         nd = n1;
@@ -563,7 +563,7 @@ void TRitem::setSignalDirection(int dir) {
 void TRitem::linkSignal(int trackId, int dist) {
     TDB* tdb = Game::trackDB;
     TRnode* n = tdb->trackNodes[trackId];
-    if(n == NULL) return;
+    if(n == nullptr) return;
     if(n->typ != 1) {
         qDebug() << "link is no track";
         return;
@@ -584,8 +584,8 @@ void TRitem::linkSignal(int trackId, int dist) {
     TRnode* n1 = tdb->trackNodes[n->TrPinS[1]];
     TRnode* n2 = tdb->trackNodes[n->TrPinS[2]];
 
-    if(n1 == NULL) return;
-    if(n2 == NULL) return;
+    if(n1 == nullptr) return;
+    if(n2 == nullptr) return;
     if(n->TrPinS[1] == trackId){
         direction = 0;
     }
@@ -615,13 +615,13 @@ void TRitem::linkSignal(int trackId, int dist) {
 }
 
 void TRitem::setSpeedpostRot(float rot) {
-    if(this->speedpostTrItemData == NULL)
+    if(this->speedpostTrItemData == nullptr)
         return;
     this->speedpostTrItemData[this->speedpostTrItemDataLength - 1] = rot;
 }
 
 float TRitem::getSpeedpostRot() {
-    if(this->speedpostTrItemData == NULL)
+    if(this->speedpostTrItemData == nullptr)
         return 0;
     return this->speedpostTrItemData[this->speedpostTrItemDataLength - 1];
 }
@@ -836,7 +836,7 @@ void TRitem::trackPositionAdd(float val){
 
 void TRitem::refresh(){
     delete[] drawPosition;
-    drawPosition = NULL;
+    drawPosition = nullptr;
 }
 
 void TRitem::render(TDB *tdb, GLUU *gluu, float* playerT, float playerRot, int selectionColor) {
@@ -851,7 +851,7 @@ void TRitem::render(TDB *tdb, GLUU *gluu, float* playerT, float playerRot, int s
     int offy = 0;
     if (tdb->isRoad()) offy++;
 
-    if (drawPosition == NULL) {
+    if (drawPosition == nullptr) {
         drawPosition = new float[7];
         int id = tdb->findTrItemNodeId(this->trItemId);
         if (id < 0) {
@@ -868,13 +868,13 @@ void TRitem::render(TDB *tdb, GLUU *gluu, float* playerT, float playerRot, int s
     }
 
     gluu->mvPushMatrix();
-    //if(pos == NULL) return;
+    //if(pos == nullptr) return;
     Mat4::translate(gluu->mvMatrix, gluu->mvMatrix, drawPosition[0] + 2048 * (drawPosition[5] - playerT[0]), drawPosition[1] + 2 + offy, -drawPosition[2] + 2048 * (-drawPosition[6] - playerT[1]));
     Mat4::rotateY(gluu->mvMatrix, gluu->mvMatrix, drawPosition[3]);
     //Mat4::translate(gluu->mvMatrix, gluu->mvMatrix, this->trItemRData[0] + 2048*(this->trItemRData[3] - playerT[0] ), this->trItemRData[1]+2, -this->trItemRData[2] + 2048*(-this->trItemRData[4] - playerT[1]));
     //Mat4::translate(gluu->mvMatrix, gluu->mvMatrix, this->trItemRData[0] + 0, this->trItemRData[1]+0, -this->trItemRData[2] + 0);
     gluu->currentShader->setUniformValue(gluu->currentShader->mvMatrixUniform, *reinterpret_cast<float(*)[4][4]> (gluu->mvMatrix));
-    if (pointer3d == NULL) {
+    if (pointer3d == nullptr) {
         pointer3d = new TrackItemObj(1);
     }
     
@@ -947,31 +947,31 @@ void TRitem::save(QTextStream* out, bool tit) {
     *(out) << woff + "		TrItemId ( " << this->trItemId << " )\n";
     if (type != "emptyitem"){
         *(out) << woff + "		TrItemSData ( " << this->trItemSData1 << " " << tritemsdata << " )\n";
-    if (this->trItemPData != NULL)
+    if (this->trItemPData != nullptr)
         *(out) << woff + "		TrItemPData ( " << this->trItemPData[0] << " " << this->trItemPData[1] << " " << this->trItemPData[2] << " " << this->trItemPData[3] << " )\n";
-    if (this->trItemRData != NULL)
+    if (this->trItemRData != nullptr)
         *(out) << woff + "		TrItemRData ( " << this->trItemRData[0] << " " << this->trItemRData[1] << " " << this->trItemRData[2] << " " << this->trItemRData[3] << " " << this->trItemRData[4] << " )\n";
     }
-    if (type == "crossoveritem" && this->crossoverTrItemData != NULL)
+    if (type == "crossoveritem" && this->crossoverTrItemData != nullptr)
         *(out) << woff + "		CrossoverTrItemData ( " << this->crossoverTrItemData[0] << " " << this->crossoverTrItemData[1] << " )\n";
 
-    if (type == "soundregionitem" && this->trItemSRData != NULL)
+    if (type == "soundregionitem" && this->trItemSRData != nullptr)
         *(out) << woff + "		TrItemSRData ( " << this->trItemSRData[0] << " " << this->trItemSRData[1] << " " << this->trItemSRData[2] << " )\n";
 
-    if (type == "speedpostitem" && this->speedpostTrItemData != NULL) {
+    if (type == "speedpostitem" && this->speedpostTrItemData != nullptr) {
         *(out) << woff + "		SpeedpostTrItemData (";
         for (int i = 0; i < speedpostTrItemDataLength; i++)
             *(out) << " " << this->speedpostTrItemData[i];
         *(out) << " )\n";
     }
     if (type == "sidingitem") {
-        if (this->platformTrItemData != NULL)
+        if (this->platformTrItemData != nullptr)
             *(out) << woff + "		SidingTrItemData ( " << flags << " " << this->platformTrItemData[1] << " )\n";
         *(out) << woff + "		SidingName ( \"" << this->platformName << "\" )\n";
     }
 
     if (type == "platformitem") {
-        if (this->platformTrItemData != NULL)
+        if (this->platformTrItemData != nullptr)
             *(out) << woff + "		PlatformTrItemData ( " << flags << " " << this->platformTrItemData[1] << " )\n";
         *(out) << woff + "		PlatformName ( \"" << this->platformName << "\" )\n";
         *(out) << woff + "		Station ( \"" << this->stationName << "\" )\n";
@@ -981,7 +981,7 @@ void TRitem::save(QTextStream* out, bool tit) {
 
     if (type == "signalitem") {
         *(out) << woff + "		TrSignalType ( " << flags << " " << this->trSignalType2 << " " << this->trSignalType3 << " " << this->trSignalType4 << " )\n";
-        if (this->trSignalDir != NULL) {
+        if (this->trSignalDir != nullptr) {
             *(out) << woff + "		TrSignalDirs ( " << this->trSignalDirs << "\n";
             if (!tit) {
                 for (int i = 0; i < this->trSignalDirs * 4; i += 4)

@@ -33,7 +33,7 @@ public:
     int terrainResolution;
     int terrainSize;
     bool ok = false;
-    float** terrainData = NULL;
+    float** terrainData = nullptr;
     
     static void CheckForMissingGeodataFiles(QMap<int, QPair<int, int>*> &tileList);
     static std::unordered_map<int, GeoTerrainFile*> hqtFiles;
@@ -48,9 +48,9 @@ private:
     float minVal = 999;
     float maxVal = -999;
     
-    IghCoordinate* igh = NULL;
-    LatitudeLongitudeCoordinate* mLatlon = NULL;
-    PreciseTileCoordinate* aCoords = NULL;
+    IghCoordinate* igh = nullptr;
+    LatitudeLongitudeCoordinate* mLatlon = nullptr;
+    PreciseTileCoordinate* aCoords = nullptr;
     
     void drawTile(QImage* &image, bool gui);
 };

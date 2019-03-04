@@ -68,11 +68,11 @@ PropertiesTrackObj::PropertiesTrackObj(){
     eTemplate.addItem("DISABLED");
     
     ProceduralShape::Load();
-    if(ProceduralShape::ShapeTemplateFile != NULL){
+    if(ProceduralShape::ShapeTemplateFile != nullptr){
         QMapIterator<QString, ShapeTemplate*> i(ProceduralShape::ShapeTemplateFile->templates);
         while (i.hasNext()) {
             i.next();
-            if(i.value() == NULL)
+            if(i.value() == nullptr)
                 continue;
             eTemplate.addItem(i.value()->name);
         }
@@ -268,7 +268,7 @@ PropertiesTrackObj::PropertiesTrackObj(){
 }
 
 void PropertiesTrackObj::eTemplateEdited(QString val){
-    if(trackObj == NULL){
+    if(trackObj == nullptr){
         return;
     }
     Undo::SinglePushWorldObjData(worldObj);
@@ -317,7 +317,7 @@ PropertiesTrackObj::~PropertiesTrackObj() {
 }
 
 void PropertiesTrackObj::fixJNodePosnEnabled(){
-    if(trackObj == NULL){
+    if(trackObj == nullptr){
         return;
     }
     Undo::SinglePushWorldObjData(worldObj);
@@ -326,7 +326,7 @@ void PropertiesTrackObj::fixJNodePosnEnabled(){
 }
 
 void PropertiesTrackObj::hacksButtonEnabled(){
-    if(trackObj == NULL){
+    if(trackObj == nullptr){
         return;
     }
     
@@ -367,33 +367,33 @@ void PropertiesTrackObj::hacksButtonEnabled(){
 }
 
 void PropertiesTrackObj::haxElevTDBVectorEnabled(){
-    if(trackObj == NULL)
+    if(trackObj == nullptr)
         return;
-    if(Game::currentRoute == NULL)
+    if(Game::currentRoute == nullptr)
         return;
     Game::currentRoute->fixTDBVectorElevation(trackObj);
 }
 
 void PropertiesTrackObj::haxRemoveTDBVectorEnabled(){
-    if(trackObj == NULL)
+    if(trackObj == nullptr)
         return;
-    if(Game::currentRoute == NULL)
+    if(Game::currentRoute == nullptr)
         return;
     Game::currentRoute->deleteTDBVector(trackObj);
 }
 
 void PropertiesTrackObj::haxRemoveTDBTreeEnabled(){
-    if(trackObj == NULL)
+    if(trackObj == nullptr)
         return;
-    if(Game::currentRoute == NULL)
+    if(Game::currentRoute == nullptr)
         return;
     
     Game::currentRoute->deleteTDBTree(trackObj);
 }
 
 void PropertiesTrackObj::showObj(GameObj* obj){
-    if(obj == NULL){
-        infoLabel->setText("NULL");
+    if(obj == nullptr){
+        infoLabel->setText("nullptr");
         return;
     }
     worldObj = (WorldObj*)obj;
@@ -503,7 +503,7 @@ float PropertiesTrackObj::getStepValue(float step){
 }
 
 void PropertiesTrackObj::updateObj(GameObj* obj){
-    if(obj == NULL){
+    if(obj == nullptr){
         return;
     }
     TrackObj* track = (TrackObj*)obj;
@@ -542,7 +542,7 @@ void PropertiesTrackObj::updateObj(GameObj* obj){
 }
 
 void PropertiesTrackObj::elevPromEnabled(QString val){
-    if(trackObj == NULL){
+    if(trackObj == nullptr){
         return;
     }
     bool ok = false;
@@ -572,7 +572,7 @@ void PropertiesTrackObj::elevPromEnabled(QString val){
 }
 
 void PropertiesTrackObj::elevStepEnabled(QString val){
-    if(trackObj == NULL)
+    if(trackObj == nullptr)
         return;
 
     bool ok = false;
@@ -587,7 +587,7 @@ void PropertiesTrackObj::elevStepEnabled(QString val){
 }
 
 void PropertiesTrackObj::elev1inXmEnabled(QString val){
-    if(trackObj == NULL){
+    if(trackObj == nullptr){
         return;
     }
     bool ok = false;
@@ -617,7 +617,7 @@ void PropertiesTrackObj::elev1inXmEnabled(QString val){
 }
 
 void PropertiesTrackObj::elevProgEnabled(QString val){
-    if(trackObj == NULL){
+    if(trackObj == nullptr){
          return;
     }
     bool ok = false;
@@ -647,7 +647,7 @@ void PropertiesTrackObj::elevProgEnabled(QString val){
 }
  
 void PropertiesTrackObj::elevPropEnabled(QString val){
-    if(trackObj == NULL){
+    if(trackObj == nullptr){
         return;
     }
     bool ok = false;
@@ -677,7 +677,7 @@ void PropertiesTrackObj::elevPropEnabled(QString val){
 }
 
 bool PropertiesTrackObj::support(GameObj* obj){
-    if(obj == NULL)
+    if(obj == nullptr)
         return false;
     if(obj->typeObj != GameObj::worldobj)
         return false;
@@ -687,14 +687,14 @@ bool PropertiesTrackObj::support(GameObj* obj){
 }
 
 void PropertiesTrackObj::cCollisionTypeEdited(int val){
-    if(worldObj == NULL)
+    if(worldObj == nullptr)
         return;
     Undo::SinglePushWorldObjData(worldObj);
     worldObj->setCollisionType(val-1);
 }
 
 void PropertiesTrackObj::editFileNameEnabled(){
-    if(worldObj == NULL)
+    if(worldObj == nullptr)
         return;
     EditFileNameDialog eWindow;
     eWindow.name.setText(worldObj->fileName);
@@ -711,7 +711,7 @@ void PropertiesTrackObj::editFileNameEnabled(){
 }
 
 void PropertiesTrackObj::enableCustomDetailLevelEnabled(int val){
-    if(worldObj == NULL)
+    if(worldObj == nullptr)
         return;
     TrackObj* tObj = (TrackObj*) worldObj;
     Undo::SinglePushWorldObjData(worldObj);
@@ -727,7 +727,7 @@ void PropertiesTrackObj::enableCustomDetailLevelEnabled(int val){
 }
 
 void PropertiesTrackObj::customDetailLevelEdited(QString val){
-    if(worldObj == NULL)
+    if(worldObj == nullptr)
         return;
     TrackObj* tObj = (TrackObj*) worldObj;
     bool ok = false;

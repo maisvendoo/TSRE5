@@ -55,7 +55,7 @@ int ShapeLib::addShape(QString path, QString texPath) {
     pathid.replace("//", "/");
     //console.log(pathid);
     for ( auto it = shape.begin(); it != shape.end(); ++it ){
-        if(it->second == NULL) continue;
+        if(it->second == nullptr) continue;
         if (((SFile*) it->second)->pathid.length() == pathid.length())
             if (((SFile*) it->second)->pathid == pathid) {
                 ((SFile*) it->second)->ref++;

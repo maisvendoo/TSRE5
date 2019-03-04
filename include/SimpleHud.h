@@ -27,13 +27,13 @@ public:
     void setAttribute(QString name, float val);
     
 private:
-    TextObj *speedText = NULL;
-    TextObj *distanceText = NULL;
-    TextObj *kmText = NULL;
-    TextObj *kmsText = NULL;
+    TextObj *speedText = nullptr;
+    TextObj *distanceText = nullptr;
+    TextObj *kmText = nullptr;
+    TextObj *kmsText = nullptr;
     QVector<TextObj*> numberText;
     
-    OglObj *gradientObj = NULL;
+    OglObj *gradientObj = nullptr;
     
     QMap<QString, float> attributes;
 };

@@ -75,7 +75,7 @@ public:
     virtual void renderShadowMap(GLUU *gluu, float* playerT, float* playerW, float* target, float fov);
     
 protected:
-    HeightWindow* heightWindow = NULL;
+    HeightWindow* heightWindow = nullptr;
 };
 
 #endif	/* TERRAINLIB_H */

@@ -37,7 +37,7 @@ int EngLib::addEng(QString path, QString name) {
     pathid.replace("//", "/");
     //qDebug() << pathid;
     for ( auto it = eng.begin(); it != eng.end(); ++it ){
-        if(it->second == NULL) continue;
+        if(it->second == nullptr) continue;
         if (((Eng*) it->second)->pathid.length() == pathid.length())
             if (((Eng*) it->second)->pathid == pathid) {
                 ((Eng*) it->second)->ref++;
@@ -54,9 +54,9 @@ int EngLib::addEng(QString path, QString name) {
 
 int EngLib::removeBroken() {
     for (int i = 0; i < jesteng; i++){
-        if(eng[i] == NULL) continue;
+        if(eng[i] == nullptr) continue;
         if (eng[i]->loaded != 1)
-            eng[i] = NULL;
+            eng[i] = nullptr;
     }
 }
 
@@ -67,7 +67,7 @@ void EngLib::removeAll(){
 
 int EngLib::getEngByPathid(QString pathid) {
     for ( auto it = eng.begin(); it != eng.end(); ++it ){
-        if(it->second == NULL) continue;
+        if(it->second == nullptr) continue;
         if (((Eng*) it->second)->pathid.length() == pathid.length())
             if (((Eng*) it->second)->pathid == pathid) {
                 return (int)it->first;

@@ -157,8 +157,8 @@ PropertiesGroup::~PropertiesGroup() {
 }
 
 void PropertiesGroup::showObj(GameObj* obj){
-    if(obj == NULL){
-        infoLabel->setText("NULL");
+    if(obj == nullptr){
+        infoLabel->setText("nullptr");
         return;
     }
     worldObj = (WorldObj*)obj;
@@ -205,7 +205,7 @@ void PropertiesGroup::showObj(GameObj* obj){
 }
 
 void PropertiesGroup::updateObj(GameObj* obj){
-    if(obj == NULL){
+    if(obj == nullptr){
         return;
     }
     GroupObj *gobj = (GroupObj*)obj;
@@ -225,7 +225,7 @@ void PropertiesGroup::updateObj(GameObj* obj){
 }
 
 bool PropertiesGroup::support(GameObj* obj){
-    if(obj == NULL)
+    if(obj == nullptr)
         return false;
     if(obj->typeObj != GameObj::worldobj)
         return false;
@@ -235,7 +235,7 @@ bool PropertiesGroup::support(GameObj* obj){
 }
 
 void PropertiesGroup::enableCustomDetailLevelEnabled(int val){
-    if(worldObj == NULL)
+    if(worldObj == nullptr)
         return;
     GroupObj* staticObj = (GroupObj*) worldObj;
     if(val == 2){
@@ -250,7 +250,7 @@ void PropertiesGroup::enableCustomDetailLevelEnabled(int val){
 }
 
 void PropertiesGroup::customDetailLevelEdited(QString val){
-    if(worldObj == NULL)
+    if(worldObj == nullptr)
         return;
     GroupObj* staticObj = (GroupObj*) worldObj;
     bool ok = false;
@@ -262,7 +262,7 @@ void PropertiesGroup::customDetailLevelEdited(QString val){
 }
 
 void PropertiesGroup::checkboxAnimEdited(int val){
-    if(worldObj == NULL)
+    if(worldObj == nullptr)
         return;
     if(val == 2){
         worldObj->setAnimated(true);
@@ -273,7 +273,7 @@ void PropertiesGroup::checkboxAnimEdited(int val){
 }
 
 void PropertiesGroup::checkboxTerrainEdited(int val){
-    if(worldObj == NULL)
+    if(worldObj == nullptr)
         return;
     if(val == 2){
         worldObj->setTerrainObj(true);
@@ -284,14 +284,14 @@ void PropertiesGroup::checkboxTerrainEdited(int val){
 }
 
 void PropertiesGroup::cShadowTypeEdited(int val){
-    if(worldObj == NULL)
+    if(worldObj == nullptr)
         return;
     worldObj->setShadowType((WorldObj::ShadowType)val);
     this->flags.setText(ParserX::MakeFlagsString(worldObj->staticFlags));
 }
 
 void PropertiesGroup::chIndividualRotationEdited(int val){
-    if(worldObj == NULL)
+    if(worldObj == nullptr)
         return;
     GroupObj *gobj = (GroupObj*)worldObj;
     if(val == 2){
@@ -302,7 +302,7 @@ void PropertiesGroup::chIndividualRotationEdited(int val){
 }
 
 void PropertiesGroup::editPositionYEnabled(QString val){
-    if(worldObj == NULL)
+    if(worldObj == nullptr)
         return;
     GroupObj *gobj = (GroupObj*)worldObj;
     bool ok = false;

@@ -157,7 +157,7 @@ void ActivityServiceProperties::cPathEnabled(int val){
         return;
     }
     Path *p = paths[cPath.currentIndex()-1];
-    if(p == NULL){
+    if(p == nullptr){
         qDebug() << "p = null 1";
         service->setNewPath("");
         setStationList();
@@ -168,30 +168,30 @@ void ActivityServiceProperties::cPathEnabled(int val){
 }
 
 void ActivityServiceProperties::eDisplayNameEnabled(QString val){
-    if(service == NULL)
+    if(service == nullptr)
         return;
     service->setDisplayName(val);
 }
 void ActivityServiceProperties::ePlayerPerformanceEnabled(QString val){
-    if(service == NULL)
+    if(service == nullptr)
         return;
     service->setEfficiency(val.toFloat());
 }
 
 void ActivityServiceProperties::eStartSpeedEnabled(QString val){
-    if(service == NULL)
+    if(service == nullptr)
         return;
     service->setStartSpeed(val.toFloat());
 }
 
 void ActivityServiceProperties::eEndSpeedEnabled(QString val){
-    if(service == NULL)
+    if(service == nullptr)
         return;
     service->setEndSpeed(val.toFloat());
 }
     
 void ActivityServiceProperties::cConFilesEnabled(int val){
-    if(service == NULL)
+    if(service == nullptr)
         return;
     if(cConFiles.currentIndex() <= 0){
         service->trainConfig = "";
@@ -220,7 +220,7 @@ void ActivityServiceProperties::setStationList(){
         return;
     }
     Path *p = paths[cPath.currentIndex()-1];
-    if(p == NULL)
+    if(p == nullptr)
         return;
     p->init3dShapes(false);
     qDebug() << cPath.currentIndex()-1;
@@ -232,7 +232,7 @@ void ActivityServiceProperties::setStationList(){
     int count = -1;
     foreach(Path::PathObject* i, p->pathObjects){
         count++;
-        if(i == NULL)
+        if(i == nullptr)
             continue;
         qDebug() << i->name;
         qDebug() << i->distanceDownPath;
@@ -272,7 +272,7 @@ void ActivityServiceProperties::setUsedByList(){
 }
 
 void ActivityServiceProperties::stationListSelected(QTreeWidgetItem* item, int column){
-    if(service == NULL)
+    if(service == nullptr)
         return;
     if(item->checkState(0) == Qt::Checked){
         qDebug() << "item->checkState(0) == Qt::Checked";

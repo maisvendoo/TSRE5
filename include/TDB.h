@@ -97,18 +97,18 @@ public:
     int appendToJunction(int junctionId, int eId, int idx);
     int newTrack(int x, int z, float* p, float* q, int* ends, int r, int sect, int uid);
     int newTrack(int x, int z, float* p, float* q, int* ends, int r, int sect, int uid, int* start);
-    bool placeTrack(int x, int z, float* p, float* q, int sectionIdx, int uid, QVector<std::array<float, 5>> *jNodePosn = NULL);
+    bool placeTrack(int x, int z, float* p, float* q, int sectionIdx, int uid, QVector<std::array<float, 5>> *jNodePosn = nullptr);
     bool fillJNodePosn(int x, int z, int uid, QVector<std::array<float, 5>> *jNodePosn);
     bool findPosition(int &x, int &z, float* p, float* q, float* endp, int sectionIdx);
     void getLines(float * &lineBuffer, int &length, float* playerT);
     void renderAll(GLUU *gluu, float * playerT, float playerRot);
     void renderLines(GLUU *gluu, float* playerT, float playerRot);
     void renderItems(GLUU *gluu, float* playerT, float playerRot, int renderMode);
-    bool getDrawPositionOnTrNode(float* out, int id, float metry, float *sElev = NULL);
+    bool getDrawPositionOnTrNode(float* out, int id, float metry, float *sElev = nullptr);
     int findTrItemNodeId(int id);
-    int findNearestPositionOnTDB(float* posT, float* pos, float* q = NULL, float* tpos = NULL);
+    int findNearestPositionOnTDB(float* posT, float* pos, float* q = nullptr, float* tpos = nullptr);
     int findNearestPositionsOnTDB(float* posT, float * pos, QVector<TDB::IntersectionPoint> &points, float maxDistance = 10.0);
-    void fillNearestSquaredDistanceToTDBXZ(float* posT, QVector<Vector4f> &points, float* bbox = NULL);
+    void fillNearestSquaredDistanceToTDBXZ(float* posT, QVector<Vector4f> &points, float* bbox = nullptr);
     void deleteTrItem(int trid);
     void deleteTree(int x, int y, int UiD);
     void deleteTree(int d);
@@ -153,7 +153,7 @@ private:
     bool isInitTrItemsDraw = false;
     bool road = false;
     
-    float *collisionLineBuffer = NULL;
+    float *collisionLineBuffer = nullptr;
     int collisionLineLength = 0;
     int collisionLineHash = 0;
     

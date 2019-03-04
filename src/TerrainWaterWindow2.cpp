@@ -84,7 +84,7 @@ TerrainWaterWindow2::~TerrainWaterWindow2() {
 }
 
 void TerrainWaterWindow2::setTerrain(Terrain* t){
-    if(t == NULL)
+    if(t == nullptr)
         return;
     if(t == terrain)
         return;
@@ -105,7 +105,7 @@ void TerrainWaterWindow2::setTerrain(Terrain* t){
 }
 
 void TerrainWaterWindow2::eAvgTextEdited(QString val){
-    if(terrain == NULL)
+    if(terrain == nullptr)
         return;
     bool ok = false;
     float f = val.toFloat(&ok);
@@ -115,7 +115,7 @@ void TerrainWaterWindow2::eAvgTextEdited(QString val){
 }
 
 void TerrainWaterWindow2::eWaterEdited(QString val){
-    if(terrain == NULL)
+    if(terrain == nullptr)
         return;
     bool ok = false;
     float nw = eNW.text().toFloat(&ok);
@@ -134,7 +134,7 @@ void TerrainWaterWindow2::eWaterEdited(QString val){
 }
 
 void TerrainWaterWindow2::bAdjustEdited(){
-    if(terrain == NULL)
+    if(terrain == nullptr)
         return;
     
     we[0] = eNW.text().toFloat();

@@ -29,12 +29,12 @@
 
 std::unordered_map<int, TextObj*> Consist::txtNumbers;
 int Consist::lastTxtNumbersColor = 0;
-TextObj * Consist::txtEngineE = NULL;
-TextObj * Consist::txtEngineD = NULL;
-TextObj * Consist::txtEngineS = NULL;
-TextObj * Consist::txtEngineF = NULL;
-TextObj * Consist::txtEngineW = NULL;
-TextObj * Consist::txtEngineT = NULL;
+TextObj * Consist::txtEngineE = nullptr;
+TextObj * Consist::txtEngineD = nullptr;
+TextObj * Consist::txtEngineS = nullptr;
+TextObj * Consist::txtEngineF = nullptr;
+TextObj * Consist::txtEngineW = nullptr;
+TextObj * Consist::txtEngineT = nullptr;
 
 Consist::Consist() {
     typeObj = this->consistobj;
@@ -326,7 +326,7 @@ void Consist::initPos(){
 bool Consist::isBroken(){
     for(int i = 0; i < engItems.size(); i++){
         if(engItems[i].eng < 0) continue;
-        if(Game::currentEngLib->eng[engItems[i].eng] == NULL) continue;
+        if(Game::currentEngLib->eng[engItems[i].eng] == nullptr) continue;
         if(Game::currentEngLib->eng[engItems[i].eng]->loaded != 1) return true;
     }
     return false;
@@ -363,7 +363,7 @@ void Consist::deteleSelected(){
 
 void Consist::appendEngItem(int id, int pos, bool flip){
     Eng * eng = Game::currentEngLib->eng[id];
-    if(eng == NULL) return;
+    if(eng == nullptr) return;
 
     EngItem* newE;
     if(pos == 0){
@@ -431,7 +431,7 @@ void Consist::replaceEngItem(int id, int pos){
         appendEngItem(id, 2, false);
     
     Eng * eng = Game::currentEngLib->eng[id];
-    if(eng == NULL) return;
+    if(eng == nullptr) return;
     
     EngItem* newE = &engItems[pos];
 
@@ -439,7 +439,7 @@ void Consist::replaceEngItem(int id, int pos){
     newE->eng = id;
     newE->ename = eng->name.section(".", 0, -2);
     newE->epath = eng->path.split("/").last();
-    newE->txt = NULL;
+    newE->txt = nullptr;
     modified = true;
 }
 
@@ -522,25 +522,25 @@ void Consist::setTextColor(float* bgColor) {
     if(colorHash != lastTxtColor){
         lastTxtColor = colorHash;
         for(int i = 0; i < engItems.size(); i++){
-            if(engItems[i].txt != NULL) 
+            if(engItems[i].txt != nullptr) 
                 delete engItems[i].txt;
-            engItems[i].txt = NULL;
+            engItems[i].txt = nullptr;
         }
     }
     
     if(colorHash != lastTxtNumbersColor){
         //qDebug() << "new global color";
-        if(txtEngineT != NULL) delete txtEngineT;
-        if(txtEngineF != NULL) delete txtEngineF;
-        if(txtEngineW != NULL) delete txtEngineW;
-        txtEngineT = NULL;
-        txtEngineF = NULL;
-        txtEngineW = NULL;
+        if(txtEngineT != nullptr) delete txtEngineT;
+        if(txtEngineF != nullptr) delete txtEngineF;
+        if(txtEngineW != nullptr) delete txtEngineW;
+        txtEngineT = nullptr;
+        txtEngineF = nullptr;
+        txtEngineW = nullptr;
         lastTxtNumbersColor = colorHash;
         for(int i = 0; i < txtNumbers.size(); i++){
-            if(txtNumbers[i] != NULL) 
+            if(txtNumbers[i] != nullptr) 
                 delete txtNumbers[i];
-            txtNumbers[i] = NULL;
+            txtNumbers[i] = nullptr;
         }
     }
 }
@@ -584,7 +584,7 @@ void Consist::render(int aktwx, int aktwz, int selectionColor, bool renderText) 
         gluu->currentShader->setUniformValue(gluu->currentShader->mvMatrixUniform, *reinterpret_cast<float(*)[4][4]> (gluu->mvMatrix));
         gluu->currentShader->setUniformValue(gluu->currentShader->msMatrixUniform, *reinterpret_cast<float(*)[4][4]> (gluu->objStrMatrix));
         gluu->currentMsMatrinxHash = gluu->getMatrixHash(gluu->objStrMatrix);
-        if(engItems[i].txt == NULL){
+        if(engItems[i].txt == nullptr){
             engItems[i].txt = new TextObj(Game::currentEngLib->eng[engItems[i].eng]->displayName, 16, 1.0);
             //engItems[i].txt->setColor(255,255,0);
             //if(Game::systemTheme)
@@ -598,7 +598,7 @@ void Consist::render(int aktwx, int aktwz, int selectionColor, bool renderText) 
         Mat4::translate(gluu->mvMatrix, gluu->mvMatrix, 0, 5, engItems[i].pos);
         //Mat4::rotate(gluu->mvMatrix, gluu->mvMatrix, M_PI/2, 0, 1, 0);
         gluu->currentShader->setUniformValue(gluu->currentShader->mvMatrixUniform, *reinterpret_cast<float(*)[4][4]> (gluu->mvMatrix));
-        if(txtNumbers[i] == NULL){
+        if(txtNumbers[i] == nullptr){
             txtNumbers[i] = new TextObj(i+1);
             txtNumbers[i]->setColor(textColor[0],textColor[1],textColor[2]);
         }
@@ -607,42 +607,42 @@ void Consist::render(int aktwx, int aktwz, int selectionColor, bool renderText) 
         gluu->currentShader->setUniformValue(gluu->currentShader->mvMatrixUniform, *reinterpret_cast<float(*)[4][4]> (gluu->mvMatrix));
         int wt = Game::currentEngLib->eng[engItems[i].eng]->wagonTypeId;
         if(wt == 1){
-            if(txtEngineW == NULL){
+            if(txtEngineW == nullptr){
                 txtEngineW = new TextObj("C");
                 txtEngineW->setColor(textColor[0],textColor[1],textColor[2]);
             }
             txtEngineW->render(M_PI/2);
         }
         if(wt == 2){
-            if(txtEngineF == NULL){
+            if(txtEngineF == nullptr){
                 txtEngineF = new TextObj("F");
                 txtEngineF->setColor(textColor[0],textColor[1],textColor[2]);
             }
             txtEngineF->render(M_PI/2);
         }
         if(wt == 3){
-            if(txtEngineT == NULL){
+            if(txtEngineT == nullptr){
                 txtEngineT = new TextObj("T");
                 txtEngineT->setColor(textColor[0],textColor[1],textColor[2]);
             }
             txtEngineT->render(M_PI/2);
         }
         if(wt == 4){
-            if(txtEngineE == NULL){
+            if(txtEngineE == nullptr){
                 txtEngineE = new TextObj("E");
                 txtEngineE->setColor(255,0,0);
             }
             txtEngineE->render(M_PI/2);
         }
         if(wt == 5){
-            if(txtEngineD == NULL){
+            if(txtEngineD == nullptr){
                 txtEngineD = new TextObj("D");
                 txtEngineD->setColor(255,0,0);
             }
             txtEngineD->render(M_PI/2);
         }
         if(wt == 6){
-            if(txtEngineS == NULL){
+            if(txtEngineS == nullptr){
                 txtEngineS = new TextObj("S");
                 txtEngineS->setColor(255,0,0);
             }
@@ -694,7 +694,7 @@ void Consist::initOnTrack(float *posTXZ, int direction, QMap<int, int> *junction
     qDebug() << posT[0]<< posT[1];
     qDebug() << pos[0]<< pos[1]<< pos[2];
     
-    int ok = Game::trackDB->findNearestPositionOnTDB(posT, pos, NULL, tpos);
+    int ok = Game::trackDB->findNearestPositionOnTDB(posT, pos, nullptr, tpos);
     if(ok < 0) {
         qDebug() << "coninit fail";
         return;
@@ -705,7 +705,7 @@ void Consist::initOnTrack(float *posTXZ, int direction, QMap<int, int> *junction
     if(engItems.size() > 0)
         conLen = engItems[0].pos;
     for(int i = 0; i < engItems.size(); i++){
-        if(engItems[i].engPointer == NULL)
+        if(engItems[i].engPointer == nullptr)
             engItems[i].engPointer = new Eng(Game::currentEngLib->eng[engItems[i].eng]);
         engItems[i].engPointer->initOnTrack(tpos, direction, junctionDirections);
         engItems[i].engPointer->flip = engItems[i].flip;
@@ -736,7 +736,7 @@ void Consist::updateSim(float deltaTime){
     
     if(engItems.size() < 1)
         return;
-    if(engItems[0].engPointer == NULL)
+    if(engItems[0].engPointer == nullptr)
         return;
     engItems[0].engPointer->updateSim(deltaTime);
 
@@ -753,7 +753,7 @@ void Consist::updateSim(float deltaTime){
 }
 
 void Consist::renderHud(){
-    if(hud == NULL)
+    if(hud == nullptr)
         hud = new SimpleHud();
     hud->setAttribute("speed", trainSpeed);
     hud->setAttribute("dist", trainTotalDistance);
@@ -796,7 +796,7 @@ bool Consist::getWagonWorldPosition(int id, float *posTW){
         return false;
     
     float *drawPosition = engItems[id].engPointer->getCurrentPositionOnTrack();
-    if(drawPosition == NULL)
+    if(drawPosition == nullptr)
         return false;
     
     posTW[0] = drawPosition[5];

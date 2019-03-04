@@ -223,7 +223,7 @@ ObjTools::~ObjTools() {
 }
 
 void ObjTools::refreshObjLists(){
-    if(route == NULL)
+    if(route == nullptr)
         return;
     
     refList.clear();
@@ -290,7 +290,7 @@ void ObjTools::routeLoaded(Route* a){
     for (auto it = route->tsection->shape.begin(); it != route->tsection->shape.end(); ++it ){
         track = it->second;
         //hash = track->filename.left(3).toStdString();
-        if(track == NULL) continue;
+        if(track == nullptr) continue;
         if(track->dyntrack) continue;
         if(Game::ignoreMissingGlobalShapes)
             if(!globalShapesList.contains(track->filename, Qt::CaseInsensitive)) continue;
@@ -335,7 +335,7 @@ void ObjTools::routeLoaded(Route* a){
     if(Game::trackDB->sigCfg->signalShape.size() > 0)
     for (auto it = Game::trackDB->sigCfg->signalShape.begin(); it != Game::trackDB->sigCfg->signalShape.end(); ++it ){
         signal = it->second;
-        if(signal == NULL) continue;
+        if(signal == nullptr) continue;
         Ref::RefItem item;
         item.filename = signal->desc;
         item.description = signal->desc;
@@ -473,7 +473,7 @@ void ObjTools::refTrackSelected(const QString & text){
     for (auto it = route->tsection->shape.begin(); it != route->tsection->shape.end(); ++it ){
         track = it->second;
         //qDebug() << track->filename;
-        if(track == NULL) continue;
+        if(track == nullptr) continue;
         if(track->filename.startsWith(text, Qt::CaseInsensitive) )
             new QListWidgetItem ( track->filename, &trackList, track->id );
         //refList.addItem(route->ref->refItems[text.toStdString()][it].description);
@@ -503,7 +503,7 @@ void ObjTools::refOtherSelected(const QString & text){
         SignalShape * signal;
         for (auto it = Game::trackDB->sigCfg->signalShape.begin(); it != Game::trackDB->sigCfg->signalShape.end(); ++it ){
             signal = it->second;
-            if(signal == NULL) continue;
+            if(signal == nullptr) continue;
             new QListWidgetItem ( signal->desc, &otherList, signal->listId );
         }
     }
@@ -564,7 +564,7 @@ void ObjTools::refListSelected(QListWidgetItem * item){
         emit sendMsg("engItemSelected");
         itemSelected((Ref::RefItem*)route->ref->selected);
     } catch(const std::out_of_range& oor){
-        route->ref->selected = NULL;
+        route->ref->selected = nullptr;
     }
     lastItems.clearSelection();
 }
@@ -675,17 +675,17 @@ void ObjTools::msg(QString text, QString val){
         QMapIterator<QString, QPushButton*> i(buttonTools);
         while (i.hasNext()) {
             i.next();
-            if(i.value() == NULL)
+            if(i.value() == nullptr)
                 continue;
             i.value()->blockSignals(true);
             i.value()->setChecked(false);
         }
-        if(buttonTools[val] != NULL)
+        if(buttonTools[val] != nullptr)
             buttonTools[val]->setChecked(true);
         i.toFront();
         while (i.hasNext()) {
             i.next();
-            if(i.value() == NULL)
+            if(i.value() == nullptr)
                 continue;
             i.value()->blockSignals(false);
         }

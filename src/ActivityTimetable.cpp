@@ -69,7 +69,7 @@ void ActivityTimetable::reloadTimetable(){
     clear();
 
     Service *s = ActLib::GetServiceByName(name);
-    if(s == NULL){
+    if(s == nullptr){
         qDebug() << "s == NILL " << name;
         return;
     }

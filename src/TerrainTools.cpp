@@ -616,7 +616,7 @@ void TerrainTools::setEradius(QString val){
 void TerrainTools::setBrushTextureId(int val){
     emit setPaintBrush(this->paintBrush);
     if(val < 0) return;
-    if(TexLib::mtex[val] == NULL) return;
+    if(TexLib::mtex[val] == nullptr) return;
     this->paintBrush->texId = val;
     this->paintBrush->tex = TexLib::mtex[val];
     
@@ -679,17 +679,17 @@ void TerrainTools::msg(QString text, QString val){
         QMapIterator<QString, QPushButton*> i(buttonTools);
         while (i.hasNext()) {
             i.next();
-            if(i.value() == NULL)
+            if(i.value() == nullptr)
                 continue;
             i.value()->blockSignals(true);
             i.value()->setChecked(false);
         }
-        if(buttonTools[val] != NULL)
+        if(buttonTools[val] != nullptr)
             buttonTools[val]->setChecked(true);
         i.toFront();
         while (i.hasNext()) {
             i.next();
-            if(i.value() == NULL)
+            if(i.value() == nullptr)
                 continue;
             i.value()->blockSignals(false);
         }

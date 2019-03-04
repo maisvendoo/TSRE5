@@ -48,7 +48,7 @@ public slots:
     void eAvgWaterEnabled(QString val);
 
 private:
-    Terrain* terrainObj = NULL;
+    Terrain* terrainObj = nullptr;
     QLineEdit tP;
     QLineEdit tS;
     QLineEdit tTex;

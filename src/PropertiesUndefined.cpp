@@ -32,7 +32,7 @@ PropertiesUndefined::~PropertiesUndefined() {
 }
 
 void PropertiesUndefined::showObj(GameObj* obj){
-    if(obj == NULL)
+    if(obj == nullptr)
         infoLabel->setText("Select to see properties.");
     else if(obj->typeObj == GameObj::worldobj)
         infoLabel->setText("Unsupported: "+((WorldObj*)obj)->type);

@@ -28,7 +28,7 @@ public:
     static QString GetString(FileBuffer* bufor);
     static QString GetStringInside(FileBuffer* bufor);
     static float GetNumber(FileBuffer* bufor);
-    static float GetNumberInside(FileBuffer* bufor, bool *ok = NULL);
+    static float GetNumberInside(FileBuffer* bufor, bool *ok = nullptr);
     static unsigned int GetUInt(FileBuffer* bufor);
     static unsigned int GetHex(FileBuffer* bufor);
     static int SkipToken(FileBuffer* bufor);

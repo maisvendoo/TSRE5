@@ -51,8 +51,8 @@ PropertiesActivityObject::~PropertiesActivityObject() {
 }
 
 void PropertiesActivityObject::showObj(GameObj* obj){
-    if(obj == NULL){
-        infoLabel->setText("NULL");
+    if(obj == nullptr){
+        infoLabel->setText("nullptr");
         return;
     }
     actObj = (ActivityObject*)obj;
@@ -66,7 +66,7 @@ void PropertiesActivityObject::showObj(GameObj* obj){
 }
 
 void PropertiesActivityObject::updateObj(GameObj* obj){
-    if(obj == NULL){
+    if(obj == nullptr){
         return;
     }
     actObj = (ActivityObject*)obj;
@@ -74,7 +74,7 @@ void PropertiesActivityObject::updateObj(GameObj* obj){
 }
 
 void PropertiesActivityObject::bDeleteEnabled(){
-    if(actObj == NULL){
+    if(actObj == nullptr){
         return;
     }
     actObj->remove();
@@ -82,7 +82,7 @@ void PropertiesActivityObject::bDeleteEnabled(){
 }
 
 bool PropertiesActivityObject::support(GameObj* obj){
-    if(obj == NULL)
+    if(obj == nullptr)
         return false;
     if(obj->typeObj == GameObj::activityobj)
         return true;

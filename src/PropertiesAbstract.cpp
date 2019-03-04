@@ -44,7 +44,7 @@ void PropertiesAbstract::copyFileNameEnabled(){
 }
 
 void PropertiesAbstract::resetRotEnabled(){
-    if(worldObj == NULL)
+    if(worldObj == nullptr)
         return;
     worldObj->setNewQdirection();
     worldObj->modified = true;
@@ -75,10 +75,10 @@ void PropertiesAbstract::copyFEnabled(){
 }
 
 void PropertiesAbstract::pasteFEnabled(){
-    if(worldObj == NULL)
+    if(worldObj == nullptr)
         return;
     QClipboard *clipboard = QApplication::clipboard();
-    int val = clipboard->text().toUInt(NULL, 16);
+    int val = clipboard->text().toUInt(nullptr, 16);
     worldObj->set("staticflags", val);
     quat.setText(clipboard->text());
 }
@@ -90,7 +90,7 @@ void PropertiesAbstract::copyPREnabled(){
 }
 
 void PropertiesAbstract::rotYEnabled(){
-    if(worldObj == NULL)
+    if(worldObj == nullptr)
         return;
     
     Undo::SinglePushWorldObjData(worldObj);
@@ -100,7 +100,7 @@ void PropertiesAbstract::rotYEnabled(){
 }
 
 void PropertiesAbstract::pasteREnabled(){
-    if(worldObj == NULL)
+    if(worldObj == nullptr)
         return;
     QClipboard *clipboard = QApplication::clipboard();
     QStringList args = clipboard->text().split(" ");
@@ -120,7 +120,7 @@ void PropertiesAbstract::pasteREnabled(){
 }
 
 void PropertiesAbstract::pastePEnabled(){
-    if(worldObj == NULL)
+    if(worldObj == nullptr)
         return;
     QClipboard *clipboard = QApplication::clipboard();
     QStringList args = clipboard->text().split(" ");
@@ -141,7 +141,7 @@ void PropertiesAbstract::pastePEnabled(){
 }
 
 void PropertiesAbstract::pastePREnabled(){
-    if(worldObj == NULL)
+    if(worldObj == nullptr)
         return;
     QClipboard *clipboard = QApplication::clipboard();
     QStringList args = clipboard->text().split(" ");
@@ -169,7 +169,7 @@ void PropertiesAbstract::pastePREnabled(){
 }
 
 void PropertiesAbstract::transformEnabled(){
-    if(worldObj == NULL)
+    if(worldObj == nullptr)
         return;
     TransformWorldObjDialog transformWindow;
     transformWindow.exec();

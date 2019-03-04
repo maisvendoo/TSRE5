@@ -42,7 +42,7 @@ int ActLib::GetAct(QString path, QString name){
     QHashIterator<int, Activity*> i(Act);
     while (i.hasNext()) {
         i.next();
-        if(i.value() == NULL) continue;
+        if(i.value() == nullptr) continue;
         if (i.value()->pathid.length() == pathid.length())
             if (i.value()->pathid == pathid) {
                 i.value()->ref++;
@@ -61,7 +61,7 @@ int ActLib::AddAct(QString path, QString name, bool nowe) {
     QHashIterator<int, Activity*> i(Act);
     while (i.hasNext()) {
         i.next();
-        if(i.value() == NULL) continue;
+        if(i.value() == nullptr) continue;
         if (i.value()->pathid.length() == pathid.length())
             if (i.value()->pathid == pathid) {
                 i.value()->ref++;
@@ -80,7 +80,7 @@ void ActLib::UpdateServiceChanges(QString serviceNameId){
     QHashIterator<int, Activity*> i(Act);
     while (i.hasNext()) {
         i.next();
-        if(i.value() == NULL) continue;
+        if(i.value() == nullptr) continue;
         i.value()->updateService(serviceNameId);
     }
 }
@@ -93,7 +93,7 @@ int ActLib::AddService(QString path, QString name, bool nowe) {
     QHashIterator<int, Service*> i(Services);
     while (i.hasNext()) {
         i.next();
-        if(i.value() == NULL) continue;
+        if(i.value() == nullptr) continue;
         if (i.value()->pathid.length() == pathid.length())
             if (i.value()->pathid == pathid) {
                 //i.value()->ref++;
@@ -114,7 +114,7 @@ int ActLib::AddTraffic(QString path, QString name, bool nowe) {
     QHashIterator<int, Traffic*> i(Traffics);
     while (i.hasNext()) {
         i.next();
-        if(i.value() == NULL) continue;
+        if(i.value() == nullptr) continue;
         if (i.value()->pathid.length() == pathid.length())
             if (i.value()->pathid == pathid) {
                 i.value()->ref++;
@@ -131,7 +131,7 @@ bool ActLib::IsServiceInUse(QString n){
     QHashIterator<int, Activity*> i(Act);
     while (i.hasNext()) {
         i.next();
-        if(i.value() == NULL) continue;
+        if(i.value() == nullptr) continue;
         if(i.value()->isServiceInUse(n))
             return true;
     }
@@ -142,7 +142,7 @@ bool ActLib::IsTrafficInUse(QString name){
     QHashIterator<int, Traffic*> i(Traffics);
     while (i.hasNext()) {
         i.next();
-        if(i.value() == NULL) continue;
+        if(i.value() == nullptr) continue;
         if(i.value()->nameId.toLower() == name.toLower())
             return true;
     }
@@ -154,7 +154,7 @@ QVector<QString> ActLib::GetServiceInUseList(QString n){
     QHashIterator<int, Activity*> i(Act);
     while (i.hasNext()) {
         i.next();
-        if(i.value() == NULL) continue;
+        if(i.value() == nullptr) continue;
         if(i.value()->isServiceInUse(n)){
             list.push_back(QString("Activity:") + i.value()->header->name);
         }
@@ -165,33 +165,33 @@ Service* ActLib::GetServiceByName(QString name){
     QHashIterator<int, Service*> i(Services);
     while (i.hasNext()) {
         i.next();
-        if(i.value() == NULL) continue;
+        if(i.value() == nullptr) continue;
         if(i.value()->nameId.toLower() == name.toLower())
             return i.value();
     }
-    return NULL;
+    return nullptr;
 }
 
 Traffic* ActLib::GetTrafficByName(QString name){
     QHashIterator<int, Traffic*> i(Traffics);
     while (i.hasNext()) {
         i.next();
-        if(i.value() == NULL) continue;
+        if(i.value() == nullptr) continue;
         if(i.value()->nameId.toLower() == name.toLower())
             return i.value();
     }
-    return NULL;
+    return nullptr;
 }
 
 Path* ActLib::GetPathByName(QString name){
     QHashIterator<int, Path*> i(Paths);
     while (i.hasNext()) {
         i.next();
-        if(i.value() == NULL) continue;
+        if(i.value() == nullptr) continue;
         if(i.value()->trPathName.toLower() == name.toLower())
             return i.value();
     }
-    return NULL;
+    return nullptr;
 }
 
 int ActLib::AddPath(QString path, QString name) {
@@ -202,7 +202,7 @@ int ActLib::AddPath(QString path, QString name) {
     QHashIterator<int, Path*> i(Paths);
     while (i.hasNext()) {
         i.next();
-        if(i.value() == NULL) continue;
+        if(i.value() == nullptr) continue;
         ///qDebug() << i.value()->pathid << pathid; 
         if (i.value()->pathid.length() == pathid.length())
             if (i.value()->pathid == pathid) {
@@ -246,7 +246,7 @@ void ActLib::GetUnsavedInfo(QVector<QString>& items){
     Activity * e;
     for (int i = 0; i < ActLib::jestact; i++){
         e = ActLib::Act[i];
-        if(e == NULL) continue;
+        if(e == nullptr) continue;
         if(e->loaded != 1) continue;
         if(e->isUnSaved()){
             items.push_back("[A] " + e->name );
@@ -255,7 +255,7 @@ void ActLib::GetUnsavedInfo(QVector<QString>& items){
     Service * s;
     for (int i = 0; i < ActLib::jestservice; i++){
         s = ActLib::Services[i];
-        if(s == NULL) continue;
+        if(s == nullptr) continue;
         if(s->loaded != 1) continue;
         if(s->isModified()){
             items.push_back("[S] " + s->name );
@@ -264,7 +264,7 @@ void ActLib::GetUnsavedInfo(QVector<QString>& items){
     Traffic * t;
     for (int i = 0; i < ActLib::jesttraffic; i++){
         t = ActLib::Traffics[i];
-        if(t == NULL) continue;
+        if(t == nullptr) continue;
         if(t->loaded != 1) continue;
         if(t->isModified()){
             items.push_back("[T] " + t->name );
@@ -273,7 +273,7 @@ void ActLib::GetUnsavedInfo(QVector<QString>& items){
     Path * p;
     for (int i = 0; i < ActLib::jestpath; i++){
         p = ActLib::Paths[i];
-        if(p == NULL) continue;
+        if(p == nullptr) continue;
         if(p->loaded != 1) continue;
         if(p->isModified()){
             items.push_back("[P] " + p->name );
@@ -285,7 +285,7 @@ void ActLib::SaveAll(){
     Activity * e;
     for (int i = 0; i < ActLib::jestact; i++){
         e = ActLib::Act[i];
-        if(e == NULL) continue;
+        if(e == nullptr) continue;
         if(e->loaded != 1) continue;
         if(e->isUnSaved()){
             e->save();
@@ -294,7 +294,7 @@ void ActLib::SaveAll(){
     Service * s;
     for (int i = 0; i < ActLib::jestservice; i++){
         s = ActLib::Services[i];
-        if(s == NULL) continue;
+        if(s == nullptr) continue;
         if(s->loaded != 1) continue;
         if(s->isModified()){
             s->save();
@@ -303,7 +303,7 @@ void ActLib::SaveAll(){
     Traffic * t;
     for (int i = 0; i < ActLib::jesttraffic; i++){
         t = ActLib::Traffics[i];
-        if(t == NULL) continue;
+        if(t == nullptr) continue;
         if(t->loaded != 1) continue;
         if(t->isModified()){
             t->save();
@@ -312,7 +312,7 @@ void ActLib::SaveAll(){
     Path * p;
     for (int i = 0; i < ActLib::jestpath; i++){
         p = ActLib::Paths[i];
-        if(p == NULL) continue;
+        if(p == nullptr) continue;
         if(p->loaded != 1) continue;
         if(p->isModified()){
             //p->save();

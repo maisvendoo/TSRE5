@@ -22,11 +22,11 @@ ShapeTemplates::ShapeTemplates() {
     //QString path2 = QString("tsre_appdata/")+Game::AppDataVersion+"/tracks/uic60.obj";
     //QString path3 = QString("tsre_appdata/")+Game::AppDataVersion+"/tracks/ballast1.obj";
     //QString path3 = QString("tsre_appdata/")+Game::AppDataVersion+"/tracks/ballast2.obj";
-    /*if(Files[path1] == NULL)
+    /*if(Files[path1] == nullptr)
         Files[path1] = new ObjFile(path1);
-    if(Files[path2] == NULL)
+    if(Files[path2] == nullptr)
         Files[path2] = new ObjFile(path2);
-    if(Files[path3] == NULL)
+    if(Files[path3] == nullptr)
         Files[path3] = new ObjFile(path3);*/
     
     QString path = resPath + "shapetemplates.dat";

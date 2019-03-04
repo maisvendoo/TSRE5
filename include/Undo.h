@@ -36,8 +36,8 @@ struct UndoState {
     QMap<int, TerrainData*> terrainData;
     QMap<int, unsigned char*> texData;
     QMap<long long int, WorldObjInfo*> objData;
-    TDB* trackDB = NULL;
-    TDB* roadDB = NULL;
+    TDB* trackDB = nullptr;
+    TDB* roadDB = nullptr;
 };
 
 class Undo {

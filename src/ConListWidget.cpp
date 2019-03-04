@@ -198,7 +198,7 @@ void ConListWidget::fillConListAct(){
     
     for (int i = 0; i < ActLib::Act[id]->activityObjects.size(); i++){
         e = ActLib::Act[id]->activityObjects[i]->con;
-        if(e == NULL) continue;
+        if(e == nullptr) continue;
         new QListWidgetItem ( QString::number(ActLib::Act[id]->activityObjects[i]->id) + " : " + e->showName, &items, i);
     }
 }
@@ -218,7 +218,7 @@ void ConListWidget::fillConList(QString n){
     
     for (int i = 0; i < ConLib::jestcon; i++){
         e = ConLib::con[i];
-        if(e == NULL) continue;
+        if(e == nullptr) continue;
         if(e->loaded !=1) continue;
         if(brokenf)
             if(!e->isBroken()) continue;
@@ -235,7 +235,7 @@ void ConListWidget::updateCurrentCon(){
     Consist * e;
     int cid = items.currentItem()->type();
     e = ConLib::con[cid];
-    if(e == NULL) return;
+    if(e == nullptr) return;
     if(e->showName.length() > 0)
         items.currentItem()->setText(e->showName);
 }
@@ -247,7 +247,7 @@ void ConListWidget::deleteCurrentCon(){
     Consist * e;
     int cid = items.currentItem()->type();
     e = ConLib::con[cid];
-    if(e == NULL) return;
+    if(e == nullptr) return;
     
     items.takeItem(items.currentRow());
     
@@ -277,7 +277,7 @@ void ConListWidget::getUnsaed(QVector<int> &unsavedConIds){
     Consist * e;
     for (int i = 0; i < ConLib::jestcon; i++){
         e = ConLib::con[i];
-        if(e == NULL) continue;
+        if(e == nullptr) continue;
         if(e->loaded !=1) continue;
         if(e->isUnSaved()){
             unsavedConIds.push_back(i);
@@ -291,7 +291,7 @@ void ConListWidget::getUnsaedAct(QVector<int>& unsavedActIds){
     Activity * e;
     for (int i = 0; i < ActLib::jestact; i++){
         e = ActLib::Act[i];
-        if(e == NULL) continue;
+        if(e == nullptr) continue;
         if(e->loaded != 1) continue;
         if(e->isUnSaved()){
             unsavedActIds.push_back(i);
@@ -307,7 +307,7 @@ void ConListWidget::findConsistsByEng(int id){
     
     for (int i = 0; i < ConLib::jestcon; i++){
         e = ConLib::con[i];
-        if(e == NULL) continue;
+        if(e == nullptr) continue;
         if(e->loaded !=1) continue;
         for (int j = 0; j < e->engItems.size(); j++){
             if(e->engItems[j].eng == id){
@@ -326,7 +326,7 @@ void ConListWidget::getEngSets(Eng *e, QVector<int>& sets){
     Consist * c;
     for (int i = 0; i < ConLib::jestcon; i++){
         c = ConLib::con[i];
-        if(c == NULL) continue;
+        if(c == nullptr) continue;
         if(c->loaded !=1) continue;
         //qDebug() << c->name.toLower() <<" "<< e->engName.toLower();
         if(c->conName.split("#").first().toLower() == e->engName.toLower()){

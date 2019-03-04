@@ -56,7 +56,7 @@ public:
     struct TdFile {
         int x;
         int y;
-        QuadTile* qt = NULL;
+        QuadTile* qt = nullptr;
         bool modified = false;
         //unsigned char data[512][512];
     };

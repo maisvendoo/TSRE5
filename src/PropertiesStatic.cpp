@@ -216,8 +216,8 @@ PropertiesStatic::~PropertiesStatic() {
 }
 
 void PropertiesStatic::showObj(GameObj* obj){
-    if(obj == NULL){
-        infoLabel->setText("NULL");
+    if(obj == nullptr){
+        infoLabel->setText("nullptr");
         return;
     }
     worldObj = (WorldObj*)obj;
@@ -274,7 +274,7 @@ void PropertiesStatic::showObj(GameObj* obj){
 }
 
 void PropertiesStatic::updateObj(GameObj* obj){
-    if(obj == NULL){
+    if(obj == nullptr){
         return;
     }
     worldObj = (WorldObj*)obj;
@@ -301,7 +301,7 @@ void PropertiesStatic::updateObj(GameObj* obj){
 }
 
 bool PropertiesStatic::support(GameObj* obj){
-    if(obj == NULL)
+    if(obj == nullptr)
         return false;
     if(obj->typeObj != GameObj::worldobj)
         return false;
@@ -315,7 +315,7 @@ bool PropertiesStatic::support(GameObj* obj){
 }
 
 void PropertiesStatic::editPositionEnabled(QString val){
-    if(worldObj == NULL)
+    if(worldObj == nullptr)
         return;
     StaticObj* staticObj = (StaticObj*) worldObj;
     float pos[3];
@@ -334,7 +334,7 @@ void PropertiesStatic::editPositionEnabled(QString val){
 }
 
 void PropertiesStatic::enableCustomDetailLevelEnabled(int val){
-    if(worldObj == NULL)
+    if(worldObj == nullptr)
         return;
     StaticObj* staticObj = (StaticObj*) worldObj;
     Undo::SinglePushWorldObjData(worldObj);
@@ -350,7 +350,7 @@ void PropertiesStatic::enableCustomDetailLevelEnabled(int val){
 }
 
 void PropertiesStatic::customDetailLevelEdited(QString val){
-    if(worldObj == NULL)
+    if(worldObj == nullptr)
         return;
     StaticObj* staticObj = (StaticObj*) worldObj;
     bool ok = false;
@@ -363,7 +363,7 @@ void PropertiesStatic::customDetailLevelEdited(QString val){
 }
 
 void PropertiesStatic::checkboxAnimEdited(int val){
-    if(worldObj == NULL)
+    if(worldObj == nullptr)
         return;
     Undo::SinglePushWorldObjData(worldObj);
     if(val == 2){
@@ -375,7 +375,7 @@ void PropertiesStatic::checkboxAnimEdited(int val){
 }
 
 void PropertiesStatic::checkboxTerrainEdited(int val){
-    if(worldObj == NULL)
+    if(worldObj == nullptr)
         return;
     Undo::SinglePushWorldObjData(worldObj);
     if(val == 2){
@@ -387,7 +387,7 @@ void PropertiesStatic::checkboxTerrainEdited(int val){
 }
 
 void PropertiesStatic::cShadowTypeEdited(int val){
-    if(worldObj == NULL)
+    if(worldObj == nullptr)
         return;
     Undo::SinglePushWorldObjData(worldObj);
     worldObj->setShadowType((WorldObj::ShadowType)val);
@@ -395,14 +395,14 @@ void PropertiesStatic::cShadowTypeEdited(int val){
 }
 
 void PropertiesStatic::cCollisionTypeEdited(int val){
-    if(worldObj == NULL)
+    if(worldObj == nullptr)
         return;
     Undo::SinglePushWorldObjData(worldObj);
     worldObj->setCollisionType(val-1);
 }
 
 void PropertiesStatic::removeCollisionsEnabled(){
-    if(worldObj == NULL)
+    if(worldObj == nullptr)
         return;
     Undo::SinglePushWorldObjData(worldObj);
     StaticObj* staticObj = (StaticObj*) worldObj;
@@ -410,14 +410,14 @@ void PropertiesStatic::removeCollisionsEnabled(){
 }
 
 void PropertiesStatic::reloadEnabled(){
-    if(worldObj == NULL)
+    if(worldObj == nullptr)
         return;
     Undo::SinglePushWorldObjData(worldObj);
     worldObj->reload();
 }
 
 void PropertiesStatic::editFileNameEnabled(){
-    if(worldObj == NULL)
+    if(worldObj == nullptr)
         return;
     EditFileNameDialog eWindow;
     eWindow.name.setText(worldObj->fileName);

@@ -52,28 +52,28 @@ public:
     unsigned int tdbId = 0;
     unsigned int trItemId;
     int trItemSData2;
-    float *trItemPData = NULL;
-    float *trItemRData = NULL;
+    float *trItemPData = nullptr;
+    float *trItemRData = nullptr;
     
-    int *crossoverTrItemData = NULL;
+    int *crossoverTrItemData = nullptr;
     
-    unsigned int *platformTrItemData = NULL;
+    unsigned int *platformTrItemData = nullptr;
     QString platformName;
     QString stationName;
     int platformMinWaitingTime;
     int platformNumPassengersWaiting;
     
-    float *trItemSRData = NULL;
+    float *trItemSRData = nullptr;
     
-    float *speedpostTrItemData = NULL;
+    float *speedpostTrItemData = nullptr;
     
     unsigned int trSignalType1;
     int trSignalType2;
     float trSignalType3;
     QString trSignalType4;
     int trSignalDirs = 0;
-    int *trSignalDir = NULL;
-    float *trSignalRDir = NULL;
+    int *trSignalDir = nullptr;
+    float *trSignalRDir = nullptr;
     bool titLoading = false;
     float pickupTrItemData1;
     unsigned int pickupTrItemData2;
@@ -124,7 +124,7 @@ public:
 private:
     float trItemSData1;
     
-    float* drawPosition = NULL;
+    float* drawPosition = nullptr;
     int speedpostTrItemDataLength = 0;
     static TrackItemObj* pointer3d; 
 };

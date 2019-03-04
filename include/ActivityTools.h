@@ -102,7 +102,7 @@ signals:
     void jumpTo(PreciseTileCoordinate* c);
     
 private:
-    Route *route = NULL;
+    Route *route = nullptr;
     QComboBox consists;
     QComboBox speedZones;
     QComboBox failedSignals;
@@ -140,7 +140,7 @@ private:
     QPlainTextEdit eDescription;
     QPlainTextEdit eBriefing;
     
-    PreciseTileCoordinate* coordinate = NULL;
+    PreciseTileCoordinate* coordinate = nullptr;
     
     void reloadActivityObjectLists();
 };

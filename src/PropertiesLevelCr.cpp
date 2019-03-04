@@ -156,8 +156,8 @@ PropertiesLevelCr::~PropertiesLevelCr() {
 }
 
 void PropertiesLevelCr::showObj(GameObj* obj){
-    if(obj == NULL){
-        infoLabel->setText("NULL");
+    if(obj == nullptr){
+        infoLabel->setText("nullptr");
         return;
     }
     worldObj = (WorldObj*)obj;
@@ -207,7 +207,7 @@ void PropertiesLevelCr::showObj(GameObj* obj){
 }
 
 void PropertiesLevelCr::updateObj(GameObj* obj){
-    if(obj == NULL){
+    if(obj == nullptr){
         return;
     }
     lobj = (LevelCrObj*)obj;
@@ -228,7 +228,7 @@ void PropertiesLevelCr::updateObj(GameObj* obj){
 }
 
 void PropertiesLevelCr::eActivateLevelCrossingEnabled(QString val){
-    if(lobj == NULL){
+    if(lobj == nullptr){
         return;
     }
     bool ok = false;
@@ -240,7 +240,7 @@ void PropertiesLevelCr::eActivateLevelCrossingEnabled(QString val){
 }
 
 void PropertiesLevelCr::eSoundNameEnabled(QString val){
-    if(lobj == NULL){
+    if(lobj == nullptr){
         return;
     }
     if(val.endsWith(".sms", Qt::CaseInsensitive))
@@ -248,7 +248,7 @@ void PropertiesLevelCr::eSoundNameEnabled(QString val){
 }
 
 void PropertiesLevelCr::cSoundTypeEnabled(int val){
-    if(lobj == NULL){
+    if(lobj == nullptr){
         return;
     }  
     if(val == 0){
@@ -262,7 +262,7 @@ void PropertiesLevelCr::cSoundTypeEnabled(int val){
 }
     
 void PropertiesLevelCr::eMaxPlacingDistanceEnabled(QString val){
-    if(lobj == NULL){
+    if(lobj == nullptr){
         return;
     }
     bool ok = false;
@@ -274,7 +274,7 @@ void PropertiesLevelCr::eMaxPlacingDistanceEnabled(QString val){
 }
 
 void PropertiesLevelCr::eMinActDistEnabled(QString val){
-    if(lobj == NULL){
+    if(lobj == nullptr){
         return;
     }
     bool ok = false;
@@ -286,7 +286,7 @@ void PropertiesLevelCr::eMinActDistEnabled(QString val){
 }
 
 void PropertiesLevelCr::eInitialWarningEnabled(QString val){
-    if(lobj == NULL){
+    if(lobj == nullptr){
         return;
     }
     bool ok = false;
@@ -298,7 +298,7 @@ void PropertiesLevelCr::eInitialWarningEnabled(QString val){
 }
 
 void PropertiesLevelCr::eMoreWarningEnabled(QString val){
-    if(lobj == NULL){
+    if(lobj == nullptr){
         return;
     }
     bool ok = false;
@@ -310,7 +310,7 @@ void PropertiesLevelCr::eMoreWarningEnabled(QString val){
 }
 
 void PropertiesLevelCr::eGateAnimLengthEnabled(QString val){
-    if(lobj == NULL){
+    if(lobj == nullptr){
         return;
     }
     bool ok = false;
@@ -322,7 +322,7 @@ void PropertiesLevelCr::eGateAnimLengthEnabled(QString val){
 }
 
 void PropertiesLevelCr::eCrashProbabilityEnabled(QString val){
-    if(lobj == NULL){
+    if(lobj == nullptr){
         return;
     }
     bool ok = false;
@@ -334,7 +334,7 @@ void PropertiesLevelCr::eCrashProbabilityEnabled(QString val){
 }
 
 void PropertiesLevelCr::chInvisibleEnabled(int val){
-    if(lobj == NULL){
+    if(lobj == nullptr){
         return;
     }
     Undo::SinglePushWorldObjData(worldObj);
@@ -346,7 +346,7 @@ void PropertiesLevelCr::chInvisibleEnabled(int val){
 }
 
 void PropertiesLevelCr::chSilentHaxEnabled(int val){
-    if(lobj == NULL){
+    if(lobj == nullptr){
         return;
     }
     Undo::SinglePushWorldObjData(worldObj);
@@ -358,7 +358,7 @@ void PropertiesLevelCr::chSilentHaxEnabled(int val){
 }
 
 void PropertiesLevelCr::bDeleteSelectedEnabled(){
-    if(lobj == NULL){
+    if(lobj == nullptr){
         return;
     }
     Undo::StateBegin();
@@ -370,7 +370,7 @@ void PropertiesLevelCr::bDeleteSelectedEnabled(){
 }
 
 bool PropertiesLevelCr::support(GameObj* obj){
-    if(obj == NULL)
+    if(obj == nullptr)
         return false;
     if(obj->typeObj != GameObj::worldobj)
         return false;

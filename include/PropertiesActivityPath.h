@@ -24,7 +24,7 @@ public:
     void showObj(GameObj* obj);
     
 private:
-    Path *pathObj = NULL;
+    Path *pathObj = nullptr;
     QLineEdit ePathFName;
     QLineEdit eName;
     QLineEdit ePathStart;

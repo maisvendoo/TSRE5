@@ -23,7 +23,7 @@ public:
     bool rendered = false;
     bool low = false;
     QString name = "";
-    Terrain* t = NULL;
+    Terrain* t = nullptr;
     TerrainInfo();
     TerrainInfo(const TerrainInfo& o);
     virtual ~TerrainInfo();

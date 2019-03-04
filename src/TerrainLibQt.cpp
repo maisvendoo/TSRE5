@@ -43,9 +43,9 @@ void TerrainLibQt::setDistantAsCurrent(){
 }
 
 Terrain* TerrainLibQt::getTerrainByXY(int x, int y, bool load) {
-    if(currentQuadTree == NULL)
+    if(currentQuadTree == nullptr)
         currentQuadTree = quadTree;
-    if(currentQt == NULL)
+    if(currentQt == nullptr)
         currentQt = &terrainQt;
     
     
@@ -53,9 +53,9 @@ Terrain* TerrainLibQt::getTerrainByXY(int x, int y, bool load) {
     unsigned int terrainNameId = currentQuadTree->getMyNameId((int) x, -y);
 
     if (terrainNameId == 0)
-        return NULL;
-    if ((*currentQt)[terrainNameId] != NULL) {
-        if((*currentQt)[terrainNameId]->t != NULL)
+        return nullptr;
+    if ((*currentQt)[terrainNameId] != nullptr) {
+        if((*currentQt)[terrainNameId]->t != nullptr)
             return (*currentQt)[terrainNameId]->t;
     }
     if (load) {
@@ -66,7 +66,7 @@ Terrain* TerrainLibQt::getTerrainByXY(int x, int y, bool load) {
         return (*currentQt)[terrainNameId]->t;
     }
 
-    return NULL;
+    return nullptr;
 }
 
 void TerrainLibQt::loadQuadTree() {
@@ -105,9 +105,9 @@ bool TerrainLibQt::isLoaded(int x, int z) {
     unsigned int terrainNameId = quadTree->getMyNameId((int) x, -z);
     if (terrainNameId == 0)
         return false;
-    if ((*currentQt)[terrainNameId] == NULL)
+    if ((*currentQt)[terrainNameId] == nullptr)
         return false;
-    if ((*currentQt)[terrainNameId]->t == NULL)
+    if ((*currentQt)[terrainNameId]->t == nullptr)
         return false;
     if ((*currentQt)[terrainNameId]->t->loaded == false)
         return false;
@@ -116,7 +116,7 @@ bool TerrainLibQt::isLoaded(int x, int z) {
 
 bool TerrainLibQt::load(int x, int z) {
     Terrain *t = getTerrainByXY(x, z, true);
-    if (t == NULL)
+    if (t == nullptr)
         return false;
     if (t->loaded == false)
         return false;
@@ -128,9 +128,9 @@ void TerrainLibQt::getUnsavedInfo(QVector<QString> &items) {
     QHashIterator<unsigned int, TerrainInfo*> i(terrainQt);
     while (i.hasNext()) {
         i.next();
-        if (i.value() == NULL) continue;
+        if (i.value() == nullptr) continue;
         Terrain* tTile = (Terrain*) i.value()->t;
-        if (tTile == NULL) continue;
+        if (tTile == nullptr) continue;
         if (tTile->loaded && tTile->isModified()) {
             items.push_back("[T] "+QString::number(tTile->mojex)+" "+QString::number(-tTile->mojez));
         }
@@ -138,9 +138,9 @@ void TerrainLibQt::getUnsavedInfo(QVector<QString> &items) {
     QHashIterator<unsigned int, TerrainInfo*> i2(terrainQtLo);
     while (i2.hasNext()) {
         i2.next();
-        if (i2.value() == NULL) continue;
+        if (i2.value() == nullptr) continue;
         Terrain* tTile = (Terrain*) i2.value()->t;
-        if (tTile == NULL) continue;
+        if (tTile == nullptr) continue;
         if (tTile->loaded && tTile->isModified()) {
             items.push_back("[T] "+QString::number(tTile->mojex)+" "+QString::number(-tTile->mojez));
         }
@@ -153,9 +153,9 @@ void TerrainLibQt::save() {
     QHashIterator<unsigned int, TerrainInfo*> i(terrainQt);
     while (i.hasNext()) {
         i.next();
-        if (i.value() == NULL) continue;
+        if (i.value() == nullptr) continue;
         Terrain* tTile = (Terrain*) i.value()->t;
-        if (tTile == NULL) continue;
+        if (tTile == nullptr) continue;
         if (tTile->loaded && tTile->isModified()) {
             tTile->save();
             tTile->setModified(false);
@@ -165,9 +165,9 @@ void TerrainLibQt::save() {
     QHashIterator<unsigned int, TerrainInfo*> i2(terrainQtLo);
     while (i2.hasNext()) {
         i2.next();
-        if (i2.value() == NULL) continue;
+        if (i2.value() == nullptr) continue;
         Terrain* tTile = (Terrain*) i2.value()->t;
-        if (tTile == NULL) continue;
+        if (tTile == nullptr) continue;
         if (tTile->loaded && tTile->isModified()) {
             tTile->save();
             tTile->setModified(false);
@@ -195,7 +195,7 @@ float TerrainLibQt::getHeight(int x, int z, float posx, float posz) {
 void TerrainLibQt::refresh(int x, int z) {
     Terrain *terr = this->getTerrainByXY(x, z);
 
-    if (terr == NULL) return;
+    if (terr == nullptr) return;
     if (terr->loaded == false) return;
     terr->refresh();
 }
@@ -204,7 +204,7 @@ void TerrainLibQt::setHeight(int x, int z, float posx, float posz, float h) {
     Game::check_coords(x, z, posx, posz);
     Terrain *terr = this->getTerrainByXY(x, z);
 
-    if (terr == NULL) return;
+    if (terr == nullptr) return;
     if (terr->loaded == false) return;
     
     terr->setHeight(x, z, posx, posz, h);
@@ -218,8 +218,8 @@ Terrain* TerrainLibQt::setHeight256(int x, int z, int posx, int posz, float h, f
     Game::check_coords(x, z, posx, posz);
     Terrain *terr = getTerrainByXY(x, z);
 
-    if (terr == NULL) return NULL;
-    if (terr->loaded == false) return NULL;
+    if (terr == nullptr) return nullptr;
+    if (terr->loaded == false) return nullptr;
 
     float lx = posx, lz = posz;
     terr->getLocalCoords(x, z, lx, lz);
@@ -248,7 +248,7 @@ float TerrainLibQt::getHeight(int x, int z, float posx, float posz, bool addR) {
     
     Terrain *terr = getTerrainByXY(x, z, false);
 
-    if (terr == NULL) return -1;
+    if (terr == nullptr) return -1;
     if (terr->loaded == false) return -1;
 
     return terr->getHeight(x, z, posx, posz, addR);
@@ -256,7 +256,7 @@ float TerrainLibQt::getHeight(int x, int z, float posx, float posz, bool addR) {
 
 void TerrainLibQt::fillHeightMap(int x, int z, float* data) {
     Terrain *terr = getTerrainByXY(x, z, false);
-    if (terr == NULL) return;
+    if (terr == nullptr) return;
     if (terr->loaded == false) return;
     terr->fillHeightMap(data);
 }
@@ -267,14 +267,14 @@ void TerrainLibQt::getRotation(float* rot, int x, int z, float posx, float posz)
     rot[1] = 0;
     
     Terrain *terr = getTerrainByXY(x, z, false);
-    if (terr == NULL) return;
+    if (terr == nullptr) return;
     if (terr->loaded == false) return;
     terr->getRotation(rot, x, z, posx, posz);
     return;
 }
 
 void TerrainLibQt::setHeightFromGeoGui(int x, int z, float* p) {
-    if(heightWindow == NULL)
+    if(heightWindow == nullptr)
         heightWindow = new HeightWindow();
     
     float posx = p[0];
@@ -283,7 +283,7 @@ void TerrainLibQt::setHeightFromGeoGui(int x, int z, float* p) {
     qDebug() << x << " " << z << " " << posx << " " << posz;
     
     Terrain *terr = getTerrainByXY(x, z);
-    if (terr == NULL) return;
+    if (terr == nullptr) return;
     if (terr->loaded == false) return;
 
     int X, Y;
@@ -308,14 +308,14 @@ void TerrainLibQt::setHeightFromGeoGui(int x, int z, float* p) {
             for(int j = -1; j<= 1; j++){
                 terr->getCornerCoordsXY(X, Y, i, j);
                 Terrain* tterr  = getTerrainByXY(X, Y);
-                if (tterr != NULL) 
+                if (tterr != nullptr) 
                     tterr->refresh();
             }
     }
 }
 
 void TerrainLibQt::setHeightFromGeo(int x, int z, float* p) {
-    if(heightWindow == NULL)
+    if(heightWindow == nullptr)
         heightWindow = new HeightWindow();
     
     float posx = p[0];
@@ -324,7 +324,7 @@ void TerrainLibQt::setHeightFromGeo(int x, int z, float* p) {
     qDebug() << x << " " << z << " " << posx << " " << posz;
     
     Terrain *terr = getTerrainByXY(x, z);
-    if (terr == NULL) return;
+    if (terr == nullptr) return;
     if (terr->loaded == false) return;
     int X, Y;
     terr->getLowCornerTileXY(X, Y);
@@ -348,19 +348,19 @@ void TerrainLibQt::setHeightFromGeo(int x, int z, float* p) {
         terr->getCornerCoordsXY(X, Y, 0, 1);
         Terrain* tterr;
         tterr = getTerrainByXY(X, Y);
-        if (tterr != NULL) 
+        if (tterr != nullptr) 
             tterr->refresh();
         terr->getCornerCoordsXY(X, Y, 0, -1);
         tterr = getTerrainByXY(X, Y);
-        if (tterr != NULL) 
+        if (tterr != nullptr) 
             tterr->refresh();
         terr->getCornerCoordsXY(X, Y, 1, 0);
         tterr = getTerrainByXY(X, Y);
-        if (tterr != NULL) 
+        if (tterr != nullptr) 
             tterr->refresh();
         terr->getCornerCoordsXY(X, Y, -1, 0);
         tterr = getTerrainByXY(X, Y);
-        if (tterr != NULL) 
+        if (tterr != nullptr) 
             tterr->refresh();
     }
 }
@@ -375,7 +375,7 @@ void TerrainLibQt::setTextureToTrackObj(Brush* brush, float* punkty, int length,
         ttz = tz;
         Game::check_coords(ttx, ttz, posx, posz);
         Terrain *terr = this->getTerrainByXY(ttx, ttz);
-        if (terr == NULL)
+        if (terr == nullptr)
             continue;
         if (terr->loaded == false) continue;
         terr->paintTexture(brush, ttx, ttz, posx, posz);
@@ -440,7 +440,7 @@ void TerrainLibQt::setTerrainToTrackObj(Brush* brush, float* punkty, int length,
     
     //set to undo
     int ttx, ttz;
-    Terrain *terr = NULL;
+    Terrain *terr = nullptr;
     for(int ii = -brush->eRadius; ii < brush->eRadius; ii++)
         for(int jj = -brush->eRadius; jj < brush->eRadius; jj++){
             if(sqrt(ii*ii + jj*jj) > brush->eRadius) continue;
@@ -454,7 +454,7 @@ void TerrainLibQt::setTerrainToTrackObj(Brush* brush, float* punkty, int length,
                 Game::check_coords(ttx, ttz, xx, zz);
                 if(terr != getTerrainByXY(ttx, ttz)){
                     terr = getTerrainByXY(ttx, ttz);
-                    if (terr == NULL) continue;
+                    if (terr == nullptr) continue;
                     if (!terr->loaded) continue;
                     Undo::PushTerrainHeightMap(terr->mojex, terr->mojez, terr->terrainData, terr->getSampleCount());
                 }
@@ -511,7 +511,7 @@ void TerrainLibQt::setTerrainToTrackObj(Brush* brush, float* punkty, int length,
         }*/
 
     foreach (Terrain *value, uterr){
-        if(value == NULL)
+        if(value == nullptr)
             continue;
         value->setModified(true);
         value->refresh();
@@ -525,7 +525,7 @@ void TerrainLibQt::setTerrainTexture(Brush* brush, int x, int z, float* p) {
     qDebug() << x << " " << z << " " << posx << " " << posz;
     
     Terrain *terr = this->getTerrainByXY(x, z);
-    if (terr == NULL) return;
+    if (terr == nullptr) return;
     if (terr->loaded == false) return;
     terr->setTexture(brush, x, z, posx, posz);
 }
@@ -537,7 +537,7 @@ void TerrainLibQt::toggleWaterDraw(int x, int z, float* p, float direction) {
     qDebug() << x << " " << z << " " << posx << " " << posz;
     
     Terrain *terr = this->getTerrainByXY(x, z);
-    if (terr == NULL) return;
+    if (terr == nullptr) return;
     if (terr->loaded == false) return;
     terr->toggleWaterDraw(x, z, posx, posz, direction);
 }
@@ -549,7 +549,7 @@ void TerrainLibQt::makeTextureFromMap(int x, int z, float* p) {
     qDebug() << x << " " << z << " " << posx << " " << posz;
     
     Terrain *terr = this->getTerrainByXY(x, z);
-    if (terr == NULL) return;
+    if (terr == nullptr) return;
     if (terr->loaded == false) return;
     terr->makeTextureFromMap();
 }
@@ -561,7 +561,7 @@ void TerrainLibQt::removeTileTextureFromMap(int x, int z, float* p) {
     qDebug() << x << " " << z << " " << posx << " " << posz;
     
     Terrain *terr = this->getTerrainByXY(x, z);
-    if (terr == NULL) return;
+    if (terr == nullptr) return;
     if (terr->loaded == false) return;
     terr->removeTextureFromMap();
 }
@@ -573,7 +573,7 @@ void TerrainLibQt::setTileBlob(int x, int z, float* p) {
     qDebug() << x << " " << z << " " << posx << " " << posz;
     
     Terrain *terr = this->getTerrainByXY(x, z);
-    if (terr == NULL) return;
+    if (terr == nullptr) return;
     if (terr->loaded == false) return;
     terr->setTileBlob();
 }
@@ -585,7 +585,7 @@ void TerrainLibQt::setWaterLevelGui(int x, int z, float* p) {
     qDebug() << x << " " << z << " " << posx << " " << posz;
     
     Terrain *terr = this->getTerrainByXY(x, z);
-    if (terr == NULL) return;
+    if (terr == nullptr) return;
     if (terr->loaded == false) return;
     terr->setWaterLevelGui();
 }
@@ -597,7 +597,7 @@ void TerrainLibQt::toggleDraw(int x, int z, float* p) {
     qDebug() << x << " " << z << " " << posx << " " << posz;
     
     Terrain *terr = this->getTerrainByXY(x, z);
-    if (terr == NULL) return;
+    if (terr == nullptr) return;
     if (terr->loaded == false) return;
     terr->toggleDraw(x, z, posx, posz);
 }
@@ -609,7 +609,7 @@ int TerrainLibQt::getTexture(int x, int z, float* p) {
     qDebug() << x << " " << z << " " << posx << " " << posz;
     
     Terrain *terr = this->getTerrainByXY(x, z);
-    if (terr == NULL) return -1;
+    if (terr == nullptr) return -1;
     if (terr->loaded == false) return -1;
     return terr->getTexture(x, z, posx, posz);
 }
@@ -621,7 +621,7 @@ void TerrainLibQt::paintTexture(Brush* brush, int x, int z, float* p) {
     qDebug() << x << " " << z << " " << posx << " " << posz;
     
     Terrain *terr = this->getTerrainByXY(x, z);
-    if (terr == NULL) return;
+    if (terr == nullptr) return;
     if (terr->loaded == false) return;
     terr->paintTexture(brush, x, z, posx, posz);
 }
@@ -633,7 +633,7 @@ void TerrainLibQt::lockTexture(Brush* brush, int x, int z, float* p) {
     qDebug() << x << " " << z << " " << posx << " " << posz;
     
     Terrain *terr = this->getTerrainByXY(x, z);
-    if (terr == NULL) return;
+    if (terr == nullptr) return;
     if (terr->loaded == false) return;
     terr->lockTexture(brush, x, z, posx, posz);
 }
@@ -645,7 +645,7 @@ void TerrainLibQt::toggleGaps(int x, int z, float* p, float direction) {
     qDebug() << x << " " << z << " " << posx << " " << posz;
     
     Terrain *terr = this->getTerrainByXY(x, z);
-    if (terr == NULL) return;
+    if (terr == nullptr) return;
     if (terr->loaded == false) return;
     terr->toggleGaps(x, z, posx, posz, direction);
 }
@@ -656,7 +656,7 @@ void TerrainLibQt::setFixedTileHeight(Brush* brush, int x, int z, float* p) {
     Game::check_coords(x, z, posx, posz);
     
     Terrain *terr = this->getTerrainByXY(x, z);
-    if (terr == NULL) return;
+    if (terr == nullptr) return;
     if (terr->loaded == false) return;
     Undo::PushTerrainHeightMap(terr->mojex, terr->mojez, terr->terrainData, terr->getSampleCount());
     terr->setFixedHeight(brush->hFixed);
@@ -674,7 +674,7 @@ QSet<Terrain*> TerrainLibQt::paintHeightMap(Brush* brush, int x, int z, float* p
     
     Terrain *terr;
     terr = getTerrainByXY(x, z);
-    if (terr == NULL) return uterr;
+    if (terr == nullptr) return uterr;
     if (terr->loaded == false) return uterr;
 
     int px = posx;
@@ -699,7 +699,7 @@ QSet<Terrain*> TerrainLibQt::paintHeightMap(Brush* brush, int x, int z, float* p
             Game::check_coords(tx, tz, tpx, tpz);
             if(terr != getTerrainByXY(tx, tz)){
                 terr = getTerrainByXY(tx, tz);
-                if (terr == NULL) continue;
+                if (terr == nullptr) continue;
                 if (!terr->loaded) continue;
                 Undo::PushTerrainHeightMap(terr->mojex, terr->mojez, terr->terrainData, terr->getSampleCount());
             }
@@ -723,7 +723,7 @@ QSet<Terrain*> TerrainLibQt::paintHeightMap(Brush* brush, int x, int z, float* p
                 tz = z;
                 Game::check_coords(tx, tz, tpx, tpz);
                 terr = getTerrainByXY(tx, tz);
-                if (terr == NULL) continue;
+                if (terr == nullptr) continue;
                 if (!terr->loaded) continue;
                 float lx = tpx, lz = tpz;
                 terr->getLocalCoords(tx, tz, lx, lz);
@@ -746,7 +746,7 @@ QSet<Terrain*> TerrainLibQt::paintHeightMap(Brush* brush, int x, int z, float* p
             tpz = pz+j*8;
             Game::check_coords(tx, tz, tpx, tpz);
             terr = getTerrainByXY(tx, tz);
-            if (terr == NULL) continue;
+            if (terr == nullptr) continue;
             if (!terr->loaded) continue;
             uterr.insert(terr);
             
@@ -803,53 +803,53 @@ void TerrainLibQt::fillWaterLevels(float *w, int mojex, int mojez) {
     
     cTile->getCornerCoordsXY(X, Y, -1, -1);
     tTile = getTerrainByXY(X, Y);
-    if (tTile != NULL)
+    if (tTile != nullptr)
         if(tTile->loaded){
             w[0] = tTile->getWaterLevelSE();
         }
     cTile->getCornerCoordsXY(X, Y, 0, -1);
     tTile = getTerrainByXY(X, Y);
-    if (tTile != NULL)
+    if (tTile != nullptr)
         if(tTile->loaded){
             w[1] = tTile->getWaterLevelSW();
             w[2] = tTile->getWaterLevelSE();
         }
     cTile->getCornerCoordsXY(X, Y, 1, -1);
     tTile = getTerrainByXY(X, Y);
-    if (tTile != NULL)
+    if (tTile != nullptr)
         if(tTile->loaded){
             w[3] = tTile->getWaterLevelSW();
         }
     cTile->getCornerCoordsXY(X, Y, -1, 0);
     tTile = getTerrainByXY(X, Y);
-    if (tTile != NULL) 
+    if (tTile != nullptr) 
         if(tTile->loaded){
             w[4] = tTile->getWaterLevelNE();
             w[6] = tTile->getWaterLevelSE();
         }
     cTile->getCornerCoordsXY(X, Y, 1, 0);
     tTile = getTerrainByXY(X, Y);
-    if (tTile != NULL)
+    if (tTile != nullptr)
         if(tTile->loaded){
             w[5] = tTile->getWaterLevelNW();
             w[7] = tTile->getWaterLevelSW();
         }
     cTile->getCornerCoordsXY(X, Y, -1, 1);
     tTile = getTerrainByXY(X, Y);
-    if (tTile != NULL)
+    if (tTile != nullptr)
         if(tTile->loaded){
             w[8] = tTile->getWaterLevelNE();
         }
     cTile->getCornerCoordsXY(X, Y, 0, 1);
     tTile = getTerrainByXY(X, Y);
-    if (tTile != NULL) 
+    if (tTile != nullptr) 
         if(tTile->loaded){
             w[9] = tTile->getWaterLevelNW();
             w[10] = tTile->getWaterLevelNE();
         }
     cTile->getCornerCoordsXY(X, Y, 1, 1);
     tTile = getTerrainByXY(X, Y);
-    if (tTile != NULL)
+    if (tTile != nullptr)
         if(tTile->loaded){
             w[11] = tTile->getWaterLevelNW();
         }
@@ -862,14 +862,14 @@ void TerrainLibQt::setWaterLevels(float *w, int mojex, int mojez) {
     
     cTile->getCornerCoordsXY(X, Y, -1, -1);
     tTile = getTerrainByXY(X, Y);
-    if (tTile != NULL)
+    if (tTile != nullptr)
         if(tTile->loaded){
             tTile->setWaterLevelSE(w[0]);
             tTile->refreshWaterShapes();
         }
     cTile->getCornerCoordsXY(X, Y, 0, -1);
     tTile = getTerrainByXY(X, Y);
-    if (tTile != NULL)
+    if (tTile != nullptr)
         if(tTile->loaded){
             tTile->setWaterLevelSW(w[1]);
             tTile->setWaterLevelSE(w[2]);
@@ -877,14 +877,14 @@ void TerrainLibQt::setWaterLevels(float *w, int mojex, int mojez) {
         }
     cTile->getCornerCoordsXY(X, Y, 1, -1);
     tTile = getTerrainByXY(X, Y);
-    if (tTile != NULL)
+    if (tTile != nullptr)
         if(tTile->loaded){
             tTile->setWaterLevelSW(w[3]);
             tTile->refreshWaterShapes();
         }
     cTile->getCornerCoordsXY(X, Y, -1, 0);
     tTile = getTerrainByXY(X, Y);
-    if (tTile != NULL) 
+    if (tTile != nullptr) 
         if(tTile->loaded){
             tTile->setWaterLevelNE(w[4]);
             tTile->setWaterLevelSE(w[6]);
@@ -892,7 +892,7 @@ void TerrainLibQt::setWaterLevels(float *w, int mojex, int mojez) {
         }
     cTile->getCornerCoordsXY(X, Y, 1, 0);
     tTile = getTerrainByXY(X, Y);
-    if (tTile != NULL)
+    if (tTile != nullptr)
         if(tTile->loaded){
             tTile->setWaterLevelNW(w[5]);
             tTile->setWaterLevelSW(w[7]);
@@ -900,14 +900,14 @@ void TerrainLibQt::setWaterLevels(float *w, int mojex, int mojez) {
         }
     cTile->getCornerCoordsXY(X, Y, -1, 1);
     tTile = getTerrainByXY(X, Y);
-    if (tTile != NULL)
+    if (tTile != nullptr)
         if(tTile->loaded){
             tTile->setWaterLevelNE(w[8]);
             tTile->refreshWaterShapes();
         }
     cTile->getCornerCoordsXY(X, Y, 0, 1);
     tTile = getTerrainByXY(X, Y);
-    if (tTile != NULL) 
+    if (tTile != nullptr) 
         if(tTile->loaded){
             tTile->setWaterLevelNW(w[9]);
             tTile->setWaterLevelNE(w[10]);
@@ -915,7 +915,7 @@ void TerrainLibQt::setWaterLevels(float *w, int mojex, int mojez) {
         }
     cTile->getCornerCoordsXY(X, Y, 1, 1);
     tTile = getTerrainByXY(X, Y);
-    if (tTile != NULL)
+    if (tTile != nullptr)
         if(tTile->loaded){
             tTile->setWaterLevelNW(w[11]);
             tTile->refreshWaterShapes();
@@ -949,21 +949,21 @@ void TerrainLibQt::fillRaw(Terrain *cTerr, int mojex, int mojez) {
     int X, Y;
     cTerr->getCornerCoordsXY(X, Y, 1, 0);
     tTile = getTerrainByXY(X, Y, true);
-    if(tTile != NULL)
+    if(tTile != nullptr)
         if (tTile->loaded) {
             cTerr->fillTerrainDataX(tTile);
         }
 
     cTerr->getCornerCoordsXY(X, Y, 0, 1);
     tTile = getTerrainByXY(X, Y, true);
-    if(tTile != NULL)
+    if(tTile != nullptr)
         if (tTile->loaded) {
             cTerr->fillTerrainDataY(tTile);
         }
 
     cTerr->getCornerCoordsXY(X, Y, 1, 1);
     tTile = getTerrainByXY(X, Y, true);
-    if(tTile != NULL)
+    if(tTile != nullptr)
         if (tTile->loaded) {
             cTerr->fillTerrainDataXY(tTile);
         }
@@ -993,7 +993,7 @@ void TerrainLibQt::renderWater(GLUU* gluu, float* playerT, float* playerW, float
             spiralLoop(n, i, j);
 
         tTile = getTerrainByXY((int) playerT[0] + i, (int) playerT[1] + j, true);
-        if(tTile == NULL)
+        if(tTile == nullptr)
             continue;
         if (tTile->loaded == false)
             continue;
@@ -1037,7 +1037,7 @@ void TerrainLibQt::renderWaterLo(GLUU* gluu, float* playerT, float* playerW, flo
             terrainNameId = quadTreeLo->getMyNameId((int) playerT[0] + i, -(int) playerT[1] - j);
             if (terrainNameId == 0)
                 continue;
-            if (terrainQtLo[terrainNameId] == NULL) {
+            if (terrainQtLo[terrainNameId] == nullptr) {
                 terrainQtLo[terrainNameId] = new TerrainInfo();
                 quadTreeLo->fillTerrainInfo((int) playerT[0] + i, -(int) playerT[1] - j, terrainQtLo[terrainNameId]);
                 qDebug() << terrainNameId;
@@ -1070,7 +1070,7 @@ void TerrainLibQt::renderWaterLo(GLUU* gluu, float* playerT, float* playerW, flo
     QHashIterator<unsigned int, TerrainInfo*> i(terrainQtLo);
     while (i.hasNext()) {
         i.next();
-        if (i.value() == NULL) continue;
+        if (i.value() == nullptr) continue;
         i.value()->rendered = false;
     }
 }
@@ -1087,7 +1087,7 @@ void TerrainLibQt::renderShadowMap(GLUU *gluu, float * playerT, float* playerW, 
             spiralLoop(n, i, j);
 
         tTile = getTerrainByXY((int) playerT[0] + i, (int) playerT[1] + j, true);
-        if(tTile == NULL)
+        if(tTile == nullptr)
             continue;
         if (tTile->loaded == false)
             continue;
@@ -1133,7 +1133,7 @@ void TerrainLibQt::render(GLUU *gluu, float * playerT, float* playerW, float* ta
             spiralLoop(n, i, j);
 
         tTile = getTerrainByXY((int) playerT[0] + i, (int) playerT[1] + j, true);
-        if(tTile == NULL)
+        if(tTile == nullptr)
             continue;
         
         tTile->inUse = true;
@@ -1164,12 +1164,12 @@ void TerrainLibQt::render(GLUU *gluu, float * playerT, float* playerW, float* ta
     QHashIterator<unsigned int, TerrainInfo*> i(terrainQt);
     while (i.hasNext()) {
         i.next();
-        if (i.value() == NULL) continue;
+        if (i.value() == nullptr) continue;
         Terrain* obj = (Terrain*) i.value()->t;
-        if(obj == NULL) continue;
+        if(obj == nullptr) continue;
         if(!obj->inUse && obj->loaded && !obj->isModified() && !obj->isSelected()){
            delete obj;
-           i.value()->t = NULL;
+           i.value()->t = nullptr;
        } else {
            obj->inUse = false;
        }
@@ -1197,7 +1197,7 @@ void TerrainLibQt::renderLo(GLUU *gluu, float * playerT, float* playerW, float* 
             terrainNameId = quadTreeLo->getMyNameId((int) playerT[0] + i, -(int) playerT[1] - j);
             if (terrainNameId == 0)
                 continue;
-            if (terrainQtLo[terrainNameId] == NULL) {
+            if (terrainQtLo[terrainNameId] == nullptr) {
                 terrainQtLo[terrainNameId] = new TerrainInfo();
                 quadTreeLo->fillTerrainInfo((int) playerT[0] + i, -(int) playerT[1] - j, terrainQtLo[terrainNameId]);
                 qDebug() << terrainNameId;
@@ -1229,7 +1229,7 @@ void TerrainLibQt::renderLo(GLUU *gluu, float * playerT, float* playerW, float* 
     QHashIterator<unsigned int, TerrainInfo*> i(terrainQtLo);
     while (i.hasNext()) {
         i.next();
-        if (i.value() == NULL) continue;
+        if (i.value() == nullptr) continue;
         i.value()->rendered = false;
     }
 }

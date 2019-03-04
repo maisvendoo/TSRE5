@@ -136,7 +136,7 @@ GeoTools::GeoTools(QString name)
 void GeoTools::mkrList(QMap<QString, Coords*> list){
     mkrFiles = list;
     for (auto it = list.begin(); it != list.end(); ++it ){
-        if(it.value() == NULL)
+        if(it.value() == nullptr)
             continue;
         if(!it.value()->loaded)
             continue;
@@ -151,7 +151,7 @@ void GeoTools::checkGeodataFilesEnabled(){
     if(markerFiles.count() == 0)
         return;
     Coords* c = mkrFiles[markerFiles.currentText()];
-    if(c == NULL) 
+    if(c == nullptr) 
         return;
     
     QMap<int, QPair<int, int>*> tileList;
@@ -162,7 +162,7 @@ void GeoTools::checkGeodataFilesEnabled(){
     QMapIterator<int, QPair<int, int>*> i2(tileList);
     while (i2.hasNext()) {
         i2.next();
-        if(i2.value() == NULL)
+        if(i2.value() == nullptr)
             continue;
         x = i2.value()->first;
         z = i2.value()->second;
@@ -175,7 +175,7 @@ void GeoTools::generateTilesEnabled(){
     if(markerFiles.count() == 0)
         return;
     Coords* c = mkrFiles[markerFiles.currentText()];
-    if(c == NULL) 
+    if(c == nullptr) 
         return;
     
     QMap<int, QPair<int, int>*> tileList;
@@ -189,7 +189,7 @@ void GeoTools::generateLoTilesEnabled(){
     if(markerFiles.count() == 0)
         return;
     Coords* c = mkrFiles[markerFiles.currentText()];
-    if(c == NULL) 
+    if(c == nullptr) 
         return;
     
     QMap<int, QPair<int, int>*> tileList;
@@ -202,7 +202,7 @@ void GeoTools::generateLoTilesEnabled(){
 void GeoTools::generateLoTilesFromTDBEnabled(){
 
     TDB* tdb = Game::trackDB;
-    if(tdb == NULL) 
+    if(tdb == nullptr) 
         return;
     
     QMap<int, QPair<int, int>*> tileList;
@@ -274,17 +274,17 @@ void GeoTools::msg(QString text, QString val){
         QMapIterator<QString, QPushButton*> i(buttonTools);
         while (i.hasNext()) {
             i.next();
-            if(i.value() == NULL)
+            if(i.value() == nullptr)
                 continue;
             i.value()->blockSignals(true);
             i.value()->setChecked(false);
         }
-        if(buttonTools[val] != NULL)
+        if(buttonTools[val] != nullptr)
             buttonTools[val]->setChecked(true);
         i.toFront();
         while (i.hasNext()) {
             i.next();
-            if(i.value() == NULL)
+            if(i.value() == nullptr)
                 continue;
             i.value()->blockSignals(false);
         }

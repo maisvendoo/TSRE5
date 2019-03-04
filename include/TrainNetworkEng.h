@@ -27,7 +27,7 @@ public slots:
     void readData();
 private:
     float speed = 1;
-    QTcpSocket *socket = NULL;
+    QTcpSocket *socket = nullptr;
     void processDatagram(QByteArray data);
 };
 

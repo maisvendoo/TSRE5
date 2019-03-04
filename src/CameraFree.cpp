@@ -46,7 +46,7 @@ CameraFree::~CameraFree() {
 }
 
 PreciseTileCoordinate* CameraFree::getCurrentPos(){
-    if(this->currentPos == NULL)
+    if(this->currentPos == nullptr)
         this->currentPos = new PreciseTileCoordinate();
     this->currentPos->TileX = this->pozT[0];
     this->currentPos->TileZ = -this->pozT[1];
@@ -175,7 +175,7 @@ Vector3f Camera::getUp() {
 }*/
 
 void CameraFree::update(float fps) {
-    if(cameraObject != NULL){
+    if(cameraObject != nullptr){
         float cpos[8];
         cameraObject->getCameraPosition((float*)cpos);
         pozT[0] = cpos[0];
@@ -269,7 +269,7 @@ void CameraFree::patrzY(float f) {
 }
 
 void CameraFree::check_coords() {
-    if(cameraObject != NULL)
+    if(cameraObject != nullptr)
         return;
     if (playerPos[0] > 1024) {
         playerPos[0] -= 2048;

@@ -72,9 +72,9 @@ private:
     int objCount = 0;
     int objHidden = 0;
     
-    IghCoordinate* igh = NULL;
-    LatitudeLongitudeCoordinate* latlon = NULL;
-    PreciseTileCoordinate* aCoords = NULL;
+    IghCoordinate* igh = nullptr;
+    LatitudeLongitudeCoordinate* latlon = nullptr;
+    PreciseTileCoordinate* aCoords = nullptr;
     QMap<QString, Coords*> mkrFiles;
     QMap<QString, LatitudeLongitudeCoordinate*> mkrPlaces;
     QString jumpType = "";

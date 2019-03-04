@@ -80,8 +80,8 @@ PropertiesCarspawner::~PropertiesCarspawner() {
 }
 
 void PropertiesCarspawner::showObj(GameObj* obj){
-    if(obj == NULL){
-        infoLabel->setText("NULL");
+    if(obj == nullptr){
+        infoLabel->setText("nullptr");
         return;
     }
     worldObj = (WorldObj*)obj;
@@ -112,19 +112,19 @@ void PropertiesCarspawner::showObj(GameObj* obj){
 }
 
 void PropertiesCarspawner::carNumberEnabled(QString val){
-    if(cobj == NULL) return;
+    if(cobj == nullptr) return;
     Undo::SinglePushWorldObjData(worldObj);
     cobj->setCarNumber(val.toFloat());
 }
 
 void PropertiesCarspawner::carSpeedEnabled(QString val){
-    if(cobj == NULL) return;
+    if(cobj == nullptr) return;
     Undo::SinglePushWorldObjData(worldObj);
     cobj->setCarSpeed(val.toFloat());
 }
 
 bool PropertiesCarspawner::support(GameObj* obj){
-    if(obj == NULL)
+    if(obj == nullptr)
         return false;
     if(obj->typeObj != GameObj::worldobj)
         return false;
@@ -134,7 +134,7 @@ bool PropertiesCarspawner::support(GameObj* obj){
 }
 
 void PropertiesCarspawner::carspawnListSelected(QString val){
-    if(cobj == NULL)
+    if(cobj == nullptr)
         return;
     Undo::SinglePushWorldObjData(worldObj);
     if(carspawnList.currentIndex() == 0)
@@ -144,14 +144,14 @@ void PropertiesCarspawner::carspawnListSelected(QString val){
 }
 
 void PropertiesCarspawner::bExpandEnabled(){
-    if(cobj == NULL)
+    if(cobj == nullptr)
         return;
     Undo::SinglePushWorldObjData(worldObj);
     cobj->expand();
 }
 
 void PropertiesCarspawner::useCustomListEnabled(int val){
-    if(cobj == NULL)
+    if(cobj == nullptr)
         return;
     Undo::SinglePushWorldObjData(worldObj);
     if(val == 2){

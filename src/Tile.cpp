@@ -84,7 +84,7 @@ void Tile::wczytajObiekty() {
     for (auto it = obiekty.begin(); it != obiekty.end(); ++it) {
         //console.log(obj.type);
         WorldObj* obj = (WorldObj*) it->second;
-        if(obj == NULL) continue;
+        if(obj == nullptr) continue;
         obj->load(x, z);
         if(obj->UiD < 1000000)
             if(obj->UiD > maxUiD) maxUiD = obj->UiD;
@@ -141,7 +141,7 @@ void Tile::load() {
                         ParserX::SkipToken(data);
                         continue;
                     }
-                    if ((nowy = WorldObj::createObj(sh)) != NULL) {
+                    if ((nowy = WorldObj::createObj(sh)) != nullptr) {
                         //qDebug() << nowy->type;
                         while (!((sh = ParserX::NextTokenInside(data).toLower()) == "")) {
                             nowy->set(sh, data);
@@ -193,7 +193,7 @@ void Tile::load() {
                 data->off = offset;
                 continue;
             }
-            if ((nowy = WorldObj::createObj(idx)) == NULL) {
+            if ((nowy = WorldObj::createObj(idx)) == nullptr) {
                 data->off = offset;
                 continue;
             }
@@ -247,7 +247,7 @@ void Tile::loadWS() {
             if(sh == "tr_worldsoundfile"){
                 WorldObj* nowy;
                 while (!((sh = ParserX::NextTokenInside(data).toLower()) == "")) {
-                    if ((nowy = WorldObj::createObj(sh)) != NULL) {
+                    if ((nowy = WorldObj::createObj(sh)) != nullptr) {
                         //qDebug() << nowy->type;
                         while (!((sh = ParserX::NextTokenInside(data).toLower()) == "")) {
                             nowy->set(sh, data);
@@ -279,7 +279,7 @@ void Tile::loadWS() {
             idx = data->getToken();
             offset = data->off + data->getInt() + 4;
             //qDebug() << idx;
-            if ((nowy = WorldObj::createObj(idx)) == NULL) {
+            if ((nowy = WorldObj::createObj(idx)) == nullptr) {
                 data->off = offset;
                 continue;
             }
@@ -303,21 +303,21 @@ void Tile::loadWS() {
 
 WorldObj* Tile::getObj(int id) {
     /*for (int i = 0; i < jestObiektow; i++) {
-        if(obiekty[i] == NULL) continue;
+        if(obiekty[i] == nullptr) continue;
         if (obiekty[i]->UiD == uid) {
             return obiekty[i];
         }
     }*/
-    if(obiekty[id] == NULL)
-        return NULL;
+    if(obiekty[id] == nullptr)
+        return nullptr;
     return obiekty[id];
 }
 
 WorldObj* Tile::findNearestObj(float* pos) {
-    WorldObj *obj = NULL;
+    WorldObj *obj = nullptr;
     float dist = 99999;
     for(int i = 0; i < this->jestObiektow; i++){
-        if(obiekty[i] == NULL) continue;
+        if(obiekty[i] == nullptr) continue;
         float tdist = Vec3::dist(pos, obiekty[i]->position);
         if(tdist < dist){
             obj = obiekty[i];
@@ -391,7 +391,7 @@ for(int i = 0; i < this->viewDbSphere.size(); i++){
 
 void Tile::transalteObj(float px, float py, float pz, int uid) {
     for (int i = 0; i < jestObiektow; i++) {
-        if(obiekty[i] == NULL) continue;
+        if(obiekty[i] == nullptr) continue;
         if (obiekty[i]->UiD == uid) {
             obiekty[i]->translate(px, py, pz);
         }
@@ -401,9 +401,9 @@ void Tile::transalteObj(float px, float py, float pz, int uid) {
 
 void Tile::deleteObject(WorldObj* obj){
     for(int i = 0; i < jestObiektow; i++ ){
-        if(obiekty[i] == NULL) continue;
+        if(obiekty[i] == nullptr) continue;
         if(obiekty[i] == obj){
-            obiekty[i] = NULL;
+            obiekty[i] = nullptr;
             if(i == jestObiektow - 1)
                 jestObiektow--;
             if(obj->UiD == maxUiD )
@@ -414,7 +414,7 @@ void Tile::deleteObject(WorldObj* obj){
 }
 
 WorldObj* Tile::placeObject(WorldObj* obj){
-    if(loaded != 1) return NULL;
+    if(loaded != 1) return nullptr;
     obiekty[jestObiektow++] = obj;
     //qDebug() << obiekty[jestObiektow-1]->qDirection[3];
     obj->set("x", x);
@@ -435,19 +435,19 @@ WorldObj* Tile::placeObject(float* p, Ref::RefItem* itemData) {
     q[1] = 0;
     q[2] = 0;
     q[3] = 1;
-    placeObject(p, (float*)&q, itemData, NULL);
+    placeObject(p, (float*)&q, itemData, nullptr);
 }
 
 WorldObj* Tile::placeObject(float* p, float* q, Ref::RefItem* itemData, float* tpos) {
-    if(loaded != 1) return NULL;
-    if(itemData == NULL) return NULL;
+    if(loaded != 1) return nullptr;
+    if(itemData == nullptr) return nullptr;
     //qDebug() << pozW[0] << " " << pozW[1] << " " << pozW[2] << " " << itemData->type << " " << itemData->filename;
 
     WorldObj* nowy = WorldObj::createObj(itemData->type);
-    if(nowy == NULL) return NULL;
+    if(nowy == nullptr) return nullptr;
     if(!nowy->allowNew()) {
         qDebug() << itemData->type << " <- object not supported yet ";
-        return NULL;
+        return nullptr;
     }
 
     nowy->set("ref_class", itemData->clas);
@@ -533,7 +533,7 @@ void Tile::save() {
 
     if(!Game::sortTileObjects){
         for(int i = 0; i < this->jestObiektow; i++){
-            if(obiekty[i] == NULL) continue;
+            if(obiekty[i] == nullptr) continue;
             if(this->obiekty[i]->isSoundItem()) continue;
                 this->obiekty[i]->save(&out);
         }
@@ -544,7 +544,7 @@ void Tile::save() {
             count = 0;
             if( iLevel > 0 ){
                 for(int i = 0; i < this->jestObiektow; i++){
-                    if(obiekty[i] == NULL) continue;
+                    if(obiekty[i] == nullptr) continue;
                     if(this->obiekty[i]->isSoundItem()) continue;
                     if(this->obiekty[i]->getCurrentDetailLevel() == iLevel)
                         count++;
@@ -555,7 +555,7 @@ void Tile::save() {
             }
             // save current level objects;
             for(int i = 0; i < this->jestObiektow; i++){
-                if(obiekty[i] == NULL) continue;
+                if(obiekty[i] == nullptr) continue;
                 if(this->obiekty[i]->isSoundItem()) continue;
                 if(this->obiekty[i]->getCurrentDetailLevel() == iLevel)
                     this->obiekty[i]->save(&out);
@@ -579,7 +579,7 @@ void Tile::saveWS() {
     
     int countWS = 0;
     for(int i = 0; i < this->jestObiektow; i++){
-        if(obiekty[i] == NULL) continue;
+        if(obiekty[i] == nullptr) continue;
         if(this->obiekty[i]->isSoundItem() && this->obiekty[i]->loaded) countWS++;
     }
     qDebug() << countWS;
@@ -597,7 +597,7 @@ void Tile::saveWS() {
     out << "\n";
     out << "Tr_Worldsoundfile (\n";
     for(int i = 0; i < this->jestObiektow; i++){
-        if(obiekty[i] == NULL) continue;
+        if(obiekty[i] == nullptr) continue;
         if(!this->obiekty[i]->isSoundItem()) continue;
             this->obiekty[i]->save(&out);
     }
@@ -612,7 +612,7 @@ bool Tile::isModified(){
     
     if(value == false)
         for (int i = 0; i < jestObiektow; i++) {
-            if(obiekty[i] == NULL) continue;
+            if(obiekty[i] == nullptr) continue;
             if(obiekty[i]->modified)
                 return true;
             }
@@ -626,7 +626,7 @@ void Tile::setModified(bool value){
     
     if(value == false){
         for (int i = 0; i < jestObiektow; i++) {
-            if(obiekty[i] == NULL) continue;
+            if(obiekty[i] == nullptr) continue;
             obiekty[i]->modified = false;
         }
     }
@@ -634,7 +634,7 @@ void Tile::setModified(bool value){
 
 void Tile::findSimilar(WorldObj* obj, GroupObj* group){
     for (int i = 0; i < jestObiektow; i++) {
-        if(obiekty[i] == NULL) continue;
+        if(obiekty[i] == nullptr) continue;
         if (obiekty[i]->loaded)
             if(obiekty[i]->isSimilar(obj))
                 group->addObject(obiekty[i]);
@@ -647,7 +647,7 @@ void Tile::render() {
 
 void Tile::updateTerrainObjects(){
     for (int i = 0; i < jestObiektow; i++) {
-        if(obiekty[i] == NULL) continue;
+        if(obiekty[i] == nullptr) continue;
         if (obiekty[i]->loaded)
             if(obiekty[i]->typeID == WorldObj::forest || obiekty[i]->typeID == WorldObj::transfer)
                obiekty[i]->deleteVBO();
@@ -657,7 +657,7 @@ void Tile::updateTerrainObjects(){
 float Tile::getNearestSnapablePosition(float* pos, float *quat, int uid){
     QVector<float> points;
     for (int i = 0; i < jestObiektow; i++) {
-        if(obiekty[i] == NULL) continue;
+        if(obiekty[i] == nullptr) continue;
         if (obiekty[i]->loaded && obiekty[i]->snapable) {
             obiekty[i]->insertSnapablePoints(points);                
         }
@@ -686,9 +686,9 @@ float Tile::getNearestSnapablePosition(float* pos, float *quat, int uid){
     }
     if(distance < Game::snapableRadius){
         Vec3::copy(pos, tpos);
-        if(quat != NULL)
+        if(quat != nullptr)
             Quat::copy(quat, tquat);
-        if(quat != NULL)
+        if(quat != nullptr)
             Quat::copy(quat, tquat);
     }
     return nrp;
@@ -697,7 +697,7 @@ float Tile::getNearestSnapablePosition(float* pos, float *quat, int uid){
 void Tile::updateSim(float deltaTime){
     if (loaded != 1) return;
     for (int i = 0; i < jestObiektow; i++) {
-        if(obiekty[i] == NULL) continue;
+        if(obiekty[i] == nullptr) continue;
         if (obiekty[i]->loaded) {
             obiekty[i]->updateSim(deltaTime);
         }
@@ -713,7 +713,7 @@ void Tile::render(float * playerT, float* playerW, float* target, float fov, int
     int selectionColor = 0;
     float lodx, lodz, lod;
     for (int i = 0; i < jestObiektow; i++) {
-        if(obiekty[i] == NULL) continue;
+        if(obiekty[i] == nullptr) continue;
         if (obiekty[i]->loaded) {
             lodx = (x - playerT[0])*2048 + obiekty[i]->position[0] - playerW[0];
             lodz = (z - playerT[1])*2048 + obiekty[i]->position[2] - playerW[2];

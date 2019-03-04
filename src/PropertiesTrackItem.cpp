@@ -31,8 +31,8 @@ PropertiesTrackItem::~PropertiesTrackItem() {
 
 
 void PropertiesTrackItem::showObj(GameObj* obj){
-    if(obj == NULL){
-        infoLabel->setText("NULL");
+    if(obj == nullptr){
+        infoLabel->setText("nullptr");
         return;
     }
     itemObj = (TRitem*)obj;
@@ -41,7 +41,7 @@ void PropertiesTrackItem::showObj(GameObj* obj){
 }
 
 void PropertiesTrackItem::updateObj(GameObj* obj){
-    if(obj == NULL){
+    if(obj == nullptr){
         return;
     }
     itemObj = (TRitem*)obj;
@@ -49,7 +49,7 @@ void PropertiesTrackItem::updateObj(GameObj* obj){
 }
 
 bool PropertiesTrackItem::support(GameObj* obj){
-    if(obj == NULL)
+    if(obj == nullptr)
         return false;
     if(obj->typeObj == GameObj::tritemobj)
         return true;

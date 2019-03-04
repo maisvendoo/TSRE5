@@ -110,7 +110,7 @@ void EngListWidget::fillEngList(QString engFilter, QString couplingFilter, QStri
     
     for (int i = 0; i < Game::currentEngLib->jesteng; i++){
         e = Game::currentEngLib->eng[i];
-        if(e == NULL) continue;
+        if(e == nullptr) continue;
         if(e->loaded !=1) continue;
         if(!e->engFilter(engFilter)) continue;
         if(!e->couplingFilter(couplingFilter)) continue;
@@ -136,7 +136,7 @@ void EngListWidget::addBegButtonSelected(){
 
 void EngListWidget::addBegButtonSelected(int count){
     QListWidgetItem * item = items.currentItem();
-    if(item == NULL) return;
+    if(item == nullptr) return;
     emit addToConSelected(item->type(), 0, count);
 }
 
@@ -149,7 +149,7 @@ void EngListWidget::addCurButtonSelected(){
 
 void EngListWidget::addCurButtonSelected(int count){
     QListWidgetItem * item = items.currentItem();
-    if(item == NULL) return;
+    if(item == nullptr) return;
     emit addToConSelected(item->type(), 1, count);
 }
 
@@ -162,13 +162,13 @@ void EngListWidget::addEndButtonSelected(){
 
 void EngListWidget::addEndButtonSelected(int count){
     QListWidgetItem * item = items.currentItem();
-    if(item == NULL) return;
+    if(item == nullptr) return;
     emit addToConSelected(item->type(), 2, count);
 }
 
 void EngListWidget::addRndButtonSelected(){
     QListWidgetItem * item = items.currentItem();
-    if(item == NULL) return;
+    if(item == nullptr) return;
     emit addToRandomConsist(item->type());
 }
 

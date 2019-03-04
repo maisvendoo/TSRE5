@@ -30,7 +30,7 @@ public slots:
 private:
     QPlainTextEdit eDescription;
     QComboBox actList;
-    Route *route = NULL;
+    Route *route = nullptr;
 };
 
 #endif	/* PLAYACTIVITYSELECTWINDOW_H */

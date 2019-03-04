@@ -121,7 +121,7 @@ void TrackObj::setElevation(float prom){
 void TrackObj::rotate(float x, float y, float z){
     this->tRotation[0] += x;
     this->tRotation[1] += y;
-    if(matrix3x3 != NULL) matrix3x3 = NULL;
+    if(matrix3x3 != nullptr) matrix3x3 = nullptr;
 
     qDebug() << "rot" << x << y << z;
     float vect2[3];
@@ -299,7 +299,7 @@ void TrackObj::render(GLUU* gluu, float lod, float posx, float posz, float* pos,
     gluu->currentShader->setUniformValue(gluu->currentShader->mvMatrixUniform, *reinterpret_cast<float(*)[4][4]> (gluu->mvMatrix));
     
     if(Game::showWorldObjPivotPoints){
-        if(pointer3d == NULL){
+        if(pointer3d == nullptr){
             pointer3d = new TrackItemObj(1);
             pointer3d->setMaterial(0.9,0.9,0.7);
         }
@@ -445,7 +445,7 @@ if(this->templateName != "" && this->templateName != "DEFAULT")
 *(out) << "		FileName ( "<<ParserX::AddComIfReq(this->fileName)<<" )\n";
 *(out) << "		StaticFlags ( "<<ParserX::MakeFlagsString(this->staticFlags)<<" )\n";
 *(out) << "		Position ( "<<this->position[0]<<" "<<this->position[1]<<" "<<-this->position[2]<<" )\n";
-if(this->matrix3x3!=NULL)
+if(this->matrix3x3!=nullptr)
 *(out) << "		Matrix3x3 ( "<<this->matrix3x3[0]<<" "<<this->matrix3x3[1]<<" "<<this->matrix3x3[2]<<" "<<this->matrix3x3[3]<<" "<<this->matrix3x3[4]<<" "<<this->matrix3x3[5]<<" "<<this->matrix3x3[6]<<" "<<this->matrix3x3[7]<<" "<<this->matrix3x3[8]<<" )\n";
 else                        
 *(out) << "		QDirection ( "<<this->qDirection[0]<<" "<<this->qDirection[1]<<" "<<-this->qDirection[2]<<" "<<this->qDirection[3]<<" )\n";

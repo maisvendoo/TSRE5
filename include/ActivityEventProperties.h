@@ -106,11 +106,11 @@ private:
     QCheckBox cLocationStop;
     QListWidget outcomeList;
     
-    ActivityEvent* event = NULL;
-    ActivityEvent::Outcome* outcome = NULL;
+    ActivityEvent* event = nullptr;
+    ActivityEvent::Outcome* outcome = nullptr;
     
     QMap<QString, QPushButton*> buttonTools;
-    PreciseTileCoordinate* coordinate = NULL;
+    PreciseTileCoordinate* coordinate = nullptr;
     
     void selctOutcomeOnList(int id);
 };

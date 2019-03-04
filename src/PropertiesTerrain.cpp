@@ -180,8 +180,8 @@ PropertiesTerrain::~PropertiesTerrain() {
 }
 
 void PropertiesTerrain::showObj(GameObj* obj){
-    if(obj == NULL){
-        infoLabel->setText("NULL");
+    if(obj == nullptr){
+        infoLabel->setText("nullptr");
         return;
     }
     terrainObj = (Terrain*)obj;
@@ -206,7 +206,7 @@ void PropertiesTerrain::showObj(GameObj* obj){
 }
 
 void PropertiesTerrain::updateObj(GameObj* obj){
-    if(obj == NULL){
+    if(obj == nullptr){
         return;
     }
     terrainObj = (Terrain*)obj;
@@ -230,7 +230,7 @@ void PropertiesTerrain::updateObj(GameObj* obj){
 }
 
 bool PropertiesTerrain::support(GameObj* obj){
-    if(obj == NULL)
+    if(obj == nullptr)
         return false;
     if(obj->typeObj == GameObj::terrainobj)
         return true;
@@ -238,20 +238,20 @@ bool PropertiesTerrain::support(GameObj* obj){
 }
 
 void PropertiesTerrain::bShaderEditorEnabled(){
-    if(terrainObj == NULL){
+    if(terrainObj == nullptr){
         return;
     }
 }
 
 void PropertiesTerrain::bWaterEditorEnabled(){
-    if(terrainObj == NULL){
+    if(terrainObj == nullptr){
         return;
     }
     waterWindow->show();
 }
 
 void PropertiesTerrain::bHeightMapResetEnabled(){
-    if(terrainObj == NULL){
+    if(terrainObj == nullptr){
         return;
     }
     Undo::PushTerrainHeightMap(terrainObj->mojex, terrainObj->mojez, terrainObj->terrainData, terrainObj->getSampleCount());
@@ -263,21 +263,21 @@ void PropertiesTerrain::bHeightMapResetEnabled(){
 }
 
 void PropertiesTerrain::bRotateEnabled(){
-    if(terrainObj == NULL){
+    if(terrainObj == nullptr){
         return;
     }
     terrainObj->rotatePatchTexture();
 }
 
 void PropertiesTerrain::bMirrorXEnabled(){
-    if(terrainObj == NULL){
+    if(terrainObj == nullptr){
         return;
     }
     terrainObj->mirrorXPatchTexture();
 }
 
 void PropertiesTerrain::bMirrorYEnabled(){
-    if(terrainObj == NULL){
+    if(terrainObj == nullptr){
         return;
     }
     terrainObj->mirrorYPatchTexture();
@@ -285,7 +285,7 @@ void PropertiesTerrain::bMirrorYEnabled(){
 
 void PropertiesTerrain::bScaleEnabled(){
     qDebug() << "a";
-    if(terrainObj == NULL){
+    if(terrainObj == nullptr){
         return;
     }
     terrainObj->scalePatchTexCoords(eScalexy.value());
@@ -293,7 +293,7 @@ void PropertiesTerrain::bScaleEnabled(){
 
 void PropertiesTerrain::bScaleXEnabled(){
     qDebug() << "ax";
-    if(terrainObj == NULL){
+    if(terrainObj == nullptr){
         return;
     }
     terrainObj->scalePatchTexCoordsX(eScalex.value());
@@ -301,14 +301,14 @@ void PropertiesTerrain::bScaleXEnabled(){
 
 void PropertiesTerrain::bScaleYEnabled(){
     qDebug() << "ay";
-    if(terrainObj == NULL){
+    if(terrainObj == nullptr){
         return;
     }
     terrainObj->scalePatchTexCoordsY(eScaley.value());
 }
 
 void PropertiesTerrain::bCopyEnabled(){
-    if(terrainObj == NULL){
+    if(terrainObj == nullptr){
         return;
     }
     QClipboard *clipboard = QApplication::clipboard();
@@ -316,7 +316,7 @@ void PropertiesTerrain::bCopyEnabled(){
 }
 
 void PropertiesTerrain::bPasteEnabled(){
-    if(terrainObj == NULL){
+    if(terrainObj == nullptr){
         return;
     }
     QClipboard *clipboard = QApplication::clipboard();
@@ -324,56 +324,56 @@ void PropertiesTerrain::bPasteEnabled(){
 }
 
 void PropertiesTerrain::bResetEnabled(){
-    if(terrainObj == NULL){
+    if(terrainObj == nullptr){
         return;
     }
     terrainObj->resetPatchTexCoords();
 }
 
 void PropertiesTerrain::bRemoveAllGapsEnabled(){
-    if(terrainObj == NULL){
+    if(terrainObj == nullptr){
         return;
     }
     terrainObj->removeAllGaps();
 }
 
 void PropertiesTerrain::bShowWaterEnabled(){
-    if(terrainObj == NULL){
+    if(terrainObj == nullptr){
         return;
     }
     terrainObj->setWaterDraw();
 }
 
 void PropertiesTerrain::bShowDrawEnabled(){
-    if(terrainObj == NULL){
+    if(terrainObj == nullptr){
         return;
     }
     terrainObj->setDraw();
 }
 
 void PropertiesTerrain::bHideWaterEnabled(){
-    if(terrainObj == NULL){
+    if(terrainObj == nullptr){
         return;
     }
     terrainObj->hideWaterDraw();
 }
 
 void PropertiesTerrain::bHideDrawEnabled(){
-    if(terrainObj == NULL){
+    if(terrainObj == nullptr){
         return;
     }
     terrainObj->hideDraw();
 }
 
 void PropertiesTerrain::bShowAdjacentEnabled(){
-    if(terrainObj == NULL){
+    if(terrainObj == nullptr){
         return;
     }
     terrainObj->setDrawAdjacent();
 }
 
 void PropertiesTerrain::eBiasEnabled(QString val){
-    if(terrainObj == NULL){
+    if(terrainObj == nullptr){
         return;
     }
     bool ok = false;
@@ -383,7 +383,7 @@ void PropertiesTerrain::eBiasEnabled(QString val){
 }
 
 void PropertiesTerrain::eAvgWaterEnabled(QString val){
-    if(terrainObj == NULL){
+    if(terrainObj == nullptr){
         return;
     }
     bool ok = false;

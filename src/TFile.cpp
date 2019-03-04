@@ -591,7 +591,7 @@ void TFile::save(QString name){
     //calculate size
     
     int t137 = 0;
-    if(errthresholdScale != NULL)
+    if(errthresholdScale != nullptr)
         t137 = 13;
    
     int t251 = 0;
@@ -599,38 +599,38 @@ void TFile::save(QString name){
         t251 = 25;
     
     int t138 = 0;
-    if(alwaysselectMaxdist != NULL)
+    if(alwaysselectMaxdist != nullptr)
         t138 = 13;
 
     // 139
     int t139 = 1;
     // 140
-    if(nsamples != NULL)
+    if(nsamples != nullptr)
         t139+=13;
     // 141 
-    if(sampleRotation != NULL)
+    if(sampleRotation != nullptr)
         t139+=13;
     // 142
     t139+=13;
     // 143 
     t139+=13;
     // 144 
-    if(sampleSize != NULL)
+    if(sampleSize != nullptr)
         t139+=13;
     // 281
-    if(sampleASbuffer != NULL)
+    if(sampleASbuffer != nullptr)
         t139+=257*257/8+2+8;
     // 145
-    if(sampleFbuffer != NULL)
+    if(sampleFbuffer != nullptr)
         t139+=sampleFbuffer->length()*2+3+8;
     // 146
-    if(sampleYbuffer != NULL)
+    if(sampleYbuffer != nullptr)
         t139+=sampleYbuffer->length()*2+3+8;
     // 147
-    if(sampleEbuffer != NULL)
+    if(sampleEbuffer != nullptr)
         t139+=sampleEbuffer->length()*2+3+8;
     // 148
-    if(sampleNbuffer != NULL)
+    if(sampleNbuffer != nullptr)
         t139+=sampleNbuffer->length()*2+3+8;
     
     // 151 
@@ -677,7 +677,7 @@ void TFile::save(QString name){
     write << (qint32)t136;
     write << (qint8)0;
     
-    if(errthresholdScale != NULL){
+    if(errthresholdScale != nullptr){
         write << (qint32)137;
         write << (qint32)5;
         write << (qint8)0;
@@ -694,7 +694,7 @@ void TFile::save(QString name){
         write << WNW;
     }
     
-    if(alwaysselectMaxdist != NULL){
+    if(alwaysselectMaxdist != nullptr){
         write << (qint32)138;
         write << (qint32)5;
         write << (qint8)0;
@@ -705,14 +705,14 @@ void TFile::save(QString name){
     write << (qint32)t139;
     write << (qint8)0;
     // 140
-    if(nsamples != NULL){
+    if(nsamples != nullptr){
         write << (qint32)140;
         write << (qint32)5;
         write << (qint8)0;
         write << *nsamples;
     }
     // 141 
-    if(sampleRotation != NULL){
+    if(sampleRotation != nullptr){
         write << (qint32)141;
         write << (qint32)5;
         write << (qint8)0;
@@ -729,21 +729,21 @@ void TFile::save(QString name){
     write << (qint8)0;
     write << scale;
     // 144 
-    if(sampleSize != NULL){
+    if(sampleSize != nullptr){
         write << (qint32)144;
         write << (qint32)5;
         write << (qint8)0;
         write << *sampleSize;
     }
     // 281
-    if(sampleASbuffer != NULL){
+    if(sampleASbuffer != nullptr){
         write << (qint32)281;
         write << (qint32)257*257/8+2;
         write << (qint8)0;
         write.writeRawData(sampleASbuffer, 257*257/8+1);
     }
     // 145
-    if(sampleFbuffer != NULL){
+    if(sampleFbuffer != nullptr){
         write << (qint32)145;
         write << (qint32)sampleFbuffer->length()*2+3;
         write << (qint8)0;
@@ -753,7 +753,7 @@ void TFile::save(QString name){
         }
     }
     // 146
-    if(sampleYbuffer != NULL){
+    if(sampleYbuffer != nullptr){
         write << (qint32)146;
         write << (qint32)sampleYbuffer->length()*2+3;
         write << (qint8)0;
@@ -763,7 +763,7 @@ void TFile::save(QString name){
         }
     }
     // 147
-    if(sampleEbuffer != NULL){
+    if(sampleEbuffer != nullptr){
         write << (qint32)147;
         write << (qint32)sampleEbuffer->length()*2+3;
         write << (qint8)0;
@@ -773,7 +773,7 @@ void TFile::save(QString name){
         }
     }
     // 148
-    if(sampleNbuffer != NULL){
+    if(sampleNbuffer != nullptr){
         write << (qint32)148;
         write << (qint32)sampleNbuffer->length()*2+3;
         write << (qint8)0;

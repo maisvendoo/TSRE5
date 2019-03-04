@@ -15,7 +15,7 @@
 #include "GeoCoordinates.h"
 
 CameraConsist::CameraConsist(float* pt) {
-    if(pt != NULL)
+    if(pt != nullptr)
         pozT = pt;
     else{
         pozT = new float[2];
@@ -49,7 +49,7 @@ CameraConsist::~CameraConsist() {
 }
 
 PreciseTileCoordinate* CameraConsist::getCurrentPos(){
-    if(this->currentPos == NULL)
+    if(this->currentPos == nullptr)
         this->currentPos = new PreciseTileCoordinate();
     this->currentPos->TileX = this->pozT[0];
     this->currentPos->TileZ = -this->pozT[1];

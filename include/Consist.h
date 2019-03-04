@@ -38,11 +38,11 @@ public:
         bool flip = false;
         int uid = 0;
         int eng = -1;
-        Eng *engPointer = NULL;
+        Eng *engPointer = nullptr;
         float pos = 0;
         float conLength = 0;
         int type = 0;
-        TextObj * txt = NULL;
+        TextObj * txt = nullptr;
         QString epath;
         QString ename;
     };
@@ -98,7 +98,7 @@ public:
     void reverse();
     void setTextColor(float *bgColor);
     void setDurability(float val);
-    void initOnTrack(float *posTXZ, int direction, QMap<int, int> *junctionDirections = NULL);
+    void initOnTrack(float *posTXZ, int direction, QMap<int, int> *junctionDirections = nullptr);
     bool getWagonWorldPosition(int id, float *posTW);
     void updateSim(float deltaTime);
     void renderHud();
@@ -121,7 +121,7 @@ private:
     bool maxVelocityFixed = false;
     float trainSpeed = 0.0;
     float trainTotalDistance = 0.0;
-    SimpleHud *hud = NULL;
+    SimpleHud *hud = nullptr;
     
     void replaceEngItem(int id, int pos);
 };

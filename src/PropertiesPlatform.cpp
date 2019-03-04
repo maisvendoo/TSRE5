@@ -98,8 +98,8 @@ PropertiesPlatform::~PropertiesPlatform() {
 }
 
 void PropertiesPlatform::showObj(GameObj* obj){
-    if(obj == NULL){
-        infoLabel->setText("NULL");
+    if(obj == nullptr){
+        infoLabel->setText("nullptr");
         return;
     }
     worldObj = (WorldObj*)obj;
@@ -129,7 +129,7 @@ void PropertiesPlatform::showObj(GameObj* obj){
 }
 
 bool PropertiesPlatform::support(GameObj* obj){
-    if(obj == NULL)
+    if(obj == nullptr)
         return false;
     if(obj->typeObj != GameObj::worldobj)
         return false;
@@ -139,7 +139,7 @@ bool PropertiesPlatform::support(GameObj* obj){
 }
 
 void PropertiesPlatform::leftSideEnabled(int state){
-    if(pobj == NULL) return;
+    if(pobj == nullptr) return;
     Undo::StateBegin();
     Undo::PushGameObjData(worldObj);
     Undo::PushTrackDB(Game::trackDB);
@@ -150,7 +150,7 @@ void PropertiesPlatform::leftSideEnabled(int state){
     Undo::StateEnd();
 }
 void PropertiesPlatform::rightSideEnabled(int state){
-    if(pobj == NULL) return;
+    if(pobj == nullptr) return;
     Undo::StateBegin();
     Undo::PushGameObjData(worldObj);
     Undo::PushTrackDB(Game::trackDB);
@@ -161,7 +161,7 @@ void PropertiesPlatform::rightSideEnabled(int state){
     Undo::StateEnd();
 }
 void PropertiesPlatform:: disablePlatformEnabled(int state){
-    if(pobj == NULL) return;
+    if(pobj == nullptr) return;
     Undo::StateBegin();
     Undo::PushGameObjData(worldObj);
     Undo::PushTrackDB(Game::trackDB);
@@ -172,7 +172,7 @@ void PropertiesPlatform:: disablePlatformEnabled(int state){
     Undo::StateEnd();
 }
 void PropertiesPlatform::nameStationEnabled(QString val){
-    if(pobj == NULL) return;
+    if(pobj == nullptr) return;
     Undo::StateBegin();
     Undo::PushGameObjData(worldObj);
     Undo::PushTrackDB(Game::trackDB);
@@ -180,7 +180,7 @@ void PropertiesPlatform::nameStationEnabled(QString val){
     Undo::StateEnd();
 }
 void PropertiesPlatform::namePlatformEnabled(QString val){
-    if(pobj == NULL) return;
+    if(pobj == nullptr) return;
     Undo::StateBegin();
     Undo::PushGameObjData(worldObj);
     Undo::PushTrackDB(Game::trackDB);
@@ -188,7 +188,7 @@ void PropertiesPlatform::namePlatformEnabled(QString val){
     Undo::StateEnd();
 }
 void PropertiesPlatform::waitMinEnabled(QString val){
-    if(pobj == NULL) return;
+    if(pobj == nullptr) return;
     int min = this->waitMin.text().toInt(0,10);
     int sec = this->waitSec.text().toInt(0,10);
     Undo::StateBegin();
@@ -198,7 +198,7 @@ void PropertiesPlatform::waitMinEnabled(QString val){
     Undo::StateEnd();
 }
 void PropertiesPlatform::waitSecEnabled(QString val){
-    if(pobj == NULL) return;
+    if(pobj == nullptr) return;
     int min = this->waitMin.text().toInt(0,10);
     int sec = this->waitSec.text().toInt(0,10);
     Undo::StateBegin();
@@ -208,7 +208,7 @@ void PropertiesPlatform::waitSecEnabled(QString val){
     Undo::StateEnd();
 }
 void PropertiesPlatform::waitPasEnabled(QString val){
-    if(pobj == NULL) return;
+    if(pobj == nullptr) return;
     Undo::StateBegin();
     Undo::PushGameObjData(worldObj);
     Undo::PushTrackDB(Game::trackDB);

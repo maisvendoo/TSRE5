@@ -18,7 +18,7 @@
 class SoundSource {
 public:
     QVector<SoundDefinitionGroup::Stream*> stream;
-    SoundVariables *variables = NULL;
+    SoundVariables *variables = nullptr;
     void setPosition(int x, int y, float *pos);
     void update();
     void updatePosition();
@@ -29,7 +29,7 @@ public:
     virtual ~SoundSource();
     
 private:
-    SoundDefinitionGroup *definition = NULL;
+    SoundDefinitionGroup *definition = nullptr;
     int addNewStream(SoundDefinitionGroup::Stream* s, bool stereo);
     int alSourceId = -1;
 };

@@ -58,9 +58,9 @@ PropertiesSoundSource::~PropertiesSoundSource() {
 }
 
 void PropertiesSoundSource::sourcesListSelected(QString val){
-    if(sobj == NULL)
+    if(sobj == nullptr)
         return;
-    if(Game::soundList == NULL)
+    if(Game::soundList == nullptr)
         return;
     Undo::SinglePushWorldObjData(worldObj);
     sobj->set("filename", Game::soundList->sources[val]->file1);
@@ -69,8 +69,8 @@ void PropertiesSoundSource::sourcesListSelected(QString val){
 }
 
 void PropertiesSoundSource::showObj(GameObj* obj){
-    if(obj == NULL){
-        infoLabel->setText("NULL");
+    if(obj == nullptr){
+        infoLabel->setText("nullptr");
         return;
     }
     worldObj = (WorldObj*)obj;
@@ -82,7 +82,7 @@ void PropertiesSoundSource::showObj(GameObj* obj){
     this->infoLabel->setText("Object: "+sobj->type);
     
     this->sources.clear();
-    if(Game::soundList != NULL)
+    if(Game::soundList != nullptr)
         foreach (SoundListItem* it, Game::soundList->sources){
         //for (auto it = Game::soundList->sources.begin(); it != Game::soundList->sources.end(); ++it ){
             if(it->file1.toLower() == sobj->fileName.toLower())
@@ -92,7 +92,7 @@ void PropertiesSoundSource::showObj(GameObj* obj){
 }
 
 bool PropertiesSoundSource::support(GameObj* obj){
-    if(obj == NULL)
+    if(obj == nullptr)
         return false;
     if(obj->typeObj != GameObj::worldobj)
         return false;

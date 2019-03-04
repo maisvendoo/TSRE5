@@ -79,7 +79,7 @@ public:
     int x;
     int y;
     int shape = -1;
-    SFile* shapePointer = NULL;
+    SFile* shapePointer = nullptr;
     unsigned int shapeState = 0;
     bool loaded;
     float size;
@@ -87,7 +87,7 @@ public:
     bool modified = false;
     Vector3f selectionColor;
     OglObj box;
-    OglObj* snapableEndPoint = NULL;
+    OglObj* snapableEndPoint = nullptr;
     bool snapable = false;
     float tRotation[2];
     float *endp = 0;
@@ -165,7 +165,7 @@ protected:
     virtual void loadSnapablePoints();
     virtual bool getSimpleBorder(float* border);
     virtual bool getBoxPoints(QVector<float> &points);
-    float* matrix3x3 = NULL;
+    float* matrix3x3 = nullptr;
     QString templateName = "DEFAULT";
     bool internalLodControl = false;
 };

@@ -49,8 +49,8 @@ PropertiesActivityPath::~PropertiesActivityPath() {
 }
 
 void PropertiesActivityPath::showObj(GameObj* obj){
-    if(obj == NULL){
-        infoLabel->setText("NULL");
+    if(obj == nullptr){
+        infoLabel->setText("nullptr");
         return;
     }
     pathObj = (Path*)obj;
@@ -62,7 +62,7 @@ void PropertiesActivityPath::showObj(GameObj* obj){
 }
 
 bool PropertiesActivityPath::support(GameObj* obj){
-    if(obj == NULL)
+    if(obj == nullptr)
         return false;
     if(obj->typeObj == GameObj::activitypath)
         return true;

@@ -74,7 +74,7 @@ void SignalObj::load(int x, int y) {
     this->signalShape = Game::trackDB->sigCfg->signalShape[fileName.toStdString()];
     setMartix();
     
-    if(shapePointer != NULL && signalShape != NULL){
+    if(shapePointer != nullptr && signalShape != nullptr){
         shapeState = shapePointer->newState();
         for(int j = 0; j < 32; j++){
             if(j < signalShape->iSubObj)
@@ -112,7 +112,7 @@ void SignalObj::deleteTrItems(){
 }
 
 void SignalObj::initTrItems(float* tpos){
-    if(tpos == NULL)
+    if(tpos == nullptr)
         return;
     int trNodeId = tpos[0];
     float metry = tpos[1];
@@ -134,7 +134,7 @@ void SignalObj::initTrItems(float* tpos){
    // this->trItemId[1] = trItemId[0];
    // this->trItemId[2] = isRoad;
   //  this->trItemId[3] = trItemId[1];
-    this->drawPositions = NULL;
+    this->drawPositions = nullptr;
     
     // find head item 
     int base = getBaseSignalItemId();
@@ -233,7 +233,7 @@ int SignalObj::getLinkedJunctionValue(int i){
     if(!this->signalUnit[i].head) return -1;
     TDB* tdb = Game::trackDB;
     TRitem* trit = tdb->trackItems[this->signalUnit[i].itemId];
-    if(trit == NULL) return -1;
+    if(trit == nullptr) return -1;
     if(trit->trSignalDirs < 1) return 0;
     return trit->trSignalDir[0];
 }
@@ -244,7 +244,7 @@ void SignalObj::getLinkInfo(int *ids){
     if(!this->signalUnit[subObjSelected].head) return;
     TDB* tdb = Game::trackDB;
     TRitem* trit = tdb->trackItems[this->signalUnit[subObjSelected].itemId];
-    if(trit == NULL) return;
+    if(trit == nullptr) return;
     if(trit->trSignalDirs < 1) return;
     int jid = trit->trSignalDir[0];
     int dir = trit->trSignalDir[2];
@@ -263,7 +263,7 @@ bool SignalObj::isJunctionAvailable(int i){
     TDB* tdb = Game::trackDB;
     int tritId = this->signalUnit[i].itemId;
     TRitem* trit = tdb->trackItems[tritId];
-    if(trit == NULL) return false;
+    if(trit == nullptr) return false;
     int nid = tdb->findTrItemNodeId(tritId);
     if(nid < 0) return false;
     int direction = fabs(trit->trSignalType2 - 1);
@@ -277,7 +277,7 @@ bool SignalObj::isJunctionAvailable(int i){
     if(!this->signalUnit[subsigId].enabled) return;
     if(!this->signalUnit[subsigId].head) return;
     TDB* tdb = Game::trackDB;
-    if(tdb->trackItems[this->signalUnit[subsigId].itemId] == NULL)
+    if(tdb->trackItems[this->signalUnit[subsigId].itemId] == nullptr)
         return;
     tdb->trackItems[this->signalUnit[subsigId].itemId]->linkSignal(from, to);
 }*/
@@ -286,7 +286,7 @@ void SignalObj::linkSignal(int trackId, int dist){
     if(!this->signalUnit[subObjSelected].enabled) return;
     if(!this->signalUnit[subObjSelected].head) return;
     TDB* tdb = Game::trackDB;
-    if(tdb->trackItems[this->signalUnit[subObjSelected].itemId] == NULL)
+    if(tdb->trackItems[this->signalUnit[subObjSelected].itemId] == nullptr)
         return;
     tdb->trackItems[this->signalUnit[subObjSelected].itemId]->linkSignal(trackId, dist);
 }
@@ -297,7 +297,7 @@ bool SignalObj::isSubObjEnabled(int i){
 
 void SignalObj::enableSubObj(int i){
     if(isSubObjEnabled(i)) return;
-    if(signalShape == NULL)
+    if(signalShape == nullptr)
         return;
     
     TDB* tdb = Game::trackDB;
@@ -331,13 +331,13 @@ void SignalObj::enableSubObj(int i){
                 continue;
             if(!this->signalUnit[j].head)
                 continue;
-            if(tdb->trackItems[this->signalUnit[j].itemId] == NULL)
+            if(tdb->trackItems[this->signalUnit[j].itemId] == nullptr)
                 continue;
             if(signalShape->subObj[i].backFacing == signalShape->subObj[j].backFacing)
                 tdb->trackItems[this->signalUnit[j].itemId]->enableSignalSubObjFlag(signalShape->subObj[i].sigSubType);
         }
     this->modified = true;
-    if(shapePointer != NULL)
+    if(shapePointer != nullptr)
         shapePointer->enableSubObjByName(shapeState, signalShape->subObj[i].type, true);
     return;
 }
@@ -345,7 +345,7 @@ void SignalObj::enableSubObj(int i){
 void SignalObj::disableSubObj(int i){
     if(!isSubObjEnabled(i)) 
         return;
-    if(signalShape == NULL)
+    if(signalShape == nullptr)
         return;
     if(!signalShape->subObj[i].optional)
         return;
@@ -365,13 +365,13 @@ void SignalObj::disableSubObj(int i){
                 continue;
             if(!this->signalUnit[j].head)
                 continue;
-            if(tdb->trackItems[this->signalUnit[j].itemId] == NULL)
+            if(tdb->trackItems[this->signalUnit[j].itemId] == nullptr)
                 continue;
             if(signalShape->subObj[i].backFacing == signalShape->subObj[j].backFacing)
                 tdb->trackItems[this->signalUnit[j].itemId]->disableSignalSubObjFlag(signalShape->subObj[i].sigSubType);
         }
     this->modified = true; 
-    if(shapePointer != NULL)
+    if(shapePointer != nullptr)
         shapePointer->enableSubObjByName(shapeState, signalShape->subObj[i].type, false);
 }
 
@@ -383,7 +383,7 @@ void SignalObj::checkFlags(QStringList &list){
             continue;
         if(!signalUnit[i].head)
             continue;
-        if(tdb->trackItems[signalUnit[i].itemId] == NULL)
+        if(tdb->trackItems[signalUnit[i].itemId] == nullptr)
             continue;
         list.push_back(ParserX::MakeFlagsString(tdb->trackItems[signalUnit[i].itemId]->trSignalType1));
         
@@ -427,7 +427,7 @@ void SignalObj::fixFlags(){
             continue;
         if(!signalUnit[i].head)
             continue;
-        if(tdb->trackItems[signalUnit[i].itemId] == NULL)
+        if(tdb->trackItems[signalUnit[i].itemId] == nullptr)
             continue;
         
         tFlags = 0;
@@ -470,13 +470,13 @@ void SignalObj::flip(bool flipShape){
             continue;
         if(!this->signalUnit[j].head)
             continue;
-        if(tdb->trackItems[this->signalUnit[j].itemId] == NULL)
+        if(tdb->trackItems[this->signalUnit[j].itemId] == nullptr)
             continue;
         tdb->trackItems[this->signalUnit[j].itemId]->flipSignal();
     }
     this->modified = true; 
     delete[] drawPositions;
-    drawPositions = NULL;
+    drawPositions = nullptr;
 }
 
 QString SignalObj::getShapePath(){
@@ -533,7 +533,7 @@ void SignalObj::render(GLUU* gluu, float lod, float posx, float posz, float* pos
     gluu->currentShader->setUniformValue(gluu->currentShader->mvMatrixUniform, *reinterpret_cast<float(*)[4][4]> (gluu->mvMatrix));
     
     if(Game::showWorldObjPivotPoints){
-        if(pointer3d == NULL){
+        if(pointer3d == nullptr){
             pointer3d = new TrackItemObj(1);
             pointer3d->setMaterial(0.9,0.9,0.7);
         }
@@ -545,7 +545,7 @@ void SignalObj::render(GLUU* gluu, float lod, float posx, float posz, float* pos
     } else {
         gluu->enableTextures();
     }
-    if(shapePointer != NULL)
+    if(shapePointer != nullptr)
         shapePointer->render(shapeState);
     //Game::currentShapeLib->shape[shape]->render(false, signalSubObj);
     
@@ -562,22 +562,22 @@ void SignalObj::render(GLUU* gluu, float lod, float posx, float posz, float* pos
 void SignalObj::renderTritems(GLUU* gluu, int selectionColor){
 
     ///////////////////////////////
-    if (drawPositions == NULL) {
-        if(spointer3d == NULL){
+    if (drawPositions == nullptr) {
+        if(spointer3d == nullptr){
             spointer3d = new TrackItemObj();
             spointer3d->setMaterial(1,0,0);
         }
-        if(spointer3dSelected == NULL){
+        if(spointer3dSelected == nullptr){
             spointer3dSelected = new TrackItemObj();
             spointer3dSelected->setMaterial(1,0.5,0.5);
         }
         drawPositions = new float*[32];
         TDB* tdb = Game::trackDB;
         for(int i = 0; i < 32; i++){
-            drawPositions[i] = NULL;
+            drawPositions[i] = nullptr;
             if(!this->signalUnit[i].enabled || !this->signalUnit[i].head)
                 continue;
-            if(tdb->trackItems[this->signalUnit[i].itemId] == NULL){
+            if(tdb->trackItems[this->signalUnit[i].itemId] == nullptr){
                 qDebug() << "signal fail tid";
                 this->trLoaded = -1;
                 return;
@@ -603,7 +603,7 @@ void SignalObj::renderTritems(GLUU* gluu, int selectionColor){
         }
     }
 
-    //if(pos == NULL) return;
+    //if(pos == nullptr) return;
     //gluu->setMatrixUniforms();
     int useSC;
     int w = 1;
@@ -611,9 +611,9 @@ void SignalObj::renderTritems(GLUU* gluu, int selectionColor){
 
     // find head item 
     int i = getBaseSignalItemId();
-    if(drawPositions[i] == NULL) return;
+    if(drawPositions[i] == nullptr) return;
     //for(int i = 0; i < w; i++){
-        //if(drawPositions[i] == NULL) continue;
+        //if(drawPositions[i] == nullptr) continue;
         gluu->mvPushMatrix();
         Mat4::translate(gluu->mvMatrix, gluu->mvMatrix, drawPositions[i][0] + 0 * (drawPositions[i][4] - this->x), drawPositions[i][1] + /*i +*/ 1, -drawPositions[i][2] + 0 * (-drawPositions[i][5] - this->y));
         //Mat4::rotateY(gluu->mvMatrix, gluu->mvMatrix, drawPositions[i][3] + drawPositions[i][7]*M_PI);

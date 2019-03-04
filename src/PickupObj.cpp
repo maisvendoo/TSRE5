@@ -24,7 +24,7 @@
 PickupObj::PickupObj() {
     this->shape = -1;
     this->loaded = false;
-    pointer3d = NULL;
+    pointer3d = nullptr;
 }
 
 PickupObj::PickupObj(const PickupObj& o) : WorldObj(o) {
@@ -87,7 +87,7 @@ void PickupObj::deleteTrItems(){
 }
 
 void PickupObj::initTrItems(float* tpos){
-    if(tpos == NULL)
+    if(tpos == nullptr)
         return;
     int trNodeId = tpos[0];
     float metry = tpos[1];
@@ -97,7 +97,7 @@ void PickupObj::initTrItems(float* tpos){
 
     trItemIdCount = 2;
     tdb->newPickupObject(trItemId, trNodeId, metry, this->typeID);
-    drawPosition = NULL;
+    drawPosition = nullptr;
     pickupType[0] = 5;
     pickupCapacity1 = 20000;
     setPickupContent(20000);
@@ -253,8 +253,8 @@ void PickupObj::renderTritems(GLUU* gluu, int selectionColor){
     
     ///////////////////////////////
     TDB* tdb = Game::trackDB;
-    if(drawPosition == NULL){
-        if(this->trItemId == NULL){
+    if(drawPosition == nullptr){
+        if(this->trItemId == nullptr){
             qDebug() << "PickupObj: fail trItemId";
             loaded = false;
             return;
@@ -274,7 +274,7 @@ void PickupObj::renderTritems(GLUU* gluu, int selectionColor){
         }
         drawPosition[0] += 2048 * (drawPosition[5] - this->x);
         drawPosition[2] -= 2048 * (-drawPosition[6] - this->y);
-        if(pointer3d == NULL){
+        if(pointer3d == nullptr){
             pointer3d = new TrackItemObj(1);
             pointer3d->setMaterial(0.8,0.2,0.8);
         }
@@ -359,7 +359,7 @@ void PickupObj::setFillRate(float val){
 
 void PickupObj::setPickupContent(float val){
     TDB* tdb = Game::trackDB;
-    if(tdb->trackItems[this->trItemId[1]] == NULL)
+    if(tdb->trackItems[this->trItemId[1]] == nullptr)
         return;
     tdb->trackItems[this->trItemId[1]]->setPickupContent(val);
 }
@@ -415,7 +415,7 @@ float PickupObj::getFillRate(){
     
 float PickupObj::getPickupContent(){
     TRitem* trit = Game::trackDB->trackItems[this->trItemId[1]];
-    if(trit == NULL) 
+    if(trit == nullptr) 
         return 0;
     return trit->pickupTrItemData1;
     return 0;

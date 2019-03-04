@@ -28,7 +28,7 @@ public:
         float lat;
         float lon;
         int type;
-        OglObj* oglObj = NULL;
+        OglObj* oglObj = nullptr;
         QVector<int> tileX;
         QVector<int> tileZ;
         QVector<int> x;
@@ -51,8 +51,8 @@ public:
     virtual void render(GLUU* gluu, float * playerT, float* playerW, float playerRot);
     virtual void getTileList(QMap<int, QPair<int, int>*> &tileList, int radius = 0, int step = 1);
 protected:
-    OglObj* simpleMarkerObjP = NULL;
-    OglObj* simpleMarkerObjL = NULL;
+    OglObj* simpleMarkerObjP = nullptr;
+    OglObj* simpleMarkerObjL = nullptr;
 private:
 
 };

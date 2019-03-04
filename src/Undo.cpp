@@ -20,7 +20,7 @@
 #include "Route.h"
 #include "GroupObj.h"
 
-UndoState* Undo::currentState = NULL;
+UndoState* Undo::currentState = nullptr;
 QVector<UndoState*> Undo::undoStates;
 unsigned long long int Undo::undoTime;
 
@@ -29,29 +29,29 @@ UndoState::~UndoState(){
     while (i.hasNext()) {
         i.next();
         UndoState::TerrainData* tdata = i.value();
-        if(tdata != NULL)
+        if(tdata != nullptr)
             delete tdata;
     }
     QMapIterator<int, unsigned char *> i1(texData);
     while (i1.hasNext()) {
         i1.next();
         unsigned char* tdata = i1.value();
-        if(tdata != NULL)
+        if(tdata != nullptr)
            delete[] tdata;
     }
     QMapIterator<long long int, UndoState::WorldObjInfo*> i2(objData);
     while (i2.hasNext()) {
         i2.next();
         UndoState::WorldObjInfo* tdata = i2.value();
-        if(tdata != NULL){
+        if(tdata != nullptr){
             //delete tdata->data;
             delete tdata;
         }
     }
     
-    if(trackDB != NULL)
+    if(trackDB != nullptr)
         delete trackDB;
-    if(roadDB != NULL)
+    if(roadDB != nullptr)
         delete roadDB;
 
     terrainData.clear();
@@ -60,7 +60,7 @@ UndoState::~UndoState(){
 }
 
 void Undo::Clear(){
-    currentState = NULL;
+    currentState = nullptr;
     for(int i = 0; i < undoStates.size();){
         delete undoStates.last();
         undoStates.removeLast();
@@ -68,7 +68,7 @@ void Undo::Clear(){
 }
 
 void Undo::UndoLast(){
-    if(currentState != NULL)
+    if(currentState != nullptr)
         StateEnd();
     
     if(undoStates.length() == 0){
@@ -83,14 +83,14 @@ void Undo::UndoLast(){
     while (i.hasNext()) {
         i.next();
         UndoState::TerrainData* tdata = i.value();
-        if(tdata != NULL)
+        if(tdata != nullptr)
             Game::terrainLib->fillHeightMap(tdata->x, tdata->z, tdata->data);
     }
     QMapIterator<int, unsigned char *> i1(state->texData);
     while (i1.hasNext()) {
         i1.next();
         unsigned char* tdata = i1.value();
-        if(tdata != NULL){
+        if(tdata != nullptr){
             //qDebug() << i1.key();
             //qDebug() <<TexLib::mtex[i.key()]->editable;
             TexLib::mtex[i1.key()]->fillData(tdata);
@@ -100,9 +100,9 @@ void Undo::UndoLast(){
     while (i2.hasNext()) {
         i2.next();
         UndoState::WorldObjInfo* tdata = i2.value();
-        if(tdata != NULL){
+        if(tdata != nullptr){
             if(tdata->action == "data"){
-                if(Game::currentRoute != NULL){
+                if(Game::currentRoute != nullptr){
                     tdata->data->unselect();
                     Game::currentRoute->replaceWorldObjPointer(tdata->obj, tdata->data);
                 }
@@ -110,29 +110,29 @@ void Undo::UndoLast(){
             if(tdata->action == "remove"){
                 tdata->data->loaded = true;
                 tdata->data->modified = true;
-                if(Game::currentRoute != NULL){
+                if(Game::currentRoute != nullptr){
                     tdata->data->unselect();
                     Game::currentRoute->replaceWorldObjPointer(tdata->obj, tdata->data);
                 }
             }
             if(tdata->action == "place"){
-                if(Game::currentRoute != NULL)
+                if(Game::currentRoute != nullptr)
                     Game::currentRoute->undoPlaceObj(tdata->obj->x, tdata->obj->y, tdata->obj->UiD);
             }
         }
     }
     
-    if(state->trackDB != NULL){
-        if(Game::currentRoute != NULL){
+    if(state->trackDB != nullptr){
+        if(Game::currentRoute != nullptr){
             Game::currentRoute->setTDB(state->trackDB, false);
-            state->trackDB = NULL;
+            state->trackDB = nullptr;
         }
     }
     
-    if(state->roadDB != NULL){
-        if(Game::currentRoute != NULL){
+    if(state->roadDB != nullptr){
+        if(Game::currentRoute != nullptr){
             Game::currentRoute->setTDB(state->roadDB, true);
-            state->roadDB = NULL;
+            state->roadDB = nullptr;
         }
     }
     
@@ -141,7 +141,7 @@ void Undo::UndoLast(){
 }
 
 void Undo::StateBeginIfNotExist(){
-    if(currentState != NULL)
+    if(currentState != nullptr)
         return;
     
     currentState = new UndoState();
@@ -150,7 +150,7 @@ void Undo::StateBeginIfNotExist(){
 }
 
 void Undo::StateBegin(){
-    if(currentState != NULL)
+    if(currentState != nullptr)
         StateEnd();
     
     currentState = new UndoState();
@@ -159,7 +159,7 @@ void Undo::StateBegin(){
 }
 
 void Undo::StateEndIfLongTime(){
-    if(currentState == NULL)
+    if(currentState == nullptr)
         return;
     unsigned long long int timeNow = QDateTime::currentMSecsSinceEpoch();
     
@@ -169,7 +169,7 @@ void Undo::StateEndIfLongTime(){
 }
 
 void Undo::StateEnd(){
-    if(currentState != NULL){
+    if(currentState != nullptr){
         if(currentState->modified == true){
             undoStates.push_back(currentState);
             if(undoStates.size() > 50){
@@ -181,17 +181,17 @@ void Undo::StateEnd(){
         }
         
     }
-    currentState = NULL;
+    currentState = nullptr;
     //qDebug() << "undo end";
 }
 
 void Undo::PushTerrainHeightMap(int x, int z, float** data, int samples){
-    if(currentState == NULL)
+    if(currentState == nullptr)
         return;
     
     samples += 1;
     UndoState::TerrainData * tdata = currentState->terrainData[x*10000+z];
-    if(tdata == NULL){
+    if(tdata == nullptr){
         currentState->terrainData[x*10000+z] = new UndoState::TerrainData();
         tdata = currentState->terrainData[x*10000+z];
         tdata->x = x;
@@ -206,11 +206,11 @@ void Undo::PushTerrainHeightMap(int x, int z, float** data, int samples){
 }
 
 void Undo::PushTextureData(int id, unsigned char* data, unsigned int size){
-    if(currentState == NULL)
+    if(currentState == nullptr)
         return;
     
     unsigned char * tdata = currentState->texData[id];
-    if(tdata == NULL){
+    if(tdata == nullptr){
         currentState->texData[id] = new unsigned char[size];
         tdata = currentState->texData[id];
         memcpy(tdata, data, size);
@@ -226,9 +226,9 @@ void Undo::SinglePushWorldObjData(WorldObj* obj){
 }
 
 void Undo::PushGameObjData(GameObj* obj){
-    if(currentState == NULL)
+    if(currentState == nullptr)
         return;
-    if(obj == NULL)
+    if(obj == nullptr)
         return;
     if(obj->typeObj != WorldObj::worldobj)
         return;
@@ -238,9 +238,9 @@ void Undo::PushGameObjData(GameObj* obj){
 }
 
 void Undo::PushWorldObjData(WorldObj* obj){
-    if(currentState == NULL)
+    if(currentState == nullptr)
         return;
-    if(obj == NULL)
+    if(obj == nullptr)
         return;
 
     if(obj->typeID == obj->groupobject) {
@@ -256,7 +256,7 @@ void Undo::PushWorldObjData(WorldObj* obj){
 
 void Undo::PushWorldObjDataInfo(WorldObj* obj){
     UndoState::WorldObjInfo * tdata = currentState->objData[(long long int)obj];
-    if(tdata == NULL){
+    if(tdata == nullptr){
         currentState->objData[(long long int)obj] = new UndoState::WorldObjInfo();
         tdata = currentState->objData[(long long int)obj];
         tdata->obj = obj;
@@ -268,15 +268,15 @@ void Undo::PushWorldObjDataInfo(WorldObj* obj){
 }
 
 void Undo::PushWorldObjRemoved(WorldObj* obj){
-    if(currentState == NULL)
+    if(currentState == nullptr)
         return;
-    if(obj == NULL)
+    if(obj == nullptr)
         return;
     if(obj->typeObj != WorldObj::worldobj)
         return;
     
     UndoState::WorldObjInfo * tdata = currentState->objData[(long long int)obj];
-    if(tdata == NULL){
+    if(tdata == nullptr){
         currentState->objData[(long long int)obj] = new UndoState::WorldObjInfo();
         tdata = currentState->objData[(long long int)obj];
         tdata->obj = obj;
@@ -288,15 +288,15 @@ void Undo::PushWorldObjRemoved(WorldObj* obj){
 }
 
 void Undo::PushWorldObjPlaced(WorldObj* obj){
-    if(currentState == NULL)
+    if(currentState == nullptr)
         return;
-    if(obj == NULL)
+    if(obj == nullptr)
         return;
     if(obj->typeObj != WorldObj::worldobj)
         return;
     
     UndoState::WorldObjInfo * tdata = currentState->objData[(long long int)obj];
-    if(tdata == NULL){
+    if(tdata == nullptr){
         currentState->objData[(long long int)obj] = new UndoState::WorldObjInfo();
         tdata = currentState->objData[(long long int)obj];
         tdata->obj = obj;
@@ -306,13 +306,13 @@ void Undo::PushWorldObjPlaced(WorldObj* obj){
 }
 
 void Undo::PushTrackDB(TDB* tdb, bool road){
-    if(currentState == NULL)
+    if(currentState == nullptr)
         return;
     
-    if(road && currentState->roadDB == NULL ){
+    if(road && currentState->roadDB == nullptr ){
         currentState->roadDB = new TDB(*tdb);
         currentState->modified = true;
-    } else if(currentState->trackDB == NULL) {
+    } else if(currentState->trackDB == nullptr) {
         currentState->trackDB = new TDB(*tdb);
         currentState->modified = true;
     }

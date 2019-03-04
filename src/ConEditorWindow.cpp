@@ -45,11 +45,11 @@ ConEditorWindow::ConEditorWindow() : QMainWindow() {
     ActLib::LoadAllAct(Game::root);
     randomConsist = new RandomConsist(this);
     glShapeWidget = new ShapeViewerGLWidget(this);
-    if(Game::colorShapeView != NULL)
+    if(Game::colorShapeView != nullptr)
         glShapeWidget->setBackgroundGlColor(Game::colorShapeView->redF(), Game::colorShapeView->greenF(), Game::colorShapeView->blueF());
     //glShapeWidget->currentEngLib = englib;
     glConWidget = new ShapeViewerGLWidget(this);
-    if(Game::colorConView != NULL)
+    if(Game::colorConView != nullptr)
         glConWidget->setBackgroundGlColor(Game::colorConView->redF(), Game::colorConView->greenF(), Game::colorConView->blueF());
 
     conCamera = new CameraConsist();
@@ -399,14 +399,14 @@ void ConEditorWindow::vSetColorShapeViewSelected(){
 }
 
 void ConEditorWindow::eFindConsistsByEng(){
-    if(currentEng == NULL) return;
+    if(currentEng == nullptr) return;
     int eid = englib->getEngByPathid(currentEng->pathid);
     if(eid < 0) return;
     con1->findConsistsByEng(eid);
 }
 
 void ConEditorWindow::cOpenInExternalEditor(){
-    if(currentCon == NULL) return;
+    if(currentCon == nullptr) return;
     QFileInfo fileInfo(currentCon->pathid);
     qDebug() << currentCon->pathid;
     if(fileInfo.exists())
@@ -414,20 +414,20 @@ void ConEditorWindow::cOpenInExternalEditor(){
 }
 
 void ConEditorWindow::eOpenLegacyInExternalEditor(){
-    if(currentEng == NULL) return;
+    if(currentEng == nullptr) return;
     QFileInfo fileInfo(currentEng->pathid);
     if(fileInfo.exists())
         QDesktopServices::openUrl(QUrl::fromLocalFile(currentEng->pathid));
 }
 
 void ConEditorWindow::eReloadEnabled(){
-    if(currentEng == NULL) return;
+    if(currentEng == nullptr) return;
     Game::currentShapeLib = glShapeWidget->currentShapeLib;
     currentEng->reload();
 }
 
 void ConEditorWindow::eOpenInExternalEditor(){
-    if(currentEng == NULL) return;
+    if(currentEng == nullptr) return;
     if(currentEng->filePaths.size() == 1){
         QFileInfo fileInfo(currentEng->filePaths[0]);
         if(fileInfo.exists())
@@ -449,12 +449,12 @@ void ConEditorWindow::eOpenInExternalEditor(){
 }
 
 void ConEditorWindow::copyImgShapeView(){
-    if(glShapeWidget->screenShot != NULL)
+    if(glShapeWidget->screenShot != nullptr)
         QApplication::clipboard()->setImage((glShapeWidget->screenShot->mirrored(false, true)), QClipboard::Clipboard);
 }
 
 void ConEditorWindow::saveImgShapeView(){
-    if(glShapeWidget->screenShot != NULL){
+    if(glShapeWidget->screenShot != nullptr){
         QImage img = glShapeWidget->screenShot->mirrored(false, true);
         QString path = QFileDialog::getSaveFileName(this, "Save File", "./", "Images (*.png *.jpg)");
         qDebug() << path;
@@ -466,19 +466,19 @@ void ConEditorWindow::saveImgShapeView(){
 }
 
 void ConEditorWindow::vGetImgShapeViewSelected(){
-    if(currentEng == NULL) return;
+    if(currentEng == nullptr) return;
     glShapeWidget->getImg();
     QTimer::singleShot(500, this, SLOT(copyImgShapeView()));
 }/**/
 
 void ConEditorWindow::vSaveImgShapeViewSelected(){
-    if(currentEng == NULL) return;
+    if(currentEng == nullptr) return;
     glShapeWidget->getImg();
     QTimer::singleShot(500, this, SLOT(saveImgShapeView()));
 }/**/
 
 void ConEditorWindow::vResetShapeViewSelected(){
-    if(currentEng == NULL) return;
+    if(currentEng == nullptr) return;
     float pos = -currentEng->sizez-1;
     if(pos > -15) pos = -15;
     engCamera->setPos(pos,2.5,0);
@@ -495,13 +495,13 @@ void ConEditorWindow::save(){
 
 void ConEditorWindow::saveCurrentActivity(){
     int id = con1->getCurrentActivityId();
-    if(ActLib::Act[id] == NULL)
+    if(ActLib::Act[id] == nullptr)
         return;
     ActLib::Act[id]->save();
 }
 
 void ConEditorWindow::saveCurrentConsist(){
-    if(currentCon == NULL) return;
+    if(currentCon == nullptr) return;
     if(currentCon->isNewConsist()){
         OverwriteDialog owerwriteDialog;
         owerwriteDialog.setWindowTitle("Overwrite \""+currentCon->conName+"\" ?");
@@ -535,13 +535,13 @@ void ConEditorWindow::newConsist(){
 
 void ConEditorWindow::cCloneSelected(){
     Game::currentEngLib = englib;
-    if(currentCon == NULL) return;
+    if(currentCon == nullptr) return;
     con1->newConsist(currentCon);
 }
 
 void ConEditorWindow::cDeleteSelected(){
     Game::currentEngLib = englib;
-    if(currentCon == NULL) return;
+    if(currentCon == nullptr) return;
     con1->deleteCurrentCon();
     showCon(-1);
 }
@@ -552,12 +552,12 @@ void ConEditorWindow::about(){
 }
 
 void ConEditorWindow::cDurabilitySelected(){
-    if(currentCon == NULL) return;
+    if(currentCon == nullptr) return;
     currentCon->setDurability(cDurability.value());
 }
 
 void ConEditorWindow::cFileNameSelected(QString n){
-    if(currentCon == NULL) return;
+    if(currentCon == nullptr) return;
     if(!currentCon->isNewConsist()){
         cFileName.setText(currentCon->conName);
         return;
@@ -570,20 +570,20 @@ void ConEditorWindow::cFileNameSelected(QString n){
 }
 
 void ConEditorWindow::cDisplayNameSelected(QString n){
-    if(currentCon == NULL) return;
+    if(currentCon == nullptr) return;
     currentCon->setDisplayName(n);
     con1->updateCurrentCon();
 }
 
 void ConEditorWindow::cReverseSelected(){
-    if(currentCon == NULL) return;
+    if(currentCon == nullptr) return;
     Game::currentEngLib = englib;
     currentCon->reverse();
     refreshCurrentCon();
 }
 
 void ConEditorWindow::conUnitSelected(int uid){
-    if(currentCon == NULL) return;
+    if(currentCon == nullptr) return;
     currentCon->select(uid);
     setCurrentEng(currentCon->engItems[uid].eng);
 }
@@ -639,7 +639,7 @@ void ConEditorWindow::setCurrentEng(int id, int engSetId){
 }
 
 void ConEditorWindow::fillCurrentEng(int engSetId){
-    if(currentEng == NULL)
+    if(currentEng == nullptr)
         return;
     
     float pos = 0;
@@ -683,7 +683,7 @@ void ConEditorWindow::fillCurrentEng(int engSetId){
 }
 
 void ConEditorWindow::engSetAddSelected(){
-    if(currentCon == NULL) return;
+    if(currentCon == nullptr) return;
     int cid = engSetsList.currentIndex();
     if(cid > engSets.size()) return;
     cid = engSets[cid];
@@ -697,7 +697,7 @@ void ConEditorWindow::engSetAddSelected(){
 }
 
 void ConEditorWindow::engSetFlipAndAddSelected(){
-    if(currentCon == NULL) return;
+    if(currentCon == nullptr) return;
     int cid = engSetsList.currentIndex();
     if(cid > engSets.size()) return;
     cid = engSets[cid];
@@ -724,7 +724,7 @@ void ConEditorWindow::engSetShowSet(QString n){
 
 void ConEditorWindow::cSaveAsEngSetSelected(){
     qDebug() << "new eng set";
-    if(currentCon == NULL) return;
+    if(currentCon == nullptr) return;
     if(!currentCon->isNewConsist()){
         QMessageBox msgBox;
         msgBox.setText("Consist must be new.");
@@ -798,7 +798,7 @@ void ConEditorWindow::engListSelected(int id){
 }
 
 void ConEditorWindow::addToConSelected(int id, int pos, int count){
-    if(currentCon == NULL) return;
+    if(currentCon == nullptr) return;
     Game::currentEngLib = englib;
     for(int i = 0; i < count; i++)
         currentCon->appendEngItem(id, pos);
@@ -844,7 +844,7 @@ void ConEditorWindow::refreshCurrentCon(){
 }
 
 void ConEditorWindow::conSliderValueChanged(int val){
-    if(currentCon == NULL) return;
+    if(currentCon == nullptr) return;
     if(currentCon->engItems.size() < 1) return;
     if(val > currentCon->engItems.size() - 1)
         val = currentCon->engItems.size() - 1;
@@ -853,7 +853,7 @@ void ConEditorWindow::conSliderValueChanged(int val){
 }
 //addToRandomConsist
 void ConEditorWindow::addToRandomConsist(int id){
-    if(englib->eng[id] == NULL) return;
+    if(englib->eng[id] == nullptr) return;
     randomConsist->show();
     new QListWidgetItem ( englib->eng[id]->displayName, &randomConsist->items, id);
 }
@@ -862,7 +862,7 @@ void ConEditorWindow::replaceOneEnabled(){
     int eid = englib->getEngByPointer(currentEng);
     if(eid < 0)
         return;
-    if(currentCon == NULL)
+    if(currentCon == nullptr)
         return;
     currentCon->replaceEngItemSelected(eid);
 }
@@ -871,7 +871,7 @@ void ConEditorWindow::replaceAllEnabled(){
     int eid = englib->getEngByPointer(currentEng);
     if(eid < 0)
         return;
-    if(currentCon == NULL)
+    if(currentCon == nullptr)
         return;
     int oeid = currentCon->getSelectedEngId();
     currentCon->replaceEngItemById(oeid, eid);
@@ -881,12 +881,12 @@ void ConEditorWindow::replaceAllAllEnabled(){
     int eid = englib->getEngByPointer(currentEng);
     if(eid < 0)
         return;
-    if(currentCon == NULL)
+    if(currentCon == nullptr)
         return;
     int oeid = currentCon->getSelectedEngId();
     
     for(int i = 0; i < ConLib::jestcon; i++){
-        if(ConLib::con[i] != NULL)
+        if(ConLib::con[i] != nullptr)
             ConLib::con[i]->replaceEngItemById(oeid, eid);
     }
 }
@@ -907,11 +907,11 @@ void ConEditorWindow::closeEvent( QCloseEvent *event )
     unsavedDialog.setMsg("Save changes in consists?");
     unsavedDialog.setWindowTitle("Save changes?");
     for(int i = 0; i < unsavedConIds.size(); i++){
-        if(ConLib::con[unsavedConIds[i]] == NULL) continue;
+        if(ConLib::con[unsavedConIds[i]] == nullptr) continue;
         unsavedDialog.items.addItem("[C] "+ConLib::con[unsavedConIds[i]]->showName);
     }
     for(int i = 0; i < unsavedActIds.size(); i++){
-        if(ActLib::Act[unsavedActIds[i]] == NULL) continue;
+        if(ActLib::Act[unsavedActIds[i]] == nullptr) continue;
         unsavedDialog.items.addItem("[A] "+ActLib::Act[unsavedActIds[i]]->header->name);
     }
     unsavedDialog.exec();
@@ -926,12 +926,12 @@ void ConEditorWindow::closeEvent( QCloseEvent *event )
     
     for(int i = 0; i < unsavedConIds.size(); i++){
         currentCon = ConLib::con[unsavedConIds[i]];
-        if(currentCon == NULL) continue;
+        if(currentCon == nullptr) continue;
         if(currentCon->isUnSaved())
             this->saveCurrentConsist();
     }
     for(int i = 0; i < unsavedActIds.size(); i++){
-        if(ActLib::Act[unsavedActIds[i]] == NULL) continue;
+        if(ActLib::Act[unsavedActIds[i]] == nullptr) continue;
         if(ActLib::Act[unsavedActIds[i]]->isUnSaved())
             ActLib::Act[unsavedActIds[i]]->save();
     }

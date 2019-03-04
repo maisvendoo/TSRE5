@@ -126,9 +126,9 @@ void SoundSourceObj::render(GLUU* gluu, float lod, float posx, float posz, float
         gluu->enableTextures();
     }
     
-    if(pointer3d == NULL)
+    if(pointer3d == nullptr)
         pointer3d = new PoleObj();
-    if(pointer3dSelected == NULL){
+    if(pointer3dSelected == nullptr){
         pointer3dSelected = new PoleObj();
         pointer3dSelected->setMaterial(1.0,1.0,0.5);
     }

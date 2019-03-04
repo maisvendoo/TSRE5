@@ -33,7 +33,7 @@ ActivityTimetableProperties::ActivityTimetableProperties(QWidget* parent) : QWid
     vlist->setContentsMargins(3,0,3,0);
     
     int row = 0;
-    QLabel *label = NULL;
+    QLabel *label = nullptr;
     
     QStringList list;
     list.append("Station:");
@@ -89,13 +89,13 @@ ActivityTimetableProperties::~ActivityTimetableProperties() {
 void ActivityTimetableProperties::showTimetable(ActivityServiceDefinition* s){
     service = s;
     ActivityTimetable *t = service->trafficDefinition;
-    if(t == NULL)
+    if(t == nullptr)
         return;
 
     QTableWidgetItem *newItem;
     QTime time;
     TDB *tdb = Game::trackDB;
-    if(tdb == NULL)
+    if(tdb == nullptr)
         return;
     
     lTimetable.blockSignals(true);
@@ -104,7 +104,7 @@ void ActivityTimetableProperties::showTimetable(ActivityServiceDefinition* s){
     QString name = "";
     for(int i = 0; i < t->platformStartID.size(); i++){
         TRitem *trit = tdb->trackItems[t->platformStartID[i]];
-        if(trit != NULL){
+        if(trit != nullptr){
             name = trit->stationName;
         } else {
             name = "Platform ID: "+QString::number(t->platformStartID[i]);
@@ -124,10 +124,10 @@ void ActivityTimetableProperties::showTimetable(ActivityServiceDefinition* s){
     lTimetable.blockSignals(false);
     
     Service *srv = ActLib::GetServiceByName(service->name);
-    if(srv == NULL)
+    if(srv == nullptr)
         return;
     Consist *con = ConLib::con[ConLib::addCon(Game::root+"/trains/consists/", srv->trainConfig+".con")];
-    if(con == NULL)
+    if(con == nullptr)
         return;
     eMainEng.setText(con->engItems[0].ename);
     eMaxSpeed.setText(QString::number((int)(con->maxVelocity[0]*3.6)) + " km/h");
@@ -139,7 +139,7 @@ void ActivityTimetableProperties::showTimetable(ActivityServiceDefinition* s){
 }
 
 void ActivityTimetableProperties::bCalculateSelected(){
-    if(service == NULL)
+    if(service == nullptr)
         return;
     
     service->calculateTimetable();
@@ -150,7 +150,7 @@ void ActivityTimetableProperties::bCalculateSelected(){
 void ActivityTimetableProperties::lTimetableSelected(int row, int column){
      qDebug() << "column" << column;
     
-    if(service == NULL)
+    if(service == nullptr)
         return;
     ActivityTimetable *t = service->trafficDefinition;
     

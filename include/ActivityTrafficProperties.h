@@ -34,7 +34,7 @@ public slots:
 signals:
     
 private:
-    Traffic *traffic = NULL;
+    Traffic *traffic = nullptr;
     
     QLineEdit eFileName;
     QLineEdit eDisplayName;

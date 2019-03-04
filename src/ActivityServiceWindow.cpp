@@ -72,7 +72,7 @@ void ActivityServiceWindow::showServices(Route* r){
     QList<QTreeWidgetItem *> items;
     QStringList list;
     for(int i = 0; i < ActLib::jestservice; i++ ){
-        if(ActLib::Services[i] == NULL)
+        if(ActLib::Services[i] == nullptr)
             continue;
         //new QListWidgetItem ( route->service[i]->displayName, &serviceList, i );
         list.clear();
@@ -82,7 +82,7 @@ void ActivityServiceWindow::showServices(Route* r){
         QTreeWidgetItem *item = new QTreeWidgetItem((QTreeWidget*)0, list, i );
         item->setCheckState(0, Qt::Unchecked);
         item->setCheckState(1, Qt::Unchecked);
-        if(activity != NULL){
+        if(activity != nullptr){
             if(activity->isPlayerServiceInUse(ActLib::Services[i]->nameId))
                 item->setCheckState(0, Qt::Checked);
             if(activity->isServiceInUse(ActLib::Services[i]->nameId))
@@ -102,7 +102,7 @@ void ActivityServiceWindow::showServices(Route* r){
 }
 
 void ActivityServiceWindow::serviceListSelected(QTreeWidgetItem * item, int column){
-    if(route == NULL)
+    if(route == nullptr)
         return;
     serviceProperties->showService(ActLib::Services[item->type()]);
 }

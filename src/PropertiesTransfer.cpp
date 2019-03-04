@@ -143,8 +143,8 @@ PropertiesTransfer::~PropertiesTransfer() {
 }
 
 void PropertiesTransfer::showObj(GameObj* obj){
-    if(obj == NULL){
-        infoLabel->setText("NULL");
+    if(obj == nullptr){
+        infoLabel->setText("nullptr");
         return;
     }
     worldObj = (WorldObj*)obj;
@@ -171,7 +171,7 @@ void PropertiesTransfer::showObj(GameObj* obj){
     
 
     Texture* tex = TexLib::mtex[tobj->getTexId()];
-    if(tex == NULL) 
+    if(tex == nullptr) 
         return;
     
     unsigned char * out = tex->getImageData(128,128);
@@ -182,7 +182,7 @@ void PropertiesTransfer::showObj(GameObj* obj){
 }
 
 void PropertiesTransfer::sizeEnabled(QString val){
-    if(transferObj == NULL)
+    if(transferObj == nullptr)
         return;
     bool ok;
     sizeX.text().toFloat(&ok);
@@ -199,7 +199,7 @@ void PropertiesTransfer::sizeEnabled(QString val){
 }
 
 bool PropertiesTransfer::support(GameObj* obj){
-    if(obj == NULL)
+    if(obj == nullptr)
         return false;
     if(obj->typeObj != GameObj::worldobj)
         return false;

@@ -25,7 +25,7 @@
 #include "TerrainInfo.h"
 
 QString Terrain::TileDir[2] = {"tiles", "lo_tiles"};
-Brush* Terrain::DefaultBrush = NULL;
+Brush* Terrain::DefaultBrush = nullptr;
 
 Terrain::Terrain(TerrainInfo *ti){
     mojex = ti->cx;
@@ -71,13 +71,13 @@ void Terrain::load(){
         //qDebug() << " t fail" << name;
         return;
     }
-    if(tfile->sampleYbuffer == NULL)
+    if(tfile->sampleYbuffer == nullptr)
         return;
     if (!readRAW((path + *tfile->sampleYbuffer/* + "_y.raw"*/))) {
         //qDebug() << " y fail" << name;
         return;
     }
-    if(tfile->sampleFbuffer != NULL)
+    if(tfile->sampleFbuffer != nullptr)
         jestF = readF(path + *tfile->sampleFbuffer/* + "_f.raw"*/);
     modifiedF = false;
     //qDebug() << " ok";
@@ -241,9 +241,9 @@ Terrain::~Terrain() {
         //    //GC::VBO.push_back(VBO[i]);
         //    //GC::VAO.push_back(VAO[i]);
         //}
-        if(VBO != NULL)
+        if(VBO != nullptr)
             delete VBO;
-        if(VAO != NULL)
+        if(VAO != nullptr)
             delete VAO;
         //delete[] VBO;
         //delete[] VAO;
@@ -597,7 +597,7 @@ void Terrain::setTileBlob(){
     getLowCornerTileXY(X, Y);
     int hash = (X*10000+Y);
     qDebug() << hash;
-    if(MapWindow::mapTileImages[hash] != NULL)
+    if(MapWindow::mapTileImages[hash] != nullptr)
         this->showBlob = true;
     else {
         if(MapWindow::LoadMapFromDisk(X, Y)){
@@ -613,7 +613,7 @@ void Terrain::makeTextureFromMap(){
     getLowCornerTileXY(X, Y);
     int hash = (X*10000+Y);
     qDebug() << hash;
-    if(MapWindow::mapTileImages[hash] == NULL){
+    if(MapWindow::mapTileImages[hash] == nullptr){
         qDebug() << "mat tex not found";
         return;
     }
@@ -1105,7 +1105,7 @@ float Terrain::getHeight(int x, int z, float posx, float posz, bool addR){
 
 void Terrain::refreshWaterShapes(){
     for (WaterTile* wt : water){
-        if(wt == NULL)
+        if(wt == nullptr)
             continue;
         for (int uu = 0; uu < 16; uu++) {
             for (int yy = 0; yy < 16; yy++) {
@@ -1526,7 +1526,7 @@ void Terrain::renderWater(float lodx, float lodz, float tileX, float tileY, floa
     gluu->currentShader->setUniformValue(gluu->currentShader->msMatrixUniform, *reinterpret_cast<float(*)[4][4]> (gluu->objStrMatrix));
 
     
-    if(water[layer] == NULL)
+    if(water[layer] == nullptr)
         water[layer] = new WaterTile();
     OglObj *w = water[layer]->w;
     
@@ -2355,11 +2355,11 @@ void Terrain::fillHeightMap(float* data){
 void Terrain::save() {
     QString path = Game::root + "/routes/" + Game::route + "/" + TileDir[(int)lowTile] + "/";
     QString filename = name;
-    if(this->tfile->sampleYbuffer == NULL)
+    if(this->tfile->sampleYbuffer == nullptr)
         this->tfile->sampleYbuffer = new QString(filename + "_y.raw");
     saveRAW(path + *this->tfile->sampleYbuffer );
     if(jestF && modifiedF){
-        if(this->tfile->sampleFbuffer == NULL)
+        if(this->tfile->sampleFbuffer == nullptr)
             this->tfile->sampleFbuffer = new QString(filename + "_f.raw");
         saveF(path + *this->tfile->sampleFbuffer);
     }
@@ -2560,15 +2560,15 @@ bool Terrain::unselect(){
 }
 
 void Terrain::pushContextMenuActions(QMenu *menu){
-    if(contextMenuActions["togglewater"] == NULL){
+    if(contextMenuActions["togglewater"] == nullptr){
         contextMenuActions["togglewater"] = new QAction(tr("&Toggle Water")); 
         QObject::connect(contextMenuActions["togglewater"], SIGNAL(triggered()), this, SLOT(menuToggleWater()));
     }
-    if(contextMenuActions["puttexture"] == NULL){
+    if(contextMenuActions["puttexture"] == nullptr){
         contextMenuActions["puttexture"] = new QAction(tr("&Put Texture")); 
         QObject::connect(contextMenuActions["puttexture"], SIGNAL(triggered()), this, SLOT(menuPutTexture()));
     }
-    if(contextMenuActions["toggledraw"] == NULL){
+    if(contextMenuActions["toggledraw"] == nullptr){
         contextMenuActions["toggledraw"] = new QAction(tr("&Toggle Draw")); 
         QObject::connect(contextMenuActions["toggledraw"], SIGNAL(triggered()), this, SLOT(menuToggleDraw()));
     }
@@ -2586,7 +2586,7 @@ void Terrain::menuToggleDraw(){
 }
 
 void Terrain::menuPutTexture(){
-    if(DefaultBrush == NULL)
+    if(DefaultBrush == nullptr)
         return;
     for (int uu = 0; uu < 256; uu++) {
         if(selectedPatchs[uu]){

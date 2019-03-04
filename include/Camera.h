@@ -74,7 +74,7 @@ protected:
     int rpm = 0;
     bool moveF, moveR, moveB, moveL;
     PreciseTileCoordinate* currentPos = 0;
-    GameObj* cameraObject = NULL;
+    GameObj* cameraObject = nullptr;
 };
 
 #endif	/* CAMERA_H */

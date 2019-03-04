@@ -161,7 +161,7 @@ int Path::getStartDirection(){
 float* Path::getStartPositionTXZ(float* out){
     init3dShapes(false);
     
-    if(out == NULL)
+    if(out == nullptr)
         out = new float[4];
         
     float posT[2];
@@ -172,7 +172,7 @@ float* Path::getStartPositionTXZ(float* out){
     posT[0] = node[0].tilex;
     posT[1] = node[0].tilez;
     Vec3::copy(posW, node[0].pos);
-    tdb->findNearestPositionOnTDB(posT, posW, NULL, tpos1);
+    tdb->findNearestPositionOnTDB(posT, posW, nullptr, tpos1);
     out[0] = posT[0];
     out[1] = -posT[1];
     out[2] = posW[0];
@@ -184,7 +184,7 @@ float* Path::getStartPositionTXZ(float* out){
 }
 
 void Path::initRoute(){
-    if(Game::trackDB == NULL)
+    if(Game::trackDB == nullptr)
         return;
     if(trPathNode.size() < 1)
         return;
@@ -235,7 +235,7 @@ void Path::init3dShapes(bool initShapes){
             posT[0] = node[i].tilex;
             posT[1] = node[i].tilez;
             Vec3::copy(posW, node[i].pos);
-            tdb->findNearestPositionOnTDB(posT, posW, NULL, tpos1);
+            tdb->findNearestPositionOnTDB(posT, posW, nullptr, tpos1);
             nodeId1 = tpos1[0];
             currentDistance = tpos1[1];
             currentNodeId = nodeId1;
@@ -269,7 +269,7 @@ void Path::init3dShapes(bool initShapes){
         } else if(node[i].flag1 == 2){
             qDebug() << "junction";
             //qDebug() << node[i].tilex, node[i].tilez, node[i].pos[0], node[i].pos[1], node[i].pos[2];
-            nodeId1 = tdb->findNearestNode(node[i].tilex, node[i].tilez, node[i].pos, NULL, 4, false);
+            nodeId1 = tdb->findNearestNode(node[i].tilex, node[i].tilez, node[i].pos, nullptr, 4, false);
             //qDebug() << nodeId1;
             if(lastNodeId < 0){
                 qDebug() << "fail";
@@ -321,11 +321,11 @@ void Path::init3dShapes(bool initShapes){
         
         for(int ti = 0; ti < tdb->trackNodes[currentNodeId]->iTri; ti++){
             int trid1 = tdb->trackNodes[currentNodeId]->trItemRef[ti];
-            if(tdb->trackItems[trid1] != NULL){
+            if(tdb->trackItems[trid1] != nullptr){
                 if(tdb->trackItems[trid1]->type != "platformitem")
                     continue;
                 int trid2 = tdb->trackItems[trid1]->platformTrItemData[1];
-                if(tdb->trackItems[trid2] != NULL){
+                if(tdb->trackItems[trid2] != nullptr){
                     float ddd1 = tdb->trackItems[trid1]->getTrackPosition();
                     if(distance1 > distance2)
                         ddd1 = 2*tdb->getVectorSectionLength(currentNodeId) - ddd1 - distance1;
@@ -346,7 +346,7 @@ void Path::init3dShapes(bool initShapes){
                         dist = ddd2;
                         trid = trid2;
                     }
-                    if(pathObjectsMap[distanceDownPath + dist] == NULL)
+                    if(pathObjectsMap[distanceDownPath + dist] == nullptr)
                         pathObjectsMap[distanceDownPath + dist] = new PathObject();
                     pathObjectsMap[distanceDownPath + dist]->name = tdb->trackItems[trid]->stationName;
                     pathObjectsMap[distanceDownPath + dist]->trItemId = trid;
@@ -421,7 +421,7 @@ void Path::init3dShapes(bool initShapes){
 }
 
 void Path::render(GLUU* gluu, float * playerT, int selectionColor){
-    if(pointer3d == NULL){
+    if(pointer3d == nullptr){
         pointer3d = new TrackItemObj(1);
         pointer3d->setMaterial(0.0,1.0,0.0);
     }
@@ -479,7 +479,7 @@ void Path::CreatePaths(TDB * tdb){
     Ruch ruch;
     Vector3f* pos;
     for (int i = 1; i <= tdb->iTRnodes; i++) {
-        if (tdb->trackNodes[i] == NULL) continue;
+        if (tdb->trackNodes[i] == nullptr) continue;
         if (tdb->trackNodes[i]->typ == 0) {
             //tdb->trackNodes[i]->TrPinS[0];
             ruch.set(i, 0, 0);

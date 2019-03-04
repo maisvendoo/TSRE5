@@ -73,7 +73,7 @@ void ActivityTrafficWindow::showTraffic(Route* r){
     QList<QTreeWidgetItem *> items;
     QStringList list;
     for(int i = 0; i < ActLib::jesttraffic; i++ ){
-        if(ActLib::Traffics[i] == NULL)
+        if(ActLib::Traffics[i] == nullptr)
             continue;
         //new QListWidgetItem ( route->service[i]->displayName, &serviceList, i );
         list.clear();
@@ -85,7 +85,7 @@ void ActivityTrafficWindow::showTraffic(Route* r){
         //    item->setCheckState(1, Qt::Checked);
         //}else{
         item->setCheckState(1, Qt::Unchecked);
-        if(activity != NULL){
+        if(activity != nullptr){
             if(activity->isTrafficInUse(ActLib::Traffics[i]->nameId))
                 item->setCheckState(1, Qt::Checked);
         }
@@ -102,7 +102,7 @@ void ActivityTrafficWindow::showTraffic(Route* r){
 }
 
 void ActivityTrafficWindow::lTrafficSelected(QTreeWidgetItem *item, int column){
-    if(route == NULL)
+    if(route == nullptr)
         return;
     trafficProperties->showTraffic(ActLib::Traffics[item->type()]);
 }

@@ -184,8 +184,8 @@ PropertiesForest::~PropertiesForest() {
 }
 
 void PropertiesForest::showObj(GameObj* obj){
-    if(obj == NULL){
-        infoLabel->setText("NULL");
+    if(obj == nullptr){
+        infoLabel->setText("nullptr");
         return;
     }
     worldObj = (WorldObj*)obj;
@@ -213,7 +213,7 @@ void PropertiesForest::showObj(GameObj* obj){
 }
 
 void PropertiesForest::sizeEnabled(QString val){
-    if(forestObj == NULL)
+    if(forestObj == nullptr)
         return;
     bool ok;
     sizeX.text().toFloat(&ok);
@@ -230,7 +230,7 @@ void PropertiesForest::sizeEnabled(QString val){
 }
 
 void PropertiesForest::populationEnabled(QString val){
-    if(forestObj == NULL)
+    if(forestObj == nullptr)
         return;
     Undo::SinglePushWorldObjData(worldObj);
     forestObj->set("population", population.text().toLongLong());
@@ -240,7 +240,7 @@ void PropertiesForest::populationEnabled(QString val){
 }
 
 void PropertiesForest::densitykmEnabled(QString val){
-    if(forestObj == NULL)
+    if(forestObj == nullptr)
         return;
     Undo::SinglePushWorldObjData(worldObj);
     this->population.setText(QString::number((int)(densitykm.text().toUInt()/(1000000.0/(forestObj->areaX*forestObj->areaZ))), 10));
@@ -250,7 +250,7 @@ void PropertiesForest::densitykmEnabled(QString val){
 }
 
 bool PropertiesForest::support(GameObj* obj){
-    if(obj == NULL)
+    if(obj == nullptr)
         return false;
     if(obj->typeObj != GameObj::worldobj)
         return false;
@@ -260,7 +260,7 @@ bool PropertiesForest::support(GameObj* obj){
 }
 
 void PropertiesForest::enableCustomDetailLevelEnabled(int val){
-    if(worldObj == NULL)
+    if(worldObj == nullptr)
         return;
     ForestObj* forestObj = (ForestObj*) worldObj;
     Undo::SinglePushWorldObjData(worldObj);
@@ -276,7 +276,7 @@ void PropertiesForest::enableCustomDetailLevelEnabled(int val){
 }
 
 void PropertiesForest::customDetailLevelEdited(QString val){
-    if(worldObj == NULL)
+    if(worldObj == nullptr)
         return;
     ForestObj* forestObj = (ForestObj*) worldObj;
     bool ok = false;

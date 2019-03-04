@@ -462,7 +462,7 @@ float ParserX::GetNumberInside(FileBuffer* bufor, bool *ok){
         //ufor->off++;
         if (b == 41){
             bufor->off = bufor->off - 2;
-            if(ok != NULL) *ok = false;
+            if(ok != nullptr) *ok = false;
             return 0;
         }
     }
@@ -522,7 +522,7 @@ float ParserX::GetNumberInside(FileBuffer* bufor, bool *ok){
         x += GetNumberInside(bufor);
     else 
         bufor->off -= 2;
-    if(ok != NULL) *ok = true;
+    if(ok != nullptr) *ok = true;
     return x;
 }
 

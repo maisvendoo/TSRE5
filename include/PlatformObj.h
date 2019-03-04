@@ -57,11 +57,11 @@ private:
     unsigned int platformData = 0;
     int trItemId[4];
     int trItemIdCount = 0;
-    TrackItemObj* spointer3d = NULL;
-    TrackItemObj* spointer3dSelected = NULL;
-    OglObj* line = NULL;
-    float* drawPositionB = NULL;
-    float* drawPositionE = NULL;
+    TrackItemObj* spointer3d = nullptr;
+    TrackItemObj* spointer3dSelected = nullptr;
+    OglObj* line = nullptr;
+    float* drawPositionB = nullptr;
+    float* drawPositionE = nullptr;
     int rotB = 0;
     int rotE = 0;
     int selectionValue = 0;

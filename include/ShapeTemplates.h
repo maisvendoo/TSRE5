@@ -62,9 +62,9 @@ public:
     //QHash<TemplateType, Element*> rail;
     // QHash<TemplateType, Element*> ballast;
     QHash<QString, ShapeTemplateElement*> elements;
-    //ShapeTemplateElement *tie = NULL;
-    //ShapeTemplateElement *ballast = NULL;
-    //ShapeTemplateElement *rail = NULL;
+    //ShapeTemplateElement *tie = nullptr;
+    //ShapeTemplateElement *ballast = nullptr;
+    //ShapeTemplateElement *rail = nullptr;
 
 };
 

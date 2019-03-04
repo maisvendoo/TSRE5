@@ -160,9 +160,9 @@ CarSpawnerObj::SimpleCar::SimpleCar(){
 }
 
 CarSpawnerObj::SimpleCar::~SimpleCar(){
-    //if(drawPosition != NULL){
+    //if(drawPosition != nullptr){
     //    delete[] drawPosition;
-    //    drawPosition = NULL;
+    //    drawPosition = nullptr;
     //}
 }
 
@@ -182,13 +182,13 @@ void CarSpawnerObj::SimpleCar::updateSim(float deltaTime){
         loaded = false;
     if(trPosMb < 0)
         loaded = false;
-    if(shapePointer != NULL){
+    if(shapePointer != nullptr){
         shapePointer->updateSim(deltaTime, shapeState);
     }
 }
 
 void CarSpawnerObj::SimpleCar::render(GLUU *gluu, int selectionColor){
-    //if(drawPosition == NULL)
+    //if(drawPosition == nullptr)
     //    drawPosition = new float[7];
         //qDebug() <<"car"<< trNodeId<< trPosM;
         bool ok = Game::roadDB->getDrawPositionOnTrNode(drawPosition, trNodeId, trPosMb);
@@ -209,7 +209,7 @@ void CarSpawnerObj::SimpleCar::render(GLUU *gluu, int selectionColor){
     Mat4::rotateY(gluu->mvMatrix, gluu->mvMatrix, M_PI*0.5 + M_PI*0.5*direction);
     gluu->currentShader->setUniformValue(gluu->currentShader->mvMatrixUniform, *reinterpret_cast<float(*)[4][4]> (gluu->mvMatrix));
     useSC = (float)selectionColor/(float)(selectionColor+0.000001);
-    if(shapePointer != NULL){
+    if(shapePointer != nullptr){
         shapePointer->render(shapeState);
     }
     //this->shapePointer->render();
@@ -279,7 +279,7 @@ void CarSpawnerObj::setPosition(int x, int z, float* p){
     playerT[1] = z;
     float tpos[3];
 
-    if(tdb->findNearestPositionOnTDB(playerT, p, NULL, tpos) < 0)
+    if(tdb->findNearestPositionOnTDB(playerT, p, nullptr, tpos) < 0)
         return;
 
     //tdb- >trackItems[trItemId[selectionValue]]-
@@ -290,13 +290,13 @@ void CarSpawnerObj::setPosition(int x, int z, float* p){
 
     if(this->selectionValue == 1){
         delete[] drawPositionB;
-        drawPositionB = NULL;   
+        drawPositionB = nullptr;   
     } else if(this->selectionValue == 3){
         delete[] drawPositionE;
-        drawPositionE = NULL;
+        drawPositionE = nullptr;
     }
     delete line;
-    line = NULL;
+    line = nullptr;
     this->modified = true;
 }
 
@@ -313,7 +313,7 @@ void CarSpawnerObj::translate(float px, float py, float pz){
     
     float dlugosc = tdb->getVectorSectionLength(id);
     TRitem* trit = tdb->trackItems[this->trItemId[this->selectionValue]];
-    if(trit == NULL) 
+    if(trit == nullptr) 
         return;
     if(pz < 0){
         trit->trackPositionAdd(-1);
@@ -328,13 +328,13 @@ void CarSpawnerObj::translate(float px, float py, float pz){
     }
     if(this->selectionValue == 1){
         delete[] drawPositionB;
-        drawPositionB = NULL;   
+        drawPositionB = nullptr;   
     } else if(this->selectionValue == 3){
         delete[] drawPositionE;
-        drawPositionE = NULL;
+        drawPositionE = nullptr;
     }
     delete line;
-    line = NULL;
+    line = nullptr;
     this->modified = true;
     setMartix();
 }
@@ -349,7 +349,7 @@ bool CarSpawnerObj::isTrackItem(){
 }
 
 void CarSpawnerObj::initTrItems(float* tpos){
-    if(tpos == NULL)
+    if(tpos == nullptr)
         return;
     int trNodeId = tpos[0];
     float metry = tpos[1];
@@ -388,7 +388,7 @@ float CarSpawnerObj::getLength(){
     TDB* tdb = Game::trackDB;
     TRitem* p1 = tdb->trackItems[this->trItemId[1]];
     TRitem* p2 = tdb->trackItems[this->trItemId[3]];
-    if(p1 == NULL || p2 == NULL) return 0;
+    if(p1 == nullptr || p2 == nullptr) return 0;
     return fabs(p2->getTrackPosition() - p1->getTrackPosition());
 }
 
@@ -459,7 +459,7 @@ void CarSpawnerObj::render(GLUU* gluu, float lod, float posx, float posz, float*
         gluu->mvPushMatrix();
         Mat4::multiply(gluu->mvMatrix, gluu->mvMatrix, matrix);
         gluu->currentShader->setUniformValue(gluu->currentShader->mvMatrixUniform, *reinterpret_cast<float(*)[4][4]> (gluu->mvMatrix));
-        if(pointer3d == NULL){
+        if(pointer3d == nullptr){
             pointer3d = new TrackItemObj(1);
             pointer3d->setMaterial(0.9,0.9,0.7);
         }
@@ -483,7 +483,7 @@ void CarSpawnerObj::render(GLUU* gluu, float lod, float posx, float posz, float*
 
 void CarSpawnerObj::renderTritems(GLUU* gluu, int selectionColor){
     
-    if (drawPositionB == NULL) {
+    if (drawPositionB == nullptr) {
         TDB* tdb = Game::trackDB;
         if(this->typeID == this->carspawner)
             tdb = Game::roadDB;
@@ -505,7 +505,7 @@ void CarSpawnerObj::renderTritems(GLUU* gluu, int selectionColor){
         drawPositionB[0] += 2048 * (drawPositionB[5] - this->x);
         drawPositionB[2] -= 2048 * (-drawPositionB[6] - this->y);
     }
-    if (drawPositionE == NULL) {
+    if (drawPositionE == nullptr) {
         TDB* tdb = Game::trackDB;
         if(this->typeID == this->carspawner)
             tdb = Game::roadDB;
@@ -526,9 +526,9 @@ void CarSpawnerObj::renderTritems(GLUU* gluu, int selectionColor){
         drawPositionE[2] -= 2048 * (-drawPositionE[6] - this->y);
     }
 
-    if(line == NULL){
-        if(spointer3d == NULL) spointer3d = new TrackItemObj();
-        if(spointer3dSelected == NULL) spointer3dSelected = new TrackItemObj();
+    if(line == nullptr){
+        if(spointer3d == nullptr) spointer3d = new TrackItemObj();
+        if(spointer3dSelected == nullptr) spointer3dSelected = new TrackItemObj();
 
         makelineShape();
         
@@ -548,7 +548,7 @@ void CarSpawnerObj::renderTritems(GLUU* gluu, int selectionColor){
             spointer3dSelected->setMaterial(0.9, 0.5, 1.0);
         }
     }
-    //if(pos == NULL) return;
+    //if(pos == nullptr) return;
     //gluu->setMatrixUniforms();
     //float dlugosc = (float) sqrt(pow(drawPositionB[2]-drawPositionE[2], 2) + pow(drawPositionB[0]-drawPositionE[0], 2));
     float aa = (drawPositionE[2]-drawPositionB[2]);
@@ -607,11 +607,11 @@ void CarSpawnerObj::expand(){
     tdb->updateTrItemRData(tdb->trackItems[this->trItemId[1]]);
     tdb->updateTrItemRData(tdb->trackItems[this->trItemId[3]]);
     delete[] drawPositionB;
-    drawPositionB = NULL;   
+    drawPositionB = nullptr;   
     delete[] drawPositionE;
-    drawPositionE = NULL;
+    drawPositionE = nullptr;
     delete line;
-    line = NULL;
+    line = nullptr;
     this->modified = true;
     
 }

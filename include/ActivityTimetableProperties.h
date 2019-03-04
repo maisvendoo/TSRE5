@@ -31,7 +31,7 @@ signals:
     
     
 private:
-    ActivityServiceDefinition *service = NULL;
+    ActivityServiceDefinition *service = nullptr;
     QTableWidget lTimetable;
     QTimeEdit eTime;
     QLineEdit eMainEng;

@@ -90,7 +90,7 @@ void LevelCrObj::deleteTrItems(){
 }
 
 void LevelCrObj::initTrItems(float* tpos){
-    if(tpos == NULL)
+    if(tpos == nullptr)
         return;
     
     TDB* tdb = Game::trackDB;
@@ -134,7 +134,7 @@ void LevelCrObj::initTrItems(float* tpos){
         trItemId[pointCount*2+i*2+1] = tid[1];
     }
 
-    this->drawPosition = NULL;
+    this->drawPosition = nullptr;
 }
 
 void LevelCrObj::set(QString sh, QString val){
@@ -315,11 +315,11 @@ void LevelCrObj::renderTritems(GLUU* gluu, int selectionColor){
             }
             drawPosition[0] += 2048 * (drawPosition[5] - this->x);
             drawPosition[2] -= 2048 * (-drawPosition[6] - this->y);
-            if(pointer3d == NULL){
+            if(pointer3d == nullptr){
                 pointer3d = new TrackItemObj(1);
                 pointer3d->setMaterial(0.9,0.5,0.0);
             }
-            if(pointer3dSelected == NULL){
+            if(pointer3dSelected == nullptr){
                 pointer3dSelected = new TrackItemObj(1);
                 pointer3dSelected->setMaterial(1.0,0.8,0.3);
             }
@@ -327,7 +327,7 @@ void LevelCrObj::renderTritems(GLUU* gluu, int selectionColor){
         }
     }
 
-    //if(pos == NULL) return;
+    //if(pos == nullptr) return;
     int useSC;
 
     for(int i = 0; i < drawPositions.size(); i++){
@@ -543,7 +543,7 @@ void LevelCrObj::translate(float px, float py, float pz){
     
     float dlugosc = tdb->getVectorSectionLength(id);
     TRitem* trit = tdb->trackItems[this->trItemId[trid*2+1]];
-    if(trit == NULL) 
+    if(trit == nullptr) 
         return;
     if(pz < 0){
         trit->trackPositionAdd(-0.5);

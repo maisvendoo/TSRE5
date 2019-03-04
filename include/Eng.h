@@ -85,7 +85,7 @@ public:
     bool couplingFilter(QString q);
     bool searchFilter(QString q);
     void initOnTrack(float *tpos, int direction, QMap<int, int>* junctionDirections);
-    void getCameraPosition(float *out = NULL);
+    void getCameraPosition(float *out = nullptr);
     void renderOnTrack(GLUU* gluu, float* playerT, int selectionColor);
     void move(float m);
     float getCurrentElevation();
@@ -99,18 +99,18 @@ public:
     float *getCurrentPositionOnTrack();
 private:
     bool selected = false;
-    OglObj *borderObj = NULL;
-    OglObj *borderObj3d = NULL;
-    OglObj *ruchPoint = NULL;
-    Ruch *ruch1 = NULL;
-    Ruch *ruch2 = NULL;
+    OglObj *borderObj = nullptr;
+    OglObj *borderObj3d = nullptr;
+    OglObj *ruchPoint = nullptr;
+    Ruch *ruch1 = nullptr;
+    Ruch *ruch2 = nullptr;
     void addToFileList(QString val);
     
     int camSoundSourceId = -1;
-    SoundVariables* soundVariables = NULL;
+    SoundVariables* soundVariables = nullptr;
     float currentSpeed = 0;
     
-    TrainNetworkEng* networkEng = NULL;
+    TrainNetworkEng* networkEng = nullptr;
 };
 
 #endif	/* ENG_H */

@@ -65,8 +65,8 @@ public:
 private:
     bool modified = false;
     int serial = -1;
-    Path *pathPointer = NULL;
-    Consist *conPointer = NULL;
+    Path *pathPointer = nullptr;
+    Consist *conPointer = nullptr;
 };
 
 #endif	/* SERVICE_H */

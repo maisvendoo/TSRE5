@@ -24,7 +24,7 @@ class ActivityTrafficWindow : public QWidget {
 public:
     ActivityTrafficWindow(QWidget* parent);
     virtual ~ActivityTrafficWindow();
-    ActivityTrafficProperties* trafficProperties = NULL;
+    ActivityTrafficProperties* trafficProperties = nullptr;
     
 public slots:
     void lTrafficSelected(QTreeWidgetItem * item, int column);
@@ -35,7 +35,7 @@ signals:
     void reloadTrafficsList();
     
 private:
-    Route *route = NULL;
+    Route *route = nullptr;
     QTreeWidget lTraffic;
 };
 

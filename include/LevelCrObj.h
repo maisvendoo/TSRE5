@@ -64,12 +64,12 @@ private:
     unsigned int levelCrData[2];
     float levelCrTiming[3];
     QVector<int> trItemId;
-    //int *trItemId = NULL;
+    //int *trItemId = nullptr;
     int trItemIdCount = 0;
-    TrackItemObj* pointer3d = NULL;
-    TrackItemObj* pointer3dSelected = NULL;
+    TrackItemObj* pointer3d = nullptr;
+    TrackItemObj* pointer3dSelected = nullptr;
     QVector<float*> drawPositions;
-    float* drawPosition = NULL;
+    float* drawPosition = nullptr;
     QString ORTSSoundFileName;
     void renderTritems(GLUU* gluu, int selectionColor);
     bool getSimpleBorder(float* border);

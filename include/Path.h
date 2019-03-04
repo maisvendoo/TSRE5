@@ -65,7 +65,7 @@ public:
     Path(const Path& orig);
     virtual ~Path();
     void load();
-    float* getStartPositionTXZ(float *out = NULL);
+    float* getStartPositionTXZ(float *out = nullptr);
     int getStartDirection();
     QMap<int, int>* getJunctionDirections();
     void initRoute();
@@ -77,7 +77,7 @@ private:
     bool isinit1 = false;
     bool isinit2 = false;
     int serial = -1;
-    TrackItemObj* pointer3d = NULL;
+    TrackItemObj* pointer3d = nullptr;
     QVector<OglObj*> lines;
     QVector<float> linesX;
     QVector<float> linesZ;

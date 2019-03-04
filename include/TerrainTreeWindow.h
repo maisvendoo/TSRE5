@@ -26,10 +26,10 @@ public:
 private:
     QLabel* imageLabel;
     QImage* myImage;
-    IghCoordinate* igh = NULL;
-    LatitudeLongitudeCoordinate* minLatlon = NULL;
-    LatitudeLongitudeCoordinate* maxLatlon = NULL;
-    PreciseTileCoordinate* aCoords = NULL;
+    IghCoordinate* igh = nullptr;
+    LatitudeLongitudeCoordinate* minLatlon = nullptr;
+    LatitudeLongitudeCoordinate* maxLatlon = nullptr;
+    PreciseTileCoordinate* aCoords = nullptr;
 };
 
 #endif	/* TERRAINTREEWINDOW_H */

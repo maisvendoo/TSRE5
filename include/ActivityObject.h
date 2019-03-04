@@ -33,7 +33,7 @@ public:
         RESTRICTEDSPEEDZONE = 2,
         FAILEDSIGNAL = 3
     };
-    Consist* con = NULL;
+    Consist* con = nullptr;
     QString objectType;
     TypeActivityObject objectTypeId = NONE;
     float direction = 0;
@@ -53,7 +53,7 @@ public:
     void reverseWagonListUnit();
     void setParentActivity(Activity *a);
     void setFailedSignalData(int id);
-    void setSpeedZoneData(float* drawposition = NULL);
+    void setSpeedZoneData(float* drawposition = nullptr);
     QString getSpeedZoneName();
     void setModified(bool val);
     bool isUnSaved();
@@ -72,14 +72,14 @@ public slots:
 signals:
         
 private:
-    Activity *parentActivity = NULL;
+    Activity *parentActivity = nullptr;
     bool modified = false;
     int selectionValue = 0;
     
     struct FailedSignalData {
-        float* drawPosition = NULL;
-        OglObj* pointer3d = NULL;
-        OglObj* pointer3dSelected = NULL;
+        float* drawPosition = nullptr;
+        OglObj* pointer3d = nullptr;
+        OglObj* pointer3dSelected = nullptr;
         int init = 0;
         int failedSignal = -1;
         bool getWorldPosition(float *posTW);
@@ -87,11 +87,11 @@ private:
     };
     
     struct SpeedZone {
-        float* drawPositionB = NULL;
-        float* drawPositionE = NULL;
-        OglObj* lineShape = NULL;
-        OglObj* pointer3d = NULL;
-        OglObj* pointer3dSelected = NULL;
+        float* drawPositionB = nullptr;
+        float* drawPositionE = nullptr;
+        OglObj* lineShape = nullptr;
+        OglObj* pointer3d = nullptr;
+        OglObj* pointer3dSelected = nullptr;
         int selectionValue = 0;
         float start[4];
         float end[4];
@@ -104,8 +104,8 @@ private:
     };
     
     //void renderZone(GLUU* gluu, float * playerT, int selectionColor);
-    SpeedZone* speedZoneData = NULL;
-    FailedSignalData* failedSignalData = NULL;
+    SpeedZone* speedZoneData = nullptr;
+    FailedSignalData* failedSignalData = nullptr;
 };
 
 #endif	/* ACTIVITYOBJECT_H */

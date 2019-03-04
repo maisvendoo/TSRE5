@@ -81,7 +81,7 @@ SignalWindow::SignalWindow(QWidget *parent) : QWidget(parent) {
 }
 
 void SignalWindow::chSubEnabled(int i) {
-    if (sobj == NULL)
+    if (sobj == nullptr)
         return;
 
     Undo::StateBegin();
@@ -96,7 +96,7 @@ void SignalWindow::chSubEnabled(int i) {
 }
 
 void SignalWindow::bLinkEnabled(int i) {
-    if (sobj == NULL)
+    if (sobj == nullptr)
         return;
     
     currentSubObjLinkInfo = i;
@@ -201,7 +201,7 @@ void SignalWindow::showObj(SignalObj* obj) {
 
 void SignalWindow::updateObj(SignalObj* obj) {
     this->sobj = obj;
-    if(sobj == NULL)
+    if(sobj == nullptr)
         return;
     
     TDB* tdb = Game::trackDB;
@@ -243,7 +243,7 @@ void SignalWindow::setLinkInfo(int i) {
     if (linkId == -1) {
         this->bSub[i].setEnabled(false);
         this->bSub[i].setStyleSheet("color: red");
-        this->bSub[i].setText("NULL");
+        this->bSub[i].setText("nullptr");
     } else if (linkId == 0) {
         this->bSub[i].setStyleSheet("");
         if (sobj->isJunctionAvailable(i)) {

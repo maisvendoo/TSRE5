@@ -147,8 +147,8 @@ private:
     bool texModified[256];
     bool texLocked[256];
     bool selectedPatchs[256];
-    QOpenGLBuffer *VBO = NULL;
-    QOpenGLVertexArrayObject *VAO = NULL;
+    QOpenGLBuffer *VBO = nullptr;
+    QOpenGLVertexArrayObject *VAO = nullptr;
 
     OglObj lines;
     OglObj mlines;

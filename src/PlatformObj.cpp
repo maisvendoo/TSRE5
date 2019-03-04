@@ -122,7 +122,7 @@ void PlatformObj::setPosition(int x, int z, float* p){
     playerT[1] = z;
     float tpos[3];
 
-    if(tdb->findNearestPositionOnTDB(playerT, p, NULL, tpos) < 0)
+    if(tdb->findNearestPositionOnTDB(playerT, p, nullptr, tpos) < 0)
         return;
 
     //tdb- >trackItems[trItemId[selectionValue]]-
@@ -135,13 +135,13 @@ void PlatformObj::setPosition(int x, int z, float* p){
 
     if(this->selectionValue == 1){
         delete[] drawPositionB;
-        drawPositionB = NULL;   
+        drawPositionB = nullptr;   
     } else if(this->selectionValue == 3){
         delete[] drawPositionE;
-        drawPositionE = NULL;
+        drawPositionE = nullptr;
     }
     delete line;
-    line = NULL;
+    line = nullptr;
     this->modified = true;
 }
 
@@ -160,7 +160,7 @@ void PlatformObj::translate(float px, float py, float pz){
     
     float dlugosc = tdb->getVectorSectionLength(id);
     TRitem* trit = tdb->trackItems[this->trItemId[this->selectionValue]];
-    if(trit == NULL) 
+    if(trit == nullptr) 
         return;
     if(pz < 0){
         trit->trackPositionAdd(-1);
@@ -175,13 +175,13 @@ void PlatformObj::translate(float px, float py, float pz){
     }
     if(this->selectionValue == 1){
         delete[] drawPositionB;
-        drawPositionB = NULL;   
+        drawPositionB = nullptr;   
     } else if(this->selectionValue == 3){
         delete[] drawPositionE;
-        drawPositionE = NULL;
+        drawPositionE = nullptr;
     }
     delete line;
-    line = NULL;
+    line = nullptr;
     this->modified = true;
     setMartix();
 }
@@ -196,7 +196,7 @@ bool PlatformObj::isTrackItem(){
 }
 
 void PlatformObj::initTrItems(float* tpos){
-    if(tpos == NULL)
+    if(tpos == nullptr)
         return;
     int trNodeId = tpos[0];
     float metry = tpos[1];
@@ -241,7 +241,7 @@ QString PlatformObj::getStationName(){
     TDB* tdb = Game::trackDB;
     int id = this->trItemId[1];
     TRitem* trit = tdb->trackItems[id];
-    if(trit == NULL) return "";
+    if(trit == nullptr) return "";
     return trit->stationName;
 }
 
@@ -249,32 +249,32 @@ QString PlatformObj::getPlatformName(){
     TDB* tdb = Game::trackDB;
     int id = this->trItemId[1];
     TRitem* trit = tdb->trackItems[id];
-    if(trit == NULL) return "";
+    if(trit == nullptr) return "";
     return trit->platformName;
 }
 int PlatformObj::getPlatformMinWaitingTime(){
     TDB* tdb = Game::trackDB;
     int id = this->trItemId[1];
     TRitem* trit = tdb->trackItems[id];
-    if(trit == NULL) return 0;
+    if(trit == nullptr) return 0;
     return trit->platformMinWaitingTime;
 }
 int PlatformObj::getPlatformNumPassengersWaiting(){
     TDB* tdb = Game::trackDB;
     int id = this->trItemId[1];
     TRitem* trit = tdb->trackItems[id];
-    if(trit == NULL) return 0;
+    if(trit == nullptr) return 0;
     return trit->platformNumPassengersWaiting;
 }
 void PlatformObj::setStationName(QString name){
     TDB* tdb = Game::trackDB;
     int id = this->trItemId[1];
     TRitem* trit = tdb->trackItems[id];
-    if(trit == NULL) return;
+    if(trit == nullptr) return;
     trit->stationName = name;
     id = this->trItemId[3];
     trit = tdb->trackItems[id];
-    if(trit == NULL) return;
+    if(trit == nullptr) return;
     trit->stationName = name;
     this->modified = true;
 }
@@ -282,11 +282,11 @@ void PlatformObj::setPlatformName(QString name){
     TDB* tdb = Game::trackDB;
     int id = this->trItemId[1];
     TRitem* trit = tdb->trackItems[id];
-    if(trit == NULL) return;
+    if(trit == nullptr) return;
     trit->platformName = name;
     id = this->trItemId[3];
     trit = tdb->trackItems[id];
-    if(trit == NULL) return;
+    if(trit == nullptr) return;
     trit->platformName = name;
     this->modified = true;
 }
@@ -294,11 +294,11 @@ void PlatformObj::setPlatformMinWaitingTime(int val){
     TDB* tdb = Game::trackDB;
     int id = this->trItemId[1];
     TRitem* trit = tdb->trackItems[id];
-    if(trit == NULL) return;
+    if(trit == nullptr) return;
     trit->platformMinWaitingTime = val;
     id = this->trItemId[3];
     trit = tdb->trackItems[id];
-    if(trit == NULL) return;
+    if(trit == nullptr) return;
     trit->platformMinWaitingTime = val;
     this->modified = true;
 }
@@ -306,11 +306,11 @@ void PlatformObj::setPlatformNumPassengersWaiting(int val){
     TDB* tdb = Game::trackDB;
     int id = this->trItemId[1];
     TRitem* trit = tdb->trackItems[id];
-    if(trit == NULL) return;
+    if(trit == nullptr) return;
     trit->platformNumPassengersWaiting = val;
     id = this->trItemId[3];
     trit = tdb->trackItems[id];
-    if(trit == NULL) return;
+    if(trit == nullptr) return;
     trit->platformNumPassengersWaiting = val;
     this->modified = true;
 }
@@ -319,7 +319,7 @@ float PlatformObj::getLength(){
     TDB* tdb = Game::trackDB;
     TRitem* p1 = tdb->trackItems[this->trItemId[1]];
     TRitem* p2 = tdb->trackItems[this->trItemId[3]];
-    if(p1 == NULL || p2 == NULL) return 0;
+    if(p1 == nullptr || p2 == nullptr) return 0;
     return fabs(p2->getTrackPosition() - p1->getTrackPosition());
 }
 
@@ -335,7 +335,7 @@ bool PlatformObj::getDisabled(){
     TDB* tdb = Game::trackDB;
     int id = this->trItemId[1];
     TRitem* trit = tdb->trackItems[id];
-    if(trit == NULL) return false;
+    if(trit == nullptr) return false;
     return ((trit->platformTrItemData[0] & 1) == 1);
 }
 void PlatformObj::setSideLeft(bool val){
@@ -344,7 +344,7 @@ void PlatformObj::setSideLeft(bool val){
     else 
         this->platformData = this->platformData ^ 2;
     delete line;
-    line = NULL;
+    line = nullptr;
     this->modified = true;
 }
 
@@ -354,7 +354,7 @@ void PlatformObj::setSideRight(bool val){
     else 
         this->platformData = this->platformData ^ 4;
     delete line;
-    line = NULL;
+    line = nullptr;
     this->modified = true;
 }
 
@@ -362,13 +362,13 @@ void PlatformObj::setDisabled(bool val){
     TDB* tdb = Game::trackDB;
     int id = this->trItemId[1];
     TRitem* trit = tdb->trackItems[id];
-    if(trit == NULL) return;
+    if(trit == nullptr) return;
     if(val)
         trit->platformTrItemData[0] = trit->platformTrItemData[0] | 1;
     else
         trit->platformTrItemData[0] = trit->platformTrItemData[0] ^ 1;
     delete line;
-    line = NULL;
+    line = nullptr;
     this->modified = true;
 }
 
@@ -381,7 +381,7 @@ void PlatformObj::render(GLUU* gluu, float lod, float posx, float posz, float* p
         gluu->mvPushMatrix();
         Mat4::multiply(gluu->mvMatrix, gluu->mvMatrix, matrix);
         gluu->currentShader->setUniformValue(gluu->currentShader->mvMatrixUniform, *reinterpret_cast<float(*)[4][4]> (gluu->mvMatrix));
-        if(pointer3d == NULL){
+        if(pointer3d == nullptr){
             pointer3d = new TrackItemObj(1);
             pointer3d->setMaterial(0.9,0.9,0.7);
         }
@@ -395,7 +395,7 @@ void PlatformObj::render(GLUU* gluu, float lod, float posx, float posz, float* p
 
 void PlatformObj::renderTritems(GLUU* gluu, int selectionColor){
     
-    if (drawPositionB == NULL) {
+    if (drawPositionB == nullptr) {
         TDB* tdb = Game::trackDB;
         if(this->typeID == this->carspawner)
             tdb = Game::roadDB;
@@ -417,7 +417,7 @@ void PlatformObj::renderTritems(GLUU* gluu, int selectionColor){
         drawPositionB[0] += 2048 * (drawPositionB[5] - this->x);
         drawPositionB[2] -= 2048 * (-drawPositionB[6] - this->y);
     }
-    if (drawPositionE == NULL) {
+    if (drawPositionE == nullptr) {
         TDB* tdb = Game::trackDB;
         if(this->typeID == this->carspawner)
             tdb = Game::roadDB;
@@ -438,9 +438,9 @@ void PlatformObj::renderTritems(GLUU* gluu, int selectionColor){
         drawPositionE[2] -= 2048 * (-drawPositionE[6] - this->y);
     }
 
-    if(line == NULL){
-        if(spointer3d == NULL) spointer3d = new TrackItemObj();
-        if(spointer3dSelected == NULL) spointer3dSelected = new TrackItemObj();
+    if(line == nullptr){
+        if(spointer3d == nullptr) spointer3d = new TrackItemObj();
+        if(spointer3dSelected == nullptr) spointer3dSelected = new TrackItemObj();
 
         makelineShape();
         
@@ -460,7 +460,7 @@ void PlatformObj::renderTritems(GLUU* gluu, int selectionColor){
             spointer3dSelected->setMaterial(0.9, 0.5, 1.0);
         }
     }
-    //if(pos == NULL) return;
+    //if(pos == nullptr) return;
     //gluu->setMatrixUniforms();
     //float dlugosc = (float) sqrt(pow(drawPositionB[2]-drawPositionE[2], 2) + pow(drawPositionB[0]-drawPositionE[0], 2));
     float aa = (drawPositionE[2]-drawPositionB[2]);

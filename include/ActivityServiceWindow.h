@@ -25,7 +25,7 @@ public:
     ActivityServiceWindow(QWidget* parent);
     virtual ~ActivityServiceWindow();
     
-    ActivityServiceProperties *serviceProperties = NULL;
+    ActivityServiceProperties *serviceProperties = nullptr;
     
 public slots:
     void showServices(Route* route);

@@ -59,7 +59,7 @@ int TexLib::addTex(QString path, QString name, bool reload) {
 
 int TexLib::getTex(QString pathid) {
     for ( auto it = mtex.begin(); it != mtex.end(); ++it ){
-        if(it->second == NULL) continue;
+        if(it->second == nullptr) continue;
         for(int i = 0; i < ((Texture*) it->second)->hashid.size(); i++)
             if (((Texture*) it->second)->hashid[i].length() == pathid.length()) 
                 if (((Texture*) it->second)->hashid[i] == pathid) {
@@ -72,9 +72,9 @@ int TexLib::getTex(QString pathid) {
 
 int TexLib::addTex(QString pathid, bool reload) {
     
-    Texture* newFile = NULL;
+    Texture* newFile = nullptr;
     for ( auto it = mtex.begin(); it != mtex.end(); ++it ){
-        if(it->second == NULL) continue;
+        if(it->second == nullptr) continue;
         for(int i = 0; i < ((Texture*) it->second)->hashid.size(); i++)
             if (((Texture*) it->second)->hashid[i].length() == pathid.length()) 
                 if (((Texture*) it->second)->hashid[i] == pathid) {
@@ -102,7 +102,7 @@ int TexLib::addTex(QString pathid, bool reload) {
     }
     
     int texId = 0;
-    if(newFile == NULL){
+    if(newFile == nullptr){
         newFile = new Texture(pathid);
         newFile->ref++;
         mtex[jesttextur] = newFile;
@@ -145,7 +145,7 @@ int TexLib::addTex(QString pathid, bool reload) {
 
 int TexLib::cloneTex(int id) {
     Texture* t = mtex[id];
-    if(t == NULL) {
+    if(t == nullptr) {
         qDebug() << "null texture " << id;
         return -2;
     }
@@ -158,7 +158,7 @@ int TexLib::cloneTex(int id) {
 
 void TexLib::save(QString type, QString path, int id){
     Texture* t = mtex.at(id);
-    if(t == NULL) 
+    if(t == nullptr) 
         return;
     if(!t->editable)
         t->setEditable();

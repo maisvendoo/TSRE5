@@ -48,11 +48,11 @@ private:
     int soundregionTrackType;
     QVector<int> trItemId;
     //int trItemIdCount = 0;
-    TrackItemObj* pointer3d = NULL; 
-    TrackItemObj* pointer3dSelected = NULL; 
+    TrackItemObj* pointer3d = nullptr; 
+    TrackItemObj* pointer3dSelected = nullptr; 
     
-    float* drawPosition = NULL;
-    OglObj* drawLine = NULL;
+    float* drawPosition = nullptr;
+    OglObj* drawLine = nullptr;
     void renderTritems(GLUU* gluu, int selectionColor);
     QVector<float*> drawPositions;
     int selectionValue = 0;

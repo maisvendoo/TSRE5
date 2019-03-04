@@ -131,7 +131,7 @@ void NaviWindow::xyChanged(QString val){
 }
 
 void NaviWindow::jumpTileSelected(){
-    if(aCoords == NULL)
+    if(aCoords == nullptr)
         aCoords = new PreciseTileCoordinate();
     
     if(this->jumpType == "xy"){
@@ -148,7 +148,7 @@ void NaviWindow::jumpTileSelected(){
         emit jumpTo(aCoords);
     }
     if(this->jumpType == "marker"){
-        if(mkrPlaces[markerList.currentText()] == NULL) return;
+        if(mkrPlaces[markerList.currentText()] == nullptr) return;
         igh = Game::GeoCoordConverter->ConvertToInternal(mkrPlaces[markerList.currentText()]->Latitude, mkrPlaces[markerList.currentText()]->Longitude, igh);
         aCoords = Game::GeoCoordConverter->ConvertToTile(igh, aCoords);
         aCoords->setWxyz();
@@ -195,7 +195,7 @@ void NaviWindow::posInfo(PreciseTileCoordinate* coords){
 void NaviWindow::mkrList(QMap<QString, Coords*> list){
     mkrFiles = list;
     for (auto it = list.begin(); it != list.end(); ++it ){
-        if(it.value() == NULL)
+        if(it.value() == nullptr)
             continue;
         if(!it.value()->loaded)
             continue;
@@ -207,14 +207,14 @@ void NaviWindow::mkrList(QMap<QString, Coords*> list){
 
 void NaviWindow::mkrFilesSelected(QString item){
     Coords* c = mkrFiles[item];
-    if(c == NULL) return;
+    if(c == nullptr) return;
     this->sendMsg("mkrFile", item);
     this->mkrPlaces.clear();
     
     QStringList hash;
 
     for(int i = 0; i < c->markerList.size(); i++){
-        if(this->mkrPlaces[c->markerList[i].name] == NULL)
+        if(this->mkrPlaces[c->markerList[i].name] == nullptr)
             this->mkrPlaces[c->markerList[i].name] = new LatitudeLongitudeCoordinate();
         this->mkrPlaces[c->markerList[i].name]->Latitude = c->markerList[i].lat;
         this->mkrPlaces[c->markerList[i].name]->Longitude = c->markerList[i].lon;

@@ -49,15 +49,15 @@ public slots:
 
 private:
     QVector<MapData*> mapServices;
-    MapData *dane = NULL;
+    MapData *dane = nullptr;
     QLabel* imageLabel;
     float minlat, minlon, maxlat, maxlon;
     bool invert = false;
-    IghCoordinate* igh = NULL;
-    LatitudeLongitudeCoordinate* minLatlon = NULL;
-    LatitudeLongitudeCoordinate* maxLatlon = NULL;
-    PreciseTileCoordinate* aCoords = NULL;
-    QPushButton *loadButton = NULL;
+    IghCoordinate* igh = nullptr;
+    LatitudeLongitudeCoordinate* minLatlon = nullptr;
+    LatitudeLongitudeCoordinate* maxLatlon = nullptr;
+    PreciseTileCoordinate* aCoords = nullptr;
+    QPushButton *loadButton = nullptr;
     QSpinBox alphaBox;
     QComboBox mapServicesCombo;
 };

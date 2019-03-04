@@ -474,7 +474,7 @@ bool Eng::isSelected(){
 
 void Eng::drawBorder(){
 
-    if (borderObj == NULL) {
+    if (borderObj == nullptr) {
         borderObj = new OglObj();
         
         float width = this->getFullWidth() / 2;
@@ -517,7 +517,7 @@ void Eng::drawBorder(){
 
 void Eng::drawBorder3d(){
 
-    if (borderObj3d == NULL) {
+    if (borderObj3d == nullptr) {
         borderObj3d = new OglObj();
         
         float width = this->getFullWidth() / 2;
@@ -592,7 +592,7 @@ void Eng::updateSim(float deltaTime){
             curve = &curve1;
         }
 
-        if(soundVariables != NULL)
+        if(soundVariables != nullptr)
             acceleration = curve->getValue(soundVariables);
 
         currentSpeed += acceleration*deltaTime;
@@ -606,7 +606,7 @@ void Eng::updateSim(float deltaTime){
         static IghCoordinate* igh = new IghCoordinate();
         static LatitudeLongitudeCoordinate* latlon = new LatitudeLongitudeCoordinate();
         static PreciseTileCoordinate* coords = new PreciseTileCoordinate();
-        if(networkEng == NULL){
+        if(networkEng == nullptr){
             networkEng = new TrainNetworkEng();
         }
         currentSpeed = networkEng->getSpeed();
@@ -631,7 +631,7 @@ void Eng::updateSim(float deltaTime){
     }
     
     //qDebug() << acceleration << currentSpeed << lastSpeed;
-    if(soundVariables != NULL){
+    if(soundVariables != nullptr){
         // vectron
         //soundVariables->value[SoundVariables::VARIABLE2] = currentSpeed * 100 / 55.0;
         soundVariables->value[SoundVariables::VARIABLE2] = acceleration * 100;
@@ -753,7 +753,7 @@ bool Eng::isBroken(){
 }
 
 float *Eng::getCurrentPositionOnTrack(){
-    if (loaded != 1) return NULL;
+    if (loaded != 1) return nullptr;
     return ruch1->getCurrentPosition();
 }
 
@@ -776,7 +776,7 @@ void Eng::getCameraPosition(float* out){
         }
     }
     
-    if(out == NULL)
+    if(out == nullptr)
         return;
     //qDebug() << "get position";
     float selev1, selev2;
@@ -833,7 +833,7 @@ void Eng::renderOnTrack(GLUU* gluu, float* playerT, int selectionColor) {
         }
     }
     
-    if (ruchPoint == NULL) {
+    if (ruchPoint == nullptr) {
         ruchPoint = new OglObj();
         float *punkty = new float[3 * 2];
         int ptr = 0;
@@ -909,16 +909,16 @@ void Eng::renderOnTrack(GLUU* gluu, float* playerT, int selectionColor) {
 }
 
 void Eng::move(float m){
-    if(ruch1 != NULL)
+    if(ruch1 != nullptr)
         ruch1->next(m);
-    if(ruch2 != NULL)
+    if(ruch2 != nullptr)
         ruch2->next(m);
 }
 
 float Eng::getCurrentElevation(){
-    if(ruch1 == NULL)
+    if(ruch1 == nullptr)
         return 0;
-    if(ruch2 == NULL)
+    if(ruch2 == nullptr)
         return 0;
     
     float *drawPosition1 = ruch1->getCurrentPosition();
@@ -931,7 +931,7 @@ float Eng::getCurrentElevation(){
 }
 
 float Eng::getTotalDistanceDownPath(){
-    if(ruch1 == NULL)
+    if(ruch1 == nullptr)
         return 0;
     return ruch1->getDistanceDownPath();
 }
@@ -939,11 +939,11 @@ float Eng::getTotalDistanceDownPath(){
 void Eng::initOnTrack(float *tpos, int direction, QMap<int, int>* junctionDirections){
     TDB* tdb = Game::trackDB;
     
-    if(ruch1 == NULL)
+    if(ruch1 == nullptr)
         ruch1 = new Ruch();
     ruch1->set(tpos[0], tpos[1], direction, junctionDirections);
     ruch1->trackPassingItems(true);
-    if(ruch2 == NULL)
+    if(ruch2 == nullptr)
         ruch2 = new Ruch();
     ruch2->set(tpos[0], tpos[1], direction, junctionDirections);
     ruch2->next(-getFullWidth());

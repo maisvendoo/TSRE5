@@ -35,7 +35,7 @@ private:
     QLineEdit eId;
     QLineEdit eEid;
     QLineEdit eActivityName;
-    ActivityObject* actObj = NULL;
+    ActivityObject* actObj = nullptr;
 };
 
 #endif	/* PROPERTIESACTIVITYOBJECT_H */

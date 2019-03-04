@@ -25,26 +25,26 @@
 
 QMap<int, SoundSource*> SoundManager::Sources;
 int SoundManager::SourcesCount;
-ALCdevice *SoundManager::device = NULL;
-ALCcontext *SoundManager::context = NULL;
+ALCdevice *SoundManager::device = nullptr;
+ALCcontext *SoundManager::context = nullptr;
 float SoundManager::listenerPos[3] = {0,0,0};
 int SoundManager::listenerX = 0;
 int SoundManager::listenerZ = 0;
 
 void SoundManager::InitAl() {
     ALboolean enumeration;
-    ALCchar *defaultDeviceName = NULL;//argv[1];
+    ALCchar *defaultDeviceName = nullptr;//argv[1];
 
     ALfloat listenerOri[] = { 0.0f, 0.0f, 1.0f, 0.0f, 1.0f, 0.0f };
 
-	enumeration = alcIsExtensionPresent(NULL, (ALCchar *)"ALC_ENUMERATION_EXT");
+	enumeration = alcIsExtensionPresent(nullptr, (ALCchar *)"ALC_ENUMERATION_EXT");
 	if (enumeration == AL_FALSE)
 		fprintf(stderr, "enumeration extension not available\n");
 
-	list_audio_devices(alcGetString(NULL, ALC_DEVICE_SPECIFIER));
+	list_audio_devices(alcGetString(nullptr, ALC_DEVICE_SPECIFIER));
 
 	if (!defaultDeviceName)
-		defaultDeviceName = (ALCchar *)alcGetString(NULL, ALC_DEFAULT_DEVICE_SPECIFIER);
+		defaultDeviceName = (ALCchar *)alcGetString(nullptr, ALC_DEFAULT_DEVICE_SPECIFIER);
 
 	device = alcOpenDevice(defaultDeviceName);
 	if (!device) {
@@ -56,7 +56,7 @@ void SoundManager::InitAl() {
 
 	alGetError();
 
-	context = alcCreateContext(device, NULL);
+	context = alcCreateContext(device, nullptr);
 	if (!alcMakeContextCurrent(context)) {
 		fprintf(stderr, "failed to make default context\n");
 		return;
@@ -82,7 +82,7 @@ void SoundManager::UpdateAll(){
     QMapIterator<int, SoundSource*> i(Sources);
         while (i.hasNext()) {
             i.next();
-            if(i.value() == NULL) continue;
+            if(i.value() == nullptr) continue;
             i.value()->update();
         }
 }
@@ -105,7 +105,7 @@ void SoundManager::UpdateListenerPos(int x, int y, float* pos, float* target, fl
         QMapIterator<int, SoundSource*> i(Sources);
         while (i.hasNext()) {
             i.next();
-            if(i.value() == NULL) continue;
+            if(i.value() == nullptr) continue;
             i.value()->updatePosition();
         }
     }
@@ -118,7 +118,7 @@ int SoundManager::AddSoundSource(QString resPath, QString name){
 }
 
 int SoundManager::AddSoundSource(SoundDefinitionGroup* g){
-    if(g == NULL)
+    if(g == nullptr)
         return -1;
     
     Sources[SourcesCount] = new SoundSource(g);
@@ -131,7 +131,7 @@ void SoundManager::CloseAl(){
     //alDeleteSources(1, &source);
     //alDeleteBuffers(1, &buffer);
     device = alcGetContextsDevice(context);
-    alcMakeContextCurrent(NULL);
+    alcMakeContextCurrent(nullptr);
     alcDestroyContext(context);
     alcCloseDevice(device);
 }

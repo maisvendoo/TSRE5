@@ -141,7 +141,7 @@ TrkWindow::TrkWindow() : QDialog(){
 }
 
 int TrkWindow::exec() {
-    if(this->trk == NULL)
+    if(this->trk == nullptr)
         return 0;
     this->setWindowTitle("Route settings");
     
@@ -178,8 +178,8 @@ int TrkWindow::exec() {
         this->envName.addItem(QString::fromStdString((*it).first));
     this->envValue.setText(trk->environment[this->envName.itemText(0).toStdString()]);
     
-    Texture * tex1 = NULL;
-    if(TexLib::mtex[trk->imageLoadId] != NULL)
+    Texture * tex1 = nullptr;
+    if(TexLib::mtex[trk->imageLoadId] != nullptr)
         if(TexLib::mtex[trk->imageLoadId]->loaded){
             tex1 = TexLib::mtex[trk->imageLoadId];
             unsigned char * out = tex1->getImageData(640,450);

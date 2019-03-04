@@ -77,7 +77,7 @@ void HazardObj::deleteTrItems(){
 }
 
 void HazardObj::initTrItems(float* tpos){
-    if(tpos == NULL)
+    if(tpos == nullptr)
         return;
     int trNodeId = tpos[0];
     float metry = tpos[1];
@@ -87,7 +87,7 @@ void HazardObj::initTrItems(float* tpos){
     
     trItemIdCount = 2;
     tdb->newHazardObject(trItemId, trNodeId, metry, this->typeID);
-    drawPosition = NULL;
+    drawPosition = nullptr;
 }
 
 void HazardObj::set(QString sh, QString val){
@@ -194,7 +194,7 @@ void HazardObj::renderTritems(GLUU* gluu, int selectionColor){
     
     ///////////////////////////////
     TDB* tdb = Game::trackDB;
-    if(drawPosition == NULL){
+    if(drawPosition == nullptr){
         int id = tdb->findTrItemNodeId(this->trItemId[1]);
         if (id < 0) {
             qDebug() << "fail id";
@@ -209,13 +209,13 @@ void HazardObj::renderTritems(GLUU* gluu, int selectionColor){
         }
         drawPosition[0] += 2048 * (drawPosition[5] - this->x);
         drawPosition[2] -= 2048 * (-drawPosition[6] - this->y);
-        if(pointer3d == NULL){
+        if(pointer3d == nullptr){
             pointer3d = new TrackItemObj(1);
             pointer3d->setMaterial(0.8,0.2,0.8);
         }
     }
 
-    //if(pos == NULL) return;
+    //if(pos == nullptr) return;
     int useSC;
 
     gluu->mvPushMatrix();

@@ -32,8 +32,8 @@ public:
     void next(float m);
     void back(float m);
     void toNext(float m);
-    void set(int nid, int m, int tdirection, QMap<int, int>* jDirections = NULL);
-    float *getCurrentPosition(float *sElev = NULL);
+    void set(int nid, int m, int tdirection, QMap<int, int>* jDirections = nullptr);
+    float *getCurrentPosition(float *sElev = nullptr);
     float getDistanceDownPath();
     int getVectorDirection();
     void trackPassingItems(bool val);
@@ -49,7 +49,7 @@ private:
     float nodeLength;
     float drawPosition[8];
     float distanceDownPath = 0;
-    QMap<int, int>* junctionDirections = NULL;
+    QMap<int, int>* junctionDirections = nullptr;
     
     bool trackItems = false;
     float lastNodeDist = 0;

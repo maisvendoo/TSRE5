@@ -353,12 +353,12 @@ void Activity::save() {
         out << "	Serial ( " << serial << " )\n";
     }
 
-    if (header != NULL) {
+    if (header != nullptr) {
         header->save(&out);
     }
 
     out << "	Tr_Activity_File (\n";
-    if (playerServiceDefinition != NULL) {
+    if (playerServiceDefinition != nullptr) {
         playerServiceDefinition->save(&out);
     }
     if (nextServiceUID != -1)
@@ -367,7 +367,7 @@ void Activity::save() {
         out << "		NextActivityObjectUID ( " << nextActivityObjectUID << " )\n";
     if (ortsAIHornAtCrossings != -9999)
         out << "		ORTSAIHornAtCrossings ( " << ortsAIHornAtCrossings << " )\n";
-    if (traffic != NULL){
+    if (traffic != nullptr){
         out << "		Traffic_Definition ( " << ParserX::AddComIfReq(traffic->name) <<"\n";
         for(int i = 0; i<traffic->service.size(); i++)
             traffic->service[i].save(&out);
@@ -431,7 +431,7 @@ void Activity::save() {
 }
 
 void ActivityServiceDefinition::reloadTimetable(){
-    if(trafficDefinition == NULL)
+    if(trafficDefinition == nullptr)
         return;
     trafficDefinition->reloadTimetable();
     
@@ -439,7 +439,7 @@ void ActivityServiceDefinition::reloadTimetable(){
 }
 
 bool ActivityServiceDefinition::isModified(){
-    if(trafficDefinition != NULL)
+    if(trafficDefinition != nullptr)
         if(trafficDefinition->isModified())
             return true;
     return modified;
@@ -449,10 +449,10 @@ void ActivityServiceDefinition::calculateTimetable(){
     ActivityTimetable *t = trafficDefinition;
 
     Service *srv = ActLib::GetServiceByName(name);
-    if(srv == NULL)
+    if(srv == nullptr)
         return;
     Consist *con = ConLib::con[ConLib::addCon(Game::root+"/trains/consists/", srv->trainConfig+".con")];
-    if(con == NULL)
+    if(con == nullptr)
         return;
     qDebug() << con->maxVelocity[0] << con->maxVelocity[1];
     float speed = con->maxVelocity[0];
@@ -498,7 +498,7 @@ void ActivityServiceDefinition::setTimetableEfficiency(int id, float val){
 
 void ActivityServiceDefinition::reloadDefinition(){
     Service *s = ActLib::GetServiceByName(name);
-    if(s == NULL)
+    if(s == nullptr)
         return;
     ActivityTimetable *t = trafficDefinition;
     efficiency.clear();
@@ -581,7 +581,7 @@ void ActivityServiceDefinition::save(QTextStream* out) {
         woff = "	";
         *out << woff << "		Service_Definition ( "<< ParserX::AddComIfReq(name) <<" "<<time<<"\n";
     }
-    if(trafficDefinition != NULL && player){
+    if(trafficDefinition != nullptr && player){
         QString off = "			";
         trafficDefinition->save(out, off);
     }
@@ -605,14 +605,14 @@ void ActivityServiceDefinition::render(GLUU* gluu, float* playerT, int renderMod
         selectionColor = 13 << 20;
         //selectionColor |= index << 0;
     }
-    if(servicePointer == NULL)
+    if(servicePointer == nullptr)
         return;
     servicePointer->render(gluu, playerT, selectionColor);
 
 }
 
 void ActivityServiceDefinition::updateSim(float *playerT, float deltaTime){
-    if(servicePointer == NULL)
+    if(servicePointer == nullptr)
         return;
     servicePointer->updateSim(playerT, deltaTime);
 }
@@ -773,7 +773,7 @@ void Activity::ActivityHeader::save(QTextStream* out) {
         *out << "		Animals ( " << animals << " )\n";
     if (workers != -1)
         *out << "		Workers ( " << workers << " )\n";
-    if (voltage != NULL)
+    if (voltage != nullptr)
         *out << "		Voltage ( " << voltage[0] << " "<< voltage[1] <<" )\n";
     if (fuelWater != -1)
         *out << "		FuelWater ( " << fuelWater << " )\n";
@@ -790,7 +790,7 @@ bool Activity::isNew(){
 
 void Activity::initToPlay(){
     playerServiceDefinition->servicePointer = ActLib::GetServiceByName(playerServiceDefinition->name);
-    if(playerServiceDefinition->servicePointer != NULL)
+    if(playerServiceDefinition->servicePointer != nullptr)
         playerServiceDefinition->servicePointer->initToPlay();
 }
 
@@ -803,10 +803,10 @@ bool Activity::isUnSaved(){
         if(event[i].isModified())
             return true;
     }
-    if(playerServiceDefinition != NULL)
+    if(playerServiceDefinition != nullptr)
         if(playerServiceDefinition->isModified())
             return true;
-    if(traffic != NULL)
+    if(traffic != nullptr)
         for(int i = 0; i < traffic->service.size(); i++){
             if(traffic->service[i].isModified())
                 return true;
@@ -879,7 +879,7 @@ void Activity::setWeather(int val){
 }
     
 void Activity::updateSim(float* playerT, float deltaTime){
-    if(playerServiceDefinition != NULL ){
+    if(playerServiceDefinition != nullptr ){
         playerServiceDefinition->updateSim(playerT, deltaTime);
     }
 }
@@ -901,7 +901,7 @@ void Activity::render(GLUU* gluu, float * playerT, float playerRot, int renderMo
         event[i].render(gluu, playerT, playerRot, renderMode);
     }
     
-    if(playerServiceDefinition != NULL ){
+    if(playerServiceDefinition != nullptr ){
         playerServiceDefinition->render(gluu, playerT, renderMode);
     }
 }
@@ -910,7 +910,7 @@ void Activity::initActivityObjects(){
     Consist *e;
     for (int i = 0; i < activityObjects.size(); i++){
         e = activityObjects[i].con;
-        if(e == NULL) continue;
+        if(e == nullptr) continue;
         
         e->initOnTrack(activityObjects[i].tile, activityObjects[i].direction);
     }
@@ -923,7 +923,7 @@ void Activity::pickNewEventLocation(float* tdbPos){
     if(!ok)
         return;
     
-    if(currentEventSelected == NULL)
+    if(currentEventSelected == nullptr)
         return;
     
     currentEventSelected->setLocation(drawPosition[5], drawPosition[6], drawPosition[0], drawPosition[2]);
@@ -931,7 +931,7 @@ void Activity::pickNewEventLocation(float* tdbPos){
 }
 
 bool Activity::newFailedSignalFromSelected(){
-    if(Game::currentSelectedGameObj == NULL)
+    if(Game::currentSelectedGameObj == nullptr)
         return false;
     if(Game::currentSelectedGameObj->typeObj != GameObj::worldobj)
         return false;
@@ -989,7 +989,7 @@ void Activity::newLooseConsist(float *tdbPos){
 unsigned int Activity::getSelectedCarId(){
     for(int i = 0; i < activityObjects.size(); i++){
         if(activityObjects[i]->isSelected()){
-            if(activityObjects[i]->con != NULL){
+            if(activityObjects[i]->con != nullptr){
                 return activityObjects[i]->id*65536 + activityObjects[i]->con->engItems[activityObjects[i]->con->selectedIdx].uid;
             }
         }
@@ -998,17 +998,17 @@ unsigned int Activity::getSelectedCarId(){
 }
 
 bool Activity::isPlayerServiceInUse(QString n){
-    if(playerServiceDefinition != NULL)
+    if(playerServiceDefinition != nullptr)
         if(playerServiceDefinition->name == n)
             return true;
     return false;
 }
 
 bool Activity::isServiceInUse(QString n){
-    if(playerServiceDefinition != NULL)
+    if(playerServiceDefinition != nullptr)
         if(playerServiceDefinition->name == n)
             return true;
-    if(traffic != NULL)
+    if(traffic != nullptr)
         for(int i = 0; i < traffic->service.size(); i++){
             if(traffic->service[i].name == n)
                 return true;
@@ -1017,7 +1017,7 @@ bool Activity::isServiceInUse(QString n){
 }
 
 bool Activity::isTrafficInUse(QString n){
-    if(traffic != NULL)
+    if(traffic != nullptr)
         if(traffic->name == n)
                 return true;
     return false;
@@ -1046,7 +1046,7 @@ void Activity::createNewPlayerService(QString sName, int sTime ){
     
     // Fill pathid in act header info:
     Service *s = ActLib::GetServiceByName(playerServiceDefinition->name);
-    if(s != NULL)
+    if(s != nullptr)
         header->pathid = s->pathId;
     
     modified = true;
@@ -1116,15 +1116,15 @@ ActivityObject* Activity::getObjectById(int id){
         if(activityFailedSignal.size() > id)
             return activityFailedSignal[id];
     }
-    return NULL;
+    return nullptr;
 }
 
 Consist* Activity::getServiceConsistById(int id){
-    if(playerServiceDefinition != NULL ){
-        if(playerServiceDefinition->servicePointer != NULL)
+    if(playerServiceDefinition != nullptr ){
+        if(playerServiceDefinition->servicePointer != nullptr)
             return playerServiceDefinition->servicePointer->getConsistPointer();
     }
-    return NULL;
+    return nullptr;
 }
 
 QMap<int, QString> Activity::getEventIdNameList(){
@@ -1139,7 +1139,7 @@ QMap<int, QString> Activity::getEventIdNameList(){
 
 QMap<int, QString> Activity::getServiceStationStopNameList(){
     QMap<int, QString> data; 
-    if(playerServiceDefinition == NULL)
+    if(playerServiceDefinition == nullptr)
         return data;
     
     return playerServiceDefinition->getStationStopNameList();
@@ -1149,12 +1149,12 @@ QMap<int, QString> ActivityServiceDefinition::getStationStopNameList(){
     QMap<int, QString> data;
             
     TDB *tdb = Game::trackDB;
-    if(tdb == NULL)
+    if(tdb == nullptr)
         return data;
     
     for(int i = 0; i < platformStartId.size(); i++){
         int trid = platformStartId[i];
-        if(tdb->trackItems[trid] == NULL)
+        if(tdb->trackItems[trid] == nullptr)
             return data;
         data[i] = tdb->trackItems[trid]->platformName;
     }
@@ -1214,21 +1214,21 @@ void Activity::newEvent(ActivityEvent::EventCategory category){
 
 QVector<ActivityServiceDefinition*> Activity::getServiceList(){
     QVector<ActivityServiceDefinition*> s;
-    if(playerServiceDefinition != NULL)
+    if(playerServiceDefinition != nullptr)
         s.push_back(playerServiceDefinition);
-    if(traffic == NULL)
+    if(traffic == nullptr)
         return s;
     Traffic *t = ActLib::GetTrafficByName(traffic->name);
-    if(t == NULL){
-        qDebug() << "t == NULL";
+    if(t == nullptr){
+        qDebug() << "t == nullptr";
         return s;
     }
     for(int i = 0; i < traffic->service.size(); i++){
-        if(traffic->service[i].trafficDefinition == NULL){
-            qDebug() << "trafficDefinition == NULL";
+        if(traffic->service[i].trafficDefinition == nullptr){
+            qDebug() << "trafficDefinition == nullptr";
             traffic->service[i].trafficDefinition = t->getTimetableByServiceName(traffic->service[i].name+QString::number(traffic->service[i].time));
         }
-        if(traffic->service[i].trafficDefinition != NULL){
+        if(traffic->service[i].trafficDefinition != nullptr){
             qDebug() << "s.push_back";
             s.push_back(&traffic->service[i]);
         }
@@ -1237,20 +1237,20 @@ QVector<ActivityServiceDefinition*> Activity::getServiceList(){
 }
 
 void Activity::updateService(QString serviceName){
-    if(playerServiceDefinition != NULL)
+    if(playerServiceDefinition != nullptr)
         if(playerServiceDefinition->name == serviceName){
             playerServiceDefinition->reloadTimetable();
         }
     
-    if(traffic == NULL)
+    if(traffic == nullptr)
         return;
     
     Traffic *t = ActLib::GetTrafficByName(traffic->name);
-    if(t == NULL){
+    if(t == nullptr){
         return;
     }
     for(int i = 0; i < traffic->service.size(); i++){
-        if(traffic->service[i].trafficDefinition != NULL){
+        if(traffic->service[i].trafficDefinition != nullptr){
             if(traffic->service[i].name == serviceName){
                 traffic->service[i].reloadTimetable();
             }

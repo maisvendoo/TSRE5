@@ -57,7 +57,7 @@ public:
     void deleteObject(WorldObj* obj);
     WorldObj* placeObject(WorldObj* obj);
     WorldObj* placeObject(float* p, Ref::RefItem* itemData);
-    WorldObj* placeObject(float* p, float* q, Ref::RefItem* itemData, float* tpos = NULL);
+    WorldObj* placeObject(float* p, float* q, Ref::RefItem* itemData, float* tpos = nullptr);
     void transalteObj(float px, float py, float pz, int uid);
     void initNew();
     void updateTerrainObjects();
@@ -73,7 +73,7 @@ private:
     int maxUiD = 0;
     int maxUiDWS = 100000;    
     bool modified;
-    QString* viewDbSphereRaw = NULL;
+    QString* viewDbSphereRaw = nullptr;
     void wczytajObiekty();
     void saveWS();
 };

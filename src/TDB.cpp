@@ -39,7 +39,7 @@ TDB::TDB(TSectionDAT* tsection, bool road) {
     iTRitems = 0;
     iTRnodes = 0;
 
-    if(tsection == NULL)
+    if(tsection == nullptr)
         this->tsection = new TSectionDAT();
     else
         this->tsection = tsection;
@@ -164,7 +164,7 @@ void TDB::loadTdb(){
                                     continue;              
                                 }
                                 qDebug() << "#TDB TrackNode - undefined token " << sh;
-                                //trackNodes[t] = NULL;
+                                //trackNodes[t] = nullptr;
                                 ParserX::SkipToken(bufor);
                             }
                             ParserX::SkipToken(bufor);
@@ -263,7 +263,7 @@ void TDB::loadTit(){
                     ParserX::SkipToken(bufor);
                 }
                 
-                if(this->trackItems[nowy->trItemId] == NULL){
+                if(this->trackItems[nowy->trItemId] == nullptr){
                     qDebug() << "#TIT tdb fail" << nowy->trItemId;
                 } else {
                     this->trackItems[nowy->trItemId]->trSignalRDir = new float[nowy->trSignalDirs * 6];
@@ -282,7 +282,7 @@ void TDB::loadTit(){
 
 int TDB::getNewTRitemId(){
     for (int i = 0; i < this->iTRitems; i++) {
-        if(this->trackItems[i] == NULL)
+        if(this->trackItems[i] == nullptr)
             continue;
         if(Game::useTdbEmptyItems)
             if(this->trackItems[i]->type == "emptyitem"){
@@ -299,7 +299,7 @@ void TDB::fillDynTrack(DynTrackObj* track){
     int count = 0;
     
     int foundIdx = -1;
-    TrackShape::SectionIdx* newRShape = NULL;
+    TrackShape::SectionIdx* newRShape = nullptr;
     for (int i = 0; i < 5; i++) {
         if(track->sections[i].sectIdx > 1000000) {
             continue;
@@ -313,7 +313,7 @@ void TDB::fillDynTrack(DynTrackObj* track){
     bool success;
     for(int i = tsection->tsectionShapes; i < tsection->routeShapes; i++){
         success = true;
-        if(tsection->shape[i] == NULL) continue;
+        if(tsection->shape[i] == nullptr) continue;
         
         if(tsection->shape[i]->path[0].n == count){
             for(int j = 0; j<count; j++){
@@ -421,7 +421,7 @@ int TDB::findNearestNode(int &x, int &z, float* p, float* q, float maxD, bool up
     float nearestD = 999;
     for (int j = 1; j <= iTRnodes; j++) {
         TRnode* n = trackNodes[j];
-        if(n == NULL) continue;
+        if(n == nullptr) continue;
         if (n->typ == 0 || n->typ == 2) {
             float lenx = ((n->UiD[4] - x)*2048 + n->UiD[6] - p[0]);
             float leny = (n->UiD[7]) - p[1];
@@ -546,7 +546,7 @@ int TDB::appendTrack(int id, int* ends, int r, int sect, int uid) {
 }
 
 int TDB::newTrack(int x, int z, float* p, float* qe, int* ends, int r, int sect, int uid) {
-    newTrack(x, z,  p,  qe, ends, r, sect, uid, NULL);
+    newTrack(x, z,  p,  qe, ends, r, sect, uid, nullptr);
 }
 
 int TDB::newTrack(int x, int z, float* p, float* qe, int* ends, int r, int sect, int uid, int* start) {
@@ -658,7 +658,7 @@ int TDB::newTrack(int x, int z, float* p, float* qe, int* ends, int r, int sect,
     newNode->TrPinS[0] = vecId;
     newNode->TrPinK[0] = 0;
 
-    if(start != NULL)
+    if(start != nullptr)
         *start = end1Id;
     return end2Id;
 }
@@ -714,7 +714,7 @@ int TDB::joinTracks(int iendp) {
     if(endp->typ == 0){
         for (int j = 1; j <= iTRnodes; j++) {
             TRnode* n = trackNodes[j];
-            if(n == NULL) continue;
+            if(n == nullptr) continue;
             if (n->typ == 0) {
                 if (j == iendp)
                     continue;
@@ -729,7 +729,7 @@ int TDB::joinTracks(int iendp) {
         }
         for (int j = 1; j <= iTRnodes; j++) {
             TRnode* n = trackNodes[j];
-            if(n == NULL) continue;
+            if(n == nullptr) continue;
             if (n->typ == 2) {
                 if (j == iendp)
                     continue;
@@ -745,7 +745,7 @@ int TDB::joinTracks(int iendp) {
     if(endp->typ == 2){
         for (int j = 1; j <= iTRnodes; j++) {
             TRnode* n = trackNodes[j];
-            if(n == NULL) continue;
+            if(n == nullptr) continue;
             if (n->typ == 0) {
                 if (j == iendp)
                     continue;
@@ -815,9 +815,9 @@ int TDB::joinVectorSections(int id1, int id2) {
     section2e2->podmienTrPin(id2, id1);
     //section2e2->TrPinS[0] = section1e2->TrPinS[0];
     
-    trackNodes[id2] = NULL;
-    trackNodes[endpk1] = NULL;
-    trackNodes[endpk2] = NULL;
+    trackNodes[id2] = nullptr;
+    trackNodes[endpk1] = nullptr;
+    trackNodes[endpk2] = nullptr;
 }
 
 void TDB::moveItemsFrom2to1(int id2, int id1){
@@ -838,8 +838,8 @@ void TDB::moveItemsFrom2to1(int id2, int id1){
     TRitem* trit;
     for(int i = 0; i < section2->iTri; i++){
         trit = this->trackItems[section2->trItemRef[i]];
-        if(trit == NULL){
-            qDebug() << "NULL Item: " << i << " " << section2->trItemRef[i];
+        if(trit == nullptr){
+            qDebug() << "nullptr Item: " << i << " " << section2->trItemRef[i];
         } else {
             trit->addToTrackPos(d);
         }
@@ -855,7 +855,7 @@ float TDB::getVectorSectionLength(int id){
     TSection* sect;
     for (int i = 0; i < n->iTrv; i++) {
         sect = tsection->sekcja[(int)n->trVectorSection[i].param[0]];
-        if(sect != NULL)
+        if(sect != nullptr)
             dlugosc += sect->getDlugosc();
     }
     return dlugosc;
@@ -867,7 +867,7 @@ float TDB::getVectorSectionLengthToIdx(int id, int idx){
     TSection* sect;
     for (int i = 0; i < idx; i++) {
         sect = tsection->sekcja[(int)n->trVectorSection[i].param[0]];
-        if(sect != NULL)
+        if(sect != nullptr)
             dlugosc += sect->getDlugosc();
     }
     return dlugosc;
@@ -897,7 +897,7 @@ int TDB::splitVectorSection(int id, int j){
         TRitem* trit; 
         for(int i = 0; i < vect->iTri; i++){
             trit = this->trackItems[vect->trItemRef[i]];
-            if(trit == NULL) continue;
+            if(trit == nullptr) continue;
             if(trit->getTrackPosition() < vectDlugosc) ivecItems++;
             else inewItems++;
         }
@@ -908,7 +908,7 @@ int TDB::splitVectorSection(int id, int j){
         inewItems = 0;
         for(int i = 0; i < vect->iTri; i++){
             trit = this->trackItems[vect->trItemRef[i]];
-            if(trit == NULL) 
+            if(trit == nullptr) 
                 continue;
             if(trit->getTrackPosition() < vectDlugosc) 
                 vecItems[ivecItems++] = vect->trItemRef[i];
@@ -1005,7 +1005,7 @@ void TDB::deleteJunction(int id){
     }
     if(count == 0){
         delete trackNodes[id];
-        trackNodes[id] = NULL;
+        trackNodes[id] = nullptr;
         return;
     }
     if(count == 1){
@@ -1044,11 +1044,11 @@ void TDB::deleteVectorSection(int id){
     deleteAllTrItemsFromVectorSection(id);
     
     delete trackNodes[id];
-    trackNodes[id] = NULL;
+    trackNodes[id] = nullptr;
     
     if(end1->typ == 0){
         delete trackNodes[vect->TrPinS[0]];
-        trackNodes[vect->TrPinS[0]] = NULL;
+        trackNodes[vect->TrPinS[0]] = nullptr;
     } else if (end1->typ == 2) {
         end1->podmienTrPin(id, 0);
         end1->setTrPinK(0, 0);
@@ -1056,7 +1056,7 @@ void TDB::deleteVectorSection(int id){
     
     if(end2->typ == 0){
         delete trackNodes[vect->TrPinS[1]];
-        trackNodes[vect->TrPinS[1]] = NULL;
+        trackNodes[vect->TrPinS[1]] = nullptr;
     } else if (end2->typ == 2) {
         end2->podmienTrPin(id, 0);
         end2->setTrPinK(0, 0);
@@ -1070,7 +1070,7 @@ bool TDB::deleteAllTrItemsFromVectorSection(int id){
         for(int i = 0; i < vect->iTri; i++){
             qDebug() << vect->trItemRef[i];
             trit = this->trackItems[vect->trItemRef[i]];
-            if(trit == NULL){
+            if(trit == nullptr){
                 continue;
             }
             // item delete
@@ -1104,7 +1104,7 @@ bool TDB::deleteFromVectorSection(int id, int j){
             TRitem* trit;
             for(int i = 0; i < vect->iTri; i++){
                 trit = this->trackItems[vect->trItemRef[i]];
-                if(trit == NULL) 
+                if(trit == nullptr) 
                     continue;
                 trit->addToTrackPos(-sectDlugosc);
                 if(trit->getTrackPosition() < 0){
@@ -1153,7 +1153,7 @@ bool TDB::deleteFromVectorSection(int id, int j){
             TRitem* trit;
             for(int i = 0; i < vect->iTri; i++){
                 trit = this->trackItems[vect->trItemRef[i]];
-                if(trit == NULL) 
+                if(trit == nullptr) 
                     continue;
                 if(trit->getTrackPosition() > vectDlugosc){
                     qDebug() << "delete item? - behind section";
@@ -1286,7 +1286,7 @@ int TDB::appendToJunction(int junctionId, int eId, int idx){
     TRnode* e1 = trackNodes[eId];
     int trackId = e1->TrPinS[0];
     TRnode* track = trackNodes[trackId];
-    trackNodes[eId] = NULL;
+    trackNodes[eId] = nullptr;
     
     junction->TrPinS[idx] = trackId;
     
@@ -1415,7 +1415,7 @@ bool TDB::findPosition(int &x, int &z, float* p, float* q, float* endp, int sect
 }
 
 bool TDB::fillJNodePosn(int x, int z, int uid, QVector<std::array<float, 5>> *jNodePosn){
-    if(jNodePosn == NULL)
+    if(jNodePosn == nullptr)
         return false;
     jNodePosn->clear();
     z = -z;
@@ -1425,7 +1425,7 @@ bool TDB::fillJNodePosn(int x, int z, int uid, QVector<std::array<float, 5>> *jN
     int count = 0;
     for (int i = 1; i <= iTRnodes; i++) {
             n = trackNodes[i];
-            if (n == NULL) continue;
+            if (n == nullptr) continue;
             if (n ->typ == -1) continue;
             if (n->typ == 2) {
                 if(n->UiD[0] == x)
@@ -1532,7 +1532,7 @@ bool TDB::placeTrack(int x, int z, float* p, float* q, int sectionIdx, int uid, 
         if(isJunction[ends[0]] == 1){
             isJunction[ends[0]] = 0;
             qDebug() << "rozjazd" << jNodePosn;
-            if(jNodePosn != NULL){
+            if(jNodePosn != nullptr){
                 jNodePosn->push_back(std::array<float,5>());
                 jNodePosn->back()[0] = x;
                 jNodePosn->back()[1] = -z;
@@ -1598,7 +1598,7 @@ bool TDB::removeTrackFromTDB(int x, int y, int UiD){
     TRnode *n;
     for (int i = 1; i <= iTRnodes; i++) {
             n = trackNodes[i];
-            if (n == NULL) continue;
+            if (n == nullptr) continue;
             if (n ->typ == -1) continue;
             if (n->typ == 1) {
                 for(int j = 0; j < n->iTrv; j++)
@@ -1614,7 +1614,7 @@ bool TDB::removeTrackFromTDB(int x, int y, int UiD){
         }
     for (int i = 1; i <= iTRnodes; i++) {
             n = trackNodes[i];
-            if (n == NULL) continue;
+            if (n == nullptr) continue;
             if (n ->typ == -1) continue;
             if (n->typ == 2) {
                 if(n->UiD[0] == x)
@@ -1636,7 +1636,7 @@ void TDB::fillTrackAngles(int x, int z, int UiD, QMap<int, float>& angles){
     TRnode *n;
     for (int i = 1; i <= iTRnodes; i++) {
             n = trackNodes[i];
-            if (n == NULL) continue;
+            if (n == nullptr) continue;
             if (n ->typ == -1) continue;
             if (n->typ == 1) {
                 for(int j = 0; j < n->iTrv; j++)
@@ -1663,7 +1663,7 @@ bool TDB::ifTrackExist(int x, int y, int UiD){
     TRnode *n;
     for (int i = 1; i <= iTRnodes; i++) {
             n = trackNodes[i];
-            if (n == NULL) continue;
+            if (n == nullptr) continue;
             if (n ->typ == -1) continue;
             if (n->typ == 1) {
                 for(int j = 0; j < n->iTrv; j++)
@@ -1707,7 +1707,7 @@ void TDB::renderAll(GLUU *gluu, float* playerT, float playerRot) {
         
         for (int i = 1; i <= iTRnodes; i++) {
             n = trackNodes[i];
-            if (n == NULL) continue;
+            if (n == nullptr) continue;
             if (n->typ == -1) continue;
             if (n->typ == 1) {
                 lLen += 6 * (n->iTrv - 1);
@@ -1727,7 +1727,7 @@ void TDB::renderAll(GLUU *gluu, float* playerT, float playerRot) {
 
         for (int i = 1; i <= iTRnodes; i++) {
             n = trackNodes[i];
-            if (n == NULL) continue;
+            if (n == nullptr) continue;
             if (n->typ == -1) continue;
             if (n->typ == 1) {
                 for (int i = 0; i < n->iTrv - 1; i++) {
@@ -1761,7 +1761,7 @@ void TDB::renderAll(GLUU *gluu, float* playerT, float playerRot) {
                 if(fabs(-n->UiD[5] - playerT[1]) > 1) continue;
                 
                 if(!road){
-                    if(endIdObj[i] == NULL){
+                    if(endIdObj[i] == nullptr){
                         endIdObj[i] = new TextObj(i);
                         endIdObj[i]->setColor(50,50,255);
                     }    
@@ -1783,7 +1783,7 @@ void TDB::renderAll(GLUU *gluu, float* playerT, float playerRot) {
                 if(fabs(-n->UiD[5] - playerT[1]) > 1) continue;
                 
                 if(!road){
-                    if(junctIdObj[i] == NULL){
+                    if(junctIdObj[i] == nullptr){
                         junctIdObj[i] = new TextObj(i);
                         junctIdObj[i]->setColor(255,50,50);
                     }    
@@ -1828,7 +1828,7 @@ void TDB::renderAll(GLUU *gluu, float* playerT, float playerRot) {
 void TDB::getLines(float * &lineBuffer, int &length, float* playerT){
     if (!loaded) return;
     int hash = (int)playerT[0] * 10000 + (int)playerT[1];
-    if (collisionLineHash == hash && this->collisionLineBuffer != NULL){
+    if (collisionLineHash == hash && this->collisionLineBuffer != nullptr){
         length = this->collisionLineLength;
         lineBuffer = this->collisionLineBuffer;
         return;
@@ -1840,7 +1840,7 @@ void TDB::getLines(float * &lineBuffer, int &length, float* playerT){
 
     for (int j = 1; j <= iTRnodes; j++) {
         TRnode* n = trackNodes[j];
-        if (n == NULL) continue;
+        if (n == nullptr) continue;
         if (n->typ == -1) continue;
         if (n->typ == 1) {
             for (int i = 0; i < n->iTrv; i++) {
@@ -1855,7 +1855,7 @@ void TDB::getLines(float * &lineBuffer, int &length, float* playerT){
 
     for (int j = 1; j <= iTRnodes; j++) {
         TRnode* n = trackNodes[j];
-        if (n == NULL) continue;
+        if (n == nullptr) continue;
         if (n->typ == -1) continue;
         if (n->typ == 1) {
             for (int i = 0; i < n->iTrv; i++) {
@@ -1887,7 +1887,7 @@ void TDB::getVectorSectionLine(float * &buffer, int &len, int x, int y, int uid,
     len = 0;
 
     TRnode* n = trackNodes[uid];
-    if (n == NULL) return;
+    if (n == nullptr) return;
         
     for (int i = 0; i < n->iTrv; i++) {
         len += getLineBufferSize((int) n->trVectorSection[i].param[0], 6, 0, 1);
@@ -1913,7 +1913,7 @@ void TDB::getVectorSectionLine(float * &buffer, int &len, int x, int y, int uid,
         if(useOffset)
             offset = dlugosc;
         getLine(ptr, p, o, (int) n->trVectorSection[i].param[0], uid, i, offset, 2);
-        if(tsection->sekcja[n->trVectorSection[i].param[0]] != NULL)
+        if(tsection->sekcja[n->trVectorSection[i].param[0]] != nullptr)
             dlugosc += tsection->sekcja[n->trVectorSection[i].param[0]]->getDlugosc();
     }
     len = ptr - buffer;
@@ -1934,7 +1934,7 @@ void TDB::renderLines(GLUU *gluu, float* playerT, float playerRot) {
 
         for (int j = 1; j <= iTRnodes; j++) {
             TRnode* n = trackNodes[j];
-            if (n == NULL) continue;
+            if (n == nullptr) continue;
             if (n->typ == -1) continue;
             if (n->typ == 1) {
                 for (int i = 0; i < n->iTrv; i++) {
@@ -1954,7 +1954,7 @@ void TDB::renderLines(GLUU *gluu, float* playerT, float playerRot) {
         float* ptr = punkty;
         for (int j = 1; j <= iTRnodes; j++) {
             TRnode* n = trackNodes[j];
-            if (n == NULL) continue;
+            if (n == nullptr) continue;
             if (n->typ == -1) continue;
             if (n->typ == 1) {
                 //qDebug() << j;
@@ -2002,7 +2002,7 @@ void TDB::renderLines(GLUU *gluu, float* playerT, float playerRot) {
 
 bool TDB::getDrawPositionOnTrNode(float* out, int id, float metry, float *sElev){
     TRnode* n = trackNodes[id];
-    if (n == NULL) return false;
+    if (n == nullptr) return false;
     if (n->typ != 1) return false;
     
     float sectionLength = 0;
@@ -2012,7 +2012,7 @@ bool TDB::getDrawPositionOnTrNode(float* out, int id, float metry, float *sElev)
     for (int i = 0; i < n->iTrv; i++) {
         idx = n->trVectorSection[i].param[0];
         
-        if(tsection->sekcja[idx] == NULL){
+        if(tsection->sekcja[idx] == nullptr){
             //qDebug() << "nie ma sekcji " << idx;
             return false;
         } else {
@@ -2059,7 +2059,7 @@ bool TDB::getDrawPositionOnTrNode(float* out, int id, float metry, float *sElev)
         //position->y += n->trVectorSection[i].param[11];
         //position->z += (-n->trVectorSection[i].param[9] - playerT[1])*2048 - n->trVectorSection[i].param[12];
         
-        if(sElev != NULL)
+        if(sElev != nullptr)
             if(Game::useSuperelevation){
                 if(i < n->iTrv - 1)
                     *sElev = -(n->trVectorSection[i].param[15]*(1.0 - sDistance/sectionLength) + n->trVectorSection[i+1].param[15]*(sDistance/sectionLength));
@@ -2077,7 +2077,7 @@ bool TDB::getDrawPositionOnTrNode(float* out, int id, float metry, float *sElev)
 int TDB::findTrItemNodeId(int id){
     for (int j = 1; j <= iTRnodes; j++) {
         TRnode* n = trackNodes[j];
-        if (n == NULL) continue;
+        if (n == nullptr) continue;
         if (n->typ == 1) {
             for (int i = 0; i < n->iTri; i++) {
                 if(n->trItemRef[i] == id)
@@ -2093,7 +2093,7 @@ int TDB::getEndpointType(int trid, int endp){
     if(n->typ !=1 )
         return -1;
     n = this->trackNodes[n->TrPinS[endp]];
-    if(n == NULL) return -1;
+    if(n == nullptr) return -1;
     return n->typ;
 }
 
@@ -2105,7 +2105,7 @@ void TDB::renderItems(GLUU *gluu, float* playerT, float playerRot, int renderMod
     for (auto it = this->trackItems.begin(); it != this->trackItems.end(); ++it) {
         //console.log(obj.type);
         TRitem* obj = (TRitem*) it->second;
-        if(obj != NULL){
+        if(obj != nullptr){
             if(!isInitTrItemsDraw)
                 obj->refresh();
             if(renderMode == gluu->RENDER_SELECTION){
@@ -2120,7 +2120,7 @@ void TDB::renderItems(GLUU *gluu, float* playerT, float playerRot, int renderMod
 }
 
 int TDB::getLineBufferSize(int idx, int pointSize, int offset, int step) {
-    if(tsection->sekcja[idx] == NULL)
+    if(tsection->sekcja[idx] == nullptr)
         return offset;
     
     return tsection->sekcja[idx]->getLineBufferSize(pointSize, step) + offset + 6;
@@ -2145,7 +2145,7 @@ void TDB::getLine(float* &ptr, Vector3f p, Vector3f o, int idx, int id, int vid,
     Mat4::fromRotationTranslation(matrix, q, reinterpret_cast<float *> (&p));
     Mat4::rotate(matrix, matrix, o.x, 1, 0, 0);
 
-    if(tsection->sekcja[idx] != NULL){
+    if(tsection->sekcja[idx] != nullptr){
         tsection->sekcja[idx]->drawSection(ptr, matrix, 0, id, vid, offset, step);
     }
 }
@@ -2183,7 +2183,7 @@ void TDB::drawLine(GLUU *gluu, float* &ptr, Vector3f p, Vector3f o, int idx) {
     *ptr++ = point2[1];
     *ptr++ = point2[2];
 
-    if(tsection->sekcja[idx] != NULL){
+    if(tsection->sekcja[idx] != nullptr){
         tsection->sekcja[idx]->drawSection(ptr, matrix, 2, -1, 0, 0, 0);
     }
 }
@@ -2233,7 +2233,7 @@ int TDB::findNearestPositionOnTDB(float* posT, float* pos, float * q, float* tpo
 
     
     float metry = this->getVectorSectionLengthToIdx(best[1], best[2]);
-    if(tpos != NULL){
+    if(tpos != nullptr){
         tpos[0] = best[1];
         tpos[1] = metry + best[3];
         tpos[2] = best[2];
@@ -2244,7 +2244,7 @@ int TDB::findNearestPositionOnTDB(float* posT, float* pos, float * q, float* tpo
     pos[2] = -best[2];
     posT[0] = best[5];
     posT[1] = -best[6];
-    if(q != NULL){
+    if(q != nullptr){
         q[0] = 0; q[1] = 0; q[2] = 0; q[3] = 1;
         Quat::rotateY(q, q, best[3]);
         Quat::rotateX(q, q, -best[4]);
@@ -2293,7 +2293,7 @@ void TDB::fillNearestSquaredDistanceToTDBXZ(float* posT, QVector<Vector4f> &poin
     float dist = 0;
     int yyy = 0;
     for(int i = 0; i < length*12; i+=12){
-        if(bbox != NULL){
+        if(bbox != nullptr){
             if((lineBuffer[i] < bbox[0] && lineBuffer[i+6] < bbox[0] ) || (lineBuffer[i] > bbox[1] && lineBuffer[i+6] > bbox[1] )){
                 //yyy++;
                 continue;
@@ -2368,7 +2368,7 @@ bool TDB::getSegmentIntersectionPositionOnTDB(float* posT, float* segment, float
     //posT[1] = -n->trVectorSection[(int)best[2]].param[9];
     
     float metry = this->getVectorSectionLengthToIdx(best[1], best[2]);
-    if(tpos != NULL){
+    if(tpos != nullptr){
         tpos[0] = best[1];
         tpos[1] = metry + best[3];
     }
@@ -2433,7 +2433,7 @@ bool TDB::getSegmentIntersectionPositionOnTDB(QVector<TDB::IntersectionPoint> &i
             metry = this->getVectorSectionLengthToIdx(p->idx, lineBuffer[i+4]);
             p->m = metry + lineBuffer[i+5] + (lineBuffer[i+11] - lineBuffer[i+5])*dist1;
             
-            if(segmentTDB != NULL){
+            if(segmentTDB != nullptr){
                 dist1 = Vec3::distance(segment + j, segment + j+6);
                 dist2 = Vec3::distance(segment + j, intersectionPoint);
                 dist1 = dist2/dist1;
@@ -2453,7 +2453,7 @@ void TDB::getVectorSectionPoints(int x, int y, float* pos, QVector<float> &ptr, 
     posT[0] = x;
     posT[1] = y;
     float tpos[3];
-    int ok = this->findNearestPositionOnTDB((float*)posT, pos, NULL, (float*)&tpos);
+    int ok = this->findNearestPositionOnTDB((float*)posT, pos, nullptr, (float*)&tpos);
     if(ok < 0)
         return;
 
@@ -2466,7 +2466,7 @@ void TDB::getVectorSectionPoints(int x, int y, float* pos, QVector<float> &ptr, 
     }
     //All sections
     if(mode == 1){
-        if(trackNodes[nid] == NULL)
+        if(trackNodes[nid] == nullptr)
             return;
         for(int i = 0; i < trackNodes[nid]->iTrv; i++ ){
             //float* oldPtr = ptr;
@@ -2481,7 +2481,7 @@ void TDB::getVectorSectionPoints(int x, int y, int uid, QVector<float> &ptr){
     //qDebug() << "aaa";
         for (int j = 1; j <= iTRnodes; j++) {
             TRnode* n = trackNodes[j];
-            if (n == NULL) continue;
+            if (n == nullptr) continue;
             if (n->typ == -1) continue;
             if (n->typ == 1) {
                 for (int i = 0; i < n->iTrv; i++) {
@@ -2514,7 +2514,7 @@ void TDB::getVectorSectionPoints(int x, int y, int nId, int sId, QVector<float> 
     Mat4::fromRotationTranslation(matrix, q, p);
     Mat4::rotate(matrix, matrix, n->trVectorSection[sId].param[13], 1, 0, 0);
     //Mat4::fromRotationTranslation(matrix, q, objMatrix);
-    if(tsection->sekcja[(int) n->trVectorSection[sId].param[0]] == NULL){
+    if(tsection->sekcja[(int) n->trVectorSection[sId].param[0]] == nullptr){
         qDebug() << "nie ma sekcji " << (int) n->trVectorSection[sId].param[0];
     }
     tsection->sekcja[(int) n->trVectorSection[sId].param[0]]->getPoints(ptr, matrix);
@@ -2522,7 +2522,7 @@ void TDB::getVectorSectionPoints(int x, int y, int nId, int sId, QVector<float> 
 }
 
 void TDB::updateTrItemRData(TRitem* tr){
-    if(tr == NULL) 
+    if(tr == nullptr) 
         return;
     float trPosition[7];
     int id = findTrItemNodeId(tr->trItemId);
@@ -2583,7 +2583,7 @@ void TDB::newSignalObject(QString filename, SignalObj::SignalUnit* units, int &s
     if(type != WorldObj::signal) 
         return;
     SignalShape* sShape = this->sigCfg->signalShape[filename.toStdString()];
-    if(sShape == NULL)
+    if(sShape == nullptr)
         return;
     
     //std::vector<int> subObjI;
@@ -2606,7 +2606,7 @@ void TDB::newSignalObject(QString filename, SignalObj::SignalUnit* units, int &s
     signalUnits = 0;
     int enabledFrontFlag = 0;
     int enabledBackFlag = 0;
-    int *enableFlag = NULL;
+    int *enableFlag = nullptr;
     for(int i = 0; i < sShape->iSubObj; i++){
         if(sShape->subObj[i].optional && (!sShape->subObj[i].defaultt))
             continue;
@@ -2669,7 +2669,7 @@ void TDB::newSignalObject(QString filename, SignalObj::SignalUnit* units, int &s
 
 void TDB::enableSignalSubObj(QString filename, SignalObj::SignalUnit &unit, int i, int tritemid){
     SignalShape* sShape = this->sigCfg->signalShape[filename.toStdString()];
-    if(sShape == NULL)
+    if(sShape == nullptr)
         return;
 
     //float trPosition[7];
@@ -2678,7 +2678,7 @@ void TDB::enableSignalSubObj(QString filename, SignalObj::SignalUnit &unit, int 
     //if(sShape->isJnLink) flags = 1;
     //int sidx = 0;
     TRitem* trit = trackItems[tritemid];
-    if(trit == NULL) return;
+    if(trit == nullptr) return;
     int nid = findTrItemNodeId(tritemid);
     if(nid < 0) return;
     
@@ -2710,7 +2710,7 @@ void TDB::newSpeedPostObject(int speedPostType, QVector<int> & itemId, int trNod
     if(type != WorldObj::speedpost) 
         return;
     //SpeedPost* sShape = this->speedPostDAT->speedPost[speedPostId];
-    //if(sShape == NULL)
+    //if(sShape == nullptr)
     //    return;
     
     float trPosition[7];
@@ -2787,7 +2787,7 @@ void TDB::newHazardObject(int * &itemId, int trNodeId, float metry, int type){
 
 void TDB::newCrossOverObject(int id1, float m1, int id2, float m2, int shapeIdx){
     int newTRitemId1 = getNewTRitemId();
-    trackItems[newTRitemId1] = NULL;
+    trackItems[newTRitemId1] = nullptr;
     int newTRitemId2 = getNewTRitemId();
     float trPosition[7];
     
@@ -2808,7 +2808,7 @@ void TDB::newCrossOverObject(int id1, float m1, int id2, float m2, int shapeIdx)
 
 void TDB::deleteTrItem(int trid){
     TRitem* trit = this->trackItems[trid];
-    if(trit != NULL){
+    if(trit != nullptr){
         trit->type = "emptyitem";
     }
     int nid = findTrItemNodeId(trid);
@@ -2819,7 +2819,7 @@ void TDB::deleteTrItem(int trid){
 
 void TDB::addItemToTrNode(int tid, int iid){
     TRnode* n = this->trackNodes[tid];
-    if(n == NULL) return;
+    if(n == nullptr) return;
     int* newVec = new int[n->iTri+1];
     std::copy(n->trItemRef, n->trItemRef+n->iTri, newVec);
     newVec[n->iTri++] = iid;
@@ -2829,7 +2829,7 @@ void TDB::addItemToTrNode(int tid, int iid){
 
 void TDB::deleteItemFromTrNode(int tid, int iid){
     TRnode* n = this->trackNodes[tid];
-    if(n == NULL) return;
+    if(n == nullptr) return;
     if(n->iTri == 1){
         n->iTri = 0;
         return;
@@ -2853,7 +2853,7 @@ void TDB::fixTDBVectorElevation(int x, int y, int UiD){
     int tid = -1;
     for (int i = 1; i <= iTRnodes; i++) {
             n = trackNodes[i];
-            if (n == NULL) continue;
+            if (n == nullptr) continue;
             if (n ->typ == -1) continue;
             if (n->typ == 1) {
                 bool found = false;
@@ -2874,7 +2874,7 @@ void TDB::fixTDBVectorElevation(int x, int y, int UiD){
 }
 
 void TDB::fixTDBVectorElevation(TRnode *n){
-    if (n == NULL) return;
+    if (n == nullptr) return;
     if (n->typ != 1) return;
     
     n->trVectorSection[0].param[15] = 0;
@@ -2902,7 +2902,7 @@ void TDB::deleteVectorSection(int x, int y, int UiD){
     int tid = -1;
     for (int i = 1; i <= iTRnodes; i++) {
             n = trackNodes[i];
-            if (n == NULL) continue;
+            if (n == nullptr) continue;
             if (n ->typ == -1) continue;
             if (n->typ == 1) {
                 for(int j = 0; j < n->iTrv; j++)
@@ -2928,7 +2928,7 @@ void TDB::deleteTree(int x, int y, int UiD){
     int tid = -1;
     for (int i = 1; i <= iTRnodes; i++) {
             n = trackNodes[i];
-            if (n == NULL) continue;
+            if (n == nullptr) continue;
             if (n ->typ == -1) continue;
             if (n->typ == 1) {
                 for(int j = 0; j < n->iTrv; j++)
@@ -2972,7 +2972,7 @@ void TDB::deleteTree(int d) {
             if(drzewo[i] == 1){
                 qDebug() << "Usuwam " << i;
                 deleteAllTrItemsFromVectorSection(i);
-                trackNodes[i] = NULL;
+                trackNodes[i] = nullptr;
             }
         }
         TDB::refresh();
@@ -2992,8 +2992,8 @@ void TDB::addToDeletedTree(int* drzewo, int d){
 
 bool TDB::deleteNulls() {
         for(int i = 1; i <= iTRnodes; i++){
-            if(trackNodes[i] == NULL){
-                qDebug() << "Usuwam NULL na "<<i;
+            if(trackNodes[i] == nullptr){
+                qDebug() << "Usuwam nullptr na "<<i;
                 int stare = findBiggest();
                 if(stare <= i) {
                     qDebug() << "Juz nie ma nulli ";
@@ -3001,7 +3001,7 @@ bool TDB::deleteNulls() {
                     return false;
                 }
                 trackNodes[i] = trackNodes[stare];
-                trackNodes[stare] = NULL;
+                trackNodes[stare] = nullptr;
                 qDebug() << "zastopiony przez " << stare;
                 
                 for(int j = 0; j < 3; j++){
@@ -3034,8 +3034,8 @@ bool TDB::SortItemRefsCompare(int a, int b){
 
 void TDB::replaceSignalDirJunctionId(int oldId, int newId){
     for (int i = 0; i <= this->iTRitems; i++) {
-        if(trackItems[i] == NULL) continue;
-        if(trackItems[i]->trSignalDir != NULL){
+        if(trackItems[i] == nullptr) continue;
+        if(trackItems[i]->trSignalDir != nullptr){
             for(int j = 0; j < trackItems[i]->trSignalDirs*4; j+=4){
                 if(trackItems[i]->trSignalDir[j+0] == oldId){
                     trackItems[i]->trSignalDir[j+0] = newId;
@@ -3048,7 +3048,7 @@ void TDB::replaceSignalDirJunctionId(int oldId, int newId){
 
 int TDB::findBiggest() {
         for(int i = iTRnodes; i > 0; i--){
-            if(trackNodes[i] != NULL)
+            if(trackNodes[i] != nullptr)
                 return i;
         }
         return 1;
@@ -3106,7 +3106,7 @@ void TDB::save() {
 
     for (int i = 1; i <= this->iTRnodes; i++) {
         out << "		TrackNode ( " << i << "\n";
-        if (trackNodes[i] == NULL) continue;
+        if (trackNodes[i] == nullptr) continue;
         switch (trackNodes[i]->typ) {
             case 0:
                 out << "			TrEndNode ( " << trackNodes[i]->args[0] << " )\n";
@@ -3170,7 +3170,7 @@ void TDB::save() {
     if(this->iTRitems > 0){
         out << "	TrItemTable ( " << (this->iTRitems) << "\n";
         for (int i = 0; i <= this->iTRitems; i++) {
-            if(this->trackItems[i] != NULL)
+            if(this->trackItems[i] != nullptr)
                 this->trackItems[i]->save(&out);
         }
         out << "	)\n";
@@ -3210,7 +3210,7 @@ void TDB::saveTit() {
     if(this->iTRitems > 0){
         out << "TrItemTable ( " << (this->iTRitems) << "\n";
         for (int i = 0; i <= this->iTRitems; i++) {
-            if(this->trackItems[i] != NULL)
+            if(this->trackItems[i] != nullptr)
                 this->trackItems[i]->save(&out, tit);
         }
         out << ")";
@@ -3232,12 +3232,12 @@ void TDB::checkSignals(){
         int tid = 0;
         TRnode* n;
         for (int i = 0; i < this->iTRitems; i++) {
-            if(trackItems[i] == NULL) continue;
-            if(trackItems[i]->trSignalDir != NULL){
+            if(trackItems[i] == nullptr) continue;
+            if(trackItems[i]->trSignalDir != nullptr){
                 for(int j = 0; j < trackItems[i]->trSignalDirs*4; j+=4){
                     tid = trackItems[i]->trSignalDir[j+0];
                     n = trackNodes[tid];
-                    if(n == NULL)
+                    if(n == nullptr)
                         trtype[3]++;
                     else
                         trtype[n->typ]++;
@@ -3271,13 +3271,13 @@ TDB::TDB(const TDB& o) {
     road = o.road;
     
     for (auto it = o.trackItems.begin(); it != o.trackItems.end(); ++it ){
-        if(it->second == NULL)
+        if(it->second == nullptr)
             continue;
         trackItems[it->first] = new TRitem(*(it->second));
     }
     
     for (auto it = o.trackNodes.begin(); it != o.trackNodes.end(); ++it ){
-        if(it->second == NULL)
+        if(it->second == nullptr)
             continue;
         trackNodes[it->first] = new TRnode(*(it->second));
     }
@@ -3285,13 +3285,13 @@ TDB::TDB(const TDB& o) {
 
 TDB::~TDB() {
     for (auto it = trackItems.begin(); it != trackItems.end(); ++it ){
-        if(it->second == NULL)
+        if(it->second == nullptr)
             continue;
         delete it->second;
     }
     
     for (auto it = trackNodes.begin(); it != trackNodes.end(); ++it ){
-        if(it->second == NULL)
+        if(it->second == nullptr)
             continue;
         delete it->second;
     }
@@ -3302,11 +3302,11 @@ void TDB::getUsedTileList(QMap<int, QPair<int, int>*> &tileList, int radius, int
     
     QMap<int, QPair<int, int>*> tileList2;
     for (int i = 0; i < trackNodes.size(); i++ ) {
-        if(trackNodes[i] == NULL)
+        if(trackNodes[i] == nullptr)
             continue;
         if(trackNodes[i]->typ == 1)
             continue;
-        if(tileList2[trackNodes[i]->UiD[4]*10000 + trackNodes[i]->UiD[5]] == NULL)
+        if(tileList2[trackNodes[i]->UiD[4]*10000 + trackNodes[i]->UiD[5]] == nullptr)
             tileList2[trackNodes[i]->UiD[4]*10000 + trackNodes[i]->UiD[5]] = new QPair<int, int>(trackNodes[i]->UiD[4], trackNodes[i]->UiD[5]);
         }
     
@@ -3316,13 +3316,13 @@ void TDB::getUsedTileList(QMap<int, QPair<int, int>*> &tileList, int radius, int
     qDebug() << "radius" << radius;
     while (i.hasNext()) {
         i.next();
-        if(i.value() == NULL)
+        if(i.value() == nullptr)
             continue;
         x = i.value()->first;
         z = i.value()->second;
         for(int i = -radius; i <= radius; i+=step)
             for(int j = -radius; j <= radius; j+=step){
-                if(tileList[(x+i)*10000+(z+j)] == NULL){
+                if(tileList[(x+i)*10000+(z+j)] == nullptr){
                     tileList[(x+i)*10000+(z+j)] = new QPair<int, int>(x+i, z+j);
                 }
             }

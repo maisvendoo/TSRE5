@@ -225,13 +225,13 @@ void Service::render(GLUU* gluu, float* playerT, int selectionColor){
 }
 
 void Service::initToPlay(){
-    if(pathPointer == NULL){
+    if(pathPointer == nullptr){
         QDir dir(Game::root + "/routes/" + Game::route + "/paths");
         int pathPointerId;
         qDebug() << "pathid" << (pathPointerId = ActLib::AddPath(dir.path(), pathId+".pat"));
         pathPointer = ActLib::Paths[pathPointerId];
     }
-    if(conPointer == NULL){
+    if(conPointer == nullptr){
         QDir dir(Game::root + "/trains/consists/");
         int conPointerId;
         qDebug() << "conid" << (conPointerId =  ConLib::addCon(dir.path(), trainConfig+".con"));
@@ -244,7 +244,7 @@ Consist *Service::getConsistPointer(){
     return conPointer;
 }
 void Service::updateSim(float* playerT, float deltaTime){
-    if(pathPointer == NULL || conPointer == NULL){
+    if(pathPointer == nullptr || conPointer == nullptr){
         return;
     }
     conPointer->updateSim(deltaTime);
@@ -267,7 +267,7 @@ void Service::setNewPath(QString pathName){
         return;
     qDebug() << "new path:" << pathId;
     Path *p = ActLib::GetPathByName(pathId);
-    if(p == NULL){
+    if(p == nullptr){
         qDebug() << "null path";
         return;
     }
@@ -275,7 +275,7 @@ void Service::setNewPath(QString pathName){
 
     int ii = 0;
     foreach(Path::PathObject* i, p->pathObjects){
-        if(i == NULL)
+        if(i == nullptr)
             continue;
         stationStop.push_back(StationStop());
         stationStop.back().platformStartID = i->trItemId;
@@ -328,7 +328,7 @@ void Service::enableStationStop(int count){
         }
     }
     Path *p = ActLib::GetPathByName(pathId);
-    if(p == NULL){
+    if(p == nullptr){
         return;
     }
     p->init3dShapes(false);

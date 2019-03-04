@@ -111,7 +111,7 @@ bool SoundDefinitionGroup::Stream::Trigger::activate(SoundVariables *variables){
         }
     }
     if(type == VARIABLE_TRIGGER){
-        if(variables == NULL)
+        if(variables == nullptr)
             return false;
         if(comparator == VARIABLE2_INC_PAST){
             float v = variables->value[SoundVariables::VARIABLE2];
@@ -381,7 +381,7 @@ SoundDefinitionGroup::Stream::Curve::Curve(QString type){
 }
 
 float SoundDefinitionGroup::Stream::Curve::getValue(SoundVariables *variables){
-    if(variables == NULL)
+    if(variables == nullptr)
         return 0;
     //qDebug() << "X" <<x;
     if(points.size() == 0)
@@ -476,7 +476,7 @@ int MstsSoundDefinition::AddDefinition(QString path, QString name){
     //for ( auto it = route->ref->refItems.begin(); it != route->ref->refItems.end(); ++it ){
         //qDebug() << QString::fromStdString(it->first) << " " << it->second.size();
         i.next();
-        if(i.value() == NULL) continue;
+        if(i.value() == nullptr) continue;
         if (i.value()->pathid.length() == pathid.length())
             if (i.value()->pathid == pathid) {
                 i.value()->ref++;
@@ -560,7 +560,7 @@ void SoundDefinitionGroup::Stream::update(SoundVariables *variables){
             }
             if(trigger[i]->mode == Trigger::LOOPRELEASE_MODE){
                 bindTo(0);
-                qDebug() << "u-bind" << i << alSid << "NULL";
+                qDebug() << "u-bind" << i << alSid << "nullptr";
                 alSourceStop(alSid);
                 isInit = true;
             }
@@ -574,11 +574,11 @@ void SoundDefinitionGroup::Stream::update(SoundVariables *variables){
         }*/
     }
 
-    if(volumeCurve != NULL){
+    if(volumeCurve != nullptr){
         float newv = volumeCurve->getValue(variables);
         alSourcef(alSid, AL_GAIN, newv);
     }
-    if(freqCurve != NULL){
+    if(freqCurve != nullptr){
         float newv = freqCurve->getValue(variables);
         alSourcef(alSid, AL_PITCH, newv/12025.0);
     }

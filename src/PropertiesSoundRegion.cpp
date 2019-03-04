@@ -98,9 +98,9 @@ PropertiesSoundRegion::~PropertiesSoundRegion() {
 }
 
 void PropertiesSoundRegion::sourcesListSelected(QString val){
-    if(sobj == NULL)
+    if(sobj == nullptr)
         return;
-    if(Game::soundList == NULL)
+    if(Game::soundList == nullptr)
         return;
     Undo::StateBegin();
     Undo::PushGameObjData(worldObj);
@@ -112,7 +112,7 @@ void PropertiesSoundRegion::sourcesListSelected(QString val){
 }
 
 void PropertiesSoundRegion::flip(){
-    if(sobj == NULL)
+    if(sobj == nullptr)
         return;
     Undo::StateBegin();
     Undo::PushGameObjData(worldObj);
@@ -122,8 +122,8 @@ void PropertiesSoundRegion::flip(){
 }
 
 void PropertiesSoundRegion::showObj(GameObj* obj){
-    if(obj == NULL){
-        infoLabel->setText("NULL");
+    if(obj == nullptr){
+        infoLabel->setText("nullptr");
         return;
     }
     worldObj = (WorldObj*)obj;
@@ -145,7 +145,7 @@ void PropertiesSoundRegion::showObj(GameObj* obj){
             );
     
     this->sources.clear();
-    if(Game::soundList != NULL)
+    if(Game::soundList != nullptr)
         foreach (SoundListItem* it, Game::soundList->regions){
         //for (auto it = Game::soundList->regions.begin(); it != Game::soundList->regions.end(); ++it ){
             if(it->id == sobj->getSoundregionTrackType())
@@ -157,7 +157,7 @@ void PropertiesSoundRegion::showObj(GameObj* obj){
 }
 
 bool PropertiesSoundRegion::support(GameObj* obj){
-    if(obj == NULL)
+    if(obj == nullptr)
         return false;
     if(obj->typeObj != GameObj::worldobj)
         return false;
@@ -167,7 +167,7 @@ bool PropertiesSoundRegion::support(GameObj* obj){
 }
 
 void PropertiesSoundRegion::eMaxPlacingDistanceEnabled(QString val){
-    if(sobj == NULL){
+    if(sobj == nullptr){
         return;
     }
     bool ok = false;
@@ -179,7 +179,7 @@ void PropertiesSoundRegion::eMaxPlacingDistanceEnabled(QString val){
 }
 
 void PropertiesSoundRegion::bDeleteSelectedEnabled(){
-    if(sobj == NULL)
+    if(sobj == nullptr)
         return;
     Undo::StateBegin();
     Undo::PushGameObjData(worldObj);
@@ -189,7 +189,7 @@ void PropertiesSoundRegion::bDeleteSelectedEnabled(){
 }
 
 void PropertiesSoundRegion::bExpandEnabled(){
-    if(sobj == NULL)
+    if(sobj == nullptr)
         return;
     Undo::StateBegin();
     Undo::PushGameObjData(worldObj);

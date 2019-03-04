@@ -25,7 +25,7 @@ class ShapeTemplateElement;
 
 struct ShapePrimitive {
     float *data;
-    ObjFile *templatePtr = NULL;
+    ObjFile *templatePtr = nullptr;
     int count = 0;
     bool disabled = false;
     float pos[3];

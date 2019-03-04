@@ -34,7 +34,7 @@ TarFile::TarFile(FileBuffer *oData, bool copy) {
 }
 
 bool TarFile::extractTo(QString destination){
-    if(data == NULL)
+    if(data == nullptr)
         return false;
     
     qDebug() << "#TarFile Extracting "<< filePath << data->length;
@@ -45,7 +45,7 @@ bool TarFile::extractTo(QString destination){
         tFileHeader = (PosixHeader*)(&data->data[data->off]);
         //qDebug() << tFileHeader->name;
         //qDebug() << tFileHeader->size;
-        unsigned int tFilesize = QString(tFileHeader->size).toInt(NULL, 8);
+        unsigned int tFilesize = QString(tFileHeader->size).toInt(nullptr, 8);
         //qDebug() << tFilesize;
         data->off += 512;
         QString tFileName = QString(tFileHeader->name);

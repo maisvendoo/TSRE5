@@ -62,10 +62,10 @@ private:
     float pickupAnimData2;
     float pickupCapacity1;
     float pickupCapacity2;
-    int *trItemId = NULL;
+    int *trItemId = nullptr;
     int trItemIdCount = 0;
-    TrackItemObj* pointer3d = NULL;
-    float* drawPosition = NULL;
+    TrackItemObj* pointer3d = nullptr;
+    float* drawPosition = nullptr;
     void renderTritems(GLUU* gluu, int selectionColor);
     bool getSimpleBorder(float* border);
     bool getBoxPoints(QVector<float> &points);

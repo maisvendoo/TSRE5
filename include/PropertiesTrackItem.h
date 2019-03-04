@@ -24,7 +24,7 @@ public:
     void updateObj(GameObj* obj);
     
 private:
-    TRitem* itemObj = NULL;
+    TRitem* itemObj = nullptr;
 
 };
 

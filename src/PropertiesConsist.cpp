@@ -47,8 +47,8 @@ PropertiesConsist::~PropertiesConsist() {
 }
 
 void PropertiesConsist::showObj(GameObj* obj){
-    if(obj == NULL){
-        infoLabel->setText("NULL");
+    if(obj == nullptr){
+        infoLabel->setText("nullptr");
         return;
     }
     conObj = (Consist*)obj;
@@ -58,7 +58,7 @@ void PropertiesConsist::showObj(GameObj* obj){
 }
 
 void PropertiesConsist::updateObj(GameObj* obj){
-    if(obj == NULL){
+    if(obj == nullptr){
         return;
     }
     conObj = (Consist*)obj;
@@ -69,7 +69,7 @@ void PropertiesConsist::updateObj(GameObj* obj){
 
 
 bool PropertiesConsist::support(GameObj* obj){
-    if(obj == NULL)
+    if(obj == nullptr)
         return false;
     if(obj->typeObj == GameObj::consistobj)
         return true;
@@ -81,7 +81,7 @@ void PropertiesConsist::bCamEnabled(){
 }
 
 void PropertiesConsist::eSpeedEnabled(QString val){
-    if(conObj == NULL)
+    if(conObj == nullptr)
         return;
     bool ok = false;
     float speed = val.toFloat(&ok);

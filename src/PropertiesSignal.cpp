@@ -190,8 +190,8 @@ void PropertiesSignal::msg(QString name, QString val){
 }
 
 void PropertiesSignal::showObj(GameObj* obj){
-    if(obj == NULL){
-        infoLabel->setText("NULL");
+    if(obj == nullptr){
+        infoLabel->setText("nullptr");
         return;
     }
     worldObj = (WorldObj*)obj;
@@ -225,8 +225,8 @@ void PropertiesSignal::showObj(GameObj* obj){
     } 
     qDebug() << "req " << sobj->fileName;*/
     
-    if(signalShape == NULL){ 
-        infoLabel->setText("NULL");
+    if(signalShape == nullptr){ 
+        infoLabel->setText("nullptr");
         return;
     }
     
@@ -251,7 +251,7 @@ void PropertiesSignal::showObj(GameObj* obj){
 }
 
 void PropertiesSignal::updateObj(GameObj* obj){
-    if(sobj == NULL){
+    if(sobj == nullptr){
         return;
     }
     
@@ -275,7 +275,7 @@ void PropertiesSignal::updateObj(GameObj* obj){
 }
 
 void PropertiesSignal::flipSignal(){
-    if(sobj == NULL)
+    if(sobj == nullptr)
         return;
     Undo::StateBegin();
     Undo::PushGameObjData(worldObj);
@@ -289,7 +289,7 @@ void PropertiesSignal::showSubObjList(){
 }
 
 bool PropertiesSignal::support(GameObj* obj){
-    if(obj == NULL)
+    if(obj == nullptr)
         return false;
     if(obj->typeObj != GameObj::worldobj)
         return false;
@@ -299,7 +299,7 @@ bool PropertiesSignal::support(GameObj* obj){
 }
 
 void PropertiesSignal::checkboxAnimEdited(int val){
-    if(worldObj == NULL)
+    if(worldObj == nullptr)
         return;
     Undo::SinglePushWorldObjData(worldObj);
     if(val == 2){
@@ -311,7 +311,7 @@ void PropertiesSignal::checkboxAnimEdited(int val){
 }
 
 void PropertiesSignal::checkboxTerrainEdited(int val){
-    if(worldObj == NULL)
+    if(worldObj == nullptr)
         return;
     Undo::SinglePushWorldObjData(worldObj);
     if(val == 2){
@@ -323,7 +323,7 @@ void PropertiesSignal::checkboxTerrainEdited(int val){
 }
 
 void PropertiesSignal::cShadowTypeEdited(int val){
-    if(worldObj == NULL)
+    if(worldObj == nullptr)
         return;
     Undo::SinglePushWorldObjData(worldObj);
     worldObj->setShadowType((WorldObj::ShadowType)val);
@@ -331,7 +331,7 @@ void PropertiesSignal::cShadowTypeEdited(int val){
 }
 
 void PropertiesSignal::hacksButtonEnabled(){
-    if(sobj == NULL){
+    if(sobj == nullptr){
         return;
     }
     
@@ -360,7 +360,7 @@ void PropertiesSignal::hacksButtonEnabled(){
 }
 
 void PropertiesSignal::haxFixFlagsEnabled(){
-    if(sobj == NULL){
+    if(sobj == nullptr){
         return;
     }
     QStringList list;
@@ -381,7 +381,7 @@ void PropertiesSignal::haxFixFlagsEnabled(){
 }
 
 void PropertiesSignal::editPositionEnabled(QString val){
-    if(worldObj == NULL)
+    if(worldObj == nullptr)
         return;
     SignalObj* signalObj = (SignalObj*) worldObj;
     float pos[3];

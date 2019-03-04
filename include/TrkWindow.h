@@ -20,7 +20,7 @@ class TrkWindow : public QDialog {
 public:
     TrkWindow();
     virtual ~TrkWindow();
-    Trk *trk = NULL;
+    Trk *trk = nullptr;
     
     int exec();
     

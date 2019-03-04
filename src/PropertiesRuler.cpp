@@ -132,11 +132,11 @@ PropertiesRuler::PropertiesRuler() {
     eTemplate.addItem("DISABLED");
     
     ProceduralShape::Load();
-    if(ProceduralShape::ShapeTemplateFile != NULL){
+    if(ProceduralShape::ShapeTemplateFile != nullptr){
         QMapIterator<QString, ShapeTemplate*> i(ProceduralShape::ShapeTemplateFile->templates);
         while (i.hasNext()) {
             i.next();
-            if(i.value() == NULL)
+            if(i.value() == nullptr)
                 continue;
             eTemplate.addItem(i.value()->name);
         }
@@ -161,7 +161,7 @@ void PropertiesRuler::elevTypeEdited(QString val){
 }
 
 void PropertiesRuler::eTemplateEdited(QString val){
-    if(worldObj == NULL){
+    if(worldObj == nullptr){
         return;
     }
     Undo::SinglePushWorldObjData(worldObj);
@@ -170,8 +170,8 @@ void PropertiesRuler::eTemplateEdited(QString val){
 }
 
 void PropertiesRuler::showObj(GameObj* obj){
-    if(obj == NULL){
-        infoLabel->setText("NULL");
+    if(obj == nullptr){
+        infoLabel->setText("nullptr");
         return;
     }
     worldObj = (WorldObj*)obj;
@@ -201,7 +201,7 @@ void PropertiesRuler::showObj(GameObj* obj){
 }
 
 void PropertiesRuler::updateObj(GameObj* obj){
-    if(obj == NULL){
+    if(obj == nullptr){
         return;
     }
     worldObj = (WorldObj*)obj;
@@ -226,7 +226,7 @@ void PropertiesRuler::updateObj(GameObj* obj){
 }
 
 void PropertiesRuler::checkboxTwoPointEdited(int val){
-    if(worldObj == NULL)
+    if(worldObj == nullptr)
         return;
     RulerObj* robj = (RulerObj*)worldObj;
     if(val == 2){
@@ -237,7 +237,7 @@ void PropertiesRuler::checkboxTwoPointEdited(int val){
 }
 
 void PropertiesRuler::checkboxDrawPointsEdited(int val){
-    if(worldObj == NULL)
+    if(worldObj == nullptr)
         return;
     RulerObj* robj = (RulerObj*)worldObj;
     if(val == 2){
@@ -248,7 +248,7 @@ void PropertiesRuler::checkboxDrawPointsEdited(int val){
 }
 
 void PropertiesRuler::createRoadPathsEdited(){
-    if(worldObj == NULL)
+    if(worldObj == nullptr)
         return;
     RulerObj* robj = (RulerObj*)worldObj;
     //Undo::SinglePushWorldObjData(worldObj);
@@ -256,7 +256,7 @@ void PropertiesRuler::createRoadPathsEdited(){
 }
 
 void PropertiesRuler::addShapeEdited(){
-    if(worldObj == NULL)
+    if(worldObj == nullptr)
         return;
     RulerObj* robj = (RulerObj*)worldObj;
     //Undo::SinglePushWorldObjData(worldObj);
@@ -264,14 +264,14 @@ void PropertiesRuler::addShapeEdited(){
 }
 
 void PropertiesRuler::removeRoadPathsEdited(){
-    if(worldObj == NULL)
+    if(worldObj == nullptr)
         return;
     RulerObj* robj = (RulerObj*)worldObj;
     //Undo::SinglePushWorldObjData(worldObj);
     robj->removeRoadPaths();
 }
 bool PropertiesRuler::support(GameObj* obj){
-    if(obj == NULL)
+    if(obj == nullptr)
         return false;
     if(obj->typeObj != GameObj::worldobj)
         return false;

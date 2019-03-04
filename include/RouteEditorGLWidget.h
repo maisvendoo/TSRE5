@@ -164,21 +164,21 @@ private:
     SFile* sFile;
     Eng* eng;
     Tile* tile;
-    Route* route = NULL;
+    Route* route = nullptr;
     GLUU* gluu;
     QOpenGLFunctions_3_3_Core* funcs = 0;
     unsigned int fbo[3];
     bool m_transparent;
-    Camera* camera = NULL;
-    CameraFree* cameraFree = NULL;
-    CameraConsist* cameraObj = NULL;
+    Camera* camera = nullptr;
+    CameraFree* cameraFree = nullptr;
+    CameraConsist* cameraObj = nullptr;
     bool selection = false;
     int mousex, mousey;
-    GameObj* selectedObj = NULL;
-    GameObj* lastSelectedObj = NULL;
-    WorldObj* copyPasteObj = NULL;
-    GroupObj* groupObj = NULL;
-    GroupObj* copyPasteGroupObj = NULL;
+    GameObj* selectedObj = nullptr;
+    GameObj* lastSelectedObj = nullptr;
+    WorldObj* copyPasteObj = nullptr;
+    GroupObj* groupObj = nullptr;
+    GroupObj* copyPasteGroupObj = nullptr;
     Pointer3d* pointer3d;
     float lastPointerPos[3];
     float aktPointerPos[3];
@@ -210,8 +210,8 @@ private:
     GLuint depthTexture2 = 0;
     Brush* defaultPaintBrush;
     MapWindow* mapWindow;
-    ShapeLib *currentShapeLib = NULL;
-    EngLib *engLib = NULL;
+    ShapeLib *currentShapeLib = nullptr;
+    EngLib *engLib = nullptr;
     
     /*struct DefaultMenuActions {
         QAction *undo;
@@ -226,8 +226,8 @@ private:
     QMap<QString, QAction*> defaultMenuActions;
     bool bolckContextMenu = false;
     
-    GuiGlCompass * compass = NULL;
-    OglObj * compassPointer = NULL;
+    GuiGlCompass * compass = nullptr;
+    OglObj * compassPointer = nullptr;
 };
 
 #endif

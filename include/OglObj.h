@@ -49,7 +49,7 @@ private:
     float minDistance = -1;
     float maxDistance = 999999;
     QString *res;
-    Vector4f *color = NULL;
+    Vector4f *color = nullptr;
     VertexAttr vAttribures = NO_ATTR;
 };
 

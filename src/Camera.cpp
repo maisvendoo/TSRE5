@@ -48,7 +48,7 @@ Camera::~Camera() {
 }
 
 PreciseTileCoordinate* Camera::getCurrentPos(){
-    if(this->currentPos == NULL)
+    if(this->currentPos == nullptr)
         this->currentPos = new PreciseTileCoordinate();
     return this->currentPos;
 }
@@ -95,7 +95,7 @@ void Camera::update(float fps) {
 
 void Camera::renderHud(GLUU *gluu){
     
-    if(cameraObject != NULL)
+    if(cameraObject != nullptr)
         cameraObject->renderHud();
 }
 

@@ -150,7 +150,7 @@ bool FileBuffer::insertFile(QString incPath, QString alternativePath, QString* l
         }
     }
     qDebug() << incPath;
-    if(loaded != NULL){
+    if(loaded != nullptr){
         *loaded = incPath;
     }
     FileBuffer* incData = ReadFile::readRAW(&file);

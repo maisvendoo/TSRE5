@@ -28,9 +28,9 @@ CoordsRoutePlaces::CoordsRoutePlaces(TDB *tdb, QString place) {
     
     for(int i = 0; i < tdb->iTRitems; i++){
         TRitem* n = tdb->trackItems[i];
-        if (n == NULL) 
+        if (n == nullptr) 
             continue;
-        if (n->trItemRData == NULL)
+        if (n->trItemRData == nullptr)
             continue;
         if (n->stationName.length() > 0 && place == "stations"){
             if(stations[n->stationName] == false){

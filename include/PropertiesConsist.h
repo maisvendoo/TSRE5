@@ -32,7 +32,7 @@ signals:
     void cameraObject(GameObj* obj);
 
 private:
-    Consist *conObj = NULL;
+    Consist *conObj = nullptr;
     QLineEdit eSpeed;
     //QLineEdit eName;
 

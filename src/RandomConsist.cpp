@@ -80,7 +80,7 @@ void RandomConsist::loadSets(){
 void RandomConsist::listSelected(QString val){
     items.clear();
     Consist *c = sets[list.currentData().toInt()];
-    if(c == NULL)
+    if(c == nullptr)
         return;
     for(int i = 0; i < c->engItems.size(); i++)
         new QListWidgetItem ( Game::currentEngLib->eng[c->engItems[i].eng]->displayName, &items, c->engItems[i].eng);

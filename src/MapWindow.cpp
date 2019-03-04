@@ -116,7 +116,7 @@ void MapWindow::colorComboActivated(QString val){
 }
 
 void MapWindow::load(){
-    if(aCoords == NULL) aCoords = new PreciseTileCoordinate();
+    if(aCoords == nullptr) aCoords = new PreciseTileCoordinate();
     qDebug() << "MapLoad" << this->tileX << " " << -this->tileZ;;
     LatitudeLongitudeCoordinate llpoint[4];
     qDebug() << this->tileX << -this->tileZ << 0 << 0 << 0;
@@ -179,11 +179,11 @@ void MapWindow::isStatusInfo(QString val){
 }
 
 void MapWindow::reload(){
-    if(dane == NULL)
+    if(dane == nullptr)
         return;
     if(dane->tileX != this->tileX) return;
     if(dane->tileZ != -this->tileZ) return;
-    QImage* myImage = NULL;
+    QImage* myImage = nullptr;
     int res = Game::mapImageResolution;
     if(MapWindow::isAlpha > 0)
         myImage = new QImage(res, res, QImage::Format_RGBA8888);
@@ -201,14 +201,14 @@ void MapWindow::reload(){
     
     imageLabel->setPixmap(QPixmap::fromImage(*myImage).scaled(800,800,Qt::KeepAspectRatio,Qt::SmoothTransformation));
     int hash = (int)(this->tileX)*10000+(int)(this->tileZ);
-    if(MapWindow::mapTileImages[hash] != NULL)
+    if(MapWindow::mapTileImages[hash] != nullptr)
         delete MapWindow::mapTileImages[hash];
     MapWindow::mapTileImages[hash] = myImage;
 }
 
 void MapWindow::saveToDisk(){
     int hash = (int)(this->tileX)*10000+(int)(this->tileZ);
-    if(MapWindow::mapTileImages[hash] == NULL)
+    if(MapWindow::mapTileImages[hash] == nullptr)
         return;
     QString path = Game::root + "/routes/" + Game::route + "/terrain_maps/";
     path.replace("//","/");
@@ -225,7 +225,7 @@ bool MapWindow::LoadMapFromDisk(int x, int z){
     if(!file.exists())
         return false;
     QImage image(path);
-    QImage *img = NULL;
+    QImage *img = nullptr;
     if(MapWindow::isAlpha == 0){
         img = new QImage(image.convertToFormat(QImage::Format_RGB888));
     } else {

@@ -114,7 +114,7 @@ bool MapDataOSM::draw(QImage* myImage) {
         else roadBorder->setRgb(180, 180, 180);
 
         for (int i = 0; i < w->ref.size(); i++) {
-            if (nodes[w->ref[i]] == NULL) {
+            if (nodes[w->ref[i]] == nullptr) {
                 fail++;
                 break;
             }
@@ -603,7 +603,7 @@ void MapDataOSM::isData(QNetworkReply* r){
 }
 
 void MapDataOSM::loadData(QByteArray* data){
-    if(data == NULL){
+    if(data == nullptr){
         QFile file("F:/OSM/tczew.osm");
         if (!file.open(QFile::ReadOnly | QFile::Text)) {
             qDebug() << "no file" << file.errorString();

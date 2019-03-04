@@ -41,7 +41,7 @@ ActivityTimetableWindow::~ActivityTimetableWindow() {
 void ActivityTimetableWindow::showTimetable(Activity *a){
     if(this->isHidden())
         return;
-    if(a == NULL)
+    if(a == nullptr)
         return;
     activity = a;
     services = a->getServiceList();
@@ -52,7 +52,7 @@ void ActivityTimetableWindow::showTimetable(Activity *a){
     //QList<QTreeWidgetItem *> items;
     //QStringList list;
     for(int i = 0; i < services.size(); i++ ){
-        if(services[i] == NULL)
+        if(services[i] == nullptr)
             continue;
         QListWidgetItem *item = new QListWidgetItem ( services[i]->name, &list, i );
         if(services[i]->player)
@@ -63,7 +63,7 @@ void ActivityTimetableWindow::showTimetable(Activity *a){
 }
 
 void ActivityTimetableWindow::listSelected(QListWidgetItem *item){
-    //if(route == NULL)
+    //if(route == nullptr)
     //    return;
     timetableProperties->showTimetable(services[item->type()]);
 }

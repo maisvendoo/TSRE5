@@ -64,7 +64,7 @@ void HeightWindow::CheckForMissingGeodataFiles(QMap<int,QPair<int,int>*>& tileLi
     
     while (i.hasNext()) {
         i.next();
-        if(i.value() == NULL)
+        if(i.value() == nullptr)
             continue;
 
         tCoords->TileX = i.value()->first;
@@ -74,7 +74,7 @@ void HeightWindow::CheckForMissingGeodataFiles(QMap<int,QPair<int,int>*>& tileLi
         tLatlon = Game::GeoCoordConverter->ConvertToLatLon(tigh, tLatlon);
 
         //qDebug() << "lat " << itlat->first << " lon " << itlon->first;
-        if(hqtFiles[(int)floor(tLatlon->Latitude)*1000+(int)floor(tLatlon->Longitude)] == NULL){
+        if(hqtFiles[(int)floor(tLatlon->Latitude)*1000+(int)floor(tLatlon->Longitude)] == nullptr){
             hqtFiles[(int)floor(tLatlon->Latitude)*1000+(int)floor(tLatlon->Longitude)] = new GeoHgtFile();
             //hqtFiles[tLatlon->Latitude*1000+tLatlon->Longitude] = new GeoTiffFile();
             fail = hqtFiles[(int)floor(tLatlon->Latitude)*1000+(int)floor(tLatlon->Longitude)]->load((int)floor(tLatlon->Latitude), (int)floor(tLatlon->Longitude));
@@ -105,7 +105,7 @@ void HeightWindow::CheckForMissingGeodataFiles(QMap<int,QPair<int,int>*>& tileLi
 }
 
 void HeightWindow::load(bool gui){
-    if(aCoords == NULL) 
+    if(aCoords == nullptr) 
         aCoords = new PreciseTileCoordinate();
     aCoords->TileX = this->tileX;
     aCoords->TileZ = this->tileZ;
@@ -125,12 +125,12 @@ void HeightWindow::load(bool gui){
             fileLon[(int)floor(mLatlon->Longitude)] = true;
         }
     
-    QImage* image = NULL;
+    QImage* image = nullptr;
     bool fail;
     for (auto itlat = fileLat.begin(); itlat != fileLat.end(); ++itlat ){
         for (auto itlon = fileLon.begin(); itlon != fileLon.end(); ++itlon ){
             qDebug() << "lat " << itlat->first << " lon " << itlon->first;
-            if(this->hqtFiles[itlat->first*1000+itlon->first] == NULL){
+            if(this->hqtFiles[itlat->first*1000+itlon->first] == nullptr){
                 this->hqtFiles[itlat->first*1000+itlon->first] = new GeoHgtFile();
                 //this->hqtFiles[itlat->first*1000+itlon->first] = new GeoTiffFile();
                 fail = this->hqtFiles[itlat->first*1000+itlon->first]->load(itlat->first, itlon->first);
@@ -165,13 +165,13 @@ void HeightWindow::drawTile(QImage* &image, bool gui){
         image = new QImage(terrainResolution, terrainResolution, QImage::Format_RGB888);
     int step = (terrainSize)/terrainResolution;
     
-    if(terrainData != NULL){
+    if(terrainData != nullptr){
         for (int i = 0; i < terrainResolution; i++) {
             delete[] terrainData[i];
         }
         delete[] terrainData;
     }
-    /*if(terrainData == NULL){
+    /*if(terrainData == nullptr){
         terrainData = new float*[terrainResolution];
         for (int i = 0; i < terrainResolution; i++) {
             terrainData[i] = new float[terrainResolution];
@@ -187,7 +187,7 @@ void HeightWindow::drawTile(QImage* &image, bool gui){
             aCoords->setWxyzU(i*step, 0, j*step);
             igh = Game::GeoCoordConverter->ConvertToInternal(aCoords, igh);
             mLatlon = Game::GeoCoordConverter->ConvertToLatLon(igh, mLatlon);
-            if(hqtFiles[(int)floor(mLatlon->Latitude)*1000+(int)floor(mLatlon->Longitude)] == NULL){
+            if(hqtFiles[(int)floor(mLatlon->Latitude)*1000+(int)floor(mLatlon->Longitude)] == nullptr){
                 qDebug() << "fail";
                 continue;
             }
