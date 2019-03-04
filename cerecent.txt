@@ -1,6 +1,0 @@
-c:/ts
-f:/train simulator
-f:/tst
-f:/train simulator bernina
-f:/andrzej
-c:/trainsimulations
